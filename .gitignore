@@ -1,0 +1,11 @@
+.DS_Store
+node_modules/
+dist/
+coverage/
+.cache/
+.tmp/
+.playwright-cli/
+output/playwright/
+inputs/
+*.log
+*.inspect.ndjson

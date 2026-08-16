@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "description": "Effective-dated corrections for venue fields that nflverse inherits from a reused stadium identifier or has not yet updated. Overrides are observations, not forecasts.",
+  "internationalVenueSource": {
+    "publisher": "NFL Football Operations",
+    "url": "https://operations.nfl.com/programs-initiatives/international-growth/nfl-international-games",
+    "reviewedAt": "2026-08-16",
+    "note": "Official list of nine 2026 games at eight international stadiums. International detection uses this venue list, never the schedule location field."
+  },
+  "overrides": [
+    {
+      "id": "new-highmark-2026-natural-grass",
+      "effectiveFrom": "2026-01-01",
+      "effectiveThrough": null,
+      "stadiumNames": ["Highmark Stadium", "New Highmark Stadium"],
+      "set": { "roof": "outdoors", "surface": "grass" },
+      "verifySurface": false,
+      "provenance": {
+        "publisher": "Buffalo Bills",
+        "url": "https://www.buffalobills.com/news/impressed-by-every-aspect-of-it-bills-officially-open-highmark-stadium-with-ribbon-cutting-ceremony",
+        "reviewedAt": "2026-08-16",
+        "note": "The new stadium opens for the 2026 season and its field is natural grass."
+      }
+    },
+    {
+      "id": "mcg-2026-nfl-field",
+      "effectiveFrom": "2026-01-01",
+      "effectiveThrough": "2026-12-31",
+      "stadiumNames": ["Melbourne Cricket Ground", "MCG"],
+      "set": { "roof": "outdoors", "surface": "grass" },
+      "verifySurface": false,
+      "provenance": {
+        "publisher": "Melbourne Cricket Club",
+        "url": "https://www.mcg.org.au/about/stadium-operations/portable-cricket-pitches",
+        "reviewedAt": "2026-08-16",
+        "note": "The MCG is an open-air venue with a natural-turf arena."
+      }
+    },
+    {
+      "id": "tottenham-2026-nfl-field",
+      "effectiveFrom": "2026-01-01",
+      "effectiveThrough": "2026-12-31",
+      "stadiumNames": ["Tottenham Hotspur Stadium"],
+      "set": { "roof": "outdoors", "surface": "artificial" },
+      "verifySurface": false,
+      "provenance": {
+        "publisher": "Tottenham Hotspur",
+        "url": "https://www.tottenhamhotspur.com/news/1032423/scx-to-supply-world-first-dividing-retractable-pitch-for-tottenham-hotspurs-new-stadium",
+        "reviewedAt": "2026-08-16",
+        "note": "NFL games use the dedicated artificial playing surface below the retractable soccer pitch."
+      }
+    },
+    {
+      "id": "allianz-2026-nfl-field",
+      "effectiveFrom": "2026-01-01",
+      "effectiveThrough": "2026-12-31",
+      "stadiumNames": ["Allianz Arena", "FC Bayern Munich Stadium"],
+      "set": { "roof": "outdoors", "surface": "hybrid" },
+      "verifySurface": false,
+      "provenance": {
+        "publisher": "Allianz Arena",
+        "url": "https://allianz-arena.com/en/faq",
+        "reviewedAt": "2026-08-16",
+        "note": "The venue has an open playing area and a hybrid-grass field."
+      }
+    },
+    {
+      "id": "stade-de-france-2026-roof-only",
+      "effectiveFrom": "2026-01-01",
+      "effectiveThrough": "2026-12-31",
+      "stadiumNames": ["Stade de France"],
+      "set": { "roof": "outdoors", "surface": "unknown" },
+      "verifySurface": true,
+      "provenance": {
+        "publisher": "Stade de France",
+        "url": "https://www.stadefrance.com/en/stadium/our-history",
+        "reviewedAt": "2026-08-16",
+        "note": "The seating is covered but the playing field is open. Confirm the installed NFL game surface closer to kickoff."
+      }
+    },
+    {
+      "id": "maracana-2026-roof-only",
+      "effectiveFrom": "2026-01-01",
+      "effectiveThrough": "2026-12-31",
+      "stadiumNames": ["Maracana Stadium", "Maracanã Stadium", "Maracanã"],
+      "set": { "roof": "outdoors", "surface": "unknown" },
+      "verifySurface": true,
+      "provenance": {
+        "publisher": "Government of Rio de Janeiro",
+        "url": "https://www.rj.gov.br/casacivil/sites/default/files/arquivos_paginas/14.Anexo%20XI%20-%20Guia%20de%20Escopo%20Operacional_0.pdf",
+        "reviewedAt": "2026-08-16",
+        "note": "The open-air venue is confirmed; verify the temporary NFL playing surface closer to kickoff."
+      }
+    }
+  ]
+}

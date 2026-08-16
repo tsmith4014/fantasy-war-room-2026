@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#07111f">
+    <meta name="description" content="A local-first, source-aware 2026 fantasy football draft assistant.">
+    <title>2026 Fantasy Draft War Room</title>
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="icon" href="./icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#draft-board">Skip to draft board</a>
+
+    <header class="app-header">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true">26</div>
+        <div>
+          <p class="eyebrow">Draft intelligence console</p>
+          <h1>Fantasy War Room</h1>
+        </div>
+      </div>
+      <div class="header-status">
+        <span id="network-status" class="status-pill" data-state="loading">Loading data…</span>
+        <span id="freshness-status" class="status-pill" data-state="neutral">As of —</span>
+        <button id="open-settings" class="icon-button" type="button" aria-label="Open league and model settings" title="Settings">
+          <span aria-hidden="true">⚙</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <section class="control-deck" aria-labelledby="draft-control-heading">
+        <div class="control-copy">
+          <p class="eyebrow">Live draft state</p>
+          <h2 id="draft-control-heading">On the clock</h2>
+          <p id="turn-summary" class="muted">Preparing your board…</p>
+        </div>
+
+        <div class="pick-card" aria-label="Current overall pick">
+          <span class="metric-label">Overall pick</span>
+          <strong id="current-pick" class="hero-number">1</strong>
+          <span id="round-pick" class="metric-note">Round 1 · Pick 1</span>
+        </div>
+
+        <div class="pick-card accent" aria-label="Next manager pick">
+          <span class="metric-label">Your next turn</span>
+          <strong id="next-pick" class="hero-number">1</strong>
+          <span id="picks-away" class="metric-note">You are on the clock</span>
+        </div>
+
+        <div class="control-actions">
+          <button id="undo-button" class="button secondary" type="button" disabled>Undo</button>
+          <button id="export-button" class="button secondary" type="button">Export</button>
+          <button id="import-button" class="button secondary" type="button">Import</button>
+          <button id="reset-button" class="button danger-quiet" type="button">Reset</button>
+          <input id="import-file" type="file" accept="application/json,.json" hidden>
+        </div>
+      </section>
+
+      <section class="recommendation-section" aria-labelledby="recommendation-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Context-aware shortlist</p>
+            <h2 id="recommendation-heading">Best options now</h2>
+          </div>
+          <button id="explain-model" class="text-button" type="button">How scoring works</button>
+        </div>
+        <div id="recommendations" class="recommendation-grid" aria-live="polite"></div>
+      </section>
+
+      <div class="workspace-grid">
+        <section id="draft-board" class="panel board-panel" aria-labelledby="board-heading" tabindex="-1">
+          <div class="panel-heading board-heading">
+            <div>
+              <p class="eyebrow">Live market + context</p>
+              <h2 id="board-heading">Draft board</h2>
+            </div>
+            <span id="player-count" class="count-badge">0 available</span>
+          </div>
+
+          <form id="filters" class="filter-bar" role="search">
+            <label class="search-control">
+              <span class="sr-only">Search players or teams</span>
+              <span aria-hidden="true">⌕</span>
+              <input id="search-input" type="search" placeholder="Search player or team" autocomplete="off">
+              <kbd>/</kbd>
+            </label>
+            <label>
+              <span class="sr-only">Position</span>
+              <select id="position-filter">
+                <option value="ALL">All positions</option>
+                <option value="QB">QB</option>
+                <option value="RB">RB</option>
+                <option value="WR">WR</option>
+                <option value="TE">TE</option>
+                <option value="D/ST">D/ST</option>
+                <option value="K">K</option>
+              </select>
+            </label>
+            <label>
+              <span class="sr-only">Player status</span>
+              <select id="status-filter">
+                <option value="ALL">All statuses</option>
+                <option value="CLEAR">No injury flag</option>
+                <option value="FLAGGED">Status flagged</option>
+              </select>
+            </label>
+            <label class="checkbox-control">
+              <input id="show-drafted" type="checkbox">
+              <span>Show drafted</span>
+            </label>
+          </form>
+
+          <div class="table-wrap">
+            <table>
+              <caption class="sr-only">Player market, model score, status, and draft actions</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Market</th>
+                  <th scope="col">Player</th>
+                  <th scope="col">Pos</th>
+                  <th scope="col">Bye</th>
+                  <th scope="col">ADP</th>
+                  <th scope="col">Tier</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Context</th>
+                  <th scope="col">War score</th>
+                  <th scope="col"><span class="sr-only">Actions</span></th>
+                </tr>
+              </thead>
+              <tbody id="player-rows"></tbody>
+            </table>
+          </div>
+          <div id="empty-state" class="empty-state" hidden>
+            <strong>No players match these filters.</strong>
+            <button id="clear-filters" class="text-button" type="button">Clear filters</button>
+          </div>
+        </section>
+
+        <aside class="sidebar-stack" aria-label="Draft roster and research">
+          <section class="panel roster-panel" aria-labelledby="roster-heading">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Your team</p>
+                <h2 id="roster-heading">Roster build</h2>
+              </div>
+              <span id="roster-count" class="count-badge">0 / 16</span>
+            </div>
+            <div id="roster-slots" class="roster-slots"></div>
+          </section>
+
+          <section class="panel plan-panel" aria-labelledby="plan-heading">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Snake-aware fallback</p>
+                <h2 id="plan-heading">Upcoming turns</h2>
+              </div>
+            </div>
+            <ol id="turn-plan" class="turn-plan"></ol>
+          </section>
+
+          <section class="panel research-panel" aria-labelledby="research-heading">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Source-linked inbox</p>
+                <h2 id="research-heading">News & signals</h2>
+              </div>
+              <a class="text-link" href="./data/research.json" target="_blank" rel="noreferrer">JSON</a>
+            </div>
+            <div id="research-list" class="research-list"></div>
+          </section>
+
+          <section class="panel log-panel" aria-labelledby="log-heading">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Undoable audit trail</p>
+                <h2 id="log-heading">Recent picks</h2>
+              </div>
+            </div>
+            <ol id="draft-log" class="draft-log"></ol>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <p>
+        Personal decision support · No paid APIs ·
+        <a href="./downloads/2026_fantasy_football_draft_war_room_enhanced.xlsx" download>Download enhanced workbook</a> ·
+        <a href="https://fantasyfootballcalculator.com" target="_blank" rel="noreferrer">ADP by Fantasy Football Calculator</a> ·
+        <a href="https://github.com/nflverse/nflverse-data" target="_blank" rel="noreferrer">Schedule/stats by nflverse</a>
+      </p>
+      <p id="data-provenance">Loading provenance…</p>
+    </footer>
+
+    <dialog id="settings-dialog" class="dialog settings-dialog">
+      <form method="dialog" class="dialog-card" id="settings-form">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">League + model</p>
+            <h2>War room settings</h2>
+          </div>
+          <button class="icon-button" value="cancel" aria-label="Close settings">×</button>
+        </div>
+
+        <div class="settings-grid">
+          <label>League teams
+            <input id="setting-teams" type="number" min="8" max="16" step="1" required>
+          </label>
+          <label>Your draft slot
+            <input id="setting-slot" type="number" min="1" max="10" step="1" required>
+          </label>
+          <label>Rounds
+            <input id="setting-rounds" type="number" min="10" max="24" step="1" required>
+          </label>
+          <label>Reception scoring
+            <select id="setting-scoring">
+              <option value="ppr">Full PPR</option>
+              <option value="half-ppr">Half PPR</option>
+              <option value="standard">Standard</option>
+            </select>
+          </label>
+        </div>
+
+        <fieldset>
+          <legend>Recommendation weights</legend>
+          <p class="muted compact">Weights are normalized automatically. Schedule and split context are capped at 5% combined.</p>
+          <div id="weight-controls" class="weight-controls"></div>
+        </fieldset>
+
+        <div class="dialog-actions">
+          <button id="restore-settings" class="button secondary" type="button">Restore defaults</button>
+          <button class="button primary" value="save">Save settings</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="player-dialog" class="dialog player-dialog">
+      <article class="dialog-card">
+        <div class="dialog-heading">
+          <div>
+            <p id="player-dialog-kicker" class="eyebrow">Player detail</p>
+            <h2 id="player-dialog-title">Player</h2>
+          </div>
+          <button id="close-player-dialog" class="icon-button" type="button" aria-label="Close player details">×</button>
+        </div>
+        <div id="player-dialog-content"></div>
+      </article>
+    </dialog>
+
+    <dialog id="model-dialog" class="dialog model-dialog">
+      <article class="dialog-card">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">Transparent by design</p>
+            <h2>How the war score works</h2>
+          </div>
+          <button id="close-model-dialog" class="icon-button" type="button" aria-label="Close model explanation">×</button>
+        </div>
+        <p>The score blends current market quality with what your roster and snake turn need right now. Every input is normalized to 0–100, then multiplied by its visible weight.</p>
+        <div id="model-explanation" class="model-explanation"></div>
+        <p class="callout">Weather, surface, travel, and historical splits are capped context—not permission to ignore role, value, or positional scarcity.</p>
+      </article>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <div id="live-region" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+  </body>
+</html>

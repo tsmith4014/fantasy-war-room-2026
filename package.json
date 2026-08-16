@@ -1,0 +1,21 @@
+{
+  "name": "fantasy-war-room-2026",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A local-first, source-aware 2026 fantasy football draft assistant for GitHub Pages.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "clean": "node scripts/clean.mjs",
+    "data:refresh": "node scripts/refresh-data.mjs",
+    "data:refresh:history": "node scripts/refresh-data.mjs --include-history",
+    "data:validate": "node scripts/validate-data.mjs",
+    "lint": "node scripts/lint.mjs",
+    "test": "node --test",
+    "check": "npm run lint && npm run data:validate && npm test && npm run build",
+    "serve": "node scripts/serve.mjs dist 4173"
+  },
+  "engines": {
+    "node": ">=20.11"
+  }
+}

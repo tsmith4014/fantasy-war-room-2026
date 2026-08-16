@@ -1,0 +1,18 @@
+{
+  "name": "2026 Fantasy Draft War Room",
+  "short_name": "War Room 26",
+  "description": "A local-first, source-aware fantasy football draft assistant.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#050a12",
+  "theme_color": "#07111f",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

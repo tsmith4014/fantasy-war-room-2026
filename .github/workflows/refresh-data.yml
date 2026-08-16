@@ -1,0 +1,83 @@
+name: Refresh draft research
+
+on:
+  schedule:
+    - cron: "17 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: fantasy-data-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out default branch
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          ref: main
+      - name: Use Node.js 20
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 20
+      - name: Seed the latest proposed snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          open_pr_count="$(gh pr list --head automation/data-refresh --state open --json number --jq 'length')"
+          if [ "$open_pr_count" -gt 0 ] && git fetch --no-tags origin automation/data-refresh; then
+            git checkout FETCH_HEAD -- site/data research/CONTEXT.md
+          fi
+          digest="$(git hash-object site/data/manifest.json site/data/players.json site/data/research.json research/CONTEXT.md | sha256sum | cut -d ' ' -f 1)"
+          echo "INPUT_DIGEST=$digest" >> "$GITHUB_ENV"
+      - name: Refresh permitted public sources
+        run: npm run data:refresh
+      - name: Validate refreshed snapshot
+        run: npm run check
+      - name: Open or update review pull request
+        id: propose
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          output_digest="$(git hash-object site/data/manifest.json site/data/players.json site/data/research.json research/CONTEXT.md | sha256sum | cut -d ' ' -f 1)"
+          open_pr_count="$(gh pr list --head automation/data-refresh --state open --json number --jq 'length')"
+          if [ "$INPUT_DIGEST" = "$output_digest" ] && [ "$open_pr_count" -gt 0 ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "The existing refresh pull request already contains today's validated snapshot." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          if git diff --quiet -- site/data research/CONTEXT.md; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No source changes detected." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C automation/data-refresh
+          git add site/data research/CONTEXT.md
+          git commit -m "refresh 2026 draft research"
+          git push --force origin HEAD:automation/data-refresh
+
+          if [ "$open_pr_count" -gt 0 ]; then
+            gh pr comment automation/data-refresh --body "Automated sources changed again; this branch now contains the latest validated snapshot."
+          else
+            gh pr create \
+              --base main \
+              --head automation/data-refresh \
+              --title "Refresh 2026 draft research" \
+              --body "Automated, source-attributed ADP/status/schedule/news refresh. Review research/CONTEXT.md and the data diff before merging. No paid APIs or runners were used."
+          fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "A validated refresh branch and pull request are ready for review." >> "$GITHUB_STEP_SUMMARY"
