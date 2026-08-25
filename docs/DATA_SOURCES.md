@@ -8,8 +8,8 @@ Every published snapshot records retrieval time and source URL in
 | [Fantasy Football Calculator ADP API](https://help.fantasyfootballcalculator.com/article/42-adp-rest-api) | Current ADP, mock sample, range, volatility, bye | Free for personal/commercial use; attribution requested; updates daily | Fetch at most daily; display attribution |
 | [Sleeper API](https://docs.sleeper.com/) | Player IDs, active/team/depth/injury labels, trends | Public read-only API for this personal non-commercial tool | Fetch all players at most daily; label status as Sleeper-sourced |
 | [nflverse](https://github.com/nflverse/nflverse-data) | 2026 schedule, roof, surface, rest; 2023-25 statistical splits | CC BY 4.0 | Attribute; preserve sample counts; no causal claims |
-| [Official NFL club sites](https://support.nfl.com/hc/en-us/articles/40080288031380-What-are-the-official-websites-of-all-NFL-teams) | All 32 club RSS feeds for linked team news | Official domains; RSS path is documented by the [49ers](https://www.49ers.com/news/rss-feeds) | Validate status/type each run; store title/link/date only |
-| [ESPN NFL RSS](https://www.espn.com/espn/news/story?page=rssinfo) | Linked headlines in the research inbox | Syndication terms require unmodified feed content, attribution, and links | Store titles/links only; no ads or article copying |
+| [Official NFL club sites](https://support.nfl.com/hc/en-us/articles/40080288031380-What-are-the-official-websites-of-all-NFL-teams) | All 32 club RSS feeds for linked team news | Official domains; RSS path is documented by the [49ers](https://www.49ers.com/news/rss-feeds) | Validate status/type each run; store title/link/date only; isolate failures per feed |
+| [ESPN NFL RSS](https://www.espn.com/espn/news/story?page=rssinfo) | Linked headlines in the research inbox | Syndication terms require unmodified feed content, attribution, and links | Store titles/links only; no ads or article copying; preserve and label last-known-good links on failure |
 | [NFL schedules](https://www.nfl.com/schedules) | Official schedule cross-check | Official public reference | Prefer official fact over third-party disagreement |
 | [NFL international games](https://operations.nfl.com/programs-initiatives/international-growth/nfl-international-games) | International/travel context | Official public reference | Treat exact travel as approximate without itineraries |
 | [National Weather Service API](https://www.weather.gov/documentation/services-web-api) | Future US game forecasts inside 7 days | US government open data; User-Agent required | Never fabricate longer-range forecasts |
@@ -28,5 +28,7 @@ Every published snapshot records retrieval time and source URL in
 - Market ADP is not a projection. It represents how mock-draft participants
   selected players during the provider's stated sample window.
 - RSS headlines are an inbox, not an automatically interpreted injury signal.
+- Publisher feed clocks may lead the runner slightly. Source timestamps remain
+  unmodified, with a one-hour validation ceiling for bounded clock skew.
 - FantasyPros is excluded from automation because its free API key is expressly
   non-production and paid access would violate this project's approval gate.

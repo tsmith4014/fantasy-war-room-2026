@@ -32,6 +32,8 @@
     </header>
 
     <main class="app-shell">
+      <div id="data-alert" class="data-alert" role="status" aria-live="polite" hidden></div>
+
       <section class="control-deck" aria-labelledby="draft-control-heading">
         <div class="control-copy">
           <p class="eyebrow">Live draft state</p>
@@ -109,6 +111,10 @@
               </select>
             </label>
             <label class="checkbox-control">
+              <input id="queue-only" type="checkbox">
+              <span>Queue only</span>
+            </label>
+            <label class="checkbox-control">
               <input id="show-drafted" type="checkbox">
               <span>Show drafted</span>
             </label>
@@ -141,6 +147,17 @@
         </section>
 
         <aside class="sidebar-stack" aria-label="Draft roster and research">
+          <section class="panel queue-panel" aria-labelledby="queue-heading">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Local draft targets</p>
+                <h2 id="queue-heading">My target queue</h2>
+              </div>
+              <span id="queue-count" class="count-badge">0 active</span>
+            </div>
+            <ol id="queue-list" class="queue-list"></ol>
+          </section>
+
           <section class="panel roster-panel" aria-labelledby="roster-heading">
             <div class="panel-heading">
               <div>
@@ -150,6 +167,7 @@
               <span id="roster-count" class="count-badge">0 / 16</span>
             </div>
             <div id="roster-slots" class="roster-slots"></div>
+            <p id="roster-alert" class="roster-alert" hidden></p>
           </section>
 
           <section class="panel plan-panel" aria-labelledby="plan-heading">
@@ -165,7 +183,7 @@
           <section class="panel research-panel" aria-labelledby="research-heading">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Source-linked inbox</p>
+                <p class="eyebrow">Fantasy-impact first</p>
                 <h2 id="research-heading">News & signals</h2>
               </div>
               <a class="text-link" href="./data/research.json" target="_blank" rel="noreferrer">JSON</a>
@@ -196,12 +214,12 @@
       <p id="data-provenance">Loading provenance…</p>
     </footer>
 
-    <dialog id="settings-dialog" class="dialog settings-dialog">
+    <dialog id="settings-dialog" class="dialog settings-dialog" aria-labelledby="settings-dialog-title">
       <form method="dialog" class="dialog-card" id="settings-form">
         <div class="dialog-heading">
           <div>
             <p class="eyebrow">League + model</p>
-            <h2>War room settings</h2>
+            <h2 id="settings-dialog-title">War room settings</h2>
           </div>
           <button class="icon-button" value="cancel" aria-label="Close settings">×</button>
         </div>
@@ -238,7 +256,7 @@
       </form>
     </dialog>
 
-    <dialog id="player-dialog" class="dialog player-dialog">
+    <dialog id="player-dialog" class="dialog player-dialog" aria-labelledby="player-dialog-title">
       <article class="dialog-card">
         <div class="dialog-heading">
           <div>
@@ -251,12 +269,12 @@
       </article>
     </dialog>
 
-    <dialog id="model-dialog" class="dialog model-dialog">
+    <dialog id="model-dialog" class="dialog model-dialog" aria-labelledby="model-dialog-title">
       <article class="dialog-card">
         <div class="dialog-heading">
           <div>
             <p class="eyebrow">Transparent by design</p>
-            <h2>How the war score works</h2>
+            <h2 id="model-dialog-title">How the war score works</h2>
           </div>
           <button id="close-model-dialog" class="icon-button" type="button" aria-label="Close model explanation">×</button>
         </div>

@@ -4,7 +4,8 @@ import path from "node:path";
 
 import { parseCsv } from "./lib/csv.mjs";
 import { fetchJsonOnce, fetchTextOnce, jsonText, readJsonIfPresent, withFileLock, writeAtomicBundle } from "./lib/data-io.mjs";
-import { cleanUntrustedText, parseRssHeadlines } from "./lib/rss.mjs";
+import { feedSourceId, fetchFeedSet } from "./lib/feed-refresh.mjs";
+import { cleanUntrustedText } from "./lib/rss.mjs";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const DATA_DIR = path.join(ROOT, "site", "data");
@@ -133,7 +134,7 @@ function computeSnapshotDigest(playersPayload, research) {
   return crypto.createHash("sha256").update(jsonText(playersForHash)).update(jsonText(researchForHash)).digest("hex").slice(0, 10);
 }
 
-function sourceRecord({ id, name, url, kind, retrievedAt = generatedAt, records, attribution, terms, refreshPolicy, details }) {
+function sourceRecord({ id, name, url, kind, retrievedAt = generatedAt, records, attribution, terms, refreshPolicy, details, freshnessState = "fresh", maxAgeHours = MAX_AGE_HOURS }) {
   const parsed = new URL(url);
   if (!new Set(["https:", "http:"]).has(parsed.protocol)) throw new Error(`Unsafe source URL for ${id}`);
   return {
@@ -145,7 +146,7 @@ function sourceRecord({ id, name, url, kind, retrievedAt = generatedAt, records,
     records,
     attribution,
     terms,
-    freshness: { state: "fresh", maxAgeHours: MAX_AGE_HOURS },
+    freshness: { state: freshnessState, maxAgeHours },
     ...(refreshPolicy ? { refreshPolicy } : {}),
     ...(details ? { details } : {}),
   };
@@ -578,6 +579,7 @@ function makeHistorySourceRecords(historySummary, historyMetadata) {
         playersWithGuardedComparisons: historySummary.playersWithGuardedComparisons,
         seasonSourceIds: historyMetadata.seasons.map((season) => `nflverse-player-stats-${season}`),
       },
+      maxAgeHours: 8760,
     }),
     ...STATS_URLS.map(({ season, url }) => sourceRecord({
       id: `nflverse-player-stats-${season}`,
@@ -588,17 +590,21 @@ function makeHistorySourceRecords(historySummary, historyMetadata) {
       attribution: "nflverse data",
       terms: "Creative Commons Attribution 4.0; regular-season weekly observations",
       details: { season },
+      maxAgeHours: 8760,
     })),
   ];
 }
 
-async function fetchFeeds() {
+async function fetchFeeds(priorResearch) {
   const feeds = [...TEAM_FEEDS, { team: null, name: "ESPN NFL", domain: "espn.com", url: "https://www.espn.com/espn/rss/nfl/news", espn: true }];
-  return Promise.all(feeds.map(async (feed) => {
-    const result = await fetchTextOnce(feed.url, { timeoutMs: 20_000, maxBytes: 2_000_000, headers: { accept: "application/rss+xml,application/xml,text/xml;q=0.9,*/*;q=0.5" } });
-    const headlines = parseRssHeadlines(result.text, { expectedHosts: [feed.domain], limit: feed.espn ? 15 : 3 });
-    return { feed, headlines, finalUrl: result.finalUrl };
-  }));
+  return fetchFeedSet(feeds, {
+    priorResearch,
+    fetchText: (url) => fetchTextOnce(url, {
+      timeoutMs: 20_000,
+      maxBytes: 2_000_000,
+      headers: { accept: "application/rss+xml,application/xml,text/xml;q=0.9,*/*;q=0.5" },
+    }),
+  });
 }
 
 function stableHeadlineId(url) {
@@ -677,6 +683,7 @@ function buildContextMarkdown({ players, priorPlayers, research, manifest, ident
       : []),
     ...[...new Set(rawScheduleWarnings.filter((warning) => /surface must be verified/i.test(warning)))],
   ];
+  const degradedSources = manifest.sources.filter((source) => source.freshness?.state === "error");
 
   const lines = [
     "# 2026 research context",
@@ -692,6 +699,9 @@ function buildContextMarkdown({ players, priorPlayers, research, manifest, ident
     identityWarnings.length
       ? `- ${identityWarnings.length} FFC records did not resolve to a Sleeper ID and retain a stable FFC ID.`
       : `- All ${players.length} current PPR records resolve to stable Sleeper IDs.`,
+    degradedSources.length
+      ? `- ${degradedSources.length} headline source${degradedSources.length === 1 ? "" : "s"} failed this run; only that source's last-known-good links were preserved: ${degradedSources.map((source) => markdownEscape(source.name)).join(", ")}.`
+      : "- All configured headline feeds returned a valid RSS/Atom document.",
     `- ${warnings.length} unique schedule-metadata warnings remain visible and low-weight.`,
     "- Weather is intentionally absent: credible forecasts belong near game day, not draft day weeks in advance.",
     ...(historySummary ? [`- Historical context: ${historySummary.playersWithSplits} players have 2023–25 samples; ${historySummary.playersWithGuardedComparisons} pass at least one two-sided comparison guard.`] : []),
@@ -792,6 +802,7 @@ function validateOutput({ manifest, playersPayload, research, contextMarkdown })
     if (!item.title || item.title.length > 280 || /<[^>]+>|[\u0000-\u001f\u007f]/.test(item.title)) errors.push(`headline ${item.id} contains unsafe title text`);
     try { new URL(item.url); } catch { errors.push(`headline ${item.id} has invalid URL`); }
     if (Number.isNaN(Date.parse(item.publishedAt))) errors.push(`headline ${item.id} has invalid date`);
+    if (Date.parse(item.publishedAt) > Date.parse(research.generatedAt) + 3_600_000) errors.push(`headline ${item.id} is more than one hour in the future`);
     if (!sourceIds.has(item.sourceId)) errors.push(`headline source ${item.sourceId} is missing`);
   }
   if (!contextMarkdown.startsWith("# 2026 research context") || contextMarkdown.includes("<script")) errors.push("research context is invalid");
@@ -926,14 +937,15 @@ async function main() {
   const sleeperDropUrl = "https://api.sleeper.app/v1/players/nfl/trending/drop?lookback_hours=24&limit=50";
 
   console.log("Fetching three ADP markets, Sleeper observations, schedule metadata, and 33 headline feeds...");
-  const [ffcResponses, sleeperPlayersResponse, sleeperAddResponse, sleeperDropResponse, scheduleResponse, feedResults] = await Promise.all([
+  const [ffcResponses, sleeperPlayersResponse, sleeperAddResponse, sleeperDropResponse, scheduleResponse, feedSet] = await Promise.all([
     Promise.all(ffcRequests.map(async ({ format, url }) => ({ format, url, response: await fetchJsonOnce(url, { maxBytes: 5_000_000 }) }))),
     fetchJsonOnce(sleeperPlayersUrl, { timeoutMs: 30_000, maxBytes: 20_000_000 }),
     fetchJsonOnce(sleeperAddUrl, { maxBytes: 1_000_000 }),
     fetchJsonOnce(sleeperDropUrl, { maxBytes: 1_000_000 }),
     fetchTextOnce(SCHEDULE_URL, { timeoutMs: 30_000, maxBytes: 15_000_000 }),
-    fetchFeeds(),
+    fetchFeeds(priorResearch),
   ]);
+  const { results: feedResults, failures: feedFailures } = feedSet;
 
   const ffc = Object.fromEntries(ffcResponses.map(({ format, response }) => [format.key, parseFfcPayload(response.value, format)]));
   const sleeperPlayers = validateSleeperPlayers(sleeperPlayersResponse.value);
@@ -1024,15 +1036,31 @@ async function main() {
     sourceRecord({ id: "sleeper-trends-drop", name: "Sleeper NFL drop trends", url: sleeperDropUrl, kind: "trend-observation", records: dropTrends.length, attribution: "Sleeper API", terms: `Personal non-commercial use; documentation: ${SLEEPER_DOCS_URL}` }),
     sourceRecord({ id: "nflverse-schedules", name: "nflverse schedules", url: SCHEDULE_URL, kind: "schedule-observation", records: scheduleRows.filter((game) => game.season === SEASON && game.gameType === "REG").length, attribution: "nflverse data", terms: "Creative Commons Attribution 4.0; venue overrides are separately attributed" }),
   );
-  for (const { feed, headlines } of feedResults) {
+  const priorSourcesById = new Map((priorManifest?.sources ?? []).map((source) => [source.id, source]));
+  for (const { feed, headlines, finalUrl, contentType, usedFallback, error } of feedResults) {
+    const sourceId = feedSourceId(feed);
+    const priorSource = priorSourcesById.get(sourceId);
+    const priorSuccessfulAt = priorSource?.freshness?.state === "error"
+      ? priorSource?.details?.lastSuccessfulAt ?? null
+      : priorSource?.retrievedAt ?? null;
     sources.push(sourceRecord({
-      id: feed.espn ? "rss-espn" : `rss-team-${feed.team.toLowerCase()}`,
+      id: sourceId,
       name: `${feed.name} RSS`,
       url: feed.url,
       kind: feed.espn ? "publisher-rss" : "official-club-rss",
+      retrievedAt: error ? priorSuccessfulAt ?? generatedAt : generatedAt,
       records: headlines.length,
       attribution: feed.name,
       terms: "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
+      freshnessState: error ? "error" : "fresh",
+      details: error
+        ? {
+          lastAttemptAt: generatedAt,
+          lastSuccessfulAt: priorSuccessfulAt,
+          usedLastKnownGood: usedFallback && headlines.length > 0,
+          error,
+        }
+        : { finalUrl, contentType },
     }));
   }
   const venueSources = [venueConfig.internationalVenueSource, ...venueConfig.overrides.map((override) => override.provenance)];
@@ -1047,6 +1075,7 @@ async function main() {
       attribution: source.publisher,
       terms: "Linked factual reference; manually reviewed and effective-dated in docs/venue-overrides.json",
       details: { note: source.note },
+      maxAgeHours: 8760,
     }));
   }
 
@@ -1075,10 +1104,13 @@ async function main() {
     attribution: `ADP data courtesy of FantasyFootballCalculator.com; player status/trends from Sleeper; schedule and optional history from nflverse. See manifest.json.`,
     players,
   };
+  const headlineObservedAt = feedFailures.length === feedResults.length
+    ? priorResearch?.observedAt ?? generatedAt
+    : generatedAt;
   const research = {
     schemaVersion: 1,
     generatedAt,
-    observedAt: generatedAt,
+    observedAt: headlineObservedAt,
     notice: "Headline titles, links, and dates are an unmodified-source research inbox. No article bodies are stored and no headline changes rankings automatically.",
     trends: { windowHours: 24, add: mapTrends(addTrends, sleeperIndex), drop: mapTrends(dropTrends, sleeperIndex), sourceIds: ["sleeper-trends-add", "sleeper-trends-drop"] },
     items: headlinePayload(feedResults),
@@ -1108,6 +1140,9 @@ async function main() {
       ...(identityWarnings.length
         ? [`${identityWarnings.length} PPR players did not resolve to a Sleeper ID and use their stable FFC ID.`]
         : []),
+      ...(feedFailures.length
+        ? [`${feedFailures.length} headline feed${feedFailures.length === 1 ? "" : "s"} failed validation; current core data published and last-known-good links were preserved where available (${feedFailures.map(({ feed }) => feed.name).join(", ")}).`]
+        : []),
       "Stade de France and Maracana NFL gameday surfaces remain unverified; their surface modifier stays neutral.",
       "Future game-day weather is intentionally not modeled in this preseason snapshot.",
     ],
@@ -1127,6 +1162,9 @@ async function main() {
   });
   console.log(`Published ${snapshotId}: ${players.length} players, ${research.items.length} headlines, ${sources.length} attributed sources.`);
   if (identityWarnings.length) console.log(`Identity review: ${identityWarnings.length} records retain FFC IDs. See research/CONTEXT.md.`);
+  for (const failure of feedFailures) {
+    console.warn(`Headline feed degraded: ${failure.feed.name}; ${failure.error}; content-type ${failure.contentType || "unknown"}; final URL ${failure.finalUrl}`);
+  }
 }
 
 await withFileLock(RUN_LOCK_PATH, main);

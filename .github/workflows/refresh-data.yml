@@ -15,14 +15,15 @@ concurrency:
 
 jobs:
   refresh:
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'workflow_dispatch' || vars.DRAFT_REFRESH_ENABLED != 'false')
+    runs-on: ubuntu-slim
     timeout-minutes: 10
     steps:
       - name: Check out default branch
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
+          persist-credentials: false
           ref: main
       - name: Use Node.js 24
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -42,7 +43,7 @@ jobs:
       - name: Refresh permitted public sources
         run: npm run data:refresh
       - name: Validate refreshed snapshot
-        run: npm run check
+        run: npm run draft:ready
       - name: Open or update review pull request
         id: propose
         env:
@@ -65,6 +66,7 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          gh auth setup-git
           git switch -C automation/data-refresh
           git add site/data research/CONTEXT.md
           git commit -m "refresh 2026 draft research"

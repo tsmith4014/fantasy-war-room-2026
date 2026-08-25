@@ -120,7 +120,9 @@ for (const [index, item] of (research.items ?? []).entries()) {
   researchIds.add(item.id);
   if (!item.title || item.title.length > 300) errors.push(`research.items[${index}].title is invalid`);
   if (!sourceIds.has(item.sourceId)) errors.push(`research.items[${index}] source is missing`);
-  if (typeof item.source !== "string" || !item.source || typeof item.category !== "string" || !item.category || !validTimestamp(item.publishedAt) || Date.parse(item.publishedAt) > Date.parse(research.generatedAt)) errors.push(`research.items[${index}] metadata is invalid`);
+  // Syndicated publisher clocks can lead the runner slightly. Preserve the
+  // source timestamp, but reject anything beyond a bounded one-hour skew.
+  if (typeof item.source !== "string" || !item.source || typeof item.category !== "string" || !item.category || !validTimestamp(item.publishedAt) || Date.parse(item.publishedAt) > Date.parse(research.generatedAt) + 3_600_000) errors.push(`research.items[${index}] metadata is invalid`);
   if (item.content || item.body || (item.summary?.length ?? 0) > 500) errors.push(`research.items[${index}] contains excessive article content`);
 }
 

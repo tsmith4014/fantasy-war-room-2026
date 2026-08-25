@@ -15,14 +15,20 @@ redistributed proprietary top-300 dataset.
   score component.
 - Tracks players drafted by you or opponents, assigns your roster, advances the
   board, and calculates the next snake pick.
+- Keeps a local target queue that leads the shortlist without silently changing
+  any model score; the queue persists across tabs and session exports.
 - Filters by position and injury/status, with player/team search.
 - Shows market confidence, ADP value, bye weeks, source freshness, venue/surface
   exposure, short-rest/international context, and historical split sample sizes.
 - Supports undo, keyboard shortcuts, versioned local persistence, cross-tab
   updates, and JSON import/export.
-- Includes an ongoing research digest and a review-first scheduled refresh.
+- Includes an ongoing research digest, explicit stale/degraded-source warnings,
+  and a review-first scheduled refresh that preserves individual last-known-good
+  feeds instead of blocking current ADP and status data.
+- Prioritizes fantasy-impact headlines in the UI while keeping the complete,
+  source-linked research inbox available as JSON.
 - Works offline after the first successful visit.
-- Publishes the enhanced, formula-driven Excel workbook as a direct download.
+- Publishes the enhanced Excel reference workbook as a direct download.
 
 ## Local development
 
@@ -30,6 +36,7 @@ Requires Node.js 20.11 or newer; there are no npm runtime dependencies.
 
 ```sh
 npm run check
+npm run draft:ready
 npm run serve
 ```
 
@@ -44,18 +51,21 @@ npm run data:refresh
 The refresh fetches Fantasy Football Calculator ADP once per scoring format,
 Sleeper player/status metadata once, current Sleeper trends, the nflverse 2026
 schedule, all 32 official club RSS feeds, and ESPN's NFL RSS feed. It validates
-the result before atomically replacing the published snapshot.
+the result before atomically replacing the published snapshot. A malformed news
+feed is isolated and labeled while current core observations continue to publish.
 `npm run data:refresh:history` additionally rebuilds three-season
 roof/surface/rest split summaries from nflverse weekly stats.
 
 See [data sources](docs/DATA_SOURCES.md), [model design](docs/MODEL.md),
-[operations](docs/OPERATIONS.md), and the [source audit](docs/SOURCE_AUDIT.md).
+[operations](docs/OPERATIONS.md), the [draft-day checklist](docs/DRAFT_DAY.md),
+and the [source audit](docs/SOURCE_AUDIT.md).
 
 ## Cost boundary
 
-The public Pages site and checked-in workflows use standard GitHub-hosted Linux
-runners, which GitHub documents as free for public repositories. The workflows
-use no paid APIs, larger runners, LLM calls, caches, or retained build artifacts.
+The public Pages site and checked-in workflows use the one-CPU `ubuntu-slim`
+standard GitHub-hosted runner, which GitHub documents as free for public
+repositories. The workflows use no paid APIs, larger runners, LLM calls, caches,
+or retained general-purpose build artifacts.
 Any future paid service requires explicit approval before it is added or used.
 
 ## Disclaimer
