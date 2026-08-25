@@ -10,9 +10,11 @@
     "data:refresh": "node scripts/refresh-data.mjs",
     "data:refresh:history": "node scripts/refresh-data.mjs --include-history",
     "data:validate": "node scripts/validate-data.mjs",
+    "data:freshness": "node scripts/check-draft-readiness.mjs",
     "lint": "node scripts/lint.mjs",
     "test": "node --test",
     "check": "npm run lint && npm run data:validate && npm test && npm run build",
+    "draft:ready": "npm run check && npm run data:freshness",
     "serve": "node scripts/serve.mjs dist 4173"
   },
   "engines": {

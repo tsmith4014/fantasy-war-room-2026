@@ -5,6 +5,7 @@ import {
   addPick,
   defaultState,
   importSession,
+  toggleQueue,
   undoPick,
   validateState,
 } from "../site/modules/state.js";
@@ -101,4 +102,41 @@ test("picks cannot be appended after the configured draft is complete", () => {
   const result = addPick(state, { playerId: "p81", owner: "other" });
   assert.equal(result, state);
   assert.equal(result.history.length, 80);
+});
+
+test("the local target queue is persistent, ordered, removable, and import-safe", () => {
+  let state = defaultState();
+  state = toggleQueue(state, "p2");
+  state = toggleQueue(state, "p1");
+  assert.deepEqual(state.queue, ["p2", "p1"]);
+  state = toggleQueue(state, "p2");
+  assert.deepEqual(state.queue, ["p1"]);
+
+  const imported = importSession(state, new Set(["p1"]));
+  assert.deepEqual(imported.queue, ["p1"]);
+});
+
+test("legacy version-two sessions without a target queue remain valid", () => {
+  const state = defaultState();
+  delete state.queue;
+  assert.equal(validateState(state, new Set()).valid, true);
+});
+
+test("duplicate or malformed target queue entries are rejected", () => {
+  const duplicate = defaultState();
+  duplicate.queue = ["p1", "p1"];
+  assert.equal(validateState(duplicate, new Set(["p1"])).valid, false);
+
+  const malformed = defaultState();
+  malformed.queue = [42];
+  assert.equal(validateState(malformed, new Set()).valid, false);
+});
+
+test("imports bound reserved local player notes", () => {
+  const state = defaultState();
+  state.playerNotes = { p1: "x".repeat(501) };
+  assert.equal(validateState(state, new Set(["p1"])).valid, false);
+
+  state.playerNotes = [];
+  assert.equal(validateState(state, new Set(["p1"])).valid, false);
 });

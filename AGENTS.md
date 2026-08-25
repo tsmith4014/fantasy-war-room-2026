@@ -37,6 +37,8 @@ checks. A failed upstream fetch must leave the last known-good snapshot intact.
 - Use public GitHub Pages and standard GitHub-hosted runners only. Never select
   a larger runner, paid API, paid data feed, cloud service, billing change, or
   marketplace action that can incur cost without the user's explicit approval.
+- Prefer the one-CPU `ubuntu-slim` standard runner for these lightweight jobs;
+  do not change runner labels without rechecking GitHub's current billing table.
 - Keep scheduled jobs bounded with concurrency and timeouts. Do not upload
   long-lived build artifacts or caches unless they are demonstrably needed.
 - Automated research refreshes must propose a reviewable pull request. They may

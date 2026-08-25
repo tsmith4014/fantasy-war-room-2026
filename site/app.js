@@ -4,6 +4,7 @@ import {
   DEFAULT_WEIGHTS,
   MAX_CONTEXT_SHARE,
   activeMarket,
+  buildRecommendationShortlist,
   buildRoster,
   isManagerPick,
   nextManagerPick,
@@ -20,6 +21,7 @@ import {
   loadState,
   resetState,
   saveState,
+  toggleQueue,
   undoPick,
   updateSettings,
   validateState,
@@ -38,15 +40,15 @@ const elements = Object.fromEntries(
   [
     "network-status", "freshness-status", "turn-summary", "current-pick", "round-pick", "next-pick", "picks-away",
     "undo-button", "export-button", "import-button", "reset-button", "import-file", "open-settings", "explain-model",
-    "recommendations", "player-count", "search-input", "position-filter", "status-filter", "show-drafted", "player-rows",
-    "empty-state", "clear-filters", "roster-count", "roster-slots", "turn-plan", "research-list", "draft-log",
+    "recommendations", "player-count", "search-input", "position-filter", "status-filter", "queue-only", "show-drafted", "player-rows",
+    "empty-state", "clear-filters", "queue-count", "queue-list", "roster-count", "roster-slots", "roster-alert", "turn-plan", "research-list", "draft-log",
     "data-provenance", "settings-dialog", "settings-form", "setting-teams", "setting-slot", "setting-rounds", "setting-scoring",
     "weight-controls", "restore-settings", "player-dialog", "close-player-dialog", "player-dialog-title", "player-dialog-kicker",
-    "player-dialog-content", "model-dialog", "close-model-dialog", "model-explanation", "toast", "live-region",
+    "player-dialog-content", "model-dialog", "close-model-dialog", "model-explanation", "data-alert", "toast", "live-region",
   ].map((id) => [id, document.getElementById(id)]),
 );
 
-const filters = { search: "", position: "ALL", status: "ALL", showDrafted: false };
+const filters = { search: "", position: "ALL", status: "ALL", queueOnly: false, showDrafted: false };
 let manifest;
 let players = [];
 let research = { items: [] };
@@ -57,6 +59,8 @@ let ranked = [];
 let scoreById = new Map();
 let toastTimer;
 let bundleReadFromOfflineCache = false;
+let freshnessAlert = null;
+let networkAlert = null;
 
 const DATA_CACHE_PREFIX = "fantasy-war-room-2026-data-";
 
@@ -195,10 +199,13 @@ function bindEvents() {
   }, 70));
   elements["position-filter"].addEventListener("change", (event) => { filters.position = event.target.value; renderTable(); });
   elements["status-filter"].addEventListener("change", (event) => { filters.status = event.target.value; renderTable(); });
+  elements["queue-only"].addEventListener("change", (event) => { filters.queueOnly = event.target.checked; renderTable(); });
   elements["show-drafted"].addEventListener("change", (event) => { filters.showDrafted = event.target.checked; renderTable(); });
   elements["player-rows"].addEventListener("click", handleDelegatedAction);
   elements.recommendations.addEventListener("click", handleDelegatedAction);
+  elements["queue-list"].addEventListener("click", handleDelegatedAction);
   elements["turn-plan"].addEventListener("click", handleDelegatedAction);
+  elements["setting-teams"].addEventListener("input", syncDraftSlotBounds);
   elements["settings-form"].addEventListener("submit", handleSettingsSubmit);
   elements["restore-settings"].addEventListener("click", restoreSettingsForm);
   elements["close-player-dialog"].addEventListener("click", () => elements["player-dialog"].close());
@@ -219,6 +226,7 @@ function renderAll() {
   renderDraftState();
   renderRecommendations();
   renderTable();
+  renderQueue();
   renderRoster(myHistory);
   renderTurnPlan(draftedIds, myHistory);
   renderResearch();
@@ -239,6 +247,20 @@ function buildSessionPlayerMap() {
       team: snapshot.team ?? null,
       bye: snapshot.bye ?? null,
       status: "Not in current market snapshot",
+      injuryStatus: null,
+      markets: {},
+      scheduleContext: null,
+    });
+  }
+  for (const playerId of state.queue ?? []) {
+    if (combined.has(playerId)) continue;
+    combined.set(playerId, {
+      id: playerId,
+      name: `Unavailable target (${playerId})`,
+      position: "Unknown",
+      team: null,
+      bye: null,
+      status: "Not in selected market snapshot",
       injuryStatus: null,
       markets: {},
       scheduleContext: null,
@@ -278,12 +300,21 @@ function renderRecommendations() {
   const totalPicks = state.league.teams * state.league.rounds;
   const draftComplete = currentPick > totalPicks;
   const managerTurn = currentPick <= totalPicks && isManagerPick(currentPick, state.league);
-  for (const [index, recommendation] of ranked.slice(0, 5).entries()) {
+  const queue = state.queue ?? [];
+  const queueSet = new Set(queue);
+  const shortlist = buildRecommendationShortlist({ ranked, queue, limit: 5 });
+  for (const [index, recommendation] of shortlist.entries()) {
     const { player, market, score, reason } = recommendation;
+    const queued = queueSet.has(player.id);
+    const requiredStarter = recommendation.requiredStarter;
     const card = createElement("article", { className: "recommendation-card", dataset: { position: player.position } });
     card.append(
-      createElement("span", { className: "recommendation-rank", text: `#${index + 1} option` }),
+      createElement("span", {
+        className: `recommendation-rank${requiredStarter ? " required" : queued ? " queued" : ""}`,
+        text: requiredStarter ? "Required starter" : queued ? "★ queued target" : `#${index + 1} option`,
+      }),
       createElement("div", { className: "recommendation-player-line" }, [
+        queueButton(player, queued),
         createElement("span", { className: "position-chip", text: player.position, dataset: { position: player.position } }),
         createElement("button", { className: "player-button", text: player.name, dataset: { action: "detail", playerId: player.id }, attributes: { type: "button" } }),
       ]),
@@ -301,8 +332,8 @@ function renderRecommendations() {
       ]),
       createElement("p", { className: "recommendation-reason", text: sentenceCase(reason) }),
       createElement("div", { className: "recommendation-actions" }, [
-        createElement("button", { className: "button primary", text: "Mine", disabled: !managerTurn, dataset: { action: "mine", playerId: player.id }, attributes: { type: "button" } }),
-        createElement("button", { className: "button secondary", text: "Taken", disabled: managerTurn || draftComplete, dataset: { action: "other", playerId: player.id }, attributes: { type: "button" } }),
+        createElement("button", { className: "button primary", text: "Mine", disabled: !managerTurn, dataset: { action: "mine", playerId: player.id }, attributes: { type: "button", "aria-label": `Draft ${player.name} to my roster` } }),
+        createElement("button", { className: "button secondary", text: "Taken", disabled: managerTurn || draftComplete, dataset: { action: "other", playerId: player.id }, attributes: { type: "button", "aria-label": `Mark ${player.name} drafted by an opponent` } }),
       ]),
     );
     elements.recommendations.append(card);
@@ -316,6 +347,7 @@ function renderTable() {
   const draftComplete = currentPick > totalPicks;
   const managerTurn = currentPick <= totalPicks && isManagerPick(currentPick, state.league);
   const ownerById = new Map(state.history.map((entry) => [entry.playerId, entry.owner]));
+  const queueSet = new Set(state.queue ?? []);
   const availableRows = ranked.map((entry) => entry.player);
   const draftedRows = filters.showDrafted
     ? state.history.slice().reverse().map((entry) => sessionPlayersById.get(entry.playerId)).filter(Boolean)
@@ -325,9 +357,10 @@ function renderTable() {
     if (seen.has(player.id)) return false;
     seen.add(player.id);
     if (filters.position !== "ALL" && player.position !== filters.position) return false;
-    const flagged = Boolean(player.injuryStatus) || !["", "active"].includes(String(player.status ?? "").toLowerCase());
+    const flagged = hasStatusConcern(player);
     if (filters.status === "CLEAR" && flagged) return false;
     if (filters.status === "FLAGGED" && !flagged) return false;
+    if (filters.queueOnly && !queueSet.has(player.id)) return false;
     if (filters.search && !normalizeName(`${player.name} ${player.team} ${player.position}`).includes(filters.search)) return false;
     return true;
   });
@@ -341,7 +374,8 @@ function renderTable() {
     const row = createElement("tr", { dataset: { position: player.position, ...(owner ? { owner } : {}) } });
     row.append(
       createElement("td", { className: "market-rank", text: market ? `#${market.rank}` : "—" }),
-      createElement("td", {}, [
+      createElement("td", { className: "player-cell" }, [
+        queueButton(player, queueSet.has(player.id)),
         createElement("button", { className: "player-button player-name", text: player.name, dataset: { action: "detail", playerId: player.id }, attributes: { type: "button" } }),
         createElement("span", { className: "team-label", text: player.team ?? "FA" }),
       ]),
@@ -355,8 +389,8 @@ function renderTable() {
       createElement("td", {}, owner
         ? createElement("span", { className: `tag ${owner === "mine" ? "good" : ""}`, text: owner === "mine" ? "My team" : "Drafted" })
         : createElement("div", { className: "row-actions" }, [
-          createElement("button", { className: "row-action mine", text: "Mine", disabled: !managerTurn, dataset: { action: "mine", playerId: player.id }, attributes: { type: "button", title: managerTurn ? "Draft to my roster" : "Available on your scheduled turn" } }),
-          createElement("button", { className: "row-action", text: "Taken", disabled: managerTurn || draftComplete, dataset: { action: "other", playerId: player.id }, attributes: { type: "button", title: draftComplete ? "Draft is complete" : managerTurn ? "This is your scheduled turn" : "Mark drafted by an opponent" } }),
+          createElement("button", { className: "row-action mine", text: "Mine", disabled: !managerTurn, dataset: { action: "mine", playerId: player.id }, attributes: { type: "button", title: managerTurn ? "Draft to my roster" : "Available on your scheduled turn", "aria-label": `Draft ${player.name} to my roster` } }),
+          createElement("button", { className: "row-action", text: "Taken", disabled: managerTurn || draftComplete, dataset: { action: "other", playerId: player.id }, attributes: { type: "button", title: draftComplete ? "Draft is complete" : managerTurn ? "This is your scheduled turn" : "Mark drafted by an opponent", "aria-label": `Mark ${player.name} drafted by an opponent` } }),
         ])),
     );
     fragment.append(row);
@@ -364,6 +398,42 @@ function renderTable() {
   elements["player-rows"].append(fragment);
   elements["player-count"].textContent = `${ranked.length} available`;
   elements["empty-state"].hidden = rows.length > 0;
+}
+
+function renderQueue() {
+  const queue = state.queue ?? [];
+  const ownerById = new Map(state.history.map((entry) => [entry.playerId, entry.owner]));
+  const currentPick = state.history.length + 1;
+  const totalPicks = state.league.teams * state.league.rounds;
+  const managerTurn = currentPick <= totalPicks && isManagerPick(currentPick, state.league);
+  const activeCount = queue.filter((playerId) => scoreById.has(playerId)).length;
+  elements["queue-count"].textContent = `${activeCount} active`;
+  elements["queue-list"].replaceChildren();
+
+  for (const [index, playerId] of queue.entries()) {
+    const player = sessionPlayersById.get(playerId);
+    const scored = scoreById.get(playerId);
+    const owner = ownerById.get(playerId);
+    const position = player?.position ?? "Unknown";
+    elements["queue-list"].append(createElement("li", { dataset: { ...(position !== "Unknown" ? { position } : {}) } }, [
+      createElement("span", { className: "queue-order", text: String(index + 1) }),
+      createElement("div", { className: "queue-copy" }, [
+        createElement("button", { className: "player-button", text: player?.name ?? playerId, dataset: { action: "detail", playerId }, attributes: { type: "button" } }),
+        createElement("span", { text: scored ? `${position} · ${player?.team ?? "FA"} · ${scored.score.toFixed(1)} war score` : owner ? `${position} · ${owner === "mine" ? "My roster" : "Drafted"}` : "Unavailable in this scoring market" }),
+      ]),
+      createElement("div", { className: "queue-actions" }, owner
+        ? [createElement("span", { className: `tag ${owner === "mine" ? "good" : ""}`, text: owner === "mine" ? "Mine" : "Taken" }), queueRemoveButton(playerId, player?.name ?? playerId)]
+        : [
+          createElement("button", { className: "row-action mine", text: "Mine", disabled: !managerTurn || !scored, dataset: { action: "mine", playerId }, attributes: { type: "button", title: managerTurn ? "Draft to my roster" : "Available on your scheduled turn", "aria-label": `Draft ${player?.name ?? playerId} to my roster` } }),
+          createElement("button", { className: "row-action", text: "Taken", disabled: managerTurn || currentPick > totalPicks || !scored, dataset: { action: "other", playerId }, attributes: { type: "button", title: managerTurn ? "This is your scheduled turn" : "Mark drafted by an opponent", "aria-label": `Mark ${player?.name ?? playerId} drafted by an opponent` } }),
+          queueRemoveButton(playerId, player?.name ?? playerId),
+        ]),
+    ]));
+  }
+
+  if (!queue.length) {
+    elements["queue-list"].append(createElement("li", { className: "queue-empty" }, createElement("span", { className: "muted", text: "Star targets on the shortlist or board. Queued players lead your shortlist without changing their model score." })));
+  }
 }
 
 function renderRoster(myHistory) {
@@ -377,6 +447,19 @@ function renderRoster(myHistory) {
     ]));
   }
   elements["roster-count"].textContent = `${myHistory.length} / ${roster.length}`;
+  const byeCounts = new Map();
+  for (const entry of myHistory) {
+    const player = sessionPlayersById.get(entry.playerId);
+    if (!player?.bye || ["D/ST", "K"].includes(player.position)) continue;
+    byeCounts.set(player.bye, (byeCounts.get(player.bye) ?? 0) + 1);
+  }
+  const clusters = [...byeCounts.entries()]
+    .filter(([, count]) => count >= 3)
+    .sort((left, right) => right[1] - left[1] || left[0] - right[0]);
+  elements["roster-alert"].hidden = clusters.length === 0;
+  elements["roster-alert"].textContent = clusters.length
+    ? `Bye-week load: ${clusters.map(([week, count]) => `Week ${week} has ${count}`).join(" · ")}. This is a visibility warning, not a score penalty.`
+    : "";
 }
 
 function renderTurnPlan(draftedIds, myHistory) {
@@ -397,7 +480,9 @@ function renderTurnPlan(draftedIds, myHistory) {
 
 function renderResearch() {
   elements["research-list"].replaceChildren();
-  const items = research.items?.slice(0, 12) ?? [];
+  const items = [...(research.items ?? [])]
+    .sort((left, right) => researchImpactScore(right) - researchImpactScore(left) || right.publishedAt.localeCompare(left.publishedAt))
+    .slice(0, 12);
   for (const item of items) {
     const link = createElement("a", { text: item.title, href: item.url, target: "_blank", rel: "noreferrer" });
     elements["research-list"].append(createElement("article", { className: "research-item" }, [
@@ -415,6 +500,23 @@ function renderResearch() {
   if (!items.length) elements["research-list"].append(createElement("p", { className: "muted", text: "No research items are published." }));
 }
 
+function researchImpactScore(item) {
+  const title = normalizeName(item.title);
+  let score = item.team ? 2 : 0;
+  const impactTerms = [
+    "fantasy", "injur", "pup", "practice", "return", "week 1", "starter", "depth chart",
+    "trade", "acquire", "release", "waiver", "roster", "target", "touch", "snap", "quarterback",
+  ];
+  for (const term of impactTerms) if (title.includes(term)) score += term === "fantasy" ? 8 : 3;
+  if (["arrest", "police", "owner", "lawsuit"].some((term) => title.includes(term))) score -= 8;
+  if (players.some((player) => {
+    const normalized = normalizeName(player.name);
+    const surname = normalized.split(" ").at(-1);
+    return (normalized.length >= 7 && title.includes(normalized)) || (surname?.length >= 6 && title.includes(surname));
+  })) score += 5;
+  return score;
+}
+
 function renderDraftLog() {
   elements["draft-log"].replaceChildren();
   for (const entry of state.history.slice(-8).reverse()) {
@@ -428,7 +530,7 @@ function renderDraftLog() {
       ]),
     ]));
   }
-  if (state.history.length === 0) elements["draft-log"].append(createElement("li", {}, createElement("span", { className: "muted", text: "No picks recorded yet." })));
+  if (state.history.length === 0) elements["draft-log"].append(createElement("li", { className: "draft-log-empty" }, createElement("span", { className: "muted", text: "No picks recorded yet." })));
 }
 
 function renderFreshness() {
@@ -439,10 +541,24 @@ function renderFreshness() {
   ].filter(Boolean);
   const observedAt = liveObservations.sort((a, b) => new Date(a) - new Date(b))[0] ?? manifest.generatedAt;
   const hours = ageInHours(observedAt);
-  const stateName = hours <= 36 ? "ok" : hours <= 72 ? "warn" : "error";
+  const degradedSources = manifest.sources.filter((source) => source.freshness?.state === "error");
+  const ageState = hours <= 36 ? "ok" : hours <= 72 ? "warn" : "error";
+  const stateName = ageState === "ok" && degradedSources.length ? "warn" : ageState;
+  const ageLabel = hours < 1 ? "under 1h old" : hours < 48 ? `${Math.round(hours)}h old` : `${Math.floor(hours / 24)}d old`;
   elements["freshness-status"].dataset.state = stateName;
-  elements["freshness-status"].textContent = `Live inputs ${formatDateTime(observedAt)}`;
-  elements["data-provenance"].textContent = `${manifest.snapshotId} · ${players.length} players · ${manifest.sources.length} attributed sources · assembled ${formatDateTime(manifest.generatedAt)}`;
+  elements["freshness-status"].textContent = `Data ${ageLabel}`;
+  elements["freshness-status"].title = `Oldest live input: ${formatDateTime(observedAt)}${degradedSources.length ? `; degraded: ${degradedSources.map((source) => source.name).join(", ")}` : ""}`;
+  freshnessAlert = stateName === "ok" ? null : {
+    state: stateName,
+    text: ageState === "error"
+      ? `Draft warning: core market or player-status inputs are ${ageLabel}. Refresh the research workflow before relying on this board.`
+      : ageState === "warn"
+        ? `Data check: the oldest live input is ${ageLabel}. Verify time-sensitive player news before drafting.`
+        : `${degradedSources.length} headline source${degradedSources.length === 1 ? " is" : "s are"} temporarily degraded. Current ADP and player status still loaded; last-known-good links are labeled in provenance.`,
+  };
+  renderDataAlert();
+  const degradedLabel = degradedSources.length ? ` · ${degradedSources.length} degraded source${degradedSources.length === 1 ? "" : "s"}` : "";
+  elements["data-provenance"].textContent = `${manifest.snapshotId} · ${players.length} players · ${manifest.sources.length} attributed sources${degradedLabel} · core inputs ${ageLabel} · assembled ${formatDateTime(manifest.generatedAt)}`;
 }
 
 function renderModelExplanation() {
@@ -464,12 +580,15 @@ function statusBadge(player) {
     const level = /out|ir|pup|doubt/i.test(injury) ? "bad" : "warn";
     return createElement("span", { className: `tag ${level}`, text: injury });
   }
+  if (player.position === "D/ST" && String(status ?? "").toLowerCase() === "unknown") return createElement("span", { className: "tag", text: "Team unit" });
   if (status && String(status).toLowerCase() !== "active") return createElement("span", { className: "tag warn", text: status });
   return createElement("span", { className: "tag good", text: "Clear" });
 }
 
 function hasStatusConcern(player) {
-  return Boolean(player.injuryStatus) || (player.status && String(player.status).toLowerCase() !== "active");
+  const status = String(player.status ?? "").toLowerCase();
+  if (player.position === "D/ST" && status === "unknown" && !player.injuryStatus) return false;
+  return Boolean(player.injuryStatus) || Boolean(status && status !== "active");
 }
 
 function contextBadges(player) {
@@ -492,12 +611,52 @@ function scoreCell(scored) {
   ]);
 }
 
+function queueButton(player, queued) {
+  return createElement("button", {
+    className: `queue-toggle${queued ? " active" : ""}`,
+    text: queued ? "★" : "☆",
+    dataset: { action: "queue", playerId: player.id },
+    attributes: {
+      type: "button",
+      title: queued ? "Remove from target queue" : "Add to target queue",
+      "aria-label": `${queued ? "Remove" : "Add"} ${player.name} ${queued ? "from" : "to"} target queue`,
+      "aria-pressed": String(queued),
+    },
+  });
+}
+
+function queueRemoveButton(playerId, playerName) {
+  return createElement("button", {
+    className: "queue-remove",
+    text: "×",
+    dataset: { action: "queue", playerId },
+    attributes: { type: "button", title: "Remove from target queue", "aria-label": `Remove ${playerName} from target queue` },
+  });
+}
+
 function handleDelegatedAction(event) {
   const target = event.target.closest("[data-action][data-player-id]");
   if (!target) return;
   const { action, playerId } = target.dataset;
   if (action === "detail") openPlayer(playerId);
   else if (action === "mine" || action === "other") recordPick(playerId, action);
+  else if (action === "queue") togglePlayerQueue(playerId);
+}
+
+function togglePlayerQueue(playerId) {
+  const player = sessionPlayersById.get(playerId) ?? playersById.get(playerId);
+  if (!player) return;
+  const queued = (state.queue ?? []).includes(playerId);
+  const next = toggleQueue(state, playerId);
+  if (next === state) {
+    toast("The target queue is full. Remove a player before adding another.", "warn");
+    return;
+  }
+  state = next;
+  renderAll();
+  const message = `${player.name} ${queued ? "removed from" : "added to"} your target queue.`;
+  toast(message, "ok");
+  announce(message);
 }
 
 function recordPick(playerId, owner) {
@@ -571,10 +730,11 @@ function handleReset() {
 }
 
 function clearFilters() {
-  Object.assign(filters, { search: "", position: "ALL", status: "ALL", showDrafted: false });
+  Object.assign(filters, { search: "", position: "ALL", status: "ALL", queueOnly: false, showDrafted: false });
   elements["search-input"].value = "";
   elements["position-filter"].value = "ALL";
   elements["status-filter"].value = "ALL";
+  elements["queue-only"].checked = false;
   elements["show-drafted"].checked = false;
   renderTable();
 }
@@ -586,13 +746,13 @@ function openSettings() {
 
 function fillSettingsForm(league, weights) {
   elements["setting-teams"].value = league.teams;
-  elements["setting-slot"].max = league.teams;
   elements["setting-slot"].value = Math.min(league.slot, league.teams);
+  syncDraftSlotBounds();
   elements["setting-rounds"].value = league.rounds;
   elements["setting-scoring"].value = league.scoring;
   elements["weight-controls"].replaceChildren();
   for (const [key, meta] of Object.entries(COMPONENT_META)) {
-    const input = createElement("input", { type: "range", min: 0, max: ["schedule", "splits"].includes(key) ? 5 : 50, step: 1, value: weights[key], dataset: { weight: key } });
+    const input = createElement("input", { type: "range", min: 0, max: ["schedule", "splits"].includes(key) ? 5 : 50, step: 1, value: weights[key], dataset: { weight: key }, attributes: { "aria-label": meta.label } });
     const output = createElement("output", { text: String(weights[key]), attributes: { for: `weight-${key}` } });
     input.id = `weight-${key}`;
     input.addEventListener("input", () => { output.textContent = input.value; });
@@ -601,6 +761,12 @@ function fillSettingsForm(league, weights) {
       input,
     ]));
   }
+}
+
+function syncDraftSlotBounds() {
+  const teams = Math.min(16, Math.max(8, Number(elements["setting-teams"].value) || 10));
+  elements["setting-slot"].max = String(teams);
+  if (Number(elements["setting-slot"].value) > teams) elements["setting-slot"].value = String(teams);
 }
 
 function restoreSettingsForm() {
@@ -692,8 +858,19 @@ function openPlayer(playerId) {
   content.append(createElement("section", { className: "detail-section" }, [
     createElement("h3", { text: "Status and role signals" }),
     createElement("p", { text: `${player.status ?? "Unknown status"}; ${player.injuryStatus ? `${player.injuryStatus}${player.injuryBodyPart ? ` (${player.injuryBodyPart})` : ""}` : "no current injury flag in the Sleeper snapshot"}. ${player.depthChartOrder ? `Depth order ${player.depthChartOrder}.` : "Depth order unavailable."}` }),
-    createElement("p", { className: "muted", text: `Sleeper metadata observed ${formatDateTime(player.statusObservedAt ?? manifest.observationTimes?.playerStatus)}. Verify important changes with the linked team/NFL source.` }),
+    createElement("p", { className: "muted", text: `Sleeper metadata observed ${formatDateTime(player.statusObservedAt ?? manifest.observationTimes?.playerStatus)}. Verify important changes with an official team or NFL source.` }),
   ]));
+
+  const relatedLinks = relatedResearch(player);
+  if (relatedLinks.length) {
+    content.append(createElement("section", { className: "detail-section" }, [
+      createElement("h3", { text: "Related source links" }),
+      createElement("ul", { className: "detail-list source-link-list" }, relatedLinks.map((item) => createElement("li", {}, [
+        createElement("a", { text: item.title, href: item.url, target: "_blank", rel: "noreferrer" }),
+        createElement("span", { className: "muted", text: ` — ${item.source}, ${formatDateTime(item.publishedAt)}` }),
+      ]))),
+    ]));
+  }
 
   if (player.splits) {
     content.append(createElement("section", { className: "detail-section" }, [
@@ -702,6 +879,18 @@ function openPlayer(playerId) {
     ]));
   }
   elements["player-dialog"].showModal();
+}
+
+function relatedResearch(player) {
+  const name = normalizeName(player.name);
+  const surname = name.split(" ").at(-1);
+  return (research.items ?? [])
+    .filter((item) => {
+      const title = normalizeName(item.title);
+      return (name.length >= 7 && title.includes(name)) || (surname?.length >= 6 && title.includes(surname));
+    })
+    .sort((left, right) => right.publishedAt.localeCompare(left.publishedAt))
+    .slice(0, 3);
 }
 
 function openModel() {
@@ -714,8 +903,25 @@ function summaryTile(label, value) {
 }
 
 function updateOnlineStatus() {
-  if (bundleReadFromOfflineCache) setNetworkStatus("warn", "Cached snapshot · draft ready");
-  else setNetworkStatus(navigator.onLine ? "ok" : "warn", navigator.onLine ? "Online · saved locally" : "Offline · draft still works");
+  if (bundleReadFromOfflineCache) {
+    setNetworkStatus("warn", "Cached snapshot · draft ready");
+    networkAlert = { state: "warn", text: "Cached mode: the verified offline snapshot and your local draft session are ready. Reconnect and reload when practical to check for newer data." };
+  } else if (!navigator.onLine) {
+    setNetworkStatus("warn", "Offline · draft still works");
+    networkAlert = { state: "warn", text: "Offline mode: drafting, queue, undo, and export still work locally. Reconnect before checking for newer player news." };
+  } else {
+    setNetworkStatus("ok", "Online · saved locally");
+    networkAlert = null;
+  }
+  renderDataAlert();
+}
+
+function renderDataAlert() {
+  const alerts = [freshnessAlert, networkAlert].filter(Boolean);
+  elements["data-alert"].hidden = alerts.length === 0;
+  if (!alerts.length) return;
+  elements["data-alert"].dataset.state = alerts.some((alert) => alert.state === "error") ? "error" : "warn";
+  elements["data-alert"].textContent = alerts.map((alert) => alert.text).join(" ");
 }
 
 function setNetworkStatus(status, text) {

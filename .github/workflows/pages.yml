@@ -20,7 +20,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     timeout-minutes: 10
     steps:
       - name: Check out repository
@@ -33,6 +33,9 @@ jobs:
           node-version: 24
       - name: Validate and build static site
         run: npm run check
+      - name: Verify draft-week data freshness
+        if: vars.DRAFT_REFRESH_ENABLED != 'false'
+        run: npm run data:freshness
       - name: Configure Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
       - name: Upload Pages artifact

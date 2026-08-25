@@ -14,6 +14,7 @@ export function defaultState() {
     league: clone(DEFAULT_LEAGUE),
     weights: clone(DEFAULT_WEIGHTS),
     history: [],
+    queue: [],
     playerNotes: {},
   };
 }
@@ -106,6 +107,31 @@ export function validateState(candidate, knownPlayerIds = null) {
     }
   }
 
+  if (candidate?.queue !== undefined) {
+    if (!Array.isArray(candidate.queue)) errors.push("Target queue must be an array.");
+    else if (candidate.queue.length > 100) errors.push("Target queue may contain at most 100 players.");
+    else {
+      const queuedIds = new Set();
+      for (const [index, playerId] of candidate.queue.entries()) {
+        if (typeof playerId !== "string" || !playerId || playerId.length > 128) errors.push(`Target queue row ${index + 1} has an invalid player ID.`);
+        else if (queuedIds.has(playerId)) errors.push(`Target queue contains player ${playerId} more than once.`);
+        else if (knownIds && !knownIds.has(playerId)) warnings.push(`Queued player ${playerId} is no longer in the selected market; the target was preserved.`);
+        queuedIds.add(playerId);
+      }
+    }
+  }
+
+  if (candidate?.playerNotes !== undefined) {
+    if (!candidate.playerNotes || typeof candidate.playerNotes !== "object" || Array.isArray(candidate.playerNotes)) errors.push("Player notes must be a plain object.");
+    else {
+      const notes = Object.entries(candidate.playerNotes);
+      if (notes.length > 100) errors.push("Player notes may contain at most 100 entries.");
+      for (const [playerId, note] of notes) {
+        if (!playerId || playerId.length > 128 || typeof note !== "string" || note.length > 500) errors.push(`Player note ${playerId || "unknown"} is invalid.`);
+      }
+    }
+  }
+
   return { valid: errors.length === 0, errors, warnings };
 }
 
@@ -149,6 +175,16 @@ export function addPick(state, { playerId, owner, scoreSnapshot = null, playerSn
 export function undoPick(state) {
   if (state.history.length === 0) return state;
   return saveState({ ...state, history: state.history.slice(0, -1) });
+}
+
+export function toggleQueue(state, playerId) {
+  if (typeof playerId !== "string" || !playerId || playerId.length > 128) return state;
+  const queue = Array.isArray(state.queue) ? state.queue : [];
+  const nextQueue = queue.includes(playerId)
+    ? queue.filter((id) => id !== playerId)
+    : queue.length < 100 ? [...queue, playerId] : queue;
+  if (nextQueue === queue) return state;
+  return saveState({ ...state, queue: nextQueue });
 }
 
 export function resetState() {

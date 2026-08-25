@@ -35,6 +35,8 @@ export const COMPONENT_META = Object.freeze({
 });
 
 const FLEX_POSITIONS = new Set(["RB", "WR", "TE"]);
+const EXACT_STARTER_POSITIONS = new Set(["QB", "RB", "WR", "TE", "D/ST", "K"]);
+const LATE_STARTER_POSITIONS = new Set(["D/ST", "K"]);
 
 export function activeMarket(player, scoring = "ppr") {
   const key = scoring === "half-ppr" ? "halfPpr" : scoring;
@@ -136,7 +138,12 @@ function rosterNeed(position, roster, league, currentPick) {
   const exactOpen = roster.some((slot) => slot.type === "starter" && !slot.player && slot.label.startsWith(position) && slot.eligible.includes(position));
   const draftedAtPosition = roster.filter((slot) => slot.player?.position === position).length;
   const { round } = overallToRoundPick(currentPick, league.teams);
-  if (["D/ST", "K"].includes(position)) return exactOpen && round >= league.rounds - 2 && draftedAtPosition === 0 ? 62 : 12;
+  const requiredStarterPositions = starterDeadline(roster, league, currentPick);
+  if (requiredStarterPositions.has(position)) return 100;
+  if (LATE_STARTER_POSITIONS.has(position)) {
+    if (!exactOpen) return 0;
+    return round >= league.rounds - 2 ? 62 : 12;
+  }
   if (["QB", "TE"].includes(position) && exactOpen) return 82;
   if (exactOpen) return 100;
 
@@ -144,8 +151,31 @@ function rosterNeed(position, roster, league, currentPick) {
   if (flexOpen) return 78;
 
   if (["RB", "WR"].includes(position)) return draftedAtPosition < 5 ? 62 - draftedAtPosition * 5 : 30;
-  if (["QB", "TE"].includes(position)) return draftedAtPosition === 0 ? 82 : draftedAtPosition === 1 ? 38 : 18;
+  if (["QB", "TE"].includes(position)) {
+    const configuredStarters = Math.max(0, Number(league.roster[position]) || 0);
+    return draftedAtPosition <= configuredStarters ? 38 : 0;
+  }
   return 45;
+}
+
+function starterDeadline(roster, league, currentPick) {
+  if (!isManagerPick(currentPick, league)) return new Set();
+  const openSlots = roster.filter((slot) => (
+    slot.type === "starter"
+    && !slot.player
+    && slot.eligible.length === 1
+    && EXACT_STARTER_POSITIONS.has(slot.eligible[0])
+  ));
+  if (!openSlots.length) return new Set();
+  const turnsRemaining = managerPicks(league.slot, league.teams, league.rounds).filter((pick) => pick >= currentPick).length;
+  return turnsRemaining <= openSlots.length ? new Set(openSlots.map((slot) => slot.eligible[0])) : new Set();
+}
+
+function allowsAnotherLateStarter(player, roster, league) {
+  if (!LATE_STARTER_POSITIONS.has(player.position)) return true;
+  const configuredSlots = Math.max(0, Number(league.roster[player.position]) || 0);
+  const draftedAtPosition = roster.filter((slot) => slot.player?.position === player.position).length;
+  return draftedAtPosition < configuredSlots;
 }
 
 function roleScore(player) {
@@ -167,6 +197,40 @@ function availabilityScore(player) {
   if (/question|limited|day-to-day/.test(injury)) return 52;
   if (/probable/.test(injury)) return 76;
   return 92;
+}
+
+export function isSevereAvailabilityRisk(player) {
+  const injury = String(player?.injuryStatus ?? "").toLowerCase();
+  const status = String(player?.status ?? "").toLowerCase();
+  return /\b(?:ir|pup|out|doubtful|inactive|nfi)\b|suspend/.test(`${injury} ${status}`);
+}
+
+export function buildRecommendationShortlist({ ranked, queue = [], limit = 5 }) {
+  const byId = new Map(ranked.map((entry) => [entry.player.id, entry]));
+  const allRequired = ranked.filter((entry) => entry.requiredStarter);
+  const safeRequired = allRequired.filter((entry) => !isSevereAvailabilityRisk(entry.player));
+  const required = safeRequired.length ? safeRequired : allRequired;
+  const requiredIds = new Set(allRequired.map((entry) => entry.player.id));
+  const queuedIds = new Set(queue);
+  const seenQueued = new Set();
+  const queued = queue
+    .map((playerId) => byId.get(playerId))
+    .filter((entry) => {
+      if (!entry || requiredIds.has(entry.player.id) || seenQueued.has(entry.player.id)) return false;
+      seenQueued.add(entry.player.id);
+      return true;
+    });
+  const safe = ranked.filter(({ player, requiredStarter }) => (
+    !requiredStarter
+    && !queuedIds.has(player.id)
+    && !isSevereAvailabilityRisk(player)
+  ));
+  const severe = ranked.filter(({ player, requiredStarter }) => (
+    !requiredStarter
+    && !queuedIds.has(player.id)
+    && isSevereAvailabilityRisk(player)
+  ));
+  return [...required, ...queued, ...safe, ...severe].slice(0, Math.max(0, Number(limit) || 0));
 }
 
 function scheduleScore(player) {
@@ -222,6 +286,7 @@ function recommendationReason(components, player, market, currentPick) {
 export function scorePlayer({ player, available, roster, league, weights, currentPick, nextPick }) {
   const market = activeMarket(player, league.scoring);
   if (!market) return null;
+  const requiredStarter = starterDeadline(roster, league, currentPick).has(player.position);
   const poolMax = Math.max(league.teams * league.rounds, ...available.map((candidate) => activeMarket(candidate, league.scoring)?.adp ?? 0));
   const components = {
     market: clamp(100 - ((market.adp - 1) / Math.max(1, poolMax - 1)) * 100),
@@ -240,6 +305,7 @@ export function scorePlayer({ player, available, roster, league, weights, curren
   return {
     player,
     market,
+    requiredStarter,
     score: round(score, 1),
     components: Object.fromEntries(Object.entries(components).map(([key, value]) => [key, round(value, 1)])),
     weighted: Object.fromEntries(Object.entries(weighted).map(([key, value]) => [key, round(value, 2)])),
@@ -248,14 +314,22 @@ export function scorePlayer({ player, available, roster, league, weights, curren
 }
 
 export function rankPlayers({ players, draftedIds = new Set(), myHistory = [], playersById, league = DEFAULT_LEAGUE, weights = DEFAULT_WEIGHTS, currentPick = 1 }) {
-  const available = players.filter((player) => !draftedIds.has(player.id) && activeMarket(player, league.scoring));
   const roster = buildRoster(myHistory, playersById, league);
+  const managerTurn = isManagerPick(currentPick, league);
+  const available = players.filter((player) => (
+    !draftedIds.has(player.id)
+    && activeMarket(player, league.scoring)
+    && (!managerTurn || allowsAnotherLateStarter(player, roster, league))
+  ));
   const nextPick = nextManagerPick(currentPick, league, { strictlyAfter: isManagerPick(currentPick, league) })
     ?? league.teams * league.rounds;
   return available
     .map((player) => scorePlayer({ player, available, roster, league, weights, currentPick, nextPick }))
     .filter(Boolean)
-    .sort((a, b) => b.score - a.score || a.market.adp - b.market.adp || a.player.name.localeCompare(b.player.name));
+    .sort((a, b) => {
+      const requiredOrder = Number(b.requiredStarter) - Number(a.requiredStarter);
+      return requiredOrder || b.score - a.score || a.market.adp - b.market.adp || a.player.name.localeCompare(b.player.name);
+    });
 }
 
 export function projectUpcomingTurns({ players, draftedIds, myHistory, playersById, league, weights, currentPick, count = 4 }) {
@@ -267,13 +341,19 @@ export function projectUpcomingTurns({ players, draftedIds, myHistory, playersBy
 
   for (const targetPick of futurePicks) {
     const opponentSelections = Math.max(0, targetPick - priorPick);
-    players
+    const opponentPool = players
       .filter((player) => !simulatedDrafted.has(player.id) && activeMarket(player, league.scoring))
-      .sort((a, b) => activeMarket(a, league.scoring).adp - activeMarket(b, league.scoring).adp)
+      .sort((a, b) => activeMarket(a, league.scoring).adp - activeMarket(b, league.scoring).adp);
+    [
+      ...opponentPool.filter((player) => !isSevereAvailabilityRisk(player)),
+      ...opponentPool.filter((player) => isSevereAvailabilityRisk(player)),
+    ]
       .slice(0, opponentSelections)
       .forEach((player) => simulatedDrafted.add(player.id));
     const ranked = rankPlayers({ players, draftedIds: simulatedDrafted, myHistory: simulatedHistory, playersById, league, weights, currentPick: targetPick });
-    const selection = ranked[0];
+    const required = ranked.filter((entry) => entry.requiredStarter);
+    const eligible = required.length ? required : ranked;
+    const selection = eligible.find((entry) => !isSevereAvailabilityRisk(entry.player)) ?? eligible[0];
     if (!selection) break;
     plan.push({ pick: targetPick, ...selection });
     simulatedDrafted.add(selection.player.id);
