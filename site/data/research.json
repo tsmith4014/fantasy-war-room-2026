@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-25T04:53:22.674Z",
-  "observedAt": "2026-08-25T04:53:22.674Z",
+  "generatedAt": "2026-08-26T09:58:52.202Z",
+  "observedAt": "2026-08-26T09:58:52.202Z",
   "notice": "Headline titles, links, and dates are an unmodified-source research inbox. No article bodies are stored and no headline changes rankings automatically.",
   "trends": {
     "windowHours": 24,
@@ -11,702 +11,702 @@
         "name": "Malik Davis",
         "team": "DAL",
         "position": "RB",
-        "count": 123264
+        "count": 120312
       },
       {
         "sleeperId": "13602",
         "name": "Jack Strand",
         "team": "ATL",
         "position": "QB",
-        "count": 75150
-      },
-      {
-        "sleeperId": "4017",
-        "name": "Deshaun Watson",
-        "team": "CLE",
-        "position": "QB",
-        "count": 32192
-      },
-      {
-        "sleeperId": "10218",
-        "name": "Xavier Hutchinson",
-        "team": "HOU",
-        "position": "WR",
-        "count": 29351
+        "count": 47140
       },
       {
         "sleeperId": "13533",
         "name": "Barion Brown",
         "team": "NO",
         "position": "WR",
-        "count": 24696
-      },
-      {
-        "sleeperId": "2505",
-        "name": "Darren Waller",
-        "team": "CAR",
-        "position": "TE",
-        "count": 23364
-      },
-      {
-        "sleeperId": "13296",
-        "name": "Caleb Douglas",
-        "team": "MIA",
-        "position": "WR",
-        "count": 21208
-      },
-      {
-        "sleeperId": "11581",
-        "name": "MarShawn Lloyd",
-        "team": "GB",
-        "position": "RB",
-        "count": 21087
-      },
-      {
-        "sleeperId": "11610",
-        "name": "Malik Washington",
-        "team": "MIA",
-        "position": "WR",
-        "count": 17192
-      },
-      {
-        "sleeperId": "13424",
-        "name": "Seth McGowan",
-        "team": "IND",
-        "position": "RB",
-        "count": 17176
-      },
-      {
-        "sleeperId": "8180",
-        "name": "Jalen Nailor",
-        "team": "LV",
-        "position": "WR",
-        "count": 16191
-      },
-      {
-        "sleeperId": "11834",
-        "name": "Devaughn Vele",
-        "team": "NO",
-        "position": "WR",
-        "count": 15358
-      },
-      {
-        "sleeperId": "9504",
-        "name": "Kayshon Boutte",
-        "team": "HOU",
-        "position": "WR",
-        "count": 15157
-      },
-      {
-        "sleeperId": "JAX",
-        "name": "JAX Defense",
-        "team": "JAX",
-        "position": "D/ST",
-        "count": 15078
-      },
-      {
-        "sleeperId": "11574",
-        "name": "Dylan Laube",
-        "team": "LV",
-        "position": "RB",
-        "count": 11837
-      },
-      {
-        "sleeperId": "8161",
-        "name": "Malik Willis",
-        "team": "MIA",
-        "position": "QB",
-        "count": 11158
-      },
-      {
-        "sleeperId": "12487",
-        "name": "Terrance Ferguson",
-        "team": "LAR",
-        "position": "TE",
-        "count": 11136
+        "count": 37224
       },
       {
         "sleeperId": "13477",
         "name": "Colbie Young",
         "team": "CIN",
         "position": "WR",
-        "count": 10794
-      },
-      {
-        "sleeperId": "13414",
-        "name": "Kaelon Black",
-        "team": "SF",
-        "position": "RB",
-        "count": 10094
-      },
-      {
-        "sleeperId": "9511",
-        "name": "Keaton Mitchell",
-        "team": "LAC",
-        "position": "RB",
-        "count": 9990
-      },
-      {
-        "sleeperId": "13413",
-        "name": "Cyrus Allen",
-        "team": "KC",
-        "position": "WR",
-        "count": 9486
-      },
-      {
-        "sleeperId": "5995",
-        "name": "Justice Hill",
-        "team": "BAL",
-        "position": "RB",
-        "count": 9405
-      },
-      {
-        "sleeperId": "12711",
-        "name": "Tyler Loop",
-        "team": "BAL",
-        "position": "K",
-        "count": 9312
-      },
-      {
-        "sleeperId": "2078",
-        "name": "Odell Beckham",
-        "team": "NYG",
-        "position": "WR",
-        "count": 9177
-      },
-      {
-        "sleeperId": "11557",
-        "name": "Joe Milton",
-        "team": "DAL",
-        "position": "QB",
-        "count": 9056
-      },
-      {
-        "sleeperId": "10219",
-        "name": "Chris Rodriguez",
-        "team": "JAX",
-        "position": "RB",
-        "count": 8946
-      },
-      {
-        "sleeperId": "11783",
-        "name": "Ryan Flournoy",
-        "team": "DAL",
-        "position": "WR",
-        "count": 8496
-      },
-      {
-        "sleeperId": "9502",
-        "name": "Tank Dell",
-        "team": "HOU",
-        "position": "WR",
-        "count": 8440
-      },
-      {
-        "sleeperId": "10213",
-        "name": "Tre Tucker",
-        "team": "LV",
-        "position": "WR",
-        "count": 8436
-      },
-      {
-        "sleeperId": "DET",
-        "name": "DET Defense",
-        "team": "DET",
-        "position": "D/ST",
-        "count": 8388
-      },
-      {
-        "sleeperId": "1479",
-        "name": "Keenan Allen",
-        "team": "IND",
-        "position": "WR",
-        "count": 8380
-      },
-      {
-        "sleeperId": "11589",
-        "name": "Trey Benson",
-        "team": "ARI",
-        "position": "RB",
-        "count": 7818
-      },
-      {
-        "sleeperId": "13416",
-        "name": "Roman Hemby",
-        "team": "LV",
-        "position": "RB",
-        "count": 6960
-      },
-      {
-        "sleeperId": "7528",
-        "name": "Najee Harris",
-        "team": "NYG",
-        "position": "RB",
-        "count": 6655
-      },
-      {
-        "sleeperId": "5849",
-        "name": "Kyler Murray",
-        "team": "MIN",
-        "position": "QB",
-        "count": 6128
-      },
-      {
-        "sleeperId": "9480",
-        "name": "Brenton Strange",
-        "team": "JAX",
-        "position": "TE",
-        "count": 6111
-      },
-      {
-        "sleeperId": "3321",
-        "name": "Tyreek Hill",
-        "team": null,
-        "position": "WR",
-        "count": 5816
-      },
-      {
-        "sleeperId": "12457",
-        "name": "Jaydon Blue",
-        "team": "DAL",
-        "position": "RB",
-        "count": 5592
-      },
-      {
-        "sleeperId": "13305",
-        "name": "Mike Washington",
-        "team": "LV",
-        "position": "RB",
-        "count": 5554
-      },
-      {
-        "sleeperId": "6650",
-        "name": "Chase McLaughlin",
-        "team": "TB",
-        "position": "K",
-        "count": 5480
-      },
-      {
-        "sleeperId": "11603",
-        "name": "AJ Barner",
-        "team": "SEA",
-        "position": "TE",
-        "count": 5388
-      },
-      {
-        "sleeperId": "8134",
-        "name": "Khalil Shakir",
-        "team": "BUF",
-        "position": "WR",
-        "count": 5274
-      },
-      {
-        "sleeperId": "12545",
-        "name": "Tyler Shough",
-        "team": "NO",
-        "position": "QB",
-        "count": 5240
-      },
-      {
-        "sleeperId": "10222",
-        "name": "Jayden Reed",
-        "team": "GB",
-        "position": "WR",
-        "count": 5175
-      },
-      {
-        "sleeperId": "13329",
-        "name": "Malik Benson",
-        "team": "LV",
-        "position": "WR",
-        "count": 5052
-      },
-      {
-        "sleeperId": "5012",
-        "name": "Mark Andrews",
-        "team": "BAL",
-        "position": "TE",
-        "count": 5049
-      },
-      {
-        "sleeperId": "12547",
-        "name": "Kyle Williams",
-        "team": "NE",
-        "position": "WR",
-        "count": 4975
-      },
-      {
-        "sleeperId": "8121",
-        "name": "Romeo Doubs",
-        "team": "NE",
-        "position": "WR",
-        "count": 4728
-      },
-      {
-        "sleeperId": "11625",
-        "name": "Adonai Mitchell",
-        "team": "NYJ",
-        "position": "WR",
-        "count": 4688
-      },
-      {
-        "sleeperId": "9225",
-        "name": "Tank Bigsby",
-        "team": "PHI",
-        "position": "RB",
-        "count": 4529
-      }
-    ],
-    "drop": [
-      {
-        "sleeperId": "10218",
-        "name": "Xavier Hutchinson",
-        "team": "HOU",
-        "position": "WR",
-        "count": 16569
-      },
-      {
-        "sleeperId": "11589",
-        "name": "Trey Benson",
-        "team": "ARI",
-        "position": "RB",
-        "count": 16446
-      },
-      {
-        "sleeperId": "11435",
-        "name": "Emanuel Wilson",
-        "team": "SEA",
-        "position": "RB",
-        "count": 15516
-      },
-      {
-        "sleeperId": "12524",
-        "name": "Shedeur Sanders",
-        "team": "CLE",
-        "position": "QB",
-        "count": 14272
-      },
-      {
-        "sleeperId": "4035",
-        "name": "Alvin Kamara",
-        "team": "NO",
-        "position": "RB",
-        "count": 14040
-      },
-      {
-        "sleeperId": "3321",
-        "name": "Tyreek Hill",
-        "team": null,
-        "position": "WR",
-        "count": 13872
-      },
-      {
-        "sleeperId": "12540",
-        "name": "Chimere Dike",
-        "team": "TEN",
-        "position": "WR",
-        "count": 13797
-      },
-      {
-        "sleeperId": "9502",
-        "name": "Tank Dell",
-        "team": "HOU",
-        "position": "WR",
-        "count": 13576
-      },
-      {
-        "sleeperId": "1339",
-        "name": "Zach Ertz",
-        "team": null,
-        "position": "TE",
-        "count": 12780
-      },
-      {
-        "sleeperId": "13281",
-        "name": "Jordyn Tyson",
-        "team": "NO",
-        "position": "WR",
-        "count": 10408
-      },
-      {
-        "sleeperId": "6783",
-        "name": "Jerry Jeudy",
-        "team": "CLE",
-        "position": "WR",
-        "count": 10251
-      },
-      {
-        "sleeperId": "9480",
-        "name": "Brenton Strange",
-        "team": "JAX",
-        "position": "TE",
-        "count": 10098
-      },
-      {
-        "sleeperId": "6130",
-        "name": "Devin Singletary",
-        "team": "NYG",
-        "position": "RB",
-        "count": 10008
-      },
-      {
-        "sleeperId": "12455",
-        "name": "Brashard Smith",
-        "team": "KC",
-        "position": "RB",
-        "count": 9800
-      },
-      {
-        "sleeperId": "11630",
-        "name": "Roman Wilson",
-        "team": "PIT",
-        "position": "WR",
-        "count": 9639
-      },
-      {
-        "sleeperId": "9506",
-        "name": "Sean Tucker",
-        "team": "TB",
-        "position": "RB",
-        "count": 9513
-      },
-      {
-        "sleeperId": "8205",
-        "name": "Isiah Pacheco",
-        "team": "DET",
-        "position": "RB",
-        "count": 9336
-      },
-      {
-        "sleeperId": "11571",
-        "name": "Isaiah Davis",
-        "team": "NYJ",
-        "position": "RB",
-        "count": 9288
-      },
-      {
-        "sleeperId": "7090",
-        "name": "Darnell Mooney",
-        "team": "NYG",
-        "position": "WR",
-        "count": 8802
-      },
-      {
-        "sleeperId": "11610",
-        "name": "Malik Washington",
-        "team": "MIA",
-        "position": "WR",
-        "count": 8720
-      },
-      {
-        "sleeperId": "12457",
-        "name": "Jaydon Blue",
-        "team": "DAL",
-        "position": "RB",
-        "count": 8608
-      },
-      {
-        "sleeperId": "8800",
-        "name": "Malik Davis",
-        "team": "DAL",
-        "position": "RB",
-        "count": 8568
-      },
-      {
-        "sleeperId": "12484",
-        "name": "Jayden Higgins",
-        "team": "HOU",
-        "position": "WR",
-        "count": 8532
-      },
-      {
-        "sleeperId": "12493",
-        "name": "Oronde Gadsden",
-        "team": "LAC",
-        "position": "TE",
-        "count": 8525
-      },
-      {
-        "sleeperId": "11647",
-        "name": "Kimani Vidal",
-        "team": "LAC",
-        "position": "RB",
-        "count": 8265
-      },
-      {
-        "sleeperId": "13330",
-        "name": "Kenyon Sadiq",
-        "team": "NYJ",
-        "position": "TE",
-        "count": 8217
-      },
-      {
-        "sleeperId": "4144",
-        "name": "Jonnu Smith",
-        "team": null,
-        "position": "TE",
-        "count": 8155
-      },
-      {
-        "sleeperId": "12510",
-        "name": "Jalen Milroe",
-        "team": "SEA",
-        "position": "QB",
-        "count": 8106
-      },
-      {
-        "sleeperId": "8180",
-        "name": "Jalen Nailor",
-        "team": "LV",
-        "position": "WR",
-        "count": 8064
-      },
-      {
-        "sleeperId": "8154",
-        "name": "Brian Robinson",
-        "team": "ATL",
-        "position": "RB",
-        "count": 8010
-      },
-      {
-        "sleeperId": "13392",
-        "name": "Jeff Caldwell",
-        "team": "KC",
-        "position": "WR",
-        "count": 7929
-      },
-      {
-        "sleeperId": "11637",
-        "name": "Keon Coleman",
-        "team": "BUF",
-        "position": "WR",
-        "count": 7920
-      },
-      {
-        "sleeperId": "12500",
-        "name": "Quinn Ewers",
-        "team": "MIA",
-        "position": "QB",
-        "count": 7866
-      },
-      {
-        "sleeperId": "9511",
-        "name": "Keaton Mitchell",
-        "team": "LAC",
-        "position": "RB",
-        "count": 7812
-      },
-      {
-        "sleeperId": "9494",
-        "name": "Marvin Mims",
-        "team": "DEN",
-        "position": "WR",
-        "count": 7749
-      },
-      {
-        "sleeperId": "8698",
-        "name": "Jake Tonges",
-        "team": "SF",
-        "position": "TE",
-        "count": 7695
-      },
-      {
-        "sleeperId": "9225",
-        "name": "Tank Bigsby",
-        "team": "PHI",
-        "position": "RB",
-        "count": 7616
+        "count": 32472
       },
       {
         "sleeperId": "2505",
         "name": "Darren Waller",
         "team": "CAR",
         "position": "TE",
-        "count": 7542
-      },
-      {
-        "sleeperId": "8125",
-        "name": "Calvin Austin",
-        "team": "NYG",
-        "position": "WR",
-        "count": 7263
-      },
-      {
-        "sleeperId": "11625",
-        "name": "Adonai Mitchell",
-        "team": "NYJ",
-        "position": "WR",
-        "count": 7160
-      },
-      {
-        "sleeperId": "7528",
-        "name": "Najee Harris",
-        "team": "NYG",
-        "position": "RB",
-        "count": 7155
-      },
-      {
-        "sleeperId": "NE",
-        "name": "NE Defense",
-        "team": "NE",
-        "position": "D/ST",
-        "count": 7147
-      },
-      {
-        "sleeperId": "12530",
-        "name": "Travis Hunter",
-        "team": "JAX",
-        "position": "WR",
-        "count": 7134
-      },
-      {
-        "sleeperId": "12641",
-        "name": "Jaylin Lane",
-        "team": "WAS",
-        "position": "WR",
-        "count": 6864
-      },
-      {
-        "sleeperId": "10219",
-        "name": "Chris Rodriguez",
-        "team": "JAX",
-        "position": "RB",
-        "count": 6840
-      },
-      {
-        "sleeperId": "11619",
-        "name": "Ja'Lynn Polk",
-        "team": null,
-        "position": "WR",
-        "count": 6822
-      },
-      {
-        "sleeperId": "13337",
-        "name": "Emmett Johnson",
-        "team": "KC",
-        "position": "RB",
-        "count": 6723
-      },
-      {
-        "sleeperId": "DET",
-        "name": "DET Defense",
-        "team": "DET",
-        "position": "D/ST",
-        "count": 6696
+        "count": 31347
       },
       {
         "sleeperId": "10226",
         "name": "Andrei Iosivas",
         "team": "CIN",
         "position": "WR",
-        "count": 6678
+        "count": 25947
       },
       {
-        "sleeperId": "7591",
-        "name": "Justin Fields",
+        "sleeperId": "11834",
+        "name": "Devaughn Vele",
+        "team": "NO",
+        "position": "WR",
+        "count": 23954
+      },
+      {
+        "sleeperId": "11581",
+        "name": "MarShawn Lloyd",
+        "team": "GB",
+        "position": "RB",
+        "count": 20772
+      },
+      {
+        "sleeperId": "13424",
+        "name": "Seth McGowan",
+        "team": "IND",
+        "position": "RB",
+        "count": 20072
+      },
+      {
+        "sleeperId": "13296",
+        "name": "Caleb Douglas",
+        "team": "MIA",
+        "position": "WR",
+        "count": 19408
+      },
+      {
+        "sleeperId": "10218",
+        "name": "Xavier Hutchinson",
+        "team": "HOU",
+        "position": "WR",
+        "count": 17213
+      },
+      {
+        "sleeperId": "13337",
+        "name": "Emmett Johnson",
         "team": "KC",
+        "position": "RB",
+        "count": 15867
+      },
+      {
+        "sleeperId": "11610",
+        "name": "Malik Washington",
+        "team": "MIA",
+        "position": "WR",
+        "count": 15600
+      },
+      {
+        "sleeperId": "5995",
+        "name": "Justice Hill",
+        "team": "BAL",
+        "position": "RB",
+        "count": 14904
+      },
+      {
+        "sleeperId": "8180",
+        "name": "Jalen Nailor",
+        "team": "LV",
+        "position": "WR",
+        "count": 13113
+      },
+      {
+        "sleeperId": "12487",
+        "name": "Terrance Ferguson",
+        "team": "LAR",
+        "position": "TE",
+        "count": 13000
+      },
+      {
+        "sleeperId": "2078",
+        "name": "Odell Beckham",
+        "team": "NYG",
+        "position": "WR",
+        "count": 12586
+      },
+      {
+        "sleeperId": "10213",
+        "name": "Tre Tucker",
+        "team": "LV",
+        "position": "WR",
+        "count": 12498
+      },
+      {
+        "sleeperId": "JAX",
+        "name": "JAX Defense",
+        "team": "JAX",
+        "position": "D/ST",
+        "count": 12066
+      },
+      {
+        "sleeperId": "4017",
+        "name": "Deshaun Watson",
+        "team": "CLE",
         "position": "QB",
-        "count": 6450
+        "count": 10496
+      },
+      {
+        "sleeperId": "7528",
+        "name": "Najee Harris",
+        "team": "NYG",
+        "position": "RB",
+        "count": 10165
+      },
+      {
+        "sleeperId": "8161",
+        "name": "Malik Willis",
+        "team": "MIA",
+        "position": "QB",
+        "count": 9646
+      },
+      {
+        "sleeperId": "4098",
+        "name": "Kareem Hunt",
+        "team": null,
+        "position": "RB",
+        "count": 9572
+      },
+      {
+        "sleeperId": "13413",
+        "name": "Cyrus Allen",
+        "team": "KC",
+        "position": "WR",
+        "count": 9276
+      },
+      {
+        "sleeperId": "11783",
+        "name": "Ryan Flournoy",
+        "team": "DAL",
+        "position": "WR",
+        "count": 8960
+      },
+      {
+        "sleeperId": "9511",
+        "name": "Keaton Mitchell",
+        "team": "LAC",
+        "position": "RB",
+        "count": 8838
+      },
+      {
+        "sleeperId": "1479",
+        "name": "Keenan Allen",
+        "team": "IND",
+        "position": "WR",
+        "count": 8756
+      },
+      {
+        "sleeperId": "13414",
+        "name": "Kaelon Black",
+        "team": "SF",
+        "position": "RB",
+        "count": 8652
+      },
+      {
+        "sleeperId": "9480",
+        "name": "Brenton Strange",
+        "team": "JAX",
+        "position": "TE",
+        "count": 8010
+      },
+      {
+        "sleeperId": "10219",
+        "name": "Chris Rodriguez",
+        "team": "JAX",
+        "position": "RB",
+        "count": 7587
+      },
+      {
+        "sleeperId": "DET",
+        "name": "DET Defense",
+        "team": "DET",
+        "position": "D/ST",
+        "count": 7551
+      },
+      {
+        "sleeperId": "12711",
+        "name": "Tyler Loop",
+        "team": "BAL",
+        "position": "K",
+        "count": 7146
+      },
+      {
+        "sleeperId": "5012",
+        "name": "Mark Andrews",
+        "team": "BAL",
+        "position": "TE",
+        "count": 7083
+      },
+      {
+        "sleeperId": "9504",
+        "name": "Kayshon Boutte",
+        "team": "HOU",
+        "position": "WR",
+        "count": 6627
+      },
+      {
+        "sleeperId": "11589",
+        "name": "Trey Benson",
+        "team": "ARI",
+        "position": "RB",
+        "count": 6612
+      },
+      {
+        "sleeperId": "11557",
+        "name": "Joe Milton",
+        "team": "DAL",
+        "position": "QB",
+        "count": 6216
+      },
+      {
+        "sleeperId": "5849",
+        "name": "Kyler Murray",
+        "team": "MIN",
+        "position": "QB",
+        "count": 6048
+      },
+      {
+        "sleeperId": "13329",
+        "name": "Malik Benson",
+        "team": "LV",
+        "position": "WR",
+        "count": 5760
+      },
+      {
+        "sleeperId": "3321",
+        "name": "Tyreek Hill",
+        "team": null,
+        "position": "WR",
+        "count": 5736
+      },
+      {
+        "sleeperId": "4147",
+        "name": "Samaje Perine",
+        "team": "CIN",
+        "position": "RB",
+        "count": 5476
+      },
+      {
+        "sleeperId": "11625",
+        "name": "Adonai Mitchell",
+        "team": "NYJ",
+        "position": "WR",
+        "count": 5080
+      },
+      {
+        "sleeperId": "13311",
+        "name": "Chris Bell",
+        "team": "MIA",
+        "position": "WR",
+        "count": 4956
+      },
+      {
+        "sleeperId": "9225",
+        "name": "Tank Bigsby",
+        "team": "PHI",
+        "position": "RB",
+        "count": 4781
+      },
+      {
+        "sleeperId": "12502",
+        "name": "Gunnar Helm",
+        "team": "TEN",
+        "position": "TE",
+        "count": 4662
+      },
+      {
+        "sleeperId": "6650",
+        "name": "Chase McLaughlin",
+        "team": "TB",
+        "position": "K",
+        "count": 4544
+      },
+      {
+        "sleeperId": "12545",
+        "name": "Tyler Shough",
+        "team": "NO",
+        "position": "QB",
+        "count": 4536
+      },
+      {
+        "sleeperId": "8134",
+        "name": "Khalil Shakir",
+        "team": "BUF",
+        "position": "WR",
+        "count": 4509
+      },
+      {
+        "sleeperId": "11603",
+        "name": "AJ Barner",
+        "team": "SEA",
+        "position": "TE",
+        "count": 4434
+      },
+      {
+        "sleeperId": "12457",
+        "name": "Jaydon Blue",
+        "team": "DAL",
+        "position": "RB",
+        "count": 4408
+      },
+      {
+        "sleeperId": "9487",
+        "name": "Parker Washington",
+        "team": "JAX",
+        "position": "WR",
+        "count": 4212
+      }
+    ],
+    "drop": [
+      {
+        "sleeperId": "9502",
+        "name": "Tank Dell",
+        "team": "HOU",
+        "position": "WR",
+        "count": 24704
+      },
+      {
+        "sleeperId": "11589",
+        "name": "Trey Benson",
+        "team": "ARI",
+        "position": "RB",
+        "count": 19104
+      },
+      {
+        "sleeperId": "13392",
+        "name": "Jeff Caldwell",
+        "team": "KC",
+        "position": "WR",
+        "count": 18756
+      },
+      {
+        "sleeperId": "12493",
+        "name": "Oronde Gadsden",
+        "team": "LAC",
+        "position": "TE",
+        "count": 13435
+      },
+      {
+        "sleeperId": "8125",
+        "name": "Calvin Austin",
+        "team": "NYG",
+        "position": "WR",
+        "count": 13401
+      },
+      {
+        "sleeperId": "11435",
+        "name": "Emanuel Wilson",
+        "team": "SEA",
+        "position": "RB",
+        "count": 13023
+      },
+      {
+        "sleeperId": "3321",
+        "name": "Tyreek Hill",
+        "team": null,
+        "position": "WR",
+        "count": 11872
+      },
+      {
+        "sleeperId": "12540",
+        "name": "Chimere Dike",
+        "team": "TEN",
+        "position": "WR",
+        "count": 11583
+      },
+      {
+        "sleeperId": "4035",
+        "name": "Alvin Kamara",
+        "team": "NO",
+        "position": "RB",
+        "count": 11480
+      },
+      {
+        "sleeperId": "1339",
+        "name": "Zach Ertz",
+        "team": null,
+        "position": "TE",
+        "count": 11169
+      },
+      {
+        "sleeperId": "10218",
+        "name": "Xavier Hutchinson",
+        "team": "HOU",
+        "position": "WR",
+        "count": 10360
+      },
+      {
+        "sleeperId": "13330",
+        "name": "Kenyon Sadiq",
+        "team": "NYJ",
+        "position": "TE",
+        "count": 10170
+      },
+      {
+        "sleeperId": "8800",
+        "name": "Malik Davis",
+        "team": "DAL",
+        "position": "RB",
+        "count": 9720
+      },
+      {
+        "sleeperId": "9480",
+        "name": "Brenton Strange",
+        "team": "JAX",
+        "position": "TE",
+        "count": 9027
+      },
+      {
+        "sleeperId": "7090",
+        "name": "Darnell Mooney",
+        "team": "NYG",
+        "position": "WR",
+        "count": 8937
+      },
+      {
+        "sleeperId": "6130",
+        "name": "Devin Singletary",
+        "team": "NYG",
+        "position": "RB",
+        "count": 8829
+      },
+      {
+        "sleeperId": "12455",
+        "name": "Brashard Smith",
+        "team": "KC",
+        "position": "RB",
+        "count": 8673
+      },
+      {
+        "sleeperId": "6783",
+        "name": "Jerry Jeudy",
+        "team": "CLE",
+        "position": "WR",
+        "count": 8586
+      },
+      {
+        "sleeperId": "8205",
+        "name": "Isiah Pacheco",
+        "team": "DET",
+        "position": "RB",
+        "count": 8376
+      },
+      {
+        "sleeperId": "9506",
+        "name": "Sean Tucker",
+        "team": "TB",
+        "position": "RB",
+        "count": 8352
+      },
+      {
+        "sleeperId": "11630",
+        "name": "Roman Wilson",
+        "team": "PIT",
+        "position": "WR",
+        "count": 8037
+      },
+      {
+        "sleeperId": "2505",
+        "name": "Darren Waller",
+        "team": "CAR",
+        "position": "TE",
+        "count": 7758
+      },
+      {
+        "sleeperId": "13281",
+        "name": "Jordyn Tyson",
+        "team": "NO",
+        "position": "WR",
+        "count": 7656
+      },
+      {
+        "sleeperId": "13276",
+        "name": "Omar Cooper",
+        "team": "NYJ",
+        "position": "WR",
+        "count": 7640
+      },
+      {
+        "sleeperId": "11571",
+        "name": "Isaiah Davis",
+        "team": "NYJ",
+        "position": "RB",
+        "count": 7623
+      },
+      {
+        "sleeperId": "12524",
+        "name": "Shedeur Sanders",
+        "team": "CLE",
+        "position": "QB",
+        "count": 7384
+      },
+      {
+        "sleeperId": "11647",
+        "name": "Kimani Vidal",
+        "team": "LAC",
+        "position": "RB",
+        "count": 7305
+      },
+      {
+        "sleeperId": "12535",
+        "name": "Isaac TeSlaa",
+        "team": "DET",
+        "position": "WR",
+        "count": 7240
+      },
+      {
+        "sleeperId": "9494",
+        "name": "Marvin Mims",
+        "team": "DEN",
+        "position": "WR",
+        "count": 7047
+      },
+      {
+        "sleeperId": "4144",
+        "name": "Jonnu Smith",
+        "team": null,
+        "position": "TE",
+        "count": 6867
+      },
+      {
+        "sleeperId": "9511",
+        "name": "Keaton Mitchell",
+        "team": "LAC",
+        "position": "RB",
+        "count": 6561
+      },
+      {
+        "sleeperId": "12457",
+        "name": "Jaydon Blue",
+        "team": "DAL",
+        "position": "RB",
+        "count": 6560
+      },
+      {
+        "sleeperId": "13320",
+        "name": "Zachariah Branch",
+        "team": "ATL",
+        "position": "WR",
+        "count": 6416
+      },
+      {
+        "sleeperId": "12641",
+        "name": "Jaylin Lane",
+        "team": "WAS",
+        "position": "WR",
+        "count": 6384
+      },
+      {
+        "sleeperId": "12500",
+        "name": "Quinn Ewers",
+        "team": "MIA",
+        "position": "QB",
+        "count": 6291
+      },
+      {
+        "sleeperId": "7049",
+        "name": "Jauan Jennings",
+        "team": "MIN",
+        "position": "WR",
+        "count": 6265
+      },
+      {
+        "sleeperId": "12484",
+        "name": "Jayden Higgins",
+        "team": "HOU",
+        "position": "WR",
+        "count": 6156
+      },
+      {
+        "sleeperId": "13413",
+        "name": "Cyrus Allen",
+        "team": "KC",
+        "position": "WR",
+        "count": 6120
+      },
+      {
+        "sleeperId": "8180",
+        "name": "Jalen Nailor",
+        "team": "LV",
+        "position": "WR",
+        "count": 6039
+      },
+      {
+        "sleeperId": "8154",
+        "name": "Brian Robinson",
+        "team": "ATL",
+        "position": "RB",
+        "count": 6030
+      },
+      {
+        "sleeperId": "NE",
+        "name": "NE Defense",
+        "team": "NE",
+        "position": "D/ST",
+        "count": 5999
+      },
+      {
+        "sleeperId": "12510",
+        "name": "Jalen Milroe",
+        "team": "SEA",
+        "position": "QB",
+        "count": 5982
+      },
+      {
+        "sleeperId": "12530",
+        "name": "Travis Hunter",
+        "team": "JAX",
+        "position": "WR",
+        "count": 5928
+      },
+      {
+        "sleeperId": "8698",
+        "name": "Jake Tonges",
+        "team": "SF",
+        "position": "TE",
+        "count": 5830
+      },
+      {
+        "sleeperId": "7528",
+        "name": "Najee Harris",
+        "team": "NYG",
+        "position": "RB",
+        "count": 5765
+      },
+      {
+        "sleeperId": "11619",
+        "name": "Ja'Lynn Polk",
+        "team": null,
+        "position": "WR",
+        "count": 5760
+      },
+      {
+        "sleeperId": "4066",
+        "name": "Evan Engram",
+        "team": "DEN",
+        "position": "TE",
+        "count": 5712
+      },
+      {
+        "sleeperId": "DET",
+        "name": "DET Defense",
+        "team": "DET",
+        "position": "D/ST",
+        "count": 5589
+      },
+      {
+        "sleeperId": "9225",
+        "name": "Tank Bigsby",
+        "team": "PHI",
+        "position": "RB",
+        "count": 5418
+      },
+      {
+        "sleeperId": "10226",
+        "name": "Andrei Iosivas",
+        "team": "CIN",
+        "position": "WR",
+        "count": 5409
       }
     ],
     "sourceIds": [
@@ -715,6 +715,776 @@
     ]
   },
   "items": [
+    {
+      "id": "headline:0e8298ee08eae86f",
+      "title": "Seahawks Focused On 'How Fast Can We Improve' Before Opener",
+      "url": "https://www.seahawks.com/news/seahawks-focused-on-how-fast-can-we-improve-before-opener",
+      "publishedAt": "2026-08-26T03:46:47.000Z",
+      "source": "Seattle Seahawks",
+      "sourceId": "rss-team-sea",
+      "category": "headline",
+      "team": "SEA"
+    },
+    {
+      "id": "headline:68df3cfb1098a9d8",
+      "title": "Bears training camp report: Tuesday, Aug. 25",
+      "url": "https://www.chicagobears.com/news/bears-training-camp-report-tuesday-aug-25",
+      "publishedAt": "2026-08-26T02:14:11.000Z",
+      "source": "Chicago Bears",
+      "sourceId": "rss-team-chi",
+      "category": "headline",
+      "team": "CHI"
+    },
+    {
+      "id": "headline:b2baf00c1092d0fc",
+      "title": "Practice Points: Dak Prescott, Caleb Downs highlight 1st Ford Center practice",
+      "url": "https://www.dallascowboys.com/news/practice-points-dak-prescott-caleb-downs-highlight-1st-ford-center-practice",
+      "publishedAt": "2026-08-26T01:58:44.000Z",
+      "source": "Dallas Cowboys",
+      "sourceId": "rss-team-dal",
+      "category": "headline",
+      "team": "DAL"
+    },
+    {
+      "id": "headline:a6f55ab8030faa2a",
+      "title": "Marcus Jones honored as Ron Burton Community Service Award winner at 2026 Patriots Premiere",
+      "url": "https://www.patriots.com/news/marcus-jones-honored-as-ron-burton-community-service-award-winner-at-2026-patriots-premiere",
+      "publishedAt": "2026-08-26T01:52:54.000Z",
+      "source": "New England Patriots",
+      "sourceId": "rss-team-ne",
+      "category": "headline",
+      "team": "NE"
+    },
+    {
+      "id": "headline:a26160342ea7ae95",
+      "title": "Jaishawn Barham 'ready right now' for 2026 season ahead of preseason finale",
+      "url": "https://www.dallascowboys.com/news/jaishawn-barham-ready-right-now-for-2026-season-ahead-of-preseason-finale",
+      "publishedAt": "2026-08-26T01:51:06.000Z",
+      "source": "Dallas Cowboys",
+      "sourceId": "rss-team-dal",
+      "category": "headline",
+      "team": "DAL"
+    },
+    {
+      "id": "headline:b2c6eee04bb723d6",
+      "title": "Public Practice Notes: Riq Woolen leads the defense in front of 45,000 fans",
+      "url": "https://www.philadelphiaeagles.com/news/eagles-public-practice-notes-riq-woolen-leads-the-defense-in-front-of-45-000-fans",
+      "publishedAt": "2026-08-26T01:30:00.000Z",
+      "source": "Philadelphia Eagles",
+      "sourceId": "rss-team-phi",
+      "category": "headline",
+      "team": "PHI"
+    },
+    {
+      "id": "headline:ff4f6dbeab3af143",
+      "title": "Marcus Jones Receives the New England Patriots 2026 Ron Burton Community Service Award",
+      "url": "https://www.patriots.com/news/marcus-jones-receives-the-new-england-patriots-2026-ron-burton-community-service-award",
+      "publishedAt": "2026-08-26T01:11:28.000Z",
+      "source": "New England Patriots",
+      "sourceId": "rss-team-ne",
+      "category": "headline",
+      "team": "NE"
+    },
+    {
+      "id": "headline:e4772c37c5ac7a77",
+      "title": "Training Camp Report | Bengals WRs Depth On Display",
+      "url": "https://www.bengals.com/news/training-camp-report-jamarr-chase-andrei-iosivas-dohnte-meyers-bengals-wrs-depth-on-display",
+      "publishedAt": "2026-08-26T00:49:25.000Z",
+      "source": "Cincinnati Bengals",
+      "sourceId": "rss-team-cin",
+      "category": "headline",
+      "team": "CIN"
+    },
+    {
+      "id": "headline:7ddb79fe9a577ccf",
+      "title": "Broncos Notebook: DC Vance Joseph emphasizes importance of upholding high defensive standard in 2026",
+      "url": "https://www.denverbroncos.com/news/broncos-notebook-dc-vance-joseph-emphasizes-importance-of-upholding-high-defensive-standard-in-2026",
+      "publishedAt": "2026-08-26T00:08:33.000Z",
+      "source": "Denver Broncos",
+      "sourceId": "rss-team-den",
+      "category": "headline",
+      "team": "DEN"
+    },
+    {
+      "id": "headline:dbfde005f606be6c",
+      "title": "Athlete's Own: Year 3, Better Me",
+      "url": "https://www.seahawks.com/news/athlete-s-own-year-3-better-me",
+      "publishedAt": "2026-08-25T23:48:26.000Z",
+      "source": "Seattle Seahawks",
+      "sourceId": "rss-team-sea",
+      "category": "headline",
+      "team": "SEA"
+    },
+    {
+      "id": "headline:aaed21e6ddf920e8",
+      "title": "Chargers Training Camp Report: Takeaways From Final Practice of 2026",
+      "url": "https://www.chargers.com/news/training-camp-report-takeaways-final-practice-2026",
+      "publishedAt": "2026-08-25T23:35:00.000Z",
+      "source": "Los Angeles Chargers",
+      "sourceId": "rss-team-lac",
+      "category": "headline",
+      "team": "LAC"
+    },
+    {
+      "id": "headline:a364a95913b423ac",
+      "title": "Day 17 of 2026 Training Camp: 53-Man Cut is Near as 49ers Gear Up for Final Preseason Game",
+      "url": "https://www.49ers.com/news/day-17-of-2026-training-camp-53-man-cut-is-near-as-49ers-gear-up-for-final-preseason-game",
+      "publishedAt": "2026-08-25T23:00:57.000Z",
+      "source": "San Francisco 49ers",
+      "sourceId": "rss-team-sf",
+      "category": "headline",
+      "team": "SF"
+    },
+    {
+      "id": "headline:1a4393c6035cb6fc",
+      "title": "Two placed on injured reserve as New Orleans Saints continue to work around injuries",
+      "url": "https://www.neworleanssaints.com/news/two-placed-on-injured-reserve-as-new-orleans-saints-continue-to-work-around-injuries",
+      "publishedAt": "2026-08-25T22:37:29.000Z",
+      "source": "New Orleans Saints",
+      "sourceId": "rss-team-no",
+      "category": "headline",
+      "team": "NO"
+    },
+    {
+      "id": "headline:614fa23f2333278a",
+      "title": "Daniel Carlson's arrival adds a new twist to New Orleans Saints' kicking battle",
+      "url": "https://www.neworleanssaints.com/news/daniel-carlson-arrival-adds-new-twist-to-new-orleans-saints-kicking-battle",
+      "publishedAt": "2026-08-25T22:30:22.000Z",
+      "source": "New Orleans Saints",
+      "sourceId": "rss-team-no",
+      "category": "headline",
+      "team": "NO"
+    },
+    {
+      "id": "headline:9310fef15dd3a025",
+      "title": "Jets Practice Report | Green & White Close Training Camp with Longest Practice and Eye on Regular Season",
+      "url": "https://www.newyorkjets.com/news/jets-practice-report-08-25-2026",
+      "publishedAt": "2026-08-25T22:30:00.000Z",
+      "source": "New York Jets",
+      "sourceId": "rss-team-nyj",
+      "category": "headline",
+      "team": "NYJ"
+    },
+    {
+      "id": "headline:33f649a9b3ab0651",
+      "title": "Browns showcase rushing attack on Day 19 | Training Camp Observations",
+      "url": "https://www.clevelandbrowns.com/news/browns-showcase-rushing-attack-on-day-19-training-camp-observations",
+      "publishedAt": "2026-08-25T22:03:56.000Z",
+      "source": "Cleveland Browns",
+      "sourceId": "rss-team-cle",
+      "category": "headline",
+      "team": "CLE"
+    },
+    {
+      "id": "headline:bbc4930c57da9bb1",
+      "title": "Falcons Camp Report: Back in Atlanta, Tyler Goodson is leaving an impression.",
+      "url": "https://www.atlantafalcons.com/news/falcons-camp-report-tyler-goodson-michael-penix-tua-tagovailoa",
+      "publishedAt": "2026-08-25T21:54:22.000Z",
+      "source": "Atlanta Falcons",
+      "sourceId": "rss-team-atl",
+      "category": "headline",
+      "team": "ATL"
+    },
+    {
+      "id": "headline:cf0da60584c5949a",
+      "title": "How Trey Lance & DJ Uiagalelei Are Approaching Chargers Preseason Finale",
+      "url": "https://www.chargers.com/news/trey-lance-dj-uiagalelei-mike-mcdaniel-offense",
+      "publishedAt": "2026-08-25T21:30:57.000Z",
+      "source": "Los Angeles Chargers",
+      "sourceId": "rss-team-lac",
+      "category": "headline",
+      "team": "LAC"
+    },
+    {
+      "id": "headline:62e44ddd4f42aa4d",
+      "title": "Training Camp Notebook 8/25: Raiders close out camp on a strong note",
+      "url": "https://www.raiders.com/news/training-camp-notebook-8-25-raiders-close-out-camp-on-a-strong-note",
+      "publishedAt": "2026-08-25T21:29:01.000Z",
+      "source": "Las Vegas Raiders",
+      "sourceId": "rss-team-lv",
+      "category": "headline",
+      "team": "LV"
+    },
+    {
+      "id": "headline:64fb80b1cd5745c2",
+      "title": "Live Updates From Chargers 2026 Training Camp",
+      "url": "https://www.chargers.com/news/live-updates-from-chargers-2026-training-camp",
+      "publishedAt": "2026-08-25T21:25:00.000Z",
+      "source": "Los Angeles Chargers",
+      "sourceId": "rss-team-lac",
+      "category": "headline",
+      "team": "LAC"
+    },
+    {
+      "id": "headline:12778af7ef31ce8d",
+      "title": "Practice 16: 2026 Miami Dolphins Training Camp Notebook",
+      "url": "https://www.miamidolphins.com/news/practice-16-2026-miami-dolphins-training-camp-notebook",
+      "publishedAt": "2026-08-25T21:21:51.000Z",
+      "source": "Miami Dolphins",
+      "sourceId": "rss-team-mia",
+      "category": "headline",
+      "team": "MIA"
+    },
+    {
+      "id": "headline:960120002ca3c5e1",
+      "title": "Los Angeles Rams at Los Angeles Chargers: How to watch, listen to and live stream 2026 Preseason Week 3",
+      "url": "https://www.therams.com/news/los-angeles-rams-at-los-angeles-chargers-how-to-watch-listen-to-and-live-stream-2026-preseason-week-3",
+      "publishedAt": "2026-08-25T21:18:01.000Z",
+      "source": "Los Angeles Rams",
+      "sourceId": "rss-team-lar",
+      "category": "headline",
+      "team": "LAR"
+    },
+    {
+      "id": "headline:b7006aea6daf152a",
+      "title": "Camp Notes: Stille showing versatility in competitive DL room",
+      "url": "https://www.detroitlions.com/news/camp-notes-stille-showing-versatility-in-competitive-dl-room-mccreary-wonnum",
+      "publishedAt": "2026-08-25T21:15:00.000Z",
+      "source": "Detroit Lions",
+      "sourceId": "rss-team-det",
+      "category": "headline",
+      "team": "DET"
+    },
+    {
+      "id": "headline:810c00c520cd7228",
+      "title": "Broncos sign DE Ron Stone Jr.",
+      "url": "https://www.denverbroncos.com/news/broncos-sign-de-ron-stone-jr",
+      "publishedAt": "2026-08-25T21:12:47.000Z",
+      "source": "Denver Broncos",
+      "sourceId": "rss-team-den",
+      "category": "headline",
+      "team": "DEN"
+    },
+    {
+      "id": "headline:679f41ba993d87a8",
+      "title": "Chiefs caen ante Buccaneers por 16-15 en partido de pretemporada",
+      "url": "https://www.chiefs.com/news/chiefs-caen-ante-buccaneers-por-16-15-en-partido-de-pretemporada",
+      "publishedAt": "2026-08-25T21:11:28.000Z",
+      "source": "Kansas City Chiefs",
+      "sourceId": "rss-team-kc",
+      "category": "headline",
+      "team": "KC"
+    },
+    {
+      "id": "headline:7e9292099e8fcbc9",
+      "title": "Chiefs verlieren zweites Preseason-Spiel gegen Bucs mit 15:16",
+      "url": "https://www.chiefs.com/news/chiefs-verlieren-zweites-preseason-spiel-gegen-bucs-mit-15-16",
+      "publishedAt": "2026-08-25T21:05:39.000Z",
+      "source": "Kansas City Chiefs",
+      "sourceId": "rss-team-kc",
+      "category": "headline",
+      "team": "KC"
+    },
+    {
+      "id": "headline:02df12a2b562702d",
+      "title": "Atlanta Falcons depth chart for final preseason game vs. Miami Dolphins",
+      "url": "https://www.atlantafalcons.com/news/atlanta-falcons-depth-chart-for-final-preseason-game-vs-miami-dolphins",
+      "publishedAt": "2026-08-25T21:00:59.000Z",
+      "source": "Atlanta Falcons",
+      "sourceId": "rss-team-atl",
+      "category": "headline",
+      "team": "ATL"
+    },
+    {
+      "id": "headline:4373bc74c768d0af",
+      "title": "Jets QB Geno Smith Wants Teammates to Feel His Passion",
+      "url": "https://www.newyorkjets.com/news/geno-smith-jets-leading-with-passion-to-win-08-25-2026",
+      "publishedAt": "2026-08-25T20:55:00.000Z",
+      "source": "New York Jets",
+      "sourceId": "rss-team-nyj",
+      "category": "headline",
+      "team": "NYJ"
+    },
+    {
+      "id": "headline:de09a5ebfb2a8887",
+      "title": "Jets Training Camp Daily (8/25) | Final Practice Before Giants Preseason Game",
+      "url": "https://www.newyorkjets.com/news/jets-training-camp-daily-08-25-2026",
+      "publishedAt": "2026-08-25T20:52:00.000Z",
+      "source": "New York Jets",
+      "sourceId": "rss-team-nyj",
+      "category": "headline",
+      "team": "NYJ"
+    },
+    {
+      "id": "headline:651d7555736445af",
+      "title": "Dolphins make roster moves",
+      "url": "https://www.miamidolphins.com/news/dolphins-make-roster-moves-x4967",
+      "publishedAt": "2026-08-25T20:45:23.000Z",
+      "source": "Miami Dolphins",
+      "sourceId": "rss-team-mia",
+      "category": "headline",
+      "team": "MIA"
+    },
+    {
+      "id": "headline:a3388b52e7b3a525",
+      "title": "Seahawks Sign Three Free Agents, Place Bud Clark & Mason Richman On Injured Reserve",
+      "url": "https://www.seahawks.com/news/seahawks-sign-three-free-agents-place-bud-clark-mason-richman-on-injured-reserve",
+      "publishedAt": "2026-08-25T20:41:52.000Z",
+      "source": "Seattle Seahawks",
+      "sourceId": "rss-team-sea",
+      "category": "headline",
+      "team": "SEA"
+    },
+    {
+      "id": "headline:73c2c02c9a4bb597",
+      "title": "McVay: Rams will carry 3 QBs on initial 53-man roster, still deciding on allocation of reps in final preseason game against Chargers and backup for Week 1",
+      "url": "https://www.therams.com/news/head-coach-sean-mcvay-rams-3-qbs-initial-53-man-roster-2026-quarterbacks-matthew-stafford-stetson-bennett-ty-simpson-matthew-caldwell",
+      "publishedAt": "2026-08-25T20:34:46.000Z",
+      "source": "Los Angeles Rams",
+      "sourceId": "rss-team-lar",
+      "category": "headline",
+      "team": "LAR"
+    },
+    {
+      "id": "headline:88130489bb51714f",
+      "title": "Camp Wrap, Day 19: Defense \"Continually Elevating…\"",
+      "url": "https://www.jaguars.com/news/camp-wrap-day-19-defense-continually-elevating",
+      "publishedAt": "2026-08-25T20:28:28.000Z",
+      "source": "Jacksonville Jaguars",
+      "sourceId": "rss-team-jax",
+      "category": "headline",
+      "team": "JAX"
+    },
+    {
+      "id": "headline:453bce6c9dd61f55",
+      "title": "Browns vs. Patriots: How to Watch, Listen & Live Stream",
+      "url": "https://www.clevelandbrowns.com/news/browns-vs-patriots-how-to-watch-listen-live-stream-x0498",
+      "publishedAt": "2026-08-25T20:22:25.000Z",
+      "source": "Cleveland Browns",
+      "sourceId": "rss-team-cle",
+      "category": "headline",
+      "team": "CLE"
+    },
+    {
+      "id": "headline:b9a974b96dd71bef",
+      "title": "2026 Preseason Blog: Ready for the next step",
+      "url": "https://www.steelers.com/news/2026-camp-blog-embracing-change",
+      "publishedAt": "2026-08-25T20:02:00.000Z",
+      "source": "Pittsburgh Steelers",
+      "sourceId": "rss-team-pit",
+      "category": "headline",
+      "team": "PIT"
+    },
+    {
+      "id": "headline:088ab18a1c5b8c45",
+      "title": "Vikings Unveil New 'Rivalries' Uniform",
+      "url": "https://www.vikings.com/news/unveiling-new-rivalries-uniform-2026",
+      "publishedAt": "2026-08-25T20:00:00.000Z",
+      "source": "Minnesota Vikings",
+      "sourceId": "rss-team-min",
+      "category": "headline",
+      "team": "MIN"
+    },
+    {
+      "id": "headline:175444dce474f9cc",
+      "title": "News & Notes: Declan Doyle Explains Why He Will Call Plays From the Booth This Season",
+      "url": "https://www.baltimoreravens.com/news/declan-doyle-will-call-plays-from-booth-anthony-weaver-jesse-minter-sharing-sideline-duties",
+      "publishedAt": "2026-08-25T19:46:50.000Z",
+      "source": "Baltimore Ravens",
+      "sourceId": "rss-team-bal",
+      "category": "headline",
+      "team": "BAL"
+    },
+    {
+      "id": "headline:f43943c18e9dfd12",
+      "title": "Camp Snapshot, Day 19: \"Pleased With the Progression…\"",
+      "url": "https://www.jaguars.com/news/camp-snapshot-day-19-pleased-with-the-progression",
+      "publishedAt": "2026-08-25T19:40:37.000Z",
+      "source": "Jacksonville Jaguars",
+      "sourceId": "rss-team-jax",
+      "category": "headline",
+      "team": "JAX"
+    },
+    {
+      "id": "headline:522355877bddc751",
+      "title": "📸 Practice Photos: Prep for preseason finale",
+      "url": "https://www.giants.com/photos/practice-photos-gearing-up-for-preseason-finale",
+      "publishedAt": "2026-08-25T19:31:00.000Z",
+      "source": "New York Giants",
+      "sourceId": "rss-team-nyg",
+      "category": "headline",
+      "team": "NYG"
+    },
+    {
+      "id": "headline:b377d3268695cbf9",
+      "title": "Preseason Week 3 Tracker: Latest news, notes & roster moves",
+      "url": "https://www.giants.com/news/preseason-week-3-tracker-latest-news-notes-roster-moves-new-york-jets",
+      "publishedAt": "2026-08-25T19:25:00.000Z",
+      "source": "New York Giants",
+      "sourceId": "rss-team-nyg",
+      "category": "headline",
+      "team": "NYG"
+    },
+    {
+      "id": "headline:16d67047cda3c8f2",
+      "title": "Storylines to follow in preseason finale",
+      "url": "https://www.giants.com/news/preseason-finale-new-york-jets-john-harbaugh-53-man-roster-moves-malik-nabers-injury-update-offensive-line",
+      "publishedAt": "2026-08-25T19:20:00.000Z",
+      "source": "New York Giants",
+      "sourceId": "rss-team-nyg",
+      "category": "headline",
+      "team": "NYG"
+    },
+    {
+      "id": "headline:f2afd93409ca63e3",
+      "title": "Transcript: Eliot Wolf Press Conference 8/25",
+      "url": "https://www.patriots.com/news/transcript-eliot-wolf-press-conference-8-25",
+      "publishedAt": "2026-08-25T19:19:23.000Z",
+      "source": "New England Patriots",
+      "sourceId": "rss-team-ne",
+      "category": "headline",
+      "team": "NE"
+    },
+    {
+      "id": "headline:ab9ae475de5426f6",
+      "title": "Kubiak: Ashton Jeanty is 'on the mend'",
+      "url": "https://www.raiders.com/news/klint-kubiak-ashton-jeanty-is-on-the-mend",
+      "publishedAt": "2026-08-25T19:17:03.000Z",
+      "source": "Las Vegas Raiders",
+      "sourceId": "rss-team-lv",
+      "category": "headline",
+      "team": "LV"
+    },
+    {
+      "id": "headline:e01307c900d7cf8f",
+      "title": "Takeaways from Buccaneers-Jaguars Joint Practice: Day 1",
+      "url": "https://www.buccaneers.com/news/takeaways-from-buccaneers-jaguars-joint-practice-day-1-2026",
+      "publishedAt": "2026-08-25T19:02:22.000Z",
+      "source": "Tampa Bay Buccaneers",
+      "sourceId": "rss-team-tb",
+      "category": "headline",
+      "team": "TB"
+    },
+    {
+      "id": "headline:8e8f64a7ffdb0219",
+      "title": "Game Preview: Cowboys vs. Saints | 2026 NFL Preseason Week 3",
+      "url": "https://www.neworleanssaints.com/news/dallas-cowboys-vs-new-orleans-saints-game-preview-2026-nfl-preseason-week-3-series-history-stats-connections",
+      "publishedAt": "2026-08-25T18:58:21.000Z",
+      "source": "New Orleans Saints",
+      "sourceId": "rss-team-no",
+      "category": "headline",
+      "team": "NO"
+    },
+    {
+      "id": "headline:143b71fbdf5ebe79",
+      "title": "Packers, Thrivent announce details of new 'Game Changing Players' community program",
+      "url": "https://www.packers.com/news/packers-thrivent-announce-details-of-new-game-changing-players-community-program-2026",
+      "publishedAt": "2026-08-25T18:49:01.000Z",
+      "source": "Green Bay Packers",
+      "sourceId": "rss-team-gb",
+      "category": "headline",
+      "team": "GB"
+    },
+    {
+      "id": "headline:33ed731e8288b487",
+      "title": "Ten Observations From Titans Training Camp on Tuesday",
+      "url": "https://www.tennesseetitans.com/news/ten-observations-from-titans-training-camp-on-tuesday-x8102",
+      "publishedAt": "2026-08-25T18:42:05.000Z",
+      "source": "Tennessee Titans",
+      "sourceId": "rss-team-ten",
+      "category": "headline",
+      "team": "TEN"
+    },
+    {
+      "id": "headline:47aab4064466e91a",
+      "title": "Miami Dolphins Host 100 High School Tackle Football Programs for High School Media Day presented by Gatorade Water",
+      "url": "https://www.miamidolphins.com/news/miami-dolphins-host-100-high-school-tackle-football-programs-for-high-school-media-day-presented-by-gatorade-water",
+      "publishedAt": "2026-08-25T18:31:21.000Z",
+      "source": "Miami Dolphins",
+      "sourceId": "rss-team-mia",
+      "category": "headline",
+      "team": "MIA"
+    },
+    {
+      "id": "headline:786d3fadfe39dd97",
+      "title": "Chicago Bears announce roster moves",
+      "url": "https://www.chicagobears.com/news/chicago-bears-announce-roster-moves-august-25-2026",
+      "publishedAt": "2026-08-25T18:08:12.000Z",
+      "source": "Chicago Bears",
+      "sourceId": "rss-team-chi",
+      "category": "headline",
+      "team": "CHI"
+    },
+    {
+      "id": "headline:c0a595a18be97bc0",
+      "title": "Back on the road for the first time",
+      "url": "https://www.steelers.com/news/back-on-the-road-for-the-first-time",
+      "publishedAt": "2026-08-25T18:01:15.000Z",
+      "source": "Pittsburgh Steelers",
+      "sourceId": "rss-team-pit",
+      "category": "headline",
+      "team": "PIT"
+    },
+    {
+      "id": "headline:98df41076ed58232",
+      "title": "Christian McCaffrey Steps Into New Role With a Signature Shoe 👟 | Off the Field",
+      "url": "https://www.49ers.com/news/christian-mccaffrey-steps-into-new-role-with-a-signature-shoe-off-the-field",
+      "publishedAt": "2026-08-25T18:00:23.000Z",
+      "source": "San Francisco 49ers",
+      "sourceId": "rss-team-sf",
+      "category": "headline",
+      "team": "SF"
+    },
+    {
+      "id": "headline:905a6d08f3254775",
+      "title": "Raiders celebrate 50th anniversary of Super Bowl XI Championship team",
+      "url": "https://www.raiders.com/news/raiders-celebrate-50th-anniversary-of-super-bowl-xi-championship-team-1976-season",
+      "publishedAt": "2026-08-25T18:00:00.000Z",
+      "source": "Las Vegas Raiders",
+      "sourceId": "rss-team-lv",
+      "category": "headline",
+      "team": "LV"
+    },
+    {
+      "id": "headline:2d337aaec550474f",
+      "title": "Packers vs. Cardinals | How to watch, stream & listen | Preseason Week 3",
+      "url": "https://www.packers.com/news/packers-vs-cardinals-how-to-watch-stream-listen-preseason-week-3-2026",
+      "publishedAt": "2026-08-25T17:55:15.000Z",
+      "source": "Green Bay Packers",
+      "sourceId": "rss-team-gb",
+      "category": "headline",
+      "team": "GB"
+    },
+    {
+      "id": "headline:c02e7e65b3bd49de",
+      "title": "Cardinals Sign Hjalte Froholdt To 2-Year Extension",
+      "url": "https://www.azcardinals.com/news/cardinals-sign-center-hjalte-froholdt-to-2-year-extension",
+      "publishedAt": "2026-08-25T17:51:06.000Z",
+      "source": "Arizona Cardinals",
+      "sourceId": "rss-team-ari",
+      "category": "headline",
+      "team": "ARI"
+    },
+    {
+      "id": "headline:7218b186f1299a80",
+      "title": "Bucs Add Rookie Receiver Matthew Henry",
+      "url": "https://www.buccaneers.com/news/bucs-add-rookie-receiver-matthew-henry",
+      "publishedAt": "2026-08-25T17:35:00.000Z",
+      "source": "Tampa Bay Buccaneers",
+      "sourceId": "rss-team-tb",
+      "category": "headline",
+      "team": "TB"
+    },
+    {
+      "id": "headline:b814ba00f5bf3811",
+      "title": "Vikings Sign Cornerback Tre Hawkins",
+      "url": "https://www.vikings.com/news/signing-cornerback-tre-hawkins-2026",
+      "publishedAt": "2026-08-25T17:25:22.000Z",
+      "source": "Minnesota Vikings",
+      "sourceId": "rss-team-min",
+      "category": "headline",
+      "team": "MIN"
+    },
+    {
+      "id": "headline:e2bb03c847f12bc4",
+      "title": "Houston Texans Transactions (8-25-2026)",
+      "url": "https://www.houstontexans.com/news/houston-texans-transactions-8-25-2026",
+      "publishedAt": "2026-08-25T17:05:31.000Z",
+      "source": "Houston Texans",
+      "sourceId": "rss-team-hou",
+      "category": "headline",
+      "team": "HOU"
+    },
+    {
+      "id": "headline:fa3bb68d57a4a25f",
+      "title": "Lunchbreak: The Athletic Predicts Win Totals; Randy Moss Recognized for Fantasy Football Prowess",
+      "url": "https://www.vikings.com/news/lunchbreak-win-totals-randy-moss-fantasy-football",
+      "publishedAt": "2026-08-25T17:00:02.000Z",
+      "source": "Minnesota Vikings",
+      "sourceId": "rss-team-min",
+      "category": "headline",
+      "team": "MIN"
+    },
+    {
+      "id": "headline:a97bb01fc8af028d",
+      "title": "Ways to Watch and Listen | 49ers vs. Raiders: Preseason Week 3",
+      "url": "https://www.49ers.com/news/ways-to-watch-and-listen-49ers-vs-raiders-preseason-week-3-2026",
+      "publishedAt": "2026-08-25T16:35:02.000Z",
+      "source": "San Francisco 49ers",
+      "sourceId": "rss-team-sf",
+      "category": "headline",
+      "team": "SF"
+    },
+    {
+      "id": "headline:290a2c8db886819d",
+      "title": "What we learned about the Bills on Day 20 of Training Camp 2026",
+      "url": "https://www.buffalobills.com/news/what-we-learned-about-the-bills-on-day-20-of-training-camp-2026",
+      "publishedAt": "2026-08-25T16:29:00.000Z",
+      "source": "Buffalo Bills",
+      "sourceId": "rss-team-buf",
+      "category": "headline",
+      "team": "BUF"
+    },
+    {
+      "id": "headline:4c92dc3494163183",
+      "title": "You've Got Mail: On To The Frozen Tundra Before It Freezes",
+      "url": "https://www.azcardinals.com/news/you-ve-got-mail-on-to-the-frozen-tundra-before-it-freezes",
+      "publishedAt": "2026-08-25T16:23:25.000Z",
+      "source": "Arizona Cardinals",
+      "sourceId": "rss-team-ari",
+      "category": "headline",
+      "team": "ARI"
+    },
+    {
+      "id": "headline:b9bc409a83a27c2a",
+      "title": "Colts hopeful Alec Pierce returns to practice this week, starters (minus Daniel Jones, Jonathan Taylor) to play 8-12 plays in preseason finale vs. Detroit Lions",
+      "url": "https://www.colts.com/news/colts-hopeful-alec-pierce-returns-to-practice-this-week-starters-minus-daniel-jones-jonathan-taylor-to-play-8-12-plays-in-preseason-finale-vs-detroit-lions",
+      "publishedAt": "2026-08-25T15:59:25.000Z",
+      "source": "Indianapolis Colts",
+      "sourceId": "rss-team-ind",
+      "category": "headline",
+      "team": "IND"
+    },
+    {
+      "id": "headline:2097482717199a3d",
+      "title": "What fans can expect at Highmark Stadium for Bills vs. Steelers",
+      "url": "https://www.buffalobills.com/news/what-fans-can-expect-at-highmark-stadium-for-bills-vs-steelers",
+      "publishedAt": "2026-08-25T15:42:48.000Z",
+      "source": "Buffalo Bills",
+      "sourceId": "rss-team-buf",
+      "category": "headline",
+      "team": "BUF"
+    },
+    {
+      "id": "headline:38017e9b56d07beb",
+      "title": "Titans Sign LB Dyontae Johnson, Waive/Injured LB Dominique Hampton",
+      "url": "https://www.tennesseetitans.com/news/titans-sign-lb-dyontae-johnson-waive-injured-lb-dominique-hamptonroster-move",
+      "publishedAt": "2026-08-25T15:26:08.000Z",
+      "source": "Tennessee Titans",
+      "sourceId": "rss-team-ten",
+      "category": "headline",
+      "team": "TEN"
+    },
+    {
+      "id": "headline:dc8c656974f3dcdd",
+      "title": "Roster moves continue",
+      "url": "https://www.steelers.com/news/roster-moves-continue-x8649",
+      "publishedAt": "2026-08-25T15:00:36.000Z",
+      "source": "Pittsburgh Steelers",
+      "sourceId": "rss-team-pit",
+      "category": "headline",
+      "team": "PIT"
+    },
+    {
+      "id": "headline:86261982a0fbe0da",
+      "title": "Browns partner with NAFA and NFL FLAG to launch 'One Ball, One Flag, One Future' Initiative in Nigeria",
+      "url": "https://www.clevelandbrowns.com/news/browns-partner-with-nafa-and-nfl-flag-to-launch-one-ball-one-flag-one-future-initiative-in-nigeria",
+      "publishedAt": "2026-08-25T15:00:29.000Z",
+      "source": "Cleveland Browns",
+      "sourceId": "rss-team-cle",
+      "category": "headline",
+      "team": "CLE"
+    },
+    {
+      "id": "headline:618ee5026d29cab7",
+      "title": "Colts reveal 'Anvil Strike' Rivalries uniform for Sept. 27 game vs. Houston Texans",
+      "url": "https://www.colts.com/news/colts-reveal-anvil-strike-rivalries-uniform-for-september-27-game-vs-houston-texans-alternate-helmet-2026-nfl-season-tickets-sweepstakes",
+      "publishedAt": "2026-08-25T14:30:00.000Z",
+      "source": "Indianapolis Colts",
+      "sourceId": "rss-team-ind",
+      "category": "headline",
+      "team": "IND"
+    },
+    {
+      "id": "headline:04491bbbc5d04627",
+      "title": "How Colts, Nike worked together to create 2026 Rivalry uniform",
+      "url": "https://www.colts.com/news/how-colts-nike-worked-together-to-create-2026-rivalry-uniform",
+      "publishedAt": "2026-08-25T14:15:27.000Z",
+      "source": "Indianapolis Colts",
+      "sourceId": "rss-team-ind",
+      "category": "headline",
+      "team": "IND"
+    },
+    {
+      "id": "headline:c26d35a9f91bd86b",
+      "title": "Bears unveil Rivalries uniform",
+      "url": "https://www.chicagobears.com/news/bears-unveil-rivalries-uniform",
+      "publishedAt": "2026-08-25T14:02:00.000Z",
+      "source": "Chicago Bears",
+      "sourceId": "rss-team-chi",
+      "category": "headline",
+      "team": "CHI"
+    },
+    {
+      "id": "headline:764eeb14e888de5d",
+      "title": "Nike, the NFL and Jacksonville Jaguars Reveal the Team's 2026 Rivalries Uniform",
+      "url": "https://www.jaguars.com/news/nike-the-nfl-and-jacksonville-jaguars-reveal-the-team-s-2026-rivalries-uniform",
+      "publishedAt": "2026-08-25T14:00:25.000Z",
+      "source": "Jacksonville Jaguars",
+      "sourceId": "rss-team-jax",
+      "category": "headline",
+      "team": "JAX"
+    },
+    {
+      "id": "headline:d9b3e4829cc84534",
+      "title": "HOUSTON TEXANS LAUNCH \"HOUSTON/US\" RIVALRIES UNIFORM",
+      "url": "https://www.houstontexans.com/news/houston-texans-launch-rivalries-uniform",
+      "publishedAt": "2026-08-25T14:00:18.000Z",
+      "source": "Houston Texans",
+      "sourceId": "rss-team-hou",
+      "category": "headline",
+      "team": "HOU"
+    },
+    {
+      "id": "headline:d4a4be7e4cf7ee71",
+      "title": "Titans To Wear \"Music City\" Rivalries Uniform Nov. 15 vs. Jaguars",
+      "url": "https://www.tennesseetitans.com/news/titans-to-wear-music-city-rivalries-uniform-nov-15-vs-jaguars",
+      "publishedAt": "2026-08-25T13:57:07.000Z",
+      "source": "Tennessee Titans",
+      "sourceId": "rss-team-ten",
+      "category": "headline",
+      "team": "TEN"
+    },
+    {
+      "id": "headline:db252df42bb29be3",
+      "title": "Packers reveal NFL Rivalries uniforms, celebrating team's unique ownership",
+      "url": "https://www.packers.com/news/packers-reveal-nfl-rivalries-uniforms-celebrating-team-s-unique-ownership",
+      "publishedAt": "2026-08-25T13:55:00.000Z",
+      "source": "Green Bay Packers",
+      "sourceId": "rss-team-gb",
+      "category": "headline",
+      "team": "GB"
+    },
+    {
+      "id": "headline:d8e651aca4b3ac61",
+      "title": "Late for Work: Ravens' Camaraderie 'Is in Outer Space'",
+      "url": "https://www.baltimoreravens.com/news/late-for-work-ravens-camaraderie-lamar-jackson-keyon-martin-jesse-minter-declan-doyle",
+      "publishedAt": "2026-08-25T13:42:16.000Z",
+      "source": "Baltimore Ravens",
+      "sourceId": "rss-team-bal",
+      "category": "headline",
+      "team": "BAL"
+    },
+    {
+      "id": "headline:cd13067e6bad5c4a",
+      "title": "LIONS DAILY: Detroit among teams most likely to improve in 2026, per ESPN",
+      "url": "https://www.detroitlions.com/news/lions-daily-detroit-among-teams-most-likely-to-improve-in-2026-per-espn",
+      "publishedAt": "2026-08-25T13:40:00.000Z",
+      "source": "Detroit Lions",
+      "sourceId": "rss-team-det",
+      "category": "headline",
+      "team": "DET"
+    },
+    {
+      "id": "headline:b3bad43cdf3f58c2",
+      "title": "Bills bring back red helmets for Christmas Day showdown vs. Broncos",
+      "url": "https://www.buffalobills.com/news/bills-bring-back-red-helmets-for-christmas-day-showdown-vs-broncos",
+      "publishedAt": "2026-08-25T13:29:00.000Z",
+      "source": "Buffalo Bills",
+      "sourceId": "rss-team-buf",
+      "category": "headline",
+      "team": "BUF"
+    },
+    {
+      "id": "headline:99a323b3058847f6",
+      "title": "Claudin Cherelus is using Panthers linebacker competition to better himself",
+      "url": "https://www.panthers.com/news/claudin-cherelus-is-using-panthers-linebacker-competition-to-better-himself",
+      "publishedAt": "2026-08-25T12:26:58.000Z",
+      "source": "Carolina Panthers",
+      "sourceId": "rss-team-car",
+      "category": "headline",
+      "team": "CAR"
+    },
     {
       "id": "headline:4749e25ca7e11225",
       "title": "✍️ Grading NFL offseason trades",
@@ -825,23 +1595,13 @@
     },
     {
       "id": "headline:51f009c594789314",
-      "title": "Training Camp Report: C.J. Uzomah Returns To His Who-Dey Home To Retire, But He'll Be Around",
+      "title": "Training Camp Report | C.J. Uzomah Returns To His Who-Dey Home To Retire, But He'll Be Around",
       "url": "https://www.bengals.com/news/training-camp-report-c-j-uzomah-returns-to-his-who-dey-home-to-retire-but-he-ll-be-around",
       "publishedAt": "2026-08-25T02:02:31.000Z",
       "source": "Cincinnati Bengals",
       "sourceId": "rss-team-cin",
       "category": "headline",
       "team": "CIN"
-    },
-    {
-      "id": "headline:55a7f49256a7b18e",
-      "title": "Saints running back Kendre Miller hoping to run his way to good health, productive season",
-      "url": "https://www.neworleanssaints.com/news/new-orleans-saints-running-back-kendre-miller-hoping-for-good-health-productive-season-2026",
-      "publishedAt": "2026-08-25T00:59:13.000Z",
-      "source": "New Orleans Saints",
-      "sourceId": "rss-team-no",
-      "category": "headline",
-      "team": "NO"
     },
     {
       "id": "headline:6b735394c48f8ce5",
@@ -874,16 +1634,6 @@
       "team": "ARI"
     },
     {
-      "id": "headline:a664552e58123816",
-      "title": "Raiders' unofficial depth chart for final preseason game vs. San Francisco 49ers",
-      "url": "https://www.raiders.com/news/raiders-unofficial-depth-chart-preseason-game-vs-san-francisco-49ers-082726",
-      "publishedAt": "2026-08-24T23:39:08.000Z",
-      "source": "Las Vegas Raiders",
-      "sourceId": "rss-team-lv",
-      "category": "headline",
-      "team": "LV"
-    },
-    {
       "id": "headline:fc15237ccdd88752",
       "title": "First Look: Rams close out 2026 preseason against Chargers",
       "url": "https://www.therams.com/news/first-look-rams-close-out-2026-preseason-against-chargers",
@@ -912,26 +1662,6 @@
       "category": "headline"
     },
     {
-      "id": "headline:fb546d74201256d0",
-      "title": "Training Camp Notebook 8/24: Rookies stack late‑camp reps as their climb accelerates",
-      "url": "https://www.raiders.com/news/training-camp-notebook-8-24-rookies-stack-late-camp-reps-as-their-climb-accelerates",
-      "publishedAt": "2026-08-24T23:03:33.000Z",
-      "source": "Las Vegas Raiders",
-      "sourceId": "rss-team-lv",
-      "category": "headline",
-      "team": "LV"
-    },
-    {
-      "id": "headline:e6693ed59bf18003",
-      "title": "Steelers at Bills: How to watch/listen to the game",
-      "url": "https://www.steelers.com/news/steelers-at-bills-how-to-watch-listen-to-the-game-x6278",
-      "publishedAt": "2026-08-24T23:00:00.000Z",
-      "source": "Pittsburgh Steelers",
-      "sourceId": "rss-team-pit",
-      "category": "headline",
-      "team": "PIT"
-    },
-    {
       "id": "headline:8379479f4c6ddc22",
       "title": "Five Observations from Day 15 of Bengals Training Camp",
       "url": "https://www.bengals.com/news/five-observations-day-15-bengals-training-camp-august-24-2026",
@@ -952,46 +1682,6 @@
       "team": "PHI"
     },
     {
-      "id": "headline:d18676a36382d7b5",
-      "title": "49ers Sign DL Fehoko Jr. to One-Year Deal; Release TE Deguara",
-      "url": "https://www.49ers.com/news/49ers-sign-dl-fehoko-jr-to-one-year-deal-release-te-deguara",
-      "publishedAt": "2026-08-24T22:18:37.000Z",
-      "source": "San Francisco 49ers",
-      "sourceId": "rss-team-sf",
-      "category": "headline",
-      "team": "SF"
-    },
-    {
-      "id": "headline:404542861cd8dd70",
-      "title": "Deshaun Watson operates as Browns' starting quarterback on Day 18| Training Camp Observations",
-      "url": "https://www.clevelandbrowns.com/news/deshaun-watson-operates-as-browns-starting-quarterback-on-day-18-training-camp-observations",
-      "publishedAt": "2026-08-24T22:17:38.000Z",
-      "source": "Cleveland Browns",
-      "sourceId": "rss-team-cle",
-      "category": "headline",
-      "team": "CLE"
-    },
-    {
-      "id": "headline:665d5f7089aad4d0",
-      "title": "Packers to welcome Arizona Cardinals for joint practice, bike tradition",
-      "url": "https://www.packers.com/news/packers-to-welcome-arizona-cardinals-for-joint-practice-bike-tradition-2026",
-      "publishedAt": "2026-08-24T22:11:06.000Z",
-      "source": "Green Bay Packers",
-      "sourceId": "rss-team-gb",
-      "category": "headline",
-      "team": "GB"
-    },
-    {
-      "id": "headline:07c29840d625a1dc",
-      "title": "Injury Updates: OL Justin Dedich (hand) and TE Davis Allen (quad) return to practice; WR Puka Nacua (psoas) and DE Myles Garrett (knee) still non-participants",
-      "url": "https://www.therams.com/news/injury-updates-ol-justin-dedich-hand-and-te-davis-allen-quad-return-to-practice-wr-puka-nacua-psoas-and-de-myles-garrett-knee-still-non-participants",
-      "publishedAt": "2026-08-24T22:10:48.000Z",
-      "source": "Los Angeles Rams",
-      "sourceId": "rss-team-lar",
-      "category": "headline",
-      "team": "LAR"
-    },
-    {
       "id": "headline:c9ee77fd7ad74e21",
       "title": "Eagles sign DB Jaylen Mahoney, RB Jordan Mims",
       "url": "https://www.philadelphiaeagles.com/news/eagles-sign-jaylen-mahoney-jordan-mims",
@@ -1000,26 +1690,6 @@
       "sourceId": "rss-team-phi",
       "category": "headline",
       "team": "PHI"
-    },
-    {
-      "id": "headline:896d6798d3d2bd82",
-      "title": "5 things learned at Packers training camp – Aug. 24",
-      "url": "https://www.packers.com/news/5-things-learned-at-packers-training-camp-aug-24-2026",
-      "publishedAt": "2026-08-24T21:54:00.000Z",
-      "source": "Green Bay Packers",
-      "sourceId": "rss-team-gb",
-      "category": "headline",
-      "team": "GB"
-    },
-    {
-      "id": "headline:e54b4f8434021984",
-      "title": "Brian Schottenheimer confident Cowboys have two capable backup QBs in Milton, Howell",
-      "url": "https://www.dallascowboys.com/news/brian-schottenheimer-confident-cowboys-have-two-capable-backup-qbs-in-milton-howell",
-      "publishedAt": "2026-08-24T21:38:40.000Z",
-      "source": "Dallas Cowboys",
-      "sourceId": "rss-team-dal",
-      "category": "headline",
-      "team": "DAL"
     },
     {
       "id": "headline:e067cc39d5e0cc66",
@@ -1032,46 +1702,6 @@
       "team": "CAR"
     },
     {
-      "id": "headline:8b70c71854ddf79c",
-      "title": "Why Mike McDaniel Has Full Confidence in Jake Slaughter as Chargers Starting Center",
-      "url": "https://www.chargers.com/news/mike-mcdaniel-jake-slaughter-offensive-line-depth-chart",
-      "publishedAt": "2026-08-24T21:30:02.000Z",
-      "source": "Los Angeles Chargers",
-      "sourceId": "rss-team-lac",
-      "category": "headline",
-      "team": "LAC"
-    },
-    {
-      "id": "headline:da7d897806330301",
-      "title": "Jets Practice Report | Geno Smith Leads Crisp Touchdown Drive in 2-Minute Drill to End Practice",
-      "url": "https://www.newyorkjets.com/news/jets-practice-report-geno-smith-2-minute-drill-touchdown-omar-cooper-08-24-2026",
-      "publishedAt": "2026-08-24T21:30:00.000Z",
-      "source": "New York Jets",
-      "sourceId": "rss-team-nyj",
-      "category": "headline",
-      "team": "NYJ"
-    },
-    {
-      "id": "headline:2d8d82cbbe34b136",
-      "title": "Deshaun Watson feels prepared to lead the Browns as the starting quarterback",
-      "url": "https://www.clevelandbrowns.com/news/deshaun-watson-feels-prepared-to-lead-the-browns-as-the-starting-quarterback",
-      "publishedAt": "2026-08-24T21:24:35.000Z",
-      "source": "Cleveland Browns",
-      "sourceId": "rss-team-cle",
-      "category": "headline",
-      "team": "CLE"
-    },
-    {
-      "id": "headline:a2e61cdd87fb8661",
-      "title": "Practice 15: 2026 Miami Dolphins Training Camp Notebook",
-      "url": "https://www.miamidolphins.com/news/practice-15-2026-miami-dolphins-training-camp-notebook",
-      "publishedAt": "2026-08-24T21:23:39.000Z",
-      "source": "Miami Dolphins",
-      "sourceId": "rss-team-mia",
-      "category": "headline",
-      "team": "MIA"
-    },
-    {
       "id": "headline:0a905e9c2204a8e4",
       "title": "News & Notes: Nnamdi Madubuike Takes the Next Step in His Return",
       "url": "https://www.baltimoreravens.com/news/nnamdi-madubuike-next-step-hits-sled-first-time-danny-pinter-injury-season-ending-ravens-preseason-week-3",
@@ -1080,26 +1710,6 @@
       "sourceId": "rss-team-bal",
       "category": "headline",
       "team": "BAL"
-    },
-    {
-      "id": "headline:a64bd30cf378caba",
-      "title": "How to watch the Detroit Lions at Indianapolis Colts on August 29, 2026",
-      "url": "https://www.colts.com/news/where-to-watch-indianapolis-colts-vs-detroit-lions-preseason-game-week-3-2026",
-      "publishedAt": "2026-08-24T21:16:00.000Z",
-      "source": "Indianapolis Colts",
-      "sourceId": "rss-team-ind",
-      "category": "headline",
-      "team": "IND"
-    },
-    {
-      "id": "headline:bb43c7c3f334fda6",
-      "title": "Makai Lemon returns to full participation at practice",
-      "url": "https://www.philadelphiaeagles.com/news/eagles-makai-lemon-returns-to-full-participation-at-practice",
-      "publishedAt": "2026-08-24T21:15:00.000Z",
-      "source": "Philadelphia Eagles",
-      "sourceId": "rss-team-phi",
-      "category": "headline",
-      "team": "PHI"
     },
     {
       "id": "headline:47b6101e97f26cc9",
@@ -1122,196 +1732,6 @@
       "team": "CAR"
     },
     {
-      "id": "headline:1fc42e588ddd8730",
-      "title": "Packers announce time change for joint practice with Cardinals",
-      "url": "https://www.packers.com/news/packers-announce-time-change-for-joint-practice-with-cardinals-2026",
-      "publishedAt": "2026-08-24T20:58:32.000Z",
-      "source": "Green Bay Packers",
-      "sourceId": "rss-team-gb",
-      "category": "headline",
-      "team": "GB"
-    },
-    {
-      "id": "headline:2b345551d31e7b61",
-      "title": "What Has Been Aaron Glenn's Impact Been On the Defense Since Returning to Playcalling?",
-      "url": "https://www.newyorkjets.com/news/aaron-glenn-jets-reflects-on-returning-to-playcalling-duties-08-24-2026",
-      "publishedAt": "2026-08-24T20:58:00.000Z",
-      "source": "New York Jets",
-      "sourceId": "rss-team-nyj",
-      "category": "headline",
-      "team": "NYJ"
-    },
-    {
-      "id": "headline:d01014d513c25617",
-      "title": "What we learned about the Bills on Day 19 of Training Camp 2026",
-      "url": "https://www.buffalobills.com/news/what-we-learned-about-the-bills-on-day-19-of-training-camp-2026",
-      "publishedAt": "2026-08-24T20:57:07.000Z",
-      "source": "Buffalo Bills",
-      "sourceId": "rss-team-buf",
-      "category": "headline",
-      "team": "BUF"
-    },
-    {
-      "id": "headline:518b18d2130ac4f4",
-      "title": "Chargers Training Camp Report: How Mike McDaniel Views Offense Ahead of 53-Man Roster Cutdown",
-      "url": "https://www.chargers.com/news/training-camp-report-mike-mcdaniel-roster",
-      "publishedAt": "2026-08-24T20:55:00.000Z",
-      "source": "Los Angeles Chargers",
-      "sourceId": "rss-team-lac",
-      "category": "headline",
-      "team": "LAC"
-    },
-    {
-      "id": "headline:af89d283c55c75a0",
-      "title": "Jets Pass-Catching LG Dylan Parham Goes Where Few O-Linemen Get to Go",
-      "url": "https://www.newyorkjets.com/news/dylan-parham-jets-reflects-on-steelers-preseason-matchup-08-24-2026",
-      "publishedAt": "2026-08-24T20:55:00.000Z",
-      "source": "New York Jets",
-      "sourceId": "rss-team-nyj",
-      "category": "headline",
-      "team": "NYJ"
-    },
-    {
-      "id": "headline:09c93851ca567364",
-      "title": "Fantasy Football Sleepers, Value Picks for 2026",
-      "url": "https://www.seahawks.com/news/fantasy-football-sleepers-value-picks-for-2026",
-      "publishedAt": "2026-08-24T20:53:37.000Z",
-      "source": "Seattle Seahawks",
-      "sourceId": "rss-team-sea",
-      "category": "headline",
-      "team": "SEA"
-    },
-    {
-      "id": "headline:92a942f40a6249ab",
-      "title": "Chargers Release Unofficial Depth Chart Ahead of Rams Preseason Game",
-      "url": "https://www.chargers.com/news/depth-chart-2026-season",
-      "publishedAt": "2026-08-24T20:51:00.000Z",
-      "source": "Los Angeles Chargers",
-      "sourceId": "rss-team-lac",
-      "category": "headline",
-      "team": "LAC"
-    },
-    {
-      "id": "headline:f162e1a7026f2fa9",
-      "title": "McVay: Ty Simpson 'definitely' playing in preseason finale against Chargers; whether Stetson Bennett IV plays and overall QB usage still to be determined",
-      "url": "https://www.therams.com/news/mcvay-quarterback-ty-simpson-definitely-playing-in-preseason-finale-against-chargers-whether-stetson-bennett-iv-plays-and-overall-usage-still-to-be-determined",
-      "publishedAt": "2026-08-24T20:32:33.000Z",
-      "source": "Los Angeles Rams",
-      "sourceId": "rss-team-lar",
-      "category": "headline",
-      "team": "LAR"
-    },
-    {
-      "id": "headline:01d5aedf4b6ad040",
-      "title": "Cardinals Activate Josh Sweat From PUP, Waive Trey Benson",
-      "url": "https://www.azcardinals.com/news/cardinals-activate-josh-sweat-from-pup-waive-trey-benson",
-      "publishedAt": "2026-08-24T20:26:13.000Z",
-      "source": "Arizona Cardinals",
-      "sourceId": "rss-team-ari",
-      "category": "headline",
-      "team": "ARI"
-    },
-    {
-      "id": "headline:5940f6f02dfb73fb",
-      "title": "Seahawks Waive RB Anthony Hankerson",
-      "url": "https://www.seahawks.com/news/seahawks-waive-rb-anthony-hankerson",
-      "publishedAt": "2026-08-24T20:24:21.000Z",
-      "source": "Seattle Seahawks",
-      "sourceId": "rss-team-sea",
-      "category": "headline",
-      "team": "SEA"
-    },
-    {
-      "id": "headline:799585d87b85888e",
-      "title": "Titans Sign LB Reid Carrico, Place LB Milo Eifler on Injured Reserve",
-      "url": "https://www.tennesseetitans.com/news/titans-sign-lb-reid-carrico-place-lb-milo-eifler-on-injured-reserve",
-      "publishedAt": "2026-08-24T20:19:09.000Z",
-      "source": "Tennessee Titans",
-      "sourceId": "rss-team-ten",
-      "category": "headline",
-      "team": "TEN"
-    },
-    {
-      "id": "headline:62164400cf8a1cf9",
-      "title": "Practice Report: Tyler Loop Stays Hot With Two Long Field Goals",
-      "url": "https://www.baltimoreravens.com/news/practice-report-tyler-loop-rasheen-ali-adam-randall-return-to-field-ravens-injuries",
-      "publishedAt": "2026-08-24T20:12:53.000Z",
-      "source": "Baltimore Ravens",
-      "sourceId": "rss-team-bal",
-      "category": "headline",
-      "team": "BAL"
-    },
-    {
-      "id": "headline:b9a974b96dd71bef",
-      "title": "2026 Preseason Blog: Bringing the energy",
-      "url": "https://www.steelers.com/news/2026-camp-blog-embracing-change",
-      "publishedAt": "2026-08-24T20:10:00.000Z",
-      "source": "Pittsburgh Steelers",
-      "sourceId": "rss-team-pit",
-      "category": "headline",
-      "team": "PIT"
-    },
-    {
-      "id": "headline:204f8b4b202a4c35",
-      "title": "New Orleans Saints announce roster moves",
-      "url": "https://www.neworleanssaints.com/news/daniel-carlson-zamir-white-saints-roster-moves-training-camp-august-24-2026",
-      "publishedAt": "2026-08-24T20:06:59.000Z",
-      "source": "New Orleans Saints",
-      "sourceId": "rss-team-no",
-      "category": "headline",
-      "team": "NO"
-    },
-    {
-      "id": "headline:58329654101ed2da",
-      "title": "Patriots Sign OL Jack Conley and P Matt Haack; Release CB Kenneth Harris and WR Kobe Prentice",
-      "url": "https://www.patriots.com/news/patriots-sign-ol-jack-conley-and-p-matt-haack-release-cb-kenneth-harris-and-wr-kobe-prentice",
-      "publishedAt": "2026-08-24T20:00:00.000Z",
-      "source": "New England Patriots",
-      "sourceId": "rss-team-ne",
-      "category": "headline",
-      "team": "NE"
-    },
-    {
-      "id": "headline:5882ee07ab689ada",
-      "title": "As kicking competition enters final stretch, Colts believe they 'can't go wrong' with Blake Grupe or Spencer Shrader",
-      "url": "https://www.colts.com/news/as-kicking-competition-enters-final-stretch-colts-believe-they-can-t-go-wrong-with-blake-grupe-or-spencer-shrader",
-      "publishedAt": "2026-08-24T19:55:44.000Z",
-      "source": "Indianapolis Colts",
-      "sourceId": "rss-team-ind",
-      "category": "headline",
-      "team": "IND"
-    },
-    {
-      "id": "headline:b377d3268695cbf9",
-      "title": "Preseason Week 3 Tracker: Latest news, notes & roster moves",
-      "url": "https://www.giants.com/news/preseason-week-3-tracker-latest-news-notes-roster-moves-new-york-jets",
-      "publishedAt": "2026-08-24T19:55:00.000Z",
-      "source": "New York Giants",
-      "sourceId": "rss-team-nyg",
-      "category": "headline",
-      "team": "NYG"
-    },
-    {
-      "id": "headline:245529405ffd2ea9",
-      "title": "Cover 3: What we're learning about the Giants",
-      "url": "https://www.giants.com/news/miami-dolphins-preseason-week-2-john-harbaugh-jc-davis-najee-harris-deonte-banks",
-      "publishedAt": "2026-08-24T19:50:00.000Z",
-      "source": "New York Giants",
-      "sourceId": "rss-team-nyg",
-      "category": "headline",
-      "team": "NYG"
-    },
-    {
-      "id": "headline:bf32070c573c7616",
-      "title": "🗣️ Sights & Sounds: Preseason win in Miami",
-      "url": "https://www.giants.com/video/sights-sounds-preseason-win-in-miami",
-      "publishedAt": "2026-08-24T19:45:00.000Z",
-      "source": "New York Giants",
-      "sourceId": "rss-team-nyg",
-      "category": "headline",
-      "team": "NYG"
-    },
-    {
       "id": "headline:4763457f6f90180a",
       "title": "Cleveland names Deshaun Watson QB1, but the next answer might still be coming",
       "url": "https://www.espn.com/nfl/story/_/id/49710491/cleveland-browns-deshaun-watson-starting-quarterback-shedeur-sanders-2027-draft-class-lurking",
@@ -1319,206 +1739,6 @@
       "source": "ESPN NFL",
       "sourceId": "rss-espn",
       "category": "headline"
-    },
-    {
-      "id": "headline:f6c91f74f022df82",
-      "title": "Falcons using final week of preseason to get feel for regular-season schedule",
-      "url": "https://www.atlantafalcons.com/news/falcons-preseason-miami-dolphins-michael-penix-starters",
-      "publishedAt": "2026-08-24T19:18:58.000Z",
-      "source": "Atlanta Falcons",
-      "sourceId": "rss-team-atl",
-      "category": "headline",
-      "team": "ATL"
-    },
-    {
-      "id": "headline:14148e74673e9f9f",
-      "title": "Ben Davis' Brett Cooper named 2026 'Coach of the Week' for Week 1",
-      "url": "https://www.colts.com/news/ben-davis-brett-cooper-named-2026-coach-of-the-week-for-week-1",
-      "publishedAt": "2026-08-24T19:15:00.000Z",
-      "source": "Indianapolis Colts",
-      "sourceId": "rss-team-ind",
-      "category": "headline",
-      "team": "IND"
-    },
-    {
-      "id": "headline:8b1fff38cead3c16",
-      "title": "Official: Boselli Named to NFL's Competition Committee",
-      "url": "https://www.jaguars.com/news/official-boselli-named-to-nfl-s-competition-committee",
-      "publishedAt": "2026-08-24T19:04:49.000Z",
-      "source": "Jacksonville Jaguars",
-      "sourceId": "rss-team-jax",
-      "category": "headline",
-      "team": "JAX"
-    },
-    {
-      "id": "headline:6edca825af193471",
-      "title": "Play of the Day: Corey Thornton makes diving interception to give defense the win",
-      "url": "https://www.panthers.com/news/play-of-the-day-corey-thornton-makes-diving-interception-to-give-defense-the-win",
-      "publishedAt": "2026-08-24T18:42:27.000Z",
-      "source": "Carolina Panthers",
-      "sourceId": "rss-team-car",
-      "category": "headline",
-      "team": "CAR"
-    },
-    {
-      "id": "headline:cd967f5b8ec6c9b4",
-      "title": "Dolphins make roster moves",
-      "url": "https://www.miamidolphins.com/news/dolphins-make-roster-moves-x1052",
-      "publishedAt": "2026-08-24T18:40:19.000Z",
-      "source": "Miami Dolphins",
-      "sourceId": "rss-team-mia",
-      "category": "headline",
-      "team": "MIA"
-    },
-    {
-      "id": "headline:a364b97733bd6c06",
-      "title": "Patriots to Celebrate 25th and 10th Anniversaries of Two Iconic Patriots Super Bowl Teams",
-      "url": "https://www.patriots.com/news/patriots-to-celebrate-25th-and-10th-anniversaries-of-two-iconic-patriots-super-bowl-teams",
-      "publishedAt": "2026-08-24T18:29:50.000Z",
-      "source": "New England Patriots",
-      "sourceId": "rss-team-ne",
-      "category": "headline",
-      "team": "NE"
-    },
-    {
-      "id": "headline:d14068cbf0fc3f00",
-      "title": "Browns announce unofficial depth chart for 3rd preseason game vs. the Patriots",
-      "url": "https://www.clevelandbrowns.com/news/browns-announce-unofficial-depth-chart-for-3rd-preseason-game-vs-the-patriots",
-      "publishedAt": "2026-08-24T18:11:41.000Z",
-      "source": "Cleveland Browns",
-      "sourceId": "rss-team-cle",
-      "category": "headline",
-      "team": "CLE"
-    },
-    {
-      "id": "headline:ecc3c03babec409b",
-      "title": "Camp Wrap, Day 18: Thomas \"Trying to Be Intentional…\"",
-      "url": "https://www.jaguars.com/news/camp-wrap-day-18-thomas-trying-to-be-intentional",
-      "publishedAt": "2026-08-24T17:30:41.000Z",
-      "source": "Jacksonville Jaguars",
-      "sourceId": "rss-team-jax",
-      "category": "headline",
-      "team": "JAX"
-    },
-    {
-      "id": "headline:ba0d0be6d3ef8b10",
-      "title": "Cody Ford Released | BENGALS ROSTER UPDATE",
-      "url": "https://www.bengals.com/news/cody-ford-released-2026-roster-update",
-      "publishedAt": "2026-08-24T17:29:11.000Z",
-      "source": "Cincinnati Bengals",
-      "sourceId": "rss-team-cin",
-      "category": "headline",
-      "team": "CIN"
-    },
-    {
-      "id": "headline:fe5868ff7c3ef2be",
-      "title": "Vikings Sign Defensive Lineman Jonathan Harris & Tight End Matt Lauter",
-      "url": "https://www.vikings.com/news/signing-defensive-lineman-jonathan-harris-tight-end-matt-lauter",
-      "publishedAt": "2026-08-24T17:15:31.000Z",
-      "source": "Minnesota Vikings",
-      "sourceId": "rss-team-min",
-      "category": "headline",
-      "team": "MIN"
-    },
-    {
-      "id": "headline:9e8caf9ba20f30af",
-      "title": "Las Vegas Raiders announce $25 million game-changing gift to Intermountain Health to help build Nevada's first stand-alone children's hospital",
-      "url": "https://www.raiders.com/news/las-vegas-raiders-announce-25-million-game-changing-gift-to-intermountain-health-to-help-build-nevada-s-first-stand-alone-children-s-hospital",
-      "publishedAt": "2026-08-24T17:00:00.000Z",
-      "source": "Las Vegas Raiders",
-      "sourceId": "rss-team-lv",
-      "category": "headline",
-      "team": "LV"
-    },
-    {
-      "id": "headline:41cdd448968ec7de",
-      "title": "Camden Brown shows game-changing consistency: 'I'm doing what I gotta do'",
-      "url": "https://www.dallascowboys.com/news/camden-brown-shows-game-changing-consistency-i-m-doing-what-i-gotta-do",
-      "publishedAt": "2026-08-24T16:51:37.000Z",
-      "source": "Dallas Cowboys",
-      "sourceId": "rss-team-dal",
-      "category": "headline",
-      "team": "DAL"
-    },
-    {
-      "id": "headline:67308ce3033a3d98",
-      "title": "Around the AFC North: Deshaun Watson Named Browns' Starting Quarterback",
-      "url": "https://www.baltimoreravens.com/news/deshaun-watson-named-browns-starter-shedeur-sanders-todd-monken",
-      "publishedAt": "2026-08-24T16:17:39.000Z",
-      "source": "Baltimore Ravens",
-      "sourceId": "rss-team-bal",
-      "category": "headline",
-      "team": "BAL"
-    },
-    {
-      "id": "headline:947c7881f3c04742",
-      "title": "Reinforcements on the way",
-      "url": "https://www.steelers.com/news/reinforcements-on-the-way",
-      "publishedAt": "2026-08-24T16:15:00.000Z",
-      "source": "Pittsburgh Steelers",
-      "sourceId": "rss-team-pit",
-      "category": "headline",
-      "team": "PIT"
-    },
-    {
-      "id": "headline:584f095906d07e22",
-      "title": "How to Watch/Listen: Patriots at Browns",
-      "url": "https://www.patriots.com/news/how-to-watch-listen-patriots-at-browns-x9612",
-      "publishedAt": "2026-08-24T15:31:27.000Z",
-      "source": "New England Patriots",
-      "sourceId": "rss-team-ne",
-      "category": "headline",
-      "team": "NE"
-    },
-    {
-      "id": "headline:1e6ad68955c87d1b",
-      "title": "Houston Texans Transactions (8-24-2026)",
-      "url": "https://www.houstontexans.com/news/houston-texans-transactions-8-24-2026",
-      "publishedAt": "2026-08-24T15:14:58.000Z",
-      "source": "Houston Texans",
-      "sourceId": "rss-team-hou",
-      "category": "headline",
-      "team": "HOU"
-    },
-    {
-      "id": "headline:ed3989ab66d33642",
-      "title": "Hot Topics From Titans HC Robert Saleh's Zoom Call on Monday",
-      "url": "https://www.tennesseetitans.com/news/hot-topics-from-titans-hc-robert-saleh-s-zoom-call-on-monday",
-      "publishedAt": "2026-08-24T14:55:24.000Z",
-      "source": "Tennessee Titans",
-      "sourceId": "rss-team-ten",
-      "category": "headline",
-      "team": "TEN"
-    },
-    {
-      "id": "headline:3f72e75cbcd20b08",
-      "title": "CB Pat Surtain II voted No. 10 on 2026 NFL Top 100 list",
-      "url": "https://www.denverbroncos.com/news/cb-pat-surtain-ii-voted-no-10-on-2026-nfl-top-100-list",
-      "publishedAt": "2026-08-24T14:48:36.000Z",
-      "source": "Denver Broncos",
-      "sourceId": "rss-team-den",
-      "category": "headline",
-      "team": "DEN"
-    },
-    {
-      "id": "headline:da7806ec0d4fff4f",
-      "title": "Morning Report: Kittle, More Players Return to Practice 🗞️",
-      "url": "https://www.49ers.com/news/morning-reports/morning-report-kittle-more-players-return-to-practice",
-      "publishedAt": "2026-08-24T14:17:47.000Z",
-      "source": "San Francisco 49ers",
-      "sourceId": "rss-team-sf",
-      "category": "headline",
-      "team": "SF"
-    },
-    {
-      "id": "headline:54091c0e66baf39b",
-      "title": "49ers and San Francisco Federal Team Up for Multiyear Partnership",
-      "url": "https://www.49ers.com/news/49ers-and-san-francisco-federal-team-up-for-multiyear-partnership",
-      "publishedAt": "2026-08-24T14:00:00.000Z",
-      "source": "San Francisco 49ers",
-      "sourceId": "rss-team-sf",
-      "category": "headline",
-      "team": "SF"
     },
     {
       "id": "headline:795728c33a95ac94",
@@ -1531,76 +1751,6 @@
       "team": "DET"
     },
     {
-      "id": "headline:ae9e13d5d367afd7",
-      "title": "Five things to know about the New Orleans Saints for Monday, August 24",
-      "url": "https://www.neworleanssaints.com/news/five-things-know-saints-training-camp-preseason-cowboys-monday-august-24",
-      "publishedAt": "2026-08-24T13:15:15.000Z",
-      "source": "New Orleans Saints",
-      "sourceId": "rss-team-no",
-      "category": "headline",
-      "team": "NO"
-    },
-    {
-      "id": "headline:091c939fceb1a2d8",
-      "title": "TWENTYMAN: 5 players who stood out in Lions' second preseason game",
-      "url": "https://www.detroitlions.com/news/5-players-stood-out-detroit-lions-second-preseason-game-gill-howard-meeks-moore",
-      "publishedAt": "2026-08-24T11:00:09.000Z",
-      "source": "Detroit Lions",
-      "sourceId": "rss-team-det",
-      "category": "headline",
-      "team": "DET"
-    },
-    {
-      "id": "headline:32ea758317433d91",
-      "title": "Jacardia Wright Shows Off Explosiveness & Big-Play Ability In Preseason Matchup Against Titans",
-      "url": "https://www.seahawks.com/news/jacardia-wright-shows-off-explosiveness-big-play-ability-in-preseason-matchup-against-titans",
-      "publishedAt": "2026-08-24T06:48:14.000Z",
-      "source": "Seattle Seahawks",
-      "sourceId": "rss-team-sea",
-      "category": "headline",
-      "team": "SEA"
-    },
-    {
-      "id": "headline:03e7b4c077058efd",
-      "title": "Six Things That Stood Out for the Titans in Sunday's 19-16 Preseason Win Over the Seahawks",
-      "url": "https://www.tennesseetitans.com/news/six-things-that-stood-out-for-the-titans-in-sunday-s-19-16-win-over-the-seahawks",
-      "publishedAt": "2026-08-24T04:42:25.000Z",
-      "source": "Tennessee Titans",
-      "sourceId": "rss-team-ten",
-      "category": "headline",
-      "team": "TEN"
-    },
-    {
-      "id": "headline:881e59ffc4198ff3",
-      "title": "Mailbag: Reviewing Vikings Week vs. Ravens; Young Defensive Linemen Noticed by Fans",
-      "url": "https://www.vikings.com/news/mailbag-reviewing-week-vs-ravens-young-defensive-linemen",
-      "publishedAt": "2026-08-24T02:06:08.000Z",
-      "source": "Minnesota Vikings",
-      "sourceId": "rss-team-min",
-      "category": "headline",
-      "team": "MIN"
-    },
-    {
-      "id": "headline:f04797c6ff84ad05",
-      "title": "Transcript: HC Jeff Hafley Press Conference - August 23",
-      "url": "https://www.miamidolphins.com/news/transcript-hc-jeff-hafley-press-conference-august-23",
-      "publishedAt": "2026-08-23T21:44:30.000Z",
-      "source": "Miami Dolphins",
-      "sourceId": "rss-team-mia",
-      "category": "headline",
-      "team": "MIA"
-    },
-    {
-      "id": "headline:30cd3563e1d6006a",
-      "title": "Camp Wrap, Day 17: \"Time to Lock In…\"",
-      "url": "https://www.jaguars.com/news/camp-wrap-day-17-time-to-lock-in",
-      "publishedAt": "2026-08-23T19:50:09.000Z",
-      "source": "Jacksonville Jaguars",
-      "sourceId": "rss-team-jax",
-      "category": "headline",
-      "team": "JAX"
-    },
-    {
       "id": "headline:8009c01b35a0d9ff",
       "title": "Takeaways from Buccaneers-Chiefs | Preseason Week 2",
       "url": "https://www.buccaneers.com/news/takeaways-from-buccaneers-chiefs-preseason-week-2",
@@ -1611,160 +1761,10 @@
       "team": "TB"
     },
     {
-      "id": "headline:98cdf0868987d8ca",
-      "title": "Buccaneers' Next Game: Tampa Bay Faces Jacksonville in Preseason Finale",
-      "url": "https://www.buccaneers.com/news/buccaneers-face-jaguars-preseason-finale-next-game-preseason-week-3-2026",
-      "publishedAt": "2026-08-23T17:31:18.000Z",
-      "source": "Tampa Bay Buccaneers",
-      "sourceId": "rss-team-tb",
-      "category": "headline",
-      "team": "TB"
-    },
-    {
-      "id": "headline:430a43363e1b2496",
-      "title": "Jalon Daniels' Confidence on Full Display vs. Kansas City",
-      "url": "https://www.buccaneers.com/news/bucs-qb-jalon-daniels-confidence-full-display-vs-kansas-city",
-      "publishedAt": "2026-08-23T16:13:00.000Z",
-      "source": "Tampa Bay Buccaneers",
-      "sourceId": "rss-team-tb",
-      "category": "headline",
-      "team": "TB"
-    },
-    {
       "id": "headline:022767c113b9fa16",
       "title": "Chiefs Fall to Buccaneers, 16-15, in Preseason Matchup",
       "url": "https://www.chiefs.com/news/chiefs-fall-to-buccaneers-16-15-in-preseason-matchup",
       "publishedAt": "2026-08-23T14:33:28.000Z",
-      "source": "Kansas City Chiefs",
-      "sourceId": "rss-team-kc",
-      "category": "headline",
-      "team": "KC"
-    },
-    {
-      "id": "headline:5c2ab559eb48e6c1",
-      "title": "TWENTYMAN: Preseason Week 2 observations",
-      "url": "https://www.detroitlions.com/news/twentyman-preseason-week-2-observations-gillhoward-meeks-wonnum",
-      "publishedAt": "2026-08-23T11:00:05.000Z",
-      "source": "Detroit Lions",
-      "sourceId": "rss-team-det",
-      "category": "headline",
-      "team": "DET"
-    },
-    {
-      "id": "headline:3687d170201a5c2b",
-      "title": "Cardinals Still Seek Game Of Operation In Preseason Loss To Cowboys",
-      "url": "https://www.azcardinals.com/news/cardinals-still-seek-game-of-operation-in-preseason-loss-to-cowboys",
-      "publishedAt": "2026-08-23T05:53:00.000Z",
-      "source": "Arizona Cardinals",
-      "sourceId": "rss-team-ari",
-      "category": "headline",
-      "team": "ARI"
-    },
-    {
-      "id": "headline:f5bfb6da9fd0168a",
-      "title": "Caleb Williams believes Bears offense will be 'rolling' heading into regular season",
-      "url": "https://www.chicagobears.com/news/caleb-williams-believes-bears-offense-will-be-rolling-heading-into-regular-season",
-      "publishedAt": "2026-08-23T04:45:00.000Z",
-      "source": "Chicago Bears",
-      "sourceId": "rss-team-chi",
-      "category": "headline",
-      "team": "CHI"
-    },
-    {
-      "id": "headline:3039cff8cd6dc746",
-      "title": "Game Recap: Bears fall to Bengals in second preseason game",
-      "url": "https://www.chicagobears.com/news/game-recap-bears-fall-to-bengals-in-second-preseason-game",
-      "publishedAt": "2026-08-23T04:13:00.000Z",
-      "source": "Chicago Bears",
-      "sourceId": "rss-team-chi",
-      "category": "headline",
-      "team": "CHI"
-    },
-    {
-      "id": "headline:42e85d0c4bb9918d",
-      "title": "President and CEO Kevin Warren talks Bears on preseason broadcast",
-      "url": "https://www.chicagobears.com/news/president-and-ceo-kevin-warren-talks-bears-on-preseason-broadcast-2026",
-      "publishedAt": "2026-08-23T04:02:00.000Z",
-      "source": "Chicago Bears",
-      "sourceId": "rss-team-chi",
-      "category": "headline",
-      "team": "CHI"
-    },
-    {
-      "id": "headline:d1217217189e0fd3",
-      "title": "Top 3 things we learned from Bills vs. Browns | Preseason Week 2 2026",
-      "url": "https://www.buffalobills.com/news/top-3-things-we-learned-from-bills-vs-browns-preseason-week-2-2026",
-      "publishedAt": "2026-08-22T22:59:30.000Z",
-      "source": "Buffalo Bills",
-      "sourceId": "rss-team-buf",
-      "category": "headline",
-      "team": "BUF"
-    },
-    {
-      "id": "headline:c1b7554abd6d1665",
-      "title": "'This is definitely a blessing' | The Bills reflect on the rollercoaster of emotions after Week 2 preseason victory",
-      "url": "https://www.buffalobills.com/news/this-is-definitely-a-blessing-the-bills-reflect-on-the-rollercoaster-of-emotions-after-week-2-preseason-victory",
-      "publishedAt": "2026-08-22T22:46:18.000Z",
-      "source": "Buffalo Bills",
-      "sourceId": "rss-team-buf",
-      "category": "headline",
-      "team": "BUF"
-    },
-    {
-      "id": "headline:bcf0f4e94fc2e61e",
-      "title": "Vikings Rookies Caleb Banks & Domonique Orange Refine Impact vs. Ravens",
-      "url": "https://www.vikings.com/news/rookies-caleb-banks-domonique-orange-impact-vs-ravens",
-      "publishedAt": "2026-08-22T22:37:54.000Z",
-      "source": "Minnesota Vikings",
-      "sourceId": "rss-team-min",
-      "category": "headline",
-      "team": "MIN"
-    },
-    {
-      "id": "headline:6839d3e7c29222f9",
-      "title": "Michael Penix Jr. cleared for full-team work",
-      "url": "https://www.atlantafalcons.com/news/michael-penix-jr-cleared-for-full-team-work",
-      "publishedAt": "2026-08-22T20:51:53.000Z",
-      "source": "Atlanta Falcons",
-      "sourceId": "rss-team-atl",
-      "category": "headline",
-      "team": "ATL"
-    },
-    {
-      "id": "headline:d484e87cf91cf841",
-      "title": "Houston Texans Transactions (8-22-2026)",
-      "url": "https://www.houstontexans.com/news/houston-texans-transactions-8-22-2026",
-      "publishedAt": "2026-08-22T15:40:00.000Z",
-      "source": "Houston Texans",
-      "sourceId": "rss-team-hou",
-      "category": "headline",
-      "team": "HOU"
-    },
-    {
-      "id": "headline:a54fd3e55fca5436",
-      "title": "How to Watch and Listen | Preseason Week 2: Chiefs vs. Buccaneers",
-      "url": "https://www.chiefs.com/news/how-to-watch-and-listen-preseason-week-2-chiefs-vs-buccaneers",
-      "publishedAt": "2026-08-22T13:12:43.000Z",
-      "source": "Kansas City Chiefs",
-      "sourceId": "rss-team-kc",
-      "category": "headline",
-      "team": "KC"
-    },
-    {
-      "id": "headline:4907d1d4b5659d12",
-      "title": "3 things to know from Broncos' preseason game against the Packers",
-      "url": "https://www.denverbroncos.com/news/3-things-to-know-from-broncos-preseason-game-against-the-packers",
-      "publishedAt": "2026-08-22T06:17:42.000Z",
-      "source": "Denver Broncos",
-      "sourceId": "rss-team-den",
-      "category": "headline",
-      "team": "DEN"
-    },
-    {
-      "id": "headline:7762e2d2ef4c4b83",
-      "title": "Five Observations from Thursday's Practice | Chiefs Training Camp 8/20",
-      "url": "https://www.chiefs.com/news/five-observations-from-thursday-s-practice-chiefs-training-camp-8-20",
-      "publishedAt": "2026-08-20T19:33:43.000Z",
       "source": "Kansas City Chiefs",
       "sourceId": "rss-team-kc",
       "category": "headline",
@@ -1811,5 +1811,5 @@
       "team": "DAL"
     }
   ],
-  "snapshotId": "20260825-98cb5d6492"
+  "snapshotId": "20260826-568dc15ed3"
 }
