@@ -20,6 +20,10 @@ redistributed proprietary top-300 dataset.
 - Filters by position and injury/status, with player/team search.
 - Shows market confidence, ADP value, bye weeks, source freshness, venue/surface
   exposure, short-rest/international context, and historical split sample sizes.
+- Adds an evidence-layered environment lab for every player's 17-game schedule:
+  NASA 2001–2020 venue climate normals, NOAA categorical extended outlooks,
+  NWS/MET Norway forecasts only inside their credible horizons, and free
+  nflverse market-line snapshots. A climate normal is never called a forecast.
 - Supports undo, keyboard shortcuts, versioned local persistence, cross-tab
   updates, and JSON import/export.
 - Includes an ongoing research digest, explicit stale/degraded-source warnings,
@@ -50,11 +54,19 @@ npm run data:refresh
 
 The refresh fetches Fantasy Football Calculator ADP once per scoring format,
 Sleeper player/status metadata once, current Sleeper trends, the nflverse 2026
-schedule, all 32 official club RSS feeds, and ESPN's NFL RSS feed. It validates
-the result before atomically replacing the published snapshot. A malformed news
-feed is isolated and labeled while current core observations continue to publish.
+schedule/market-line snapshot, NOAA Climate Prediction Center outlooks, any
+in-horizon NWS/MET Norway game forecasts, all 32 official club RSS feeds, and
+ESPN's NFL RSS feed. It combines those with the checked-in NASA climate-normal
+baseline and validates all four published JSON files before atomically replacing
+the snapshot. A malformed news feed is isolated and labeled while current core
+observations continue to publish.
+
+`npm run data:refresh:environment` updates schedule, outlook, forecast, and
+market context without making another daily ADP or all-player request.
 `npm run data:refresh:history` additionally rebuilds three-season
-roof/surface/rest split summaries from nflverse weekly stats.
+roof/surface/rest/temperature/wind split summaries from nflverse weekly stats.
+`npm run model:lab` reruns the walk-forward weather ablation and seeded mock-draft
+stress suite documented in `research/MODEL_LAB.md`.
 
 See [data sources](docs/DATA_SOURCES.md), [model design](docs/MODEL.md),
 [operations](docs/OPERATIONS.md), the [draft-day checklist](docs/DRAFT_DAY.md),

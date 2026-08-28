@@ -8,7 +8,7 @@ const feeds = [
   { team: null, name: "ESPN NFL", domain: "espn.com", url: "https://www.espn.com/espn/rss/nfl/news", espn: true },
 ];
 
-const rss = (title, link) => `<?xml version="1.0"?><rss><channel><item><title>${title}</title><link>${link}</link><pubDate>Sun, 23 Aug 2026 12:00:00 GMT</pubDate></item></channel></rss>`;
+const rss = (title, link, publishedAt = "Sun, 23 Aug 2026 12:00:00 GMT") => `<?xml version="1.0"?><rss><channel><item><title>${title}</title><link>${link}</link><pubDate>${publishedAt}</pubDate></item></channel></rss>`;
 
 test("feed source IDs are stable for club and publisher feeds", () => {
   assert.equal(feedSourceId(feeds[0]), "rss-team-sf");
@@ -50,4 +50,32 @@ test("a failed feed with no prior snapshot is reported with an empty isolated re
   assert.equal(results[0].headlines.length, 0);
   assert.equal(failures.length, 1);
   assert.equal(failures[0].error.includes("<script>"), false);
+});
+
+test("a future-dated publisher feed is isolated without rewriting its timestamp or blocking other feeds", async () => {
+  const priorResearch = {
+    items: [{
+      id: "headline:prior-sf",
+      title: "Prior verified team headline",
+      url: "https://www.49ers.com/news/prior-verified-headline",
+      publishedAt: "2026-08-26T12:00:00.000Z",
+      source: "San Francisco 49ers",
+      sourceId: "rss-team-sf",
+      category: "headline",
+      team: "SF",
+    }],
+  };
+  const { results, failures } = await fetchFeedSet(feeds, {
+    priorResearch,
+    observedAt: "2026-08-27T12:00:00.000Z",
+    fetchText: async (url) => url.includes("espn.com")
+      ? { text: rss("Valid ESPN headline", "https://www.espn.com/nfl/story/_/id/2/valid", "Thu, 27 Aug 2026 11:30:00 GMT"), finalUrl: url, contentType: "application/rss+xml" }
+      : { text: rss("Publisher-clock headline", "https://www.49ers.com/news/future-clock", "Thu, 27 Aug 2026 14:30:00 GMT"), finalUrl: url, contentType: "application/rss+xml" },
+  });
+
+  assert.deepEqual(failures.map(({ feed }) => feed.name), ["San Francisco 49ers"]);
+  assert.equal(results[0].usedFallback, true);
+  assert.equal(results[0].headlines[0].publishedAt, "2026-08-26T12:00:00.000Z");
+  assert.equal(results[1].usedFallback, false);
+  assert.equal(results[1].headlines[0].publishedAt, "2026-08-27T11:30:00.000Z");
 });

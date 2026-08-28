@@ -6,7 +6,10 @@
 - `pages.yml`: validates freshness during draft season, builds, and deploys the
   static site from `main`. It is the single main-push validation/deploy job.
 - `refresh-data.yml`: runs off the top of the hour, validates a compact refresh,
-  and opens or updates `automation/data-refresh` for review.
+  and opens or updates `automation/data-refresh` for review. Because GitHub does
+  not automatically run ordinary `pull_request` workflows for a pull request
+  opened by `GITHUB_TOKEN`, the refresh workflow explicitly dispatches `ci.yml`
+  against that branch after it pushes the candidate snapshot.
 
 All jobs use the one-CPU standard `ubuntu-slim` runner, pin actions to reviewed
 commit SHAs, have explicit timeouts, avoid caches and retained general-purpose
@@ -32,6 +35,9 @@ Before merging a refresh pull request:
 - A malformed/blocked RSS feed is isolated, labeled `error` in provenance, and
   carries forward only that feed's last-known-good linked headlines. It cannot
   block current ADP, status, trend, or schedule publication.
+- A publisher feed with a headline timestamp more than one hour ahead of the
+  runner clock follows the same isolated fallback. The timestamp is never
+  silently clamped or rewritten.
 - A partial refresh is rejected; temporary files are not published.
 - If Actions cannot open a pull request because repository settings deny it, the
   generated branch remains reviewable and the job fails before anything reaches
@@ -39,6 +45,16 @@ Before merging a refresh pull request:
 - Scheduled workflows can be delayed and may be disabled after prolonged public
   repository inactivity. `workflow_dispatch` is always available for a manual
   refresh.
+
+For a schedule/weather-only update that must not spend the daily FFC/Sleeper
+request budget, run:
+
+```sh
+npm run data:refresh:environment
+```
+
+This reuses the last published player/status/ADP observations, then rebuilds the
+schedule, climate, outlook, in-horizon forecast, and market context atomically.
 
 ## Draft-season switch
 

@@ -30,8 +30,8 @@ export const COMPONENT_META = Object.freeze({
   urgency: { label: "Next-pick urgency", description: "ADP and market volatility estimate of whether the player lasts." },
   role: { label: "Role signal", description: "Conservative active/depth metadata; not a projection." },
   availability: { label: "Availability", description: "Source-labeled injury/status signal, not a medical conclusion." },
-  schedule: { label: "Schedule context", description: "Small roof, rest, and international-game stability modifier." },
-  splits: { label: "Personal splits", description: "Shrunk historical roof/surface fit with sample-size guardrails." },
+  schedule: { label: "Schedule + market", description: "Small roof, rest, international, and available team-implied-total context." },
+  splits: { label: "Personal environment", description: "Shrunk historical roof, surface, cold, and wind fit with sample-size guardrails." },
 });
 
 const FLEX_POSITIONS = new Set(["RB", "WR", "TE"]);
@@ -178,6 +178,13 @@ function allowsAnotherLateStarter(player, roster, league) {
   return draftedAtPosition < configuredSlots;
 }
 
+function allowsBalancedReserve(player, roster, league) {
+  if (!["QB", "TE"].includes(player.position)) return true;
+  const configuredStarters = Math.max(0, Number(league.roster[player.position]) || 0);
+  const draftedAtPosition = roster.filter((slot) => slot.player?.position === player.position).length;
+  return draftedAtPosition < configuredStarters + 1;
+}
+
 function roleScore(player) {
   if (["D/ST", "K"].includes(player.position)) return 68;
   const order = Number(player.depthChartOrder);
@@ -238,7 +245,11 @@ function scheduleScore(player) {
   if (!context?.games) return 50;
   const domeRate = context.domeGames / context.games;
   const warningPenalty = Math.min(8, (context.metadataWarnings?.length ?? 0) * 3);
-  return clamp(52 + domeRate * 16 - context.shortWeeks * 3.5 - context.internationalGames * 1.8 - warningPenalty);
+  const environment = player.environmentContext;
+  const marketAdjustment = (environment?.marketGames ?? 0) >= 4
+    ? clamp((Number(environment.marketPulseScore) - 50) * 0.45, -5, 5)
+    : 0;
+  return clamp(52 + domeRate * 16 - context.shortWeeks * 3.5 - context.internationalGames * 1.8 - warningPenalty + marketAdjustment);
 }
 
 function splitScore(player) {
@@ -319,7 +330,7 @@ export function rankPlayers({ players, draftedIds = new Set(), myHistory = [], p
   const available = players.filter((player) => (
     !draftedIds.has(player.id)
     && activeMarket(player, league.scoring)
-    && (!managerTurn || allowsAnotherLateStarter(player, roster, league))
+    && (!managerTurn || (allowsAnotherLateStarter(player, roster, league) && allowsBalancedReserve(player, roster, league)))
   ));
   const nextPick = nextManagerPick(currentPick, league, { strictlyAfter: isManagerPick(currentPick, league) })
     ?? league.teams * league.rounds;

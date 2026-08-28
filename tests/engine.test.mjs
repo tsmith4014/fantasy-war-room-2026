@@ -141,7 +141,7 @@ test("position-specific roster need delays defense and kicker while moderating Q
   assert.equal(late.get("K"), 62);
 });
 
-test("a third quarterback or tight end receives no additional roster-need credit", () => {
+test("a third quarterback or tight end is suppressed on the manager turn", () => {
   const pool = [
     player("qb1", "Quarterback One", "QB", 10),
     player("qb2", "Quarterback Two", "QB", 20),
@@ -163,8 +163,8 @@ test("a third quarterback or tight end receives no additional roster-need credit
     currentPick: 100,
   }).map((entry) => [entry.player.id, entry]));
 
-  assert.equal(results.get("qb3").components.need, 0);
-  assert.equal(results.get("te3").components.need, 0);
+  assert.equal(results.has("qb3"), false);
+  assert.equal(results.has("te3"), false);
 });
 
 test("the final two manager turns complete kicker and defense without recommending duplicates", () => {

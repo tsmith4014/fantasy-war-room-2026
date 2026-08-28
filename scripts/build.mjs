@@ -26,6 +26,7 @@ const required = [
   "data/manifest.json",
   "data/players.json",
   "data/research.json",
+  "data/environment.json",
   `downloads/${workbookName}`,
 ];
 

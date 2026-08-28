@@ -5,7 +5,7 @@ import path from "node:path";
 const root = path.resolve(import.meta.dirname, "..");
 const dataDir = path.join(root, "site", "data");
 const read = async (name) => JSON.parse(await fs.readFile(path.join(dataDir, name), "utf8"));
-const [manifest, payload, research] = await Promise.all([read("manifest.json"), read("players.json"), read("research.json")]);
+const [manifest, payload, research, environment] = await Promise.all([read("manifest.json"), read("players.json"), read("research.json"), read("environment.json")]);
 const errors = [];
 const warnings = [];
 const players = payload.players;
@@ -19,18 +19,22 @@ const boundedNumber = (value, min, max) => typeof value === "number" && Number.i
 if (manifest.schemaVersion !== 1) errors.push("manifest.schemaVersion must be 1");
 if (payload.schemaVersion !== 1) errors.push("players.schemaVersion must be 1");
 if (research.schemaVersion !== 1) errors.push("research.schemaVersion must be 1");
-if (manifest.season !== 2026 || payload.season !== manifest.season) errors.push("bundle season must be 2026 and match across files");
+if (environment.schemaVersion !== 1) errors.push("environment.schemaVersion must be 1");
+if (manifest.season !== 2026 || payload.season !== manifest.season || environment.season !== manifest.season) errors.push("bundle season must be 2026 and match across files");
 if (!manifest.snapshotId || !manifest.generatedAt || Number.isNaN(new Date(manifest.generatedAt).getTime())) errors.push("manifest snapshot metadata is invalid");
-if (payload.snapshotId !== manifest.snapshotId || research.snapshotId !== manifest.snapshotId) errors.push("bundle snapshot IDs do not match");
-if (payload.generatedAt !== manifest.generatedAt || research.generatedAt !== manifest.generatedAt) errors.push("bundle generatedAt timestamps do not match");
+if (payload.snapshotId !== manifest.snapshotId || research.snapshotId !== manifest.snapshotId || environment.snapshotId !== manifest.snapshotId) errors.push("bundle snapshot IDs do not match");
+if (payload.generatedAt !== manifest.generatedAt || research.generatedAt !== manifest.generatedAt || environment.generatedAt !== manifest.generatedAt) errors.push("bundle generatedAt timestamps do not match");
 if (!research.observedAt || Number.isNaN(Date.parse(research.observedAt)) || Date.parse(research.observedAt) > Date.parse(research.generatedAt)) errors.push("research observation timestamp is invalid");
 const payloadForHash = structuredClone(payload);
 const researchForHash = structuredClone(research);
+const environmentForHash = structuredClone(environment);
 delete payloadForHash.snapshotId;
 delete researchForHash.snapshotId;
+delete environmentForHash.snapshotId;
 const digest = crypto.createHash("sha256")
   .update(`${JSON.stringify(payloadForHash, null, 2)}\n`)
   .update(`${JSON.stringify(researchForHash, null, 2)}\n`)
+  .update(`${JSON.stringify(environmentForHash, null, 2)}\n`)
   .digest("hex")
   .slice(0, 10);
 const expectedSnapshotId = `${manifest.generatedAt.slice(0, 10).replaceAll("-", "")}-${digest}`;
@@ -38,7 +42,7 @@ if (manifest.snapshotId !== expectedSnapshotId) errors.push("bundle snapshot dig
 if (!Array.isArray(manifest.sources) || manifest.sources.length < 3) errors.push("manifest needs at least three attributed sources");
 if (new Set((manifest.sources ?? []).map((source) => source.id)).size !== (manifest.sources ?? []).length) errors.push("manifest source IDs are not unique");
 const sourceIds = new Set((manifest.sources ?? []).map((source) => source.id));
-if (manifest.files?.players !== "players.json" || manifest.files?.research !== "research.json") errors.push("manifest file map is invalid");
+if (manifest.files?.players !== "players.json" || manifest.files?.research !== "research.json" || manifest.files?.environment !== "environment.json") errors.push("manifest file map is invalid");
 if (!boundedNumber(manifest.leaguePreset?.teams, 8, 16) || !boundedNumber(manifest.leaguePreset?.rounds, 10, 24) || manifest.leaguePreset?.scoring !== "ppr") errors.push("manifest league preset is invalid");
 for (const key of ["markets", "playerStatus", "trends", "headlines", "history", "schedule"]) {
   if (!validTimestamp(manifest.observationTimes?.[key])) errors.push(`manifest observation time ${key} is missing or invalid`);
@@ -63,6 +67,58 @@ for (const [index, source] of (manifest.sources ?? []).entries()) {
 }
 if (research.observedAt !== manifest.observationTimes?.headlines) errors.push("headline observation timestamps do not match");
 for (const sourceId of research.trends?.sourceIds ?? []) if (!sourceIds.has(sourceId)) errors.push(`trend source is missing: ${sourceId}`);
+const nflTeams = new Set(["ARI", "ATL", "BAL", "BUF", "CAR", "CHI", "CIN", "CLE", "DAL", "DEN", "DET", "GB", "HOU", "IND", "JAX", "KC", "LV", "LAC", "LAR", "MIA", "MIN", "NE", "NO", "NYG", "NYJ", "PHI", "PIT", "SF", "SEA", "TB", "TEN", "WAS"]);
+if (environment.climateBaseline?.period !== "2001-2020" || environment.climateBaseline?.sourceId !== "nasa-power-climatology" || !validTimestamp(environment.climateBaseline?.retrievedAt)) errors.push("environment climate baseline metadata is invalid");
+if (!sourceIds.has(environment.climateBaseline?.sourceId)) errors.push("environment climate source is missing");
+if (!Array.isArray(environment.outlookCoverage) || !isObject(environment.forecastCoverage) || !Array.isArray(environment.forecastCoverage.games)) errors.push("environment coverage metadata is invalid");
+for (const [index, outlook] of (environment.outlookCoverage ?? []).entries()) {
+  if (!sourceIds.has(outlook.sourceId) || !["6-10 day", "8-14 day", "week 3-4"].includes(outlook.horizon) || !["temperature", "precipitation"].includes(outlook.dimension)
+    || !/^2026-\d{2}-\d{2}$/.test(outlook.issuedDate ?? "") || !/^2026-\d{2}-\d{2}$/.test(outlook.validStart ?? "") || !/^2026-\d{2}-\d{2}$/.test(outlook.validEnd ?? "")
+    || outlook.validStart > outlook.validEnd || !Number.isInteger(outlook.featureCount) || outlook.featureCount < 1 || outlook.featureCount > 500) errors.push(`environment.outlookCoverage[${index}] is invalid`);
+}
+const environmentTeams = Object.entries(environment.teams ?? {});
+if (environmentTeams.length !== 32 || environmentTeams.some(([team]) => !nflTeams.has(team))) errors.push("environment must contain all 32 NFL teams");
+const environmentGameCounts = new Map();
+for (const [team, teamPayload] of environmentTeams) {
+  const summary = teamPayload?.summary;
+  const games = teamPayload?.games;
+  if (!isObject(summary) || summary.team !== team || summary.games !== 17 || !Array.isArray(games) || games.length !== 17) {
+    errors.push(`environment team payload is invalid for ${team}`);
+    continue;
+  }
+  for (const key of ["outdoorClimateGames", "coldClimateGames", "hotClimateGames", "wetClimateGames", "windyClimateGames", "outlookGames", "forecastGames", "marketGames"]) {
+    if (!Number.isInteger(summary[key]) || summary[key] < 0 || summary[key] > 17) errors.push(`environment ${team} summary.${key} is invalid`);
+  }
+  for (const key of ["averageOutdoorClimateTemperatureF", "averageOutdoorClimatePrecipitationMmPerDay", "averageOutdoorClimateWindMph", "averageMarketImpliedPoints"]) {
+    if (summary[key] !== null && !Number.isFinite(summary[key])) errors.push(`environment ${team} summary.${key} is invalid`);
+  }
+  if (!boundedNumber(summary.marketPulseScore, 40, 60) || !Array.isArray(summary.sourceIds) || summary.sourceIds.some((sourceId) => !sourceIds.has(sourceId))) errors.push(`environment ${team} summary metadata is invalid`);
+  const weeks = new Set();
+  for (const [index, game] of games.entries()) {
+    const label = `environment.teams.${team}.games[${index}]`;
+    if (typeof game.gameId !== "string" || !game.gameId || weeks.has(game.week) || !Number.isInteger(game.week) || game.week < 1 || game.week > 18) errors.push(`${label} identity/week is invalid`);
+    weeks.add(game.week);
+    environmentGameCounts.set(game.gameId, (environmentGameCounts.get(game.gameId) ?? 0) + 1);
+    if (!/^202(?:6|7)-\d{2}-\d{2}$/.test(game.gameday ?? "") || !validTimestamp(game.kickoffUtc) || !nflTeams.has(game.opponent) || typeof game.home !== "boolean" || typeof game.stadiumId !== "string" || !game.stadiumId || typeof game.stadium !== "string" || !game.stadium) errors.push(`${label} schedule metadata is invalid`);
+    if (!new Set(["US", "GB", "ES", "AU", "MX", "DE", "FR", "BR"]).has(game.countryCode) || !new Set(["dome", "outdoor", "unknown"]).has(game.roof) || !new Set(["grass", "hybrid", "artificial", "unknown"]).has(game.surface)) errors.push(`${label} venue metadata is invalid`);
+    const normal = game.climateNormal;
+    if (!isObject(normal) || normal.baselinePeriod !== "2001-2020" || !["JAN", "SEP", "OCT", "NOV", "DEC"].includes(normal.month)
+      || !boundedNumber(normal.temperatureF, -50, 130) || !boundedNumber(normal.precipitationMmPerDay, 0, 30) || !boundedNumber(normal.windMph, 0, 50)
+      || normal.sourceId !== "nasa-power-climatology" || !/not a game forecast/i.test(normal.label ?? "")) errors.push(`${label}.climateNormal is invalid`);
+    for (const [dimension, outlook] of Object.entries(game.outlook ?? {})) {
+      if (!["temperature", "precipitation"].includes(dimension) || !new Set(["above-normal", "below-normal", "near-normal", "equal-chances"]).has(outlook.category)
+        || !boundedNumber(outlook.probability, 0, 100) || !sourceIds.has(outlook.sourceId) || !/not an exact forecast/i.test(outlook.label ?? "")
+        || game.gameday < outlook.validStart || game.gameday > outlook.validEnd) errors.push(`${label}.outlook.${dimension} is invalid`);
+    }
+    if (game.forecast !== null) {
+      if (!isObject(game.forecast) || game.forecast.kind !== "game-window-forecast" || !validTimestamp(game.forecast.issuedAt) || !validTimestamp(game.forecast.windowStart) || !sourceIds.has(game.forecast.sourceId)) errors.push(`${label}.forecast is invalid`);
+      for (const key of ["temperatureF", "windMph", "precipitationProbability", "precipitationMm"]) if (game.forecast[key] !== null && game.forecast[key] !== undefined && !Number.isFinite(game.forecast[key])) errors.push(`${label}.forecast.${key} is invalid`);
+    }
+    if (game.market !== null && (!isObject(game.market) || !boundedNumber(game.market.totalPoints, 20, 80) || !boundedNumber(game.market.spread, -50, 50)
+      || !boundedNumber(game.market.teamImpliedPoints, 0, 60) || !validTimestamp(game.market.observedAt) || game.market.sourceId !== "nflverse-schedules" || !/not a projection guarantee/i.test(game.market.label ?? ""))) errors.push(`${label}.market is invalid`);
+  }
+}
+if ([...environmentGameCounts.values()].some((count) => count !== 2) || environmentGameCounts.size !== 272) errors.push("environment games must appear exactly once for each team in all 272 matchups");
 if (!Array.isArray(players) || players.length < 180 || players.length > 500) errors.push(`player count ${players?.length ?? 0} is outside 180..500`);
 
 const ids = new Set();
@@ -98,6 +154,10 @@ for (const [index, player] of (players ?? []).entries()) {
     if (!sourceIds.has(player.splits.sourceId)) errors.push(`${label} historical source is missing`);
     if (player.splits.scheduleTeam !== player.team || player.splits.scheduleSeason !== manifest.season) errors.push(`${label} historical schedule fit is stale`);
     if (!Array.isArray(player.splits.seasons) || player.splits.seasons.some((season) => ![2023, 2024, 2025].includes(season)) || !Number.isInteger(player.splits.games) || player.splits.games < 6 || player.splits.games > 80 || !boundedNumber(player.splits.contextScore, 40, 60) || !boundedNumber(player.splits.confidence, 0, 0.65)) errors.push(`${label}.splits bounds are invalid`);
+    for (const bucketName of ["dome", "outdoor", "artificial", "naturalOrHybrid", "cold", "mild", "windy", "calm"]) {
+      const bucket = player.splits.buckets?.[bucketName];
+      if (!bucket || !Number.isInteger(bucket.games) || bucket.games < 0 || bucket.games > player.splits.games || (bucket.pprPerGame !== null && !boundedNumber(bucket.pprPerGame, -20, 100))) errors.push(`${label}.splits.buckets.${bucketName} is invalid`);
+    }
   }
 }
 

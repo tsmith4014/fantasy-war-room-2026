@@ -52,6 +52,7 @@ const filters = { search: "", position: "ALL", status: "ALL", queueOnly: false, 
 let manifest;
 let players = [];
 let research = { items: [] };
+let environment = { teams: {} };
 let playersById = new Map();
 let sessionPlayersById = new Map();
 let state;
@@ -71,18 +72,18 @@ async function loadJson(path) {
   return response.json();
 }
 
-function assertBundleConsistency(manifestPayload, playersPayload, researchPayload) {
-  if (!manifestPayload?.snapshotId || manifestPayload.snapshotId !== playersPayload?.snapshotId || manifestPayload.snapshotId !== researchPayload?.snapshotId) {
+function assertBundleConsistency(manifestPayload, playersPayload, researchPayload, environmentPayload) {
+  if (!manifestPayload?.snapshotId || manifestPayload.snapshotId !== playersPayload?.snapshotId || manifestPayload.snapshotId !== researchPayload?.snapshotId || manifestPayload.snapshotId !== environmentPayload?.snapshotId) {
     throw new Error("Published data bundle is inconsistent; reload after the deployment finishes.");
   }
-  if (manifestPayload.generatedAt !== playersPayload.generatedAt || manifestPayload.generatedAt !== researchPayload.generatedAt) {
+  if (manifestPayload.generatedAt !== playersPayload.generatedAt || manifestPayload.generatedAt !== researchPayload.generatedAt || manifestPayload.generatedAt !== environmentPayload.generatedAt) {
     throw new Error("Published data timestamps do not match; reload after the deployment finishes.");
   }
 }
 
 async function loadPublishedBundle() {
   bundleReadFromOfflineCache = false;
-  const paths = ["./data/manifest.json", "./data/players.json", "./data/research.json"];
+  const paths = ["./data/manifest.json", "./data/players.json", "./data/research.json", "./data/environment.json"];
   let lastError;
   for (const suffix of ["", `?bundle=${encodeURIComponent(String(Date.now()))}`]) {
     try {
@@ -161,10 +162,15 @@ function summarizeStateWarnings(warnings = []) {
 async function bootstrap() {
   setNetworkStatus("loading", "Loading data…");
   try {
-    const [manifestPayload, playersPayload, researchPayload] = await loadPublishedBundle();
+    const [manifestPayload, playersPayload, researchPayload, environmentPayload] = await loadPublishedBundle();
     manifest = manifestPayload;
-    players = playersPayload.players;
     research = researchPayload;
+    environment = environmentPayload;
+    players = playersPayload.players.map((player) => ({
+      ...player,
+      environmentContext: environment.teams?.[player.team]?.summary ?? null,
+      environmentSchedule: environment.teams?.[player.team]?.games ?? [],
+    }));
     playersById = new Map(players.map((player) => [player.id, player]));
 
     const loaded = loadState(buildMarketIdSets());
@@ -294,6 +300,14 @@ function renderDraftState() {
   elements["undo-button"].disabled = state.history.length === 0;
 }
 
+function takeOrWaitCue(recommendation) {
+  if (recommendation.requiredStarter) return { state: "take", text: "Take now · last safe starter turn" };
+  const pressure = ((recommendation.components?.urgency ?? 50) + (recommendation.components?.scarcity ?? 50)) / 2;
+  if (pressure >= 72) return { state: "take", text: "Take now signal · next-turn risk" };
+  if (pressure <= 45) return { state: "wait", text: "Wait signal · market cushion remains" };
+  return { state: "close", text: "Close call · use roster and queue preference" };
+}
+
 function renderRecommendations() {
   elements.recommendations.replaceChildren();
   const currentPick = state.history.length + 1;
@@ -307,6 +321,7 @@ function renderRecommendations() {
     const { player, market, score, reason } = recommendation;
     const queued = queueSet.has(player.id);
     const requiredStarter = recommendation.requiredStarter;
+    const decisionCue = takeOrWaitCue(recommendation);
     const card = createElement("article", { className: "recommendation-card", dataset: { position: player.position } });
     card.append(
       createElement("span", {
@@ -331,6 +346,7 @@ function renderRecommendations() {
         createElement("span", { text: "/ 100 war score" }),
       ]),
       createElement("p", { className: "recommendation-reason", text: sentenceCase(reason) }),
+      createElement("p", { className: "recommendation-decision", text: decisionCue.text, dataset: { state: decisionCue.state } }),
       createElement("div", { className: "recommendation-actions" }, [
         createElement("button", { className: "button primary", text: "Mine", disabled: !managerTurn, dataset: { action: "mine", playerId: player.id }, attributes: { type: "button", "aria-label": `Draft ${player.name} to my roster` } }),
         createElement("button", { className: "button secondary", text: "Taken", disabled: managerTurn || draftComplete, dataset: { action: "other", playerId: player.id }, attributes: { type: "button", "aria-label": `Mark ${player.name} drafted by an opponent` } }),
@@ -544,7 +560,11 @@ function renderFreshness() {
   const degradedSources = manifest.sources.filter((source) => source.freshness?.state === "error");
   const ageState = hours <= 36 ? "ok" : hours <= 72 ? "warn" : "error";
   const stateName = ageState === "ok" && degradedSources.length ? "warn" : ageState;
-  const ageLabel = hours < 1 ? "under 1h old" : hours < 48 ? `${Math.round(hours)}h old` : `${Math.floor(hours / 24)}d old`;
+  const ageLabel = hours < 1
+    ? "under 1 hour old"
+    : hours < 48
+      ? `${Math.round(hours)} hours old`
+      : `${Math.floor(hours / 24)} days old`;
   elements["freshness-status"].dataset.state = stateName;
   elements["freshness-status"].textContent = `Data ${ageLabel}`;
   elements["freshness-status"].title = `Oldest live input: ${formatDateTime(observedAt)}${degradedSources.length ? `; degraded: ${degradedSources.map((source) => source.name).join(", ")}` : ""}`;
@@ -554,7 +574,7 @@ function renderFreshness() {
       ? `Draft warning: core market or player-status inputs are ${ageLabel}. Refresh the research workflow before relying on this board.`
       : ageState === "warn"
         ? `Data check: the oldest live input is ${ageLabel}. Verify time-sensitive player news before drafting.`
-        : `${degradedSources.length} headline source${degradedSources.length === 1 ? " is" : "s are"} temporarily degraded. Current ADP and player status still loaded; last-known-good links are labeled in provenance.`,
+        : `${degradedSources.length} optional source${degradedSources.length === 1 ? " is" : "s are"} temporarily degraded. Current ADP and player status still loaded; unavailable context and last-known-good links are labeled in provenance.`,
   };
   renderDataAlert();
   const degradedLabel = degradedSources.length ? ` · ${degradedSources.length} degraded source${degradedSources.length === 1 ? "" : "s"}` : "";
@@ -600,6 +620,17 @@ function contextBadges(player) {
   if (context.shortWeeks) wrapper.append(createElement("span", { className: "tag warn", text: `${context.shortWeeks} short` }));
   if (context.internationalGames) wrapper.append(createElement("span", { className: "tag", text: `${context.internationalGames} intl` }));
   if (context.metadataWarnings?.length) wrapper.append(createElement("span", { className: "tag warn", text: "venue review" }));
+  const environmentContext = player.environmentContext;
+  if (environmentContext?.outdoorClimateGames) {
+    const temperature = round(environmentContext.averageOutdoorClimateTemperatureF, 0);
+    const precipitation = round(environmentContext.averageOutdoorClimatePrecipitationMmPerDay, 1);
+    const market = environmentContext.marketGames ? `; ${environmentContext.averageMarketImpliedPoints} average implied points across ${environmentContext.marketGames} lined games` : "";
+    wrapper.append(createElement("span", {
+      className: "tag environment-tag",
+      text: `Env ${temperature}°`,
+      attributes: { title: `2001–2020 outdoor venue climate normal: ${temperature}°F and ${precipitation} mm/day precipitation${market}. Open player details for the evidence layers.` },
+    }));
+  }
   return wrapper;
 }
 
@@ -814,6 +845,59 @@ function handleSettingsSubmit(event) {
   toast(`League and model settings updated. ${marketCount} players have this scoring market; context is capped at ${MAX_CONTEXT_SHARE * 100}%.`, "ok");
 }
 
+function outlookText(dimension, outlook) {
+  if (!outlook) return null;
+  const category = outlook.category.replaceAll("-", " ");
+  return `${dimension === "temperature" ? "Temp" : "Precip"} ${category} ${round(outlook.probability, 0)}%`;
+}
+
+function environmentGameCard(game) {
+  const layer = game.forecast ? "forecast" : game.outlook ? "outlook" : "climate";
+  const evidence = [];
+  if (game.forecast) {
+    if (Number.isFinite(game.forecast.temperatureF)) evidence.push(`${round(game.forecast.temperatureF, 0)}°F`);
+    if (Number.isFinite(game.forecast.precipitationProbability)) evidence.push(`${round(game.forecast.precipitationProbability, 0)}% precip`);
+    if (Number.isFinite(game.forecast.precipitationMm)) evidence.push(`${round(game.forecast.precipitationMm, 1)} mm`);
+    if (Number.isFinite(game.forecast.windMph)) evidence.push(`${round(game.forecast.windMph, 0)} mph wind`);
+  } else if (game.outlook) {
+    evidence.push(...[
+      outlookText("temperature", game.outlook.temperature),
+      outlookText("precipitation", game.outlook.precipitation),
+    ].filter(Boolean));
+  } else if (game.climateNormal) {
+    evidence.push(`${round(game.climateNormal.temperatureF, 0)}°F normal`, `${round(game.climateNormal.precipitationMmPerDay, 1)} mm/day`);
+  }
+  const opponent = `${game.home ? "vs" : "@"} ${game.opponent}`;
+  const layerLabel = layer === "forecast" ? "Game forecast" : layer === "outlook" ? "Extended outlook" : "Climate normal";
+  return createElement("article", {
+    className: "environment-game",
+    dataset: { layer },
+    attributes: { "aria-label": `Week ${game.week}, ${opponent}, ${layerLabel}` },
+  }, [
+    createElement("div", { className: "environment-game-heading" }, [
+      createElement("span", { text: `W${game.week}` }),
+      createElement("strong", { text: opponent }),
+    ]),
+    createElement("span", { className: "environment-layer-label", text: layerLabel }),
+    createElement("p", { text: evidence.join(" · ") || "No environment signal" }),
+    createElement("div", { className: "environment-game-meta" }, [
+      createElement("span", { text: `${game.roof} · ${game.surface}` }),
+      game.market ? createElement("span", { text: `${game.market.teamImpliedPoints} implied pts` }) : createElement("span", { text: "No line" }),
+    ]),
+  ]);
+}
+
+function environmentSourceLinks(games) {
+  const sourceById = new Map((manifest.sources ?? []).map((source) => [source.id, source]));
+  const ids = [...new Set(games.flatMap((game) => [
+    game.climateNormal?.sourceId,
+    ...Object.values(game.outlook ?? {}).map((outlook) => outlook.sourceId),
+    game.forecast?.sourceId,
+    game.market?.sourceId,
+  ]).filter(Boolean))];
+  return ids.map((id) => sourceById.get(id)).filter(Boolean);
+}
+
 function openPlayer(playerId) {
   const player = sessionPlayersById.get(playerId);
   if (!player) return;
@@ -845,13 +929,44 @@ function openPlayer(playerId) {
     content.append(createElement("p", { className: "callout", text: `Drafted at pick ${historyEntry.pick} with a ${historyEntry.scoreSnapshot.score} score on snapshot ${historyEntry.scoreSnapshot.snapshotId}.` }));
   }
 
+  const environmentContext = player.environmentContext;
+  const environmentSchedule = player.environmentSchedule ?? [];
+  if (environmentContext && environmentSchedule.length) {
+    const climateTemperature = Number.isFinite(environmentContext.averageOutdoorClimateTemperatureF) ? `${round(environmentContext.averageOutdoorClimateTemperatureF, 0)}°F` : "—";
+    const climatePrecipitation = Number.isFinite(environmentContext.averageOutdoorClimatePrecipitationMmPerDay) ? `${round(environmentContext.averageOutdoorClimatePrecipitationMmPerDay, 1)} mm/day` : "—";
+    const marketPulse = Number.isFinite(environmentContext.averageMarketImpliedPoints) ? `${environmentContext.averageMarketImpliedPoints} pts` : "—";
+    const strip = createElement("div", { className: "environment-strip", attributes: { role: "list", "aria-label": `${player.team} 2026 environment schedule` } }, environmentSchedule.map(environmentGameCard));
+    const links = environmentSourceLinks(environmentSchedule);
+    content.append(createElement("section", { className: "detail-section environment-lab" }, [
+      createElement("div", { className: "detail-heading-row" }, [
+        createElement("div", {}, [createElement("p", { className: "eyebrow", text: "New · evidence layered" }), createElement("h3", { text: "Environment & market lab" })]),
+        createElement("span", { className: "tag environment-tag", text: `${environmentContext.outlookGames} outlook · ${environmentContext.forecastGames} forecast` }),
+      ]),
+      createElement("div", { className: "player-summary-grid environment-summary" }, [
+        summaryTile("Outdoor climate avg", climateTemperature),
+        summaryTile("Precipitation normal", climatePrecipitation),
+        summaryTile("Cold / wet games", `${environmentContext.coldClimateGames} / ${environmentContext.wetClimateGames}`),
+        summaryTile("Avg implied points", marketPulse),
+      ]),
+      createElement("p", { className: "evidence-note", text: "Climate normal = NASA 2001–2020 venue baseline. Extended outlook = NOAA category and probability. Game forecast = provider window near kickoff. These layers never substitute for one another." }),
+      strip,
+      links.length ? createElement("p", { className: "environment-sources" }, [
+        createElement("span", { text: "Sources: " }),
+        ...links.flatMap((source, index) => [
+          index ? document.createTextNode(" · ") : null,
+          createElement("a", { text: source.name, href: source.url, target: "_blank", rel: "noreferrer" }),
+        ]).filter(Boolean),
+      ]) : null,
+    ]));
+  }
+
   const context = player.scheduleContext;
   content.append(createElement("section", { className: "detail-section" }, [
     createElement("h3", { text: "2026 schedule context" }),
     createElement("ul", { className: "detail-list" }, [
       createElement("li", { text: context ? `${context.domeGames} dome/closed-roof, ${context.outdoorGames} outdoor/open-roof, ${context.turfGames} artificial-surface games.` : "Schedule context unavailable." }),
       context ? createElement("li", { text: `${context.shortWeeks} short-rest and ${context.internationalGames} international games; ${context.metadataWarnings?.length ?? 0} venue metadata warnings.` }) : null,
-      createElement("li", { text: "These are low-weight exposure signals. Game-day weather is not inferred months in advance." }),
+      createElement("li", { text: "These are low-weight exposure signals. Historical climate normals and outlook categories are never presented as game-day weather." }),
     ]),
   ]));
 
@@ -873,9 +988,22 @@ function openPlayer(playerId) {
   }
 
   if (player.splits) {
+    const comparison = (left, right, label) => {
+      const first = player.splits.buckets?.[left];
+      const second = player.splits.buckets?.[right];
+      if (!first || !second) return null;
+      const values = first.pprPerGame === null || second.pprPerGame === null ? "insufficient scoring sample" : `${first.pprPerGame} vs ${second.pprPerGame} PPR/game`;
+      return createElement("li", { text: `${label}: ${first.games} vs ${second.games} games · ${values}.` });
+    };
     content.append(createElement("section", { className: "detail-section" }, [
       createElement("h3", { text: "Historical context sample" }),
-      createElement("p", { text: `${player.splits.games ?? 0} games across the available 2023–25 sample. Roof/surface fit confidence: ${round((player.splits.confidence ?? 0) * 100, 0)}%. This is observational and heavily shrunk toward neutral.` }),
+      createElement("p", { text: `${player.splits.games ?? 0} games across the available 2023–25 sample. Environment-fit confidence: ${round((player.splits.confidence ?? 0) * 100, 0)}%. This is observational, role-confounded, and heavily shrunk toward neutral.` }),
+      createElement("ul", { className: "detail-list split-comparisons" }, [
+        comparison("dome", "outdoor", "Dome vs outdoor"),
+        comparison("artificial", "naturalOrHybrid", "Artificial vs natural/hybrid"),
+        comparison("cold", "mild", "Cold vs mild outdoor"),
+        comparison("windy", "calm", "Windy vs calm outdoor"),
+      ]),
     ]));
   }
   elements["player-dialog"].showModal();

@@ -4,6 +4,16 @@ import path from "node:path";
 
 import { parseCsv } from "./lib/csv.mjs";
 import { fetchJsonOnce, fetchTextOnce, jsonText, readJsonIfPresent, withFileLock, writeAtomicBundle } from "./lib/data-io.mjs";
+import {
+  CPC_OUTLOOK_FEEDS,
+  buildEnvironmentPayload,
+  countryCodeForStadium,
+  kickoffUtc,
+  parseCpcOutlookKml,
+  summarizeMetCompact,
+  summarizeNwsHourly,
+  validateVenueClimate,
+} from "./lib/environment.mjs";
 import { feedSourceId, fetchFeedSet } from "./lib/feed-refresh.mjs";
 import { cleanUntrustedText } from "./lib/rss.mjs";
 
@@ -12,6 +22,7 @@ const DATA_DIR = path.join(ROOT, "site", "data");
 const RUN_LOCK_PATH = path.join(DATA_DIR, ".refresh-data.lock");
 const RESEARCH_DIR = path.join(ROOT, "research");
 const OVERRIDE_PATH = path.join(ROOT, "docs", "venue-overrides.json");
+const CLIMATE_PATH = path.join(ROOT, "docs", "venue-climate.json");
 const SEASON = 2026;
 const TEAMS = 10;
 const MAX_AGE_HOURS = 36;
@@ -80,9 +91,11 @@ const POSITION_MAP = Object.freeze({ DEF: "D/ST", DST: "D/ST", "D/ST": "D/ST", P
 
 const argumentsSet = new Set(process.argv.slice(2));
 for (const argument of argumentsSet) {
-  if (argument !== "--include-history") throw new Error(`Unknown option: ${argument}`);
+  if (!["--include-history", "--environment-only"].includes(argument)) throw new Error(`Unknown option: ${argument}`);
 }
 const includeHistory = argumentsSet.has("--include-history");
+const environmentOnly = argumentsSet.has("--environment-only");
+if (includeHistory && environmentOnly) throw new Error("--include-history and --environment-only cannot be combined");
 const generatedAt = new Date().toISOString();
 
 function canonicalTeam(value) {
@@ -126,12 +139,19 @@ function round(value, places = 2) {
   return Math.round((Number(value) + Number.EPSILON) * multiplier) / multiplier;
 }
 
-function computeSnapshotDigest(playersPayload, research) {
+function computeSnapshotDigest(playersPayload, research, environment) {
   const playersForHash = structuredClone(playersPayload);
   const researchForHash = structuredClone(research);
+  const environmentForHash = structuredClone(environment);
   delete playersForHash.snapshotId;
   delete researchForHash.snapshotId;
-  return crypto.createHash("sha256").update(jsonText(playersForHash)).update(jsonText(researchForHash)).digest("hex").slice(0, 10);
+  delete environmentForHash.snapshotId;
+  return crypto.createHash("sha256")
+    .update(jsonText(playersForHash))
+    .update(jsonText(researchForHash))
+    .update(jsonText(environmentForHash))
+    .digest("hex")
+    .slice(0, 10);
 }
 
 function sourceRecord({ id, name, url, kind, retrievedAt = generatedAt, records, attribution, terms, refreshPolicy, details, freshnessState = "fresh", maxAgeHours = MAX_AGE_HOURS }) {
@@ -363,25 +383,42 @@ function surfaceBucket(value) {
 
 function normalizeScheduleRows(csvText, venueConfig) {
   const rows = parseCsv(csvText);
-  const required = ["season", "game_type", "week", "gameday", "away_team", "home_team", "away_rest", "home_rest", "roof", "surface", "stadium"];
+  const required = ["game_id", "season", "game_type", "week", "gameday", "gametime", "away_team", "home_team", "away_rest", "home_rest", "roof", "surface", "stadium_id", "stadium", "spread_line", "total_line", "temp", "wind"];
   for (const header of required) if (!(header in rows[0])) throw new Error(`nflverse schedule is missing ${header}`);
 
   return rows.map((raw) => {
     const game = {
+      gameId: cleanUntrustedText(raw.game_id, 40),
       season: numberInRange(raw.season, 1999, 2100, "schedule season", { integer: true }),
       gameType: cleanUntrustedText(raw.game_type, 8),
       week: numberInRange(raw.week, 1, 25, "schedule week", { integer: true }),
       gameday: cleanUntrustedText(raw.gameday, 20),
+      gametime: cleanUntrustedText(raw.gametime, 8),
       awayTeam: canonicalTeam(raw.away_team),
       homeTeam: canonicalTeam(raw.home_team),
       awayRest: numberInRange(raw.away_rest, 0, 30, "away rest", { integer: true, nullable: true }),
       homeRest: numberInRange(raw.home_rest, 0, 30, "home rest", { integer: true, nullable: true }),
       roof: cleanUntrustedText(raw.roof, 40),
       surface: cleanUntrustedText(raw.surface, 60),
+      stadiumId: cleanUntrustedText(raw.stadium_id, 20),
       stadium: cleanUntrustedText(raw.stadium, 160),
+      spreadLine: numberInRange(raw.spread_line, -50, 50, "schedule spread line", { nullable: true }),
+      totalLine: numberInRange(raw.total_line, 0, 100, "schedule total line", { nullable: true }),
+      actualTemperatureF: numberInRange(raw.temp, -50, 130, "schedule temperature", { nullable: true }),
+      actualWindMph: numberInRange(raw.wind, 0, 100, "schedule wind", { nullable: true }),
+      marketObservedAt: generatedAt,
     };
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(game.gameday) || !game.stadium) throw new Error("nflverse schedule has invalid game metadata");
-    return applyVenueOverride(game, venueConfig.overrides);
+    const targetSeasonGame = game.season === SEASON && game.gameType === "REG";
+    if (!game.gameId || !/^\d{4}-\d{2}-\d{2}$/.test(game.gameday) || !game.stadium) throw new Error("nflverse schedule has invalid game metadata");
+    if (targetSeasonGame && (!/^\d{2}:\d{2}$/.test(game.gametime) || !game.stadiumId)) throw new Error(`nflverse ${SEASON} schedule has incomplete game metadata for ${game.gameId}`);
+    const corrected = applyVenueOverride(game, venueConfig.overrides);
+    return {
+      ...corrected,
+      kickoffUtc: kickoffUtc(corrected.gameday, corrected.gametime),
+      roofBucket: roofBucket(corrected.roof),
+      surfaceBucket: surfaceBucket(corrected.surface),
+      international: INTERNATIONAL_STADIUMS.has(canonicalVenue(corrected.stadium)),
+    };
   });
 }
 
@@ -446,14 +483,19 @@ function historyGameIndex(scheduleRows) {
   const index = new Map();
   for (const game of scheduleRows) {
     if (game.season < 2023 || game.season > 2025 || game.gameType !== "REG") continue;
-    const context = { roof: roofBucket(game.roof), surface: surfaceBucket(game.surface) };
+    const context = {
+      roof: roofBucket(game.roof),
+      surface: surfaceBucket(game.surface),
+      temperatureF: game.actualTemperatureF,
+      windMph: game.actualWindMph,
+    };
     index.set(`${game.season}:${game.week}:${game.awayTeam}`, context);
     index.set(`${game.season}:${game.week}:${game.homeTeam}`, context);
   }
   return index;
 }
 
-function refitHistoricalContext(split, scheduleContext, team) {
+function refitHistoricalContext(split, scheduleContext, team, environmentContext = null) {
   const dome = split.buckets?.dome;
   const outdoor = split.buckets?.outdoor;
   const artificial = split.buckets?.artificial;
@@ -462,15 +504,31 @@ function refitHistoricalContext(split, scheduleContext, team) {
   const surfaceUsable = (artificial?.games ?? 0) >= 6 && (natural?.games ?? 0) >= 6;
   const roofDelta = roofUsable ? dome.pprPerGame - outdoor.pprPerGame : 0;
   const surfaceDelta = surfaceUsable ? artificial.pprPerGame - natural.pprPerGame : 0;
+  const cold = split.buckets?.cold;
+  const mild = split.buckets?.mild;
+  const windy = split.buckets?.windy;
+  const calm = split.buckets?.calm;
+  const coldUsable = (cold?.games ?? 0) >= 6 && (mild?.games ?? 0) >= 6;
+  const windUsable = (windy?.games ?? 0) >= 6 && (calm?.games ?? 0) >= 6;
+  const coldDelta = coldUsable ? cold.pprPerGame - mild.pprPerGame : 0;
+  const windDelta = windUsable ? windy.pprPerGame - calm.pprPerGame : 0;
   const games = Number(split.games) || 0;
   const pairedMinimum = Math.max(
     roofUsable ? Math.min(dome.games, outdoor.games) : 0,
     surfaceUsable ? Math.min(artificial.games, natural.games) : 0,
+    coldUsable ? Math.min(cold.games, mild.games) : 0,
+    windUsable ? Math.min(windy.games, calm.games) : 0,
   );
-  const confidence = (roofUsable || surfaceUsable) ? Math.min(0.65, (pairedMinimum / 18) * Math.min(1, games / 40)) : 0;
+  const confidence = (roofUsable || surfaceUsable || coldUsable || windUsable) ? Math.min(0.65, (pairedMinimum / 18) * Math.min(1, games / 40)) : 0;
   const domeExposure = scheduleContext?.games ? scheduleContext.domeGames / scheduleContext.games - 0.5 : 0;
   const artificialExposure = scheduleContext?.games ? scheduleContext.turfGames / scheduleContext.games - 0.5 : 0;
-  const fit = roofDelta * domeExposure + surfaceDelta * artificialExposure;
+  const outdoorClimateGames = environmentContext?.outdoorClimateGames ?? 0;
+  const coldExposure = outdoorClimateGames ? environmentContext.coldClimateGames / outdoorClimateGames : 0;
+  const windExposure = outdoorClimateGames ? environmentContext.windyClimateGames / outdoorClimateGames : 0;
+  const fit = roofDelta * domeExposure
+    + surfaceDelta * artificialExposure
+    + coldDelta * coldExposure * 0.5
+    + windDelta * windExposure * 0.5;
   return {
     ...split,
     contextScore: round(Math.max(40, Math.min(60, 50 + fit * 0.75)), 1),
@@ -480,7 +538,7 @@ function refitHistoricalContext(split, scheduleContext, team) {
   };
 }
 
-function computeHistorySplits(statsDocuments, scheduleRows, players) {
+function computeHistorySplits(statsDocuments, scheduleRows, players, environmentTeams = {}) {
   const documents = Array.isArray(statsDocuments) ? statsDocuments : [statsDocuments];
   const rows = documents.flatMap((document) => parseCsv(document));
   const required = ["player_id", "season", "season_type", "week", "position", "fantasy_points_ppr"];
@@ -503,12 +561,20 @@ function computeHistorySplits(statsDocuments, scheduleRows, players) {
   const gameIndex = historyGameIndex(scheduleRows);
   const samples = new Map();
   const add = (id, bucket, value, nflverseId, matchMethod) => {
-    const playerSamples = samples.get(id) ?? { games: 0, dome: [], outdoor: [], artificial: [], natural: [], nflverseIds: new Set(), matchMethods: new Set() };
+    const playerSamples = samples.get(id) ?? { games: 0, dome: [], outdoor: [], artificial: [], natural: [], cold: [], mild: [], windy: [], calm: [], nflverseIds: new Set(), matchMethods: new Set() };
     playerSamples.games += 1;
     if (bucket.roof === "dome") playerSamples.dome.push(value);
     if (bucket.roof === "outdoor") playerSamples.outdoor.push(value);
     if (bucket.surface === "artificial") playerSamples.artificial.push(value);
     if (["grass", "hybrid"].includes(bucket.surface)) playerSamples.natural.push(value);
+    if (bucket.roof === "outdoor" && Number.isFinite(bucket.temperatureF)) {
+      if (bucket.temperatureF < 45) playerSamples.cold.push(value);
+      else playerSamples.mild.push(value);
+    }
+    if (bucket.roof === "outdoor" && Number.isFinite(bucket.windMph)) {
+      if (bucket.windMph >= 15) playerSamples.windy.push(value);
+      else playerSamples.calm.push(value);
+    }
     playerSamples.nflverseIds.add(nflverseId);
     playerSamples.matchMethods.add(matchMethod);
     samples.set(id, playerSamples);
@@ -543,10 +609,14 @@ function computeHistorySplits(statsDocuments, scheduleRows, players) {
     const outdoorAverage = sample.outdoor.length ? average(sample.outdoor) : null;
     const artificialAverage = sample.artificial.length ? average(sample.artificial) : null;
     const naturalAverage = sample.natural.length ? average(sample.natural) : null;
+    const coldAverage = sample.cold.length ? average(sample.cold) : null;
+    const mildAverage = sample.mild.length ? average(sample.mild) : null;
+    const windyAverage = sample.windy.length ? average(sample.windy) : null;
+    const calmAverage = sample.calm.length ? average(sample.calm) : null;
     player.splits = refitHistoricalContext({
       seasons: availableSeasons,
       games: sample.games,
-      guardrail: "At least six games are required on both sides of a comparison; confidence is capped at 65%.",
+      guardrail: "At least six games are required on both sides of a roof, surface, temperature, or wind comparison; confidence is capped at 65%.",
       identityMatch: [...sample.matchMethods].sort().join("+"),
       nflversePlayerIds: [...sample.nflverseIds].sort(),
       buckets: {
@@ -554,9 +624,13 @@ function computeHistorySplits(statsDocuments, scheduleRows, players) {
         outdoor: { games: sample.outdoor.length, pprPerGame: outdoorAverage === null ? null : round(outdoorAverage, 2) },
         artificial: { games: sample.artificial.length, pprPerGame: artificialAverage === null ? null : round(artificialAverage, 2) },
         naturalOrHybrid: { games: sample.natural.length, pprPerGame: naturalAverage === null ? null : round(naturalAverage, 2) },
+        cold: { games: sample.cold.length, pprPerGame: coldAverage === null ? null : round(coldAverage, 2), definition: "Outdoor game with recorded temperature below 45°F" },
+        mild: { games: sample.mild.length, pprPerGame: mildAverage === null ? null : round(mildAverage, 2), definition: "Outdoor game with recorded temperature at least 45°F" },
+        windy: { games: sample.windy.length, pprPerGame: windyAverage === null ? null : round(windyAverage, 2), definition: "Outdoor game with recorded wind at least 15 mph" },
+        calm: { games: sample.calm.length, pprPerGame: calmAverage === null ? null : round(calmAverage, 2), definition: "Outdoor game with recorded wind below 15 mph" },
       },
       sourceId: "nflverse-player-stats",
-    }, player.scheduleContext, player.team);
+    }, player.scheduleContext, player.team, environmentTeams[player.team]?.summary ?? null);
   }
   return {
     seasons: availableSeasons,
@@ -599,12 +673,162 @@ async function fetchFeeds(priorResearch) {
   const feeds = [...TEAM_FEEDS, { team: null, name: "ESPN NFL", domain: "espn.com", url: "https://www.espn.com/espn/rss/nfl/news", espn: true }];
   return fetchFeedSet(feeds, {
     priorResearch,
+    observedAt: generatedAt,
     fetchText: (url) => fetchTextOnce(url, {
       timeoutMs: 20_000,
       maxBytes: 2_000_000,
       headers: { accept: "application/rss+xml,application/xml,text/xml;q=0.9,*/*;q=0.5" },
     }),
   });
+}
+
+function safeSourceError(error) {
+  return cleanUntrustedText(error instanceof Error ? error.message : String(error), 360) || "Unknown source error";
+}
+
+async function fetchCpcOutlooks() {
+  const results = await Promise.all(CPC_OUTLOOK_FEEDS.map(async (feed) => {
+    try {
+      const response = await fetchTextOnce(feed.url, {
+        timeoutMs: 30_000,
+        maxBytes: 25_000_000,
+        headers: { accept: "application/vnd.google-earth.kml+xml,application/xml,text/xml;q=0.9,*/*;q=0.5" },
+      });
+      return { feed, outlook: parseCpcOutlookKml(response.text, feed), error: null };
+    } catch (error) {
+      return { feed, outlook: null, error: safeSourceError(error) };
+    }
+  }));
+  return { results, outlooks: results.flatMap((result) => result.outlook ? [result.outlook] : []), failures: results.filter((result) => result.error) };
+}
+
+function futureForecastTargets(scheduleRows, climateConfig) {
+  const now = Date.parse(generatedAt);
+  const venues = new Map(climateConfig.venues.map((venue) => [venue.stadiumId, venue]));
+  return scheduleRows.filter((game) => game.season === SEASON && game.gameType === "REG" && game.roofBucket !== "dome")
+    .flatMap((game) => {
+      const kickoff = Date.parse(game.kickoffUtc);
+      const venue = venues.get(game.stadiumId);
+      if (!venue || !Number.isFinite(kickoff) || kickoff <= now) return [];
+      const provider = countryCodeForStadium(game.stadiumId) === "US" ? "nws" : "met";
+      const horizonDays = provider === "nws" ? 7 : 9;
+      return kickoff - now <= horizonDays * 24 * 60 * 60 * 1_000 ? [{ game, venue, provider }] : [];
+    });
+}
+
+async function fetchGameForecasts(scheduleRows, climateConfig) {
+  const targets = futureForecastTargets(scheduleRows, climateConfig);
+  const attempts = await Promise.all(targets.map(async ({ game, venue, provider }) => {
+    try {
+      if (provider === "nws") {
+        const pointUrl = `https://api.weather.gov/points/${venue.latitude.toFixed(4)},${venue.longitude.toFixed(4)}`;
+        const point = await fetchJsonOnce(pointUrl, {
+          timeoutMs: 20_000,
+          maxBytes: 1_000_000,
+          headers: { "user-agent": "FantasyWarRoom2026/1.0 (github.com/tsmith4014/fantasy-war-room-2026; personal research)" },
+        });
+        const hourlyUrl = point.value?.properties?.forecastHourly;
+        if (!hourlyUrl || new URL(hourlyUrl).hostname !== "api.weather.gov") throw new Error("NWS point response is missing a safe hourly forecast URL");
+        const hourly = await fetchJsonOnce(hourlyUrl, {
+          timeoutMs: 20_000,
+          maxBytes: 3_000_000,
+          headers: { "user-agent": "FantasyWarRoom2026/1.0 (github.com/tsmith4014/fantasy-war-room-2026; personal research)" },
+        });
+        const forecast = summarizeNwsHourly(hourly.value, { gameId: game.gameId, kickoff: game.kickoffUtc });
+        if (!forecast) throw new Error("NWS hourly forecast does not yet cover the game window");
+        return { gameId: game.gameId, provider, forecast, error: null };
+      }
+      const url = new URL("https://api.met.no/weatherapi/locationforecast/2.0/compact");
+      url.searchParams.set("lat", venue.latitude.toFixed(4));
+      url.searchParams.set("lon", venue.longitude.toFixed(4));
+      const response = await fetchJsonOnce(url.toString(), {
+        timeoutMs: 20_000,
+        maxBytes: 5_000_000,
+        headers: { "user-agent": "FantasyWarRoom2026/1.0 github.com/tsmith4014/fantasy-war-room-2026" },
+      });
+      const forecast = summarizeMetCompact(response.value, { gameId: game.gameId, kickoff: game.kickoffUtc });
+      if (!forecast) throw new Error("MET Norway forecast does not yet cover the game window");
+      return { gameId: game.gameId, provider, forecast, error: null };
+    } catch (error) {
+      return { gameId: game.gameId, provider, forecast: null, error: safeSourceError(error) };
+    }
+  }));
+  return {
+    targets,
+    attempts,
+    failures: attempts.filter((attempt) => attempt.error),
+    forecastsByGame: new Map(attempts.flatMap((attempt) => attempt.forecast ? [[attempt.gameId, attempt.forecast]] : [])),
+  };
+}
+
+function makeEnvironmentSourceRecords({ scheduleRows, climateConfig, cpcSet, forecastSet }) {
+  const records = [
+    sourceRecord({
+      id: "nflverse-schedules",
+      name: "nflverse schedules",
+      url: SCHEDULE_URL,
+      kind: "schedule-observation",
+      records: scheduleRows.filter((game) => game.season === SEASON && game.gameType === "REG").length,
+      attribution: "nflverse data",
+      terms: "Creative Commons Attribution 4.0; venue overrides are separately attributed; line snapshots are market observations, not projections",
+    }),
+    sourceRecord({
+      id: "nasa-power-climatology",
+      name: "NASA POWER monthly climatology",
+      url: climateConfig.source.documentationUrl,
+      kind: "climate-normal",
+      retrievedAt: climateConfig.retrievedAt,
+      records: climateConfig.venues.length,
+      attribution: climateConfig.source.attribution,
+      terms: `NASA POWER data with required acknowledgement; referencing guide: ${climateConfig.source.referencingUrl}`,
+      details: { baselinePeriod: climateConfig.baselinePeriod, parameters: Object.keys(climateConfig.parameters), note: climateConfig.source.note },
+      maxAgeHours: 8_760,
+    }),
+    sourceRecord({
+      id: "venue-coordinate-seed",
+      name: "nflverse community stadium coordinate seed",
+      url: climateConfig.coordinateSources["nflverse-community-stadiums"].url,
+      kind: "venue-coordinate-reference",
+      retrievedAt: climateConfig.retrievedAt,
+      records: climateConfig.venues.length,
+      attribution: "nflverse community stadium-data discussion; international additions manually reviewed",
+      terms: "Factual coordinates used only to query source-attributed venue climate and forecast services",
+      details: { note: climateConfig.coordinateSources["nflverse-community-stadiums"].note },
+      maxAgeHours: 8_760,
+    }),
+  ];
+  for (const result of cpcSet.results) {
+    records.push(sourceRecord({
+      id: result.feed.id,
+      name: `NOAA Climate Prediction Center ${result.feed.horizon} ${result.feed.dimension} outlook`,
+      url: result.feed.url,
+      kind: "extended-climate-outlook",
+      records: result.outlook?.features.length ?? 0,
+      attribution: "NOAA Climate Prediction Center",
+      terms: "U.S. government climate outlook; category and probability are preserved without converting them to exact weather",
+      freshnessState: result.error ? "error" : "fresh",
+      details: result.error ? { lastAttemptAt: generatedAt, error: result.error } : { issuedDate: result.outlook.issuedDate, validStart: result.outlook.validStart, validEnd: result.outlook.validEnd },
+      maxAgeHours: 72,
+    }));
+  }
+  for (const provider of ["nws", "met"]) {
+    const attempts = forecastSet.attempts.filter((attempt) => attempt.provider === provider);
+    if (!attempts.length) continue;
+    const failures = attempts.filter((attempt) => attempt.error);
+    records.push(sourceRecord({
+      id: provider === "nws" ? "nws-forecast" : "met-norway-forecast",
+      name: provider === "nws" ? "National Weather Service hourly forecast" : "MET Norway Locationforecast",
+      url: provider === "nws" ? "https://www.weather.gov/documentation/services-web-api" : "https://api.met.no/weatherapi/locationforecast/2.0/documentation",
+      kind: "game-window-weather-forecast",
+      records: attempts.length - failures.length,
+      attribution: provider === "nws" ? "NOAA National Weather Service" : "MET Norway",
+      terms: provider === "nws" ? "U.S. government open data; identifying User-Agent and bounded caching used" : "Free worldwide forecast under MET Norway terms; identifying User-Agent and bounded caching used",
+      freshnessState: failures.length ? "error" : "fresh",
+      details: { games: attempts.filter((attempt) => attempt.forecast).map((attempt) => attempt.gameId), failures: failures.map((attempt) => ({ gameId: attempt.gameId, error: attempt.error })) },
+      maxAgeHours: 12,
+    }));
+  }
+  return records;
 }
 
 function stableHeadlineId(url) {
@@ -658,7 +882,7 @@ function safeMarkdownLink(title, url) {
   return `[${markdownEscape(title)}](${parsed.toString().replace(/[()]/g, (character) => `%${character.charCodeAt(0).toString(16)}`)})`;
 }
 
-function buildContextMarkdown({ players, priorPlayers, research, manifest, identityWarnings, historySummary = null }) {
+function buildContextMarkdown({ players, priorPlayers, research, manifest, environment, identityWarnings, historySummary = null }) {
   const priorById = new Map((priorPlayers ?? []).map((player) => [player.id, player]));
   const statusChanges = [];
   const movers = [];
@@ -703,7 +927,8 @@ function buildContextMarkdown({ players, priorPlayers, research, manifest, ident
       ? `- ${degradedSources.length} headline source${degradedSources.length === 1 ? "" : "s"} failed this run; only that source's last-known-good links were preserved: ${degradedSources.map((source) => markdownEscape(source.name)).join(", ")}.`
       : "- All configured headline feeds returned a valid RSS/Atom document.",
     `- ${warnings.length} unique schedule-metadata warnings remain visible and low-weight.`,
-    "- Weather is intentionally absent: credible forecasts belong near game day, not draft day weeks in advance.",
+    `- Environment layer: ${environment?.climateBaseline?.period ?? "unknown"} NASA POWER monthly climate normals across 38 venues; ${environment?.outlookCoverage?.length ?? 0} current NOAA CPC outlook layers; ${environment?.forecastCoverage?.games?.length ?? 0} games inside a live forecast window.`,
+    "- Climate precipitation is a historical millimeters-per-day normal, not a kickoff rain probability. NOAA outlooks remain categories, and exact forecasts appear only inside the provider horizon.",
     ...(historySummary ? [`- Historical context: ${historySummary.playersWithSplits} players have 2023–25 samples; ${historySummary.playersWithGuardedComparisons} pass at least one two-sided comparison guard.`] : []),
     "",
     "## Status changes since the prior snapshot",
@@ -736,7 +961,7 @@ function buildContextMarkdown({ players, priorPlayers, research, manifest, ident
       "## Historical split coverage",
       "",
       `- ${historySummary.playersWithSplits} of ${players.length} draft-pool players have matched 2023–25 nflverse weekly samples.`,
-      `- ${historySummary.playersWithGuardedComparisons} players have at least six games on both sides of a roof or surface comparison; confidence remains capped at 65%.`,
+      `- ${historySummary.playersWithGuardedComparisons} players have at least six games on both sides of a roof, surface, temperature, or wind comparison; confidence remains capped at 65%.`,
       `- Coverage by position: ${Object.entries(historySummary.byPosition).map(([position, count]) => `${position} ${count}`).join(", ")}.`,
       "- These splits are observational, role- and team-confounded, schedule-fit adjusted, and never treated as causal.",
       "",
@@ -747,14 +972,14 @@ function buildContextMarkdown({ players, priorPlayers, research, manifest, ident
   return lines.join("\n");
 }
 
-function validateOutput({ manifest, playersPayload, research, contextMarkdown }) {
+function validateOutput({ manifest, playersPayload, research, environment, contextMarkdown }) {
   const errors = [];
   const players = playersPayload.players;
   if (manifest.schemaVersion !== 1 || !manifest.snapshotId || Number.isNaN(Date.parse(manifest.generatedAt))) errors.push("manifest metadata is invalid");
-  if (playersPayload.snapshotId !== manifest.snapshotId || research.snapshotId !== manifest.snapshotId) errors.push("bundle snapshot IDs do not match");
-  if (playersPayload.generatedAt !== manifest.generatedAt || research.generatedAt !== manifest.generatedAt) errors.push("bundle generatedAt timestamps do not match");
+  if (playersPayload.snapshotId !== manifest.snapshotId || research.snapshotId !== manifest.snapshotId || environment.snapshotId !== manifest.snapshotId) errors.push("bundle snapshot IDs do not match");
+  if (playersPayload.generatedAt !== manifest.generatedAt || research.generatedAt !== manifest.generatedAt || environment.generatedAt !== manifest.generatedAt) errors.push("bundle generatedAt timestamps do not match");
   if (Number.isNaN(Date.parse(research.observedAt)) || Date.parse(research.observedAt) > Date.parse(research.generatedAt)) errors.push("research observation time is invalid");
-  const expectedSnapshotId = `${manifest.generatedAt.slice(0, 10).replaceAll("-", "")}-${computeSnapshotDigest(playersPayload, research)}`;
+  const expectedSnapshotId = `${manifest.generatedAt.slice(0, 10).replaceAll("-", "")}-${computeSnapshotDigest(playersPayload, research, environment)}`;
   if (manifest.snapshotId !== expectedSnapshotId) errors.push("bundle snapshot digest does not match payloads");
   if (!Array.isArray(manifest.sources) || manifest.sources.length < 39) errors.push("manifest source attribution is incomplete");
   if (new Set(manifest.sources.map((source) => source.id)).size !== manifest.sources.length) errors.push("manifest source IDs are not unique");
@@ -769,6 +994,10 @@ function validateOutput({ manifest, playersPayload, research, contextMarkdown })
   if (research.observedAt !== manifest.observationTimes?.headlines) errors.push("headline observation times do not match");
   for (const trendSourceId of research.trends?.sourceIds ?? []) if (!sourceIds.has(trendSourceId)) errors.push(`trend source ${trendSourceId} is missing`);
   if (!Array.isArray(players) || players.length < 180 || players.length > 500) errors.push(`player count ${players?.length ?? 0} is outside 180..500`);
+  if (environment.schemaVersion !== 1 || environment.season !== SEASON || Object.keys(environment.teams ?? {}).length !== 32) errors.push("environment payload is invalid");
+  for (const [team, payload] of Object.entries(environment.teams ?? {})) {
+    if (!TEAM_CODES.has(team) || payload?.summary?.games !== 17 || payload?.games?.length !== 17) errors.push(`environment schedule is invalid for ${team}`);
+  }
   const ids = new Set();
   const ranks = new Set();
   for (const player of players ?? []) {
@@ -813,8 +1042,99 @@ function sameUtcDay(left, right) {
   return typeof left === "string" && left.slice(0, 10) === right.slice(0, 10);
 }
 
-async function refreshHistoryOnly({ priorManifest, priorPlayersPayload, priorResearch, venueConfig }) {
+async function refreshEnvironmentOnly({ priorManifest, priorPlayersPayload, priorResearch, venueConfig, climateConfig }) {
   if (!priorManifest || !Array.isArray(priorPlayersPayload?.players) || !Array.isArray(priorResearch?.items)) {
+    throw new Error("A complete existing core snapshot is required for an environment-only refresh");
+  }
+  console.log("Reusing today's ADP/Sleeper observations and rebuilding only schedule, climate outlook, forecast, and line context...");
+  const [scheduleResponse, cpcSet] = await Promise.all([
+    fetchTextOnce(SCHEDULE_URL, { timeoutMs: 30_000, maxBytes: 15_000_000 }),
+    fetchCpcOutlooks(),
+  ]);
+  const scheduleRows = normalizeScheduleRows(scheduleResponse.text, venueConfig);
+  const scheduleContexts = buildScheduleContexts(scheduleRows);
+  const forecastSet = await fetchGameForecasts(scheduleRows, climateConfig);
+  const environment = buildEnvironmentPayload({ scheduleRows, climateConfig, outlooks: cpcSet.outlooks, forecastsByGame: forecastSet.forecastsByGame, generatedAt, season: SEASON });
+  const players = structuredClone(priorPlayersPayload.players);
+  for (const player of players) {
+    player.scheduleContext = player.team ? structuredClone(scheduleContexts.get(player.team) ?? null) : null;
+    if (player.splits) player.splits = refitHistoricalContext(player.splits, player.scheduleContext, player.team, environment.teams[player.team]?.summary ?? null);
+  }
+  const environmentSourceIds = new Set([
+    "nflverse-schedules",
+    "nasa-power-climatology",
+    "venue-coordinate-seed",
+    "nws-forecast",
+    "met-norway-forecast",
+    ...CPC_OUTLOOK_FEEDS.map((feed) => feed.id),
+  ]);
+  const sources = (priorManifest.sources ?? []).filter((source) => !environmentSourceIds.has(source.id));
+  sources.push(...makeEnvironmentSourceRecords({ scheduleRows, climateConfig, cpcSet, forecastSet }));
+  sources.sort((left, right) => left.id.localeCompare(right.id));
+
+  const playersPayload = { ...priorPlayersPayload, generatedAt, players };
+  delete playersPayload.snapshotId;
+  const research = { ...priorResearch, generatedAt };
+  delete research.snapshotId;
+  const digest = computeSnapshotDigest(playersPayload, research, environment);
+  const snapshotId = `${generatedAt.slice(0, 10).replaceAll("-", "")}-${digest}`;
+  playersPayload.snapshotId = snapshotId;
+  research.snapshotId = snapshotId;
+  environment.snapshotId = snapshotId;
+  const retainedWarnings = (priorManifest.warnings ?? []).filter((warning) => !/weather|climate|outlook|forecast/i.test(warning));
+  const manifest = {
+    ...priorManifest,
+    snapshotId,
+    generatedAt,
+    files: { ...(priorManifest.files ?? {}), environment: "environment.json" },
+    sources,
+    observationTimes: {
+      ...(priorManifest.observationTimes ?? {}),
+      schedule: generatedAt,
+      environment: generatedAt,
+      climate: climateConfig.retrievedAt,
+      outlooks: generatedAt,
+      ...(forecastSet.targets.length ? { forecasts: generatedAt } : {}),
+    },
+    warnings: [
+      ...retainedWarnings,
+      "NASA POWER temperature, precipitation, and wind values are 2001–2020 monthly climate normals, not game-day forecasts or precipitation probabilities.",
+      ...(cpcSet.failures.length ? [`${cpcSet.failures.length} NOAA CPC outlook feed${cpcSet.failures.length === 1 ? "" : "s"} failed; other validated environment inputs remain available.`] : []),
+      ...(forecastSet.failures.length ? [`${forecastSet.failures.length} in-horizon game forecast${forecastSet.failures.length === 1 ? "" : "s"} could not be resolved and remains explicitly unavailable.`] : []),
+    ],
+  };
+  const splitPlayers = players.filter((player) => player.splits?.sourceId === "nflverse-player-stats");
+  const historySummary = splitPlayers.length ? {
+    playersWithSplits: splitPlayers.length,
+    playersWithGuardedComparisons: splitPlayers.filter((player) => player.splits.confidence > 0).length,
+    byPosition: Object.fromEntries(["QB", "RB", "WR", "TE", "D/ST", "K"].map((position) => [position, splitPlayers.filter((player) => player.position === position).length])),
+  } : null;
+  const contextMarkdown = buildContextMarkdown({
+    players,
+    priorPlayers: priorPlayersPayload.players,
+    research,
+    manifest,
+    environment,
+    identityWarnings: players.filter((player) => player.id.startsWith("ffc:")).map((player) => player.name),
+    historySummary,
+  });
+  validateOutput({ manifest, playersPayload, research, environment, contextMarkdown });
+  await writeAtomicBundle([
+    [path.join(DATA_DIR, "players.json"), jsonText(playersPayload)],
+    [path.join(DATA_DIR, "research.json"), jsonText(research)],
+    [path.join(DATA_DIR, "environment.json"), jsonText(environment)],
+    [path.join(DATA_DIR, "manifest.json"), jsonText(manifest)],
+    [path.join(RESEARCH_DIR, "CONTEXT.md"), `${contextMarkdown.trim()}\n`],
+  ], {
+    expectedSnapshotPath: path.join(DATA_DIR, "manifest.json"),
+    expectedSnapshotId: priorManifest.snapshotId,
+    lockHeld: true,
+  });
+  console.log(`Published ${snapshotId}: environment context for ${Object.keys(environment.teams).length} teams; ADP and Sleeper endpoints were not requested.`);
+}
+
+async function refreshHistoryOnly({ priorManifest, priorPlayersPayload, priorResearch, priorEnvironment, venueConfig }) {
+  if (!priorManifest || !Array.isArray(priorPlayersPayload?.players) || !Array.isArray(priorResearch?.items) || Object.keys(priorEnvironment?.teams ?? {}).length !== 32) {
     throw new Error("A complete existing core snapshot is required for a history-only refresh");
   }
   console.log("Daily core cadence guard active; reusing ADP, Sleeper, and RSS observations and fetching nflverse history only...");
@@ -835,7 +1155,7 @@ async function refreshHistoryOnly({ priorManifest, priorPlayersPayload, priorRes
     player.scheduleContext = player.team ? structuredClone(scheduleContexts.get(player.team) ?? null) : null;
     for (const [formatKey, market] of Object.entries(player.markets ?? {})) market.sourceId = `ffc-adp-${formatKey.toLowerCase()}`;
   }
-  const historyMetadata = computeHistorySplits(statsResponses.map((response) => response.text), scheduleRows, players);
+  const historyMetadata = computeHistorySplits(statsResponses.map((response) => response.text), scheduleRows, players, priorEnvironment.teams);
   const withSplits = players.filter((player) => player.splits?.sourceId === "nflverse-player-stats");
   const historySummary = {
     playersWithSplits: withSplits.length,
@@ -872,14 +1192,18 @@ async function refreshHistoryOnly({ priorManifest, priorPlayersPayload, priorRes
   };
   delete research.trends.sourceId;
   delete research.snapshotId;
-  const digest = computeSnapshotDigest(playersPayload, research);
+  const environment = { ...structuredClone(priorEnvironment), generatedAt };
+  delete environment.snapshotId;
+  const digest = computeSnapshotDigest(playersPayload, research, environment);
   const snapshotId = `${generatedAt.slice(0, 10).replaceAll("-", "")}-${digest}`;
   playersPayload.snapshotId = snapshotId;
   research.snapshotId = snapshotId;
+  environment.snapshotId = snapshotId;
   const manifest = {
     ...priorManifest,
     snapshotId,
     generatedAt,
+    files: { ...(priorManifest.files ?? {}), environment: "environment.json" },
     sources,
     observationTimes: {
       ...(priorManifest.observationTimes ?? {}),
@@ -897,13 +1221,15 @@ async function refreshHistoryOnly({ priorManifest, priorPlayersPayload, priorRes
     priorPlayers: priorPlayersPayload.players,
     research,
     manifest,
+    environment,
     identityWarnings,
     historySummary,
   });
-  validateOutput({ manifest, playersPayload, research, contextMarkdown });
+  validateOutput({ manifest, playersPayload, research, environment, contextMarkdown });
   await writeAtomicBundle([
     [path.join(DATA_DIR, "players.json"), jsonText(playersPayload)],
     [path.join(DATA_DIR, "research.json"), jsonText(research)],
+    [path.join(DATA_DIR, "environment.json"), jsonText(environment)],
     [path.join(DATA_DIR, "manifest.json"), jsonText(manifest)],
     [path.join(RESEARCH_DIR, "CONTEXT.md"), `${contextMarkdown.trim()}\n`],
   ], {
@@ -915,15 +1241,20 @@ async function refreshHistoryOnly({ priorManifest, priorPlayersPayload, priorRes
 }
 
 async function main() {
-  const [priorManifest, priorPlayersPayload, priorResearch, venueConfigRaw] = await Promise.all([
+  const [priorManifest, priorPlayersPayload, priorResearch, priorEnvironment, venueConfigRaw, climateConfigRaw] = await Promise.all([
     readJsonIfPresent(path.join(DATA_DIR, "manifest.json")),
     readJsonIfPresent(path.join(DATA_DIR, "players.json")),
     readJsonIfPresent(path.join(DATA_DIR, "research.json")),
+    readJsonIfPresent(path.join(DATA_DIR, "environment.json")),
     readJsonIfPresent(OVERRIDE_PATH),
+    readJsonIfPresent(CLIMATE_PATH),
   ]);
   const venueConfig = validateOverrides(venueConfigRaw);
+  const climateConfig = validateVenueClimate(climateConfigRaw);
+  if (environmentOnly) return refreshEnvironmentOnly({ priorManifest, priorPlayersPayload, priorResearch, venueConfig, climateConfig });
   if (priorManifest?.sources?.some((source) => source.id === "sleeper-players" && sameUtcDay(source.retrievedAt, generatedAt))) {
-    if (includeHistory) return refreshHistoryOnly({ priorManifest, priorPlayersPayload, priorResearch, venueConfig });
+    if (!priorEnvironment) return refreshEnvironmentOnly({ priorManifest, priorPlayersPayload, priorResearch, venueConfig, climateConfig });
+    if (includeHistory) return refreshHistoryOnly({ priorManifest, priorPlayersPayload, priorResearch, priorEnvironment, venueConfig, climateConfig });
     console.log(`Daily cadence guard: core ADP/Sleeper endpoints were already fetched on ${generatedAt.slice(0, 10)}; snapshot left unchanged.`);
     return;
   }
@@ -936,14 +1267,15 @@ async function main() {
   const sleeperAddUrl = "https://api.sleeper.app/v1/players/nfl/trending/add?lookback_hours=24&limit=50";
   const sleeperDropUrl = "https://api.sleeper.app/v1/players/nfl/trending/drop?lookback_hours=24&limit=50";
 
-  console.log("Fetching three ADP markets, Sleeper observations, schedule metadata, and 33 headline feeds...");
-  const [ffcResponses, sleeperPlayersResponse, sleeperAddResponse, sleeperDropResponse, scheduleResponse, feedSet] = await Promise.all([
+  console.log("Fetching three ADP markets, Sleeper observations, schedule metadata, climate outlooks, and 33 headline feeds...");
+  const [ffcResponses, sleeperPlayersResponse, sleeperAddResponse, sleeperDropResponse, scheduleResponse, feedSet, cpcSet] = await Promise.all([
     Promise.all(ffcRequests.map(async ({ format, url }) => ({ format, url, response: await fetchJsonOnce(url, { maxBytes: 5_000_000 }) }))),
     fetchJsonOnce(sleeperPlayersUrl, { timeoutMs: 30_000, maxBytes: 20_000_000 }),
     fetchJsonOnce(sleeperAddUrl, { maxBytes: 1_000_000 }),
     fetchJsonOnce(sleeperDropUrl, { maxBytes: 1_000_000 }),
     fetchTextOnce(SCHEDULE_URL, { timeoutMs: 30_000, maxBytes: 15_000_000 }),
     fetchFeeds(priorResearch),
+    fetchCpcOutlooks(),
   ]);
   const { results: feedResults, failures: feedFailures } = feedSet;
 
@@ -956,6 +1288,15 @@ async function main() {
   const dropTrendMap = new Map(dropTrends.map((trend) => [trend.playerId, trend.count]));
   const scheduleRows = normalizeScheduleRows(scheduleResponse.text, venueConfig);
   const scheduleContexts = buildScheduleContexts(scheduleRows);
+  const forecastSet = await fetchGameForecasts(scheduleRows, climateConfig);
+  const environment = buildEnvironmentPayload({
+    scheduleRows,
+    climateConfig,
+    outlooks: cpcSet.outlooks,
+    forecastsByGame: forecastSet.forecastsByGame,
+    generatedAt,
+    season: SEASON,
+  });
   const priorPlayers = priorPlayersPayload?.players ?? [];
   const priorById = new Map(priorPlayers.map((player) => [player.id, player]));
   const otherMarkets = new Map();
@@ -999,7 +1340,7 @@ async function main() {
       statusObservedAt: generatedAt,
     };
     const preservedSplits = priorById.get(id)?.splits;
-    if (preservedSplits) player.splits = refitHistoricalContext(preservedSplits, player.scheduleContext, player.team);
+    if (preservedSplits) player.splits = refitHistoricalContext(preservedSplits, player.scheduleContext, player.team, environment.teams[player.team]?.summary ?? null);
     return player;
   });
   for (const format of FFC_FORMATS) assignMarketTiers(players, format.key);
@@ -1036,6 +1377,72 @@ async function main() {
     sourceRecord({ id: "sleeper-trends-drop", name: "Sleeper NFL drop trends", url: sleeperDropUrl, kind: "trend-observation", records: dropTrends.length, attribution: "Sleeper API", terms: `Personal non-commercial use; documentation: ${SLEEPER_DOCS_URL}` }),
     sourceRecord({ id: "nflverse-schedules", name: "nflverse schedules", url: SCHEDULE_URL, kind: "schedule-observation", records: scheduleRows.filter((game) => game.season === SEASON && game.gameType === "REG").length, attribution: "nflverse data", terms: "Creative Commons Attribution 4.0; venue overrides are separately attributed" }),
   );
+  sources.push(
+    sourceRecord({
+      id: "nasa-power-climatology",
+      name: "NASA POWER monthly climatology",
+      url: climateConfig.source.documentationUrl,
+      kind: "climate-normal",
+      retrievedAt: climateConfig.retrievedAt,
+      records: climateConfig.venues.length,
+      attribution: climateConfig.source.attribution,
+      terms: `NASA POWER data with required acknowledgement; referencing guide: ${climateConfig.source.referencingUrl}`,
+      details: {
+        baselinePeriod: climateConfig.baselinePeriod,
+        parameters: Object.keys(climateConfig.parameters),
+        note: climateConfig.source.note,
+      },
+      maxAgeHours: 8_760,
+    }),
+    sourceRecord({
+      id: "venue-coordinate-seed",
+      name: "nflverse community stadium coordinate seed",
+      url: climateConfig.coordinateSources["nflverse-community-stadiums"].url,
+      kind: "venue-coordinate-reference",
+      retrievedAt: climateConfig.retrievedAt,
+      records: climateConfig.venues.length,
+      attribution: "nflverse community stadium-data discussion; international additions manually reviewed",
+      terms: "Factual coordinates used only to query source-attributed venue climate and forecast services",
+      details: { note: climateConfig.coordinateSources["nflverse-community-stadiums"].note },
+      maxAgeHours: 8_760,
+    }),
+  );
+  for (const result of cpcSet.results) {
+    sources.push(sourceRecord({
+      id: result.feed.id,
+      name: `NOAA Climate Prediction Center ${result.feed.horizon} ${result.feed.dimension} outlook`,
+      url: result.feed.url,
+      kind: "extended-climate-outlook",
+      records: result.outlook?.features.length ?? 0,
+      attribution: "NOAA Climate Prediction Center",
+      terms: "U.S. government climate outlook; category and probability are preserved without converting them to exact weather",
+      freshnessState: result.error ? "error" : "fresh",
+      details: result.error
+        ? { lastAttemptAt: generatedAt, error: result.error }
+        : { issuedDate: result.outlook.issuedDate, validStart: result.outlook.validStart, validEnd: result.outlook.validEnd },
+      maxAgeHours: 72,
+    }));
+  }
+  for (const provider of ["nws", "met"]) {
+    const attempts = forecastSet.attempts.filter((attempt) => attempt.provider === provider);
+    if (!attempts.length) continue;
+    const failures = attempts.filter((attempt) => attempt.error);
+    sources.push(sourceRecord({
+      id: provider === "nws" ? "nws-forecast" : "met-norway-forecast",
+      name: provider === "nws" ? "National Weather Service hourly forecast" : "MET Norway Locationforecast",
+      url: provider === "nws" ? "https://www.weather.gov/documentation/services-web-api" : "https://api.met.no/weatherapi/locationforecast/2.0/documentation",
+      kind: "game-window-weather-forecast",
+      records: attempts.length - failures.length,
+      attribution: provider === "nws" ? "NOAA National Weather Service" : "MET Norway",
+      terms: provider === "nws" ? "U.S. government open data; identifying User-Agent and bounded caching used" : "Free worldwide forecast under MET Norway terms; identifying User-Agent and bounded caching used",
+      freshnessState: failures.length ? "error" : "fresh",
+      details: {
+        games: attempts.filter((attempt) => attempt.forecast).map((attempt) => attempt.gameId),
+        failures: failures.map((attempt) => ({ gameId: attempt.gameId, error: attempt.error })),
+      },
+      maxAgeHours: 12,
+    }));
+  }
   const priorSourcesById = new Map((priorManifest?.sources ?? []).map((source) => [source.id, source]));
   for (const { feed, headlines, finalUrl, contentType, usedFallback, error } of feedResults) {
     const sourceId = feedSourceId(feed);
@@ -1083,7 +1490,7 @@ async function main() {
   if (includeHistory) {
     console.log("Fetching optional 2023–25 nflverse weekly player history...");
     const statsResponses = await Promise.all(STATS_URLS.map(({ url }) => fetchTextOnce(url, { timeoutMs: 60_000, maxBytes: 15_000_000 })));
-    const historyMetadata = computeHistorySplits(statsResponses.map((response) => response.text), scheduleRows, players);
+    const historyMetadata = computeHistorySplits(statsResponses.map((response) => response.text), scheduleRows, players, environment.teams);
     const historyPlayers = players.filter((player) => player.splits?.sourceId === "nflverse-player-stats");
     publishedHistorySummary = {
       playersWithSplits: historyPlayers.length,
@@ -1101,7 +1508,7 @@ async function main() {
     schemaVersion: 1,
     season: SEASON,
     generatedAt,
-    attribution: `ADP data courtesy of FantasyFootballCalculator.com; player status/trends from Sleeper; schedule and optional history from nflverse. See manifest.json.`,
+    attribution: `ADP data courtesy of FantasyFootballCalculator.com; player status/trends from Sleeper; schedule, line snapshots, and optional history from nflverse; climate normals from NASA POWER; outlooks from NOAA CPC. See manifest.json.`,
     players,
   };
   const headlineObservedAt = feedFailures.length === feedResults.length
@@ -1115,17 +1522,18 @@ async function main() {
     trends: { windowHours: 24, add: mapTrends(addTrends, sleeperIndex), drop: mapTrends(dropTrends, sleeperIndex), sourceIds: ["sleeper-trends-add", "sleeper-trends-drop"] },
     items: headlinePayload(feedResults),
   };
-  const digest = computeSnapshotDigest(playersPayload, research);
+  const digest = computeSnapshotDigest(playersPayload, research, environment);
   const snapshotId = `${generatedAt.slice(0, 10).replaceAll("-", "")}-${digest}`;
   playersPayload.snapshotId = snapshotId;
   research.snapshotId = snapshotId;
+  environment.snapshotId = snapshotId;
   const manifest = {
     schemaVersion: 1,
     snapshotId,
     generatedAt,
     season: SEASON,
     leaguePreset: { teams: TEAMS, scoring: "ppr", rounds: 16, editableAtRuntime: true },
-    files: { players: "players.json", research: "research.json" },
+    files: { players: "players.json", research: "research.json", environment: "environment.json" },
     marketWindows: Object.fromEntries(FFC_FORMATS.map((format) => [format.key, { startDate: ffc[format.key].meta.sampleStart, endDate: ffc[format.key].meta.sampleEnd, totalDrafts: ffc[format.key].meta.totalDrafts }])),
     sources,
     observationTimes: {
@@ -1134,6 +1542,10 @@ async function main() {
       trends: generatedAt,
       headlines: research.observedAt,
       schedule: generatedAt,
+      environment: generatedAt,
+      climate: climateConfig.retrievedAt,
+      outlooks: generatedAt,
+      ...(forecastSet.targets.length ? { forecasts: generatedAt } : {}),
       ...(publishedHistorySummary ? { history: generatedAt } : priorManifest?.observationTimes?.history ? { history: priorManifest.observationTimes.history } : {}),
     },
     warnings: [
@@ -1144,15 +1556,22 @@ async function main() {
         ? [`${feedFailures.length} headline feed${feedFailures.length === 1 ? "" : "s"} failed validation; current core data published and last-known-good links were preserved where available (${feedFailures.map(({ feed }) => feed.name).join(", ")}).`]
         : []),
       "Stade de France and Maracana NFL gameday surfaces remain unverified; their surface modifier stays neutral.",
-      "Future game-day weather is intentionally not modeled in this preseason snapshot.",
+      "NASA POWER temperature, precipitation, and wind values are 2001–2020 monthly climate normals, not game-day forecasts or precipitation probabilities.",
+      ...(cpcSet.failures.length
+        ? [`${cpcSet.failures.length} NOAA CPC outlook feed${cpcSet.failures.length === 1 ? "" : "s"} failed; climate normals and other validated inputs remain available.`]
+        : []),
+      ...(forecastSet.failures.length
+        ? [`${forecastSet.failures.length} in-horizon game forecast${forecastSet.failures.length === 1 ? "" : "s"} could not be resolved and remains explicitly unavailable.`]
+        : []),
     ],
   };
-  const contextMarkdown = buildContextMarkdown({ players, priorPlayers, research, manifest, identityWarnings, historySummary: publishedHistorySummary });
-  validateOutput({ manifest, playersPayload, research, contextMarkdown });
+  const contextMarkdown = buildContextMarkdown({ players, priorPlayers, research, manifest, environment, identityWarnings, historySummary: publishedHistorySummary });
+  validateOutput({ manifest, playersPayload, research, environment, contextMarkdown });
 
   await writeAtomicBundle([
     [path.join(DATA_DIR, "players.json"), jsonText(playersPayload)],
     [path.join(DATA_DIR, "research.json"), jsonText(research)],
+    [path.join(DATA_DIR, "environment.json"), jsonText(environment)],
     [path.join(DATA_DIR, "manifest.json"), jsonText(manifest)],
     [path.join(RESEARCH_DIR, "CONTEXT.md"), `${contextMarkdown.trim()}\n`],
   ], {
