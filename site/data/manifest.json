@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "20260826-568dc15ed3",
-  "generatedAt": "2026-08-26T09:58:52.202Z",
+  "snapshotId": "20260828-67fbb68781",
+  "generatedAt": "2026-08-28T02:00:00.554Z",
   "season": 2026,
   "leaguePreset": {
     "teams": 10,
@@ -11,23 +11,24 @@
   },
   "files": {
     "players": "players.json",
-    "research": "research.json"
+    "research": "research.json",
+    "environment": "environment.json"
   },
   "marketWindows": {
     "ppr": {
-      "startDate": "2026-08-19",
-      "endDate": "2026-08-26",
-      "totalDrafts": 7830
+      "startDate": "2026-08-20",
+      "endDate": "2026-08-27",
+      "totalDrafts": 7986
     },
     "halfPpr": {
-      "startDate": "2026-08-21",
-      "endDate": "2026-08-26",
-      "totalDrafts": 3027
+      "startDate": "2026-08-22",
+      "endDate": "2026-08-27",
+      "totalDrafts": 3144
     },
     "standard": {
-      "startDate": "2026-08-19",
-      "endDate": "2026-08-26",
-      "totalDrafts": 1828
+      "startDate": "2026-08-20",
+      "endDate": "2026-08-27",
+      "totalDrafts": 1905
     }
   },
   "sources": [
@@ -36,8 +37,8 @@
       "name": "Fantasy Football Calculator PPR ADP",
       "kind": "market",
       "url": "https://fantasyfootballcalculator.com/api/v1/adp/ppr?teams=10&year=2026",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
-      "records": 266,
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
+      "records": 267,
       "attribution": "FantasyFootballCalculator.com PPR ADP, 10-team leagues",
       "terms": "Free ADP REST API; attribution requested. Documentation: https://help.fantasyfootballcalculator.com/article/42-adp-rest-api",
       "freshness": {
@@ -51,9 +52,9 @@
         "scoring": "PPR",
         "teams": 10,
         "rounds": 15,
-        "totalDrafts": 7830,
-        "sampleStart": "2026-08-19",
-        "sampleEnd": "2026-08-26"
+        "totalDrafts": 7986,
+        "sampleStart": "2026-08-20",
+        "sampleEnd": "2026-08-27"
       }
     },
     {
@@ -61,8 +62,8 @@
       "name": "Fantasy Football Calculator Half-PPR ADP",
       "kind": "market",
       "url": "https://fantasyfootballcalculator.com/api/v1/adp/half-ppr?teams=10&year=2026",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
-      "records": 228,
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
+      "records": 225,
       "attribution": "FantasyFootballCalculator.com Half-PPR ADP, 10-team leagues",
       "terms": "Free ADP REST API; attribution requested. Documentation: https://help.fantasyfootballcalculator.com/article/42-adp-rest-api",
       "freshness": {
@@ -76,9 +77,9 @@
         "scoring": "Half-PPR",
         "teams": 10,
         "rounds": 15,
-        "totalDrafts": 3027,
-        "sampleStart": "2026-08-21",
-        "sampleEnd": "2026-08-26"
+        "totalDrafts": 3144,
+        "sampleStart": "2026-08-22",
+        "sampleEnd": "2026-08-27"
       }
     },
     {
@@ -86,7 +87,7 @@
       "name": "Fantasy Football Calculator Standard ADP",
       "kind": "market",
       "url": "https://fantasyfootballcalculator.com/api/v1/adp/standard?teams=10&year=2026",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 218,
       "attribution": "FantasyFootballCalculator.com Standard ADP, 10-team leagues",
       "terms": "Free ADP REST API; attribution requested. Documentation: https://help.fantasyfootballcalculator.com/article/42-adp-rest-api",
@@ -101,9 +102,9 @@
         "scoring": "Non-PPR",
         "teams": 10,
         "rounds": 15,
-        "totalDrafts": 1828,
-        "sampleStart": "2026-08-19",
-        "sampleEnd": "2026-08-26"
+        "totalDrafts": 1905,
+        "sampleStart": "2026-08-20",
+        "sampleEnd": "2026-08-27"
       }
     },
     {
@@ -111,8 +112,8 @@
       "name": "Fantasy Football Calculator ADP market family",
       "kind": "market-provenance",
       "url": "https://help.fantasyfootballcalculator.com/article/42-adp-rest-api",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
-      "records": 266,
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
+      "records": 267,
       "attribution": "FantasyFootballCalculator.com ADP",
       "terms": "Free ADP REST API; attribution requested; scoring-specific endpoint observations are listed separately",
       "freshness": {
@@ -135,7 +136,7 @@
       "name": "Sleeper NFL players",
       "kind": "player-observation",
       "url": "https://api.sleeper.app/v1/players/nfl",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 12225,
       "attribution": "Sleeper API",
       "terms": "Personal non-commercial use; documentation: https://docs.sleeper.com/",
@@ -152,7 +153,7 @@
       "name": "Sleeper NFL add trends",
       "kind": "trend-observation",
       "url": "https://api.sleeper.app/v1/players/nfl/trending/add?lookback_hours=24&limit=50",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 50,
       "attribution": "Sleeper API",
       "terms": "Personal non-commercial use; documentation: https://docs.sleeper.com/",
@@ -166,7 +167,7 @@
       "name": "Sleeper NFL drop trends",
       "kind": "trend-observation",
       "url": "https://api.sleeper.app/v1/players/nfl/trending/drop?lookback_hours=24&limit=50",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 50,
       "attribution": "Sleeper API",
       "terms": "Personal non-commercial use; documentation: https://docs.sleeper.com/",
@@ -180,7 +181,7 @@
       "name": "nflverse schedules",
       "kind": "schedule-observation",
       "url": "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 272,
       "attribution": "nflverse data",
       "terms": "Creative Commons Attribution 4.0; venue overrides are separately attributed",
@@ -190,11 +191,161 @@
       }
     },
     {
+      "id": "nasa-power-climatology",
+      "name": "NASA POWER monthly climatology",
+      "kind": "climate-normal",
+      "url": "https://power.larc.nasa.gov/docs/services/api/temporal/climatology/",
+      "retrievedAt": "2026-08-26T00:00:00.000Z",
+      "records": 38,
+      "attribution": "NASA POWER climatology derived from MERRA-2; accessed 2026-08-26",
+      "terms": "NASA POWER data with required acknowledgement; referencing guide: https://power.larc.nasa.gov/docs/referencing/",
+      "freshness": {
+        "state": "fresh",
+        "maxAgeHours": 8760
+      },
+      "details": {
+        "baselinePeriod": "2001-2020",
+        "parameters": [
+          "T2M",
+          "PRECTOTCORR",
+          "WS10M"
+        ],
+        "note": "Monthly 2001-2020 climate normals are historical baselines, not game-day forecasts or precipitation probabilities."
+      }
+    },
+    {
+      "id": "venue-coordinate-seed",
+      "name": "nflverse community stadium coordinate seed",
+      "kind": "venue-coordinate-reference",
+      "url": "https://github.com/nflverse/nflverse-data/issues/57",
+      "retrievedAt": "2026-08-26T00:00:00.000Z",
+      "records": 38,
+      "attribution": "nflverse community stadium-data discussion; international additions manually reviewed",
+      "terms": "Factual coordinates used only to query source-attributed venue climate and forecast services",
+      "freshness": {
+        "state": "fresh",
+        "maxAgeHours": 8760
+      },
+      "details": {
+        "note": "Community stadium coordinate seed matched by nflverse stadium ID and reviewed against the 2026 schedule."
+      }
+    },
+    {
+      "id": "noaa-cpc-610-temperature",
+      "name": "NOAA Climate Prediction Center 6-10 day temperature outlook",
+      "kind": "extended-climate-outlook",
+      "url": "https://www.cpc.ncep.noaa.gov/products/predictions/610day/610temp_latest.kml",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
+      "records": 0,
+      "attribution": "NOAA Climate Prediction Center",
+      "terms": "U.S. government climate outlook; category and probability are preserved without converting them to exact weather",
+      "freshness": {
+        "state": "error",
+        "maxAgeHours": 72
+      },
+      "details": {
+        "lastAttemptAt": "2026-08-28T02:00:00.554Z",
+        "error": "fetch failed"
+      }
+    },
+    {
+      "id": "noaa-cpc-610-precipitation",
+      "name": "NOAA Climate Prediction Center 6-10 day precipitation outlook",
+      "kind": "extended-climate-outlook",
+      "url": "https://www.cpc.ncep.noaa.gov/products/predictions/610day/610prcp_latest.kml",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
+      "records": 0,
+      "attribution": "NOAA Climate Prediction Center",
+      "terms": "U.S. government climate outlook; category and probability are preserved without converting them to exact weather",
+      "freshness": {
+        "state": "error",
+        "maxAgeHours": 72
+      },
+      "details": {
+        "lastAttemptAt": "2026-08-28T02:00:00.554Z",
+        "error": "fetch failed"
+      }
+    },
+    {
+      "id": "noaa-cpc-814-temperature",
+      "name": "NOAA Climate Prediction Center 8-14 day temperature outlook",
+      "kind": "extended-climate-outlook",
+      "url": "https://www.cpc.ncep.noaa.gov/products/predictions/814day/814temp_latest.kml",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
+      "records": 0,
+      "attribution": "NOAA Climate Prediction Center",
+      "terms": "U.S. government climate outlook; category and probability are preserved without converting them to exact weather",
+      "freshness": {
+        "state": "error",
+        "maxAgeHours": 72
+      },
+      "details": {
+        "lastAttemptAt": "2026-08-28T02:00:00.554Z",
+        "error": "fetch failed"
+      }
+    },
+    {
+      "id": "noaa-cpc-814-precipitation",
+      "name": "NOAA Climate Prediction Center 8-14 day precipitation outlook",
+      "kind": "extended-climate-outlook",
+      "url": "https://www.cpc.ncep.noaa.gov/products/predictions/814day/814prcp_latest.kml",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
+      "records": 0,
+      "attribution": "NOAA Climate Prediction Center",
+      "terms": "U.S. government climate outlook; category and probability are preserved without converting them to exact weather",
+      "freshness": {
+        "state": "error",
+        "maxAgeHours": 72
+      },
+      "details": {
+        "lastAttemptAt": "2026-08-28T02:00:00.554Z",
+        "error": "fetch failed"
+      }
+    },
+    {
+      "id": "noaa-cpc-week34-temperature",
+      "name": "NOAA Climate Prediction Center week 3-4 temperature outlook",
+      "kind": "extended-climate-outlook",
+      "url": "https://ftp.cpc.ncep.noaa.gov/GIS/us_tempprcpfcst/wk34temp_latest.kml",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
+      "records": 18,
+      "attribution": "NOAA Climate Prediction Center",
+      "terms": "U.S. government climate outlook; category and probability are preserved without converting them to exact weather",
+      "freshness": {
+        "state": "fresh",
+        "maxAgeHours": 72
+      },
+      "details": {
+        "issuedDate": "2026-08-21",
+        "validStart": "2026-09-05",
+        "validEnd": "2026-09-18"
+      }
+    },
+    {
+      "id": "noaa-cpc-week34-precipitation",
+      "name": "NOAA Climate Prediction Center week 3-4 precipitation outlook",
+      "kind": "extended-climate-outlook",
+      "url": "https://ftp.cpc.ncep.noaa.gov/GIS/us_tempprcpfcst/wk34prcp_latest.kml",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
+      "records": 10,
+      "attribution": "NOAA Climate Prediction Center",
+      "terms": "U.S. government climate outlook; category and probability are preserved without converting them to exact weather",
+      "freshness": {
+        "state": "fresh",
+        "maxAgeHours": 72
+      },
+      "details": {
+        "issuedDate": "2026-08-21",
+        "validStart": "2026-09-05",
+        "validEnd": "2026-09-18"
+      }
+    },
+    {
       "id": "rss-team-ari",
       "name": "Arizona Cardinals RSS",
       "kind": "official-club-rss",
       "url": "https://www.azcardinals.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Arizona Cardinals",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -212,7 +363,7 @@
       "name": "Atlanta Falcons RSS",
       "kind": "official-club-rss",
       "url": "https://www.atlantafalcons.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Atlanta Falcons",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -230,7 +381,7 @@
       "name": "Baltimore Ravens RSS",
       "kind": "official-club-rss",
       "url": "https://www.baltimoreravens.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Baltimore Ravens",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -248,7 +399,7 @@
       "name": "Buffalo Bills RSS",
       "kind": "official-club-rss",
       "url": "https://www.buffalobills.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Buffalo Bills",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -266,7 +417,7 @@
       "name": "Carolina Panthers RSS",
       "kind": "official-club-rss",
       "url": "https://www.panthers.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Carolina Panthers",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -284,7 +435,7 @@
       "name": "Chicago Bears RSS",
       "kind": "official-club-rss",
       "url": "https://www.chicagobears.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Chicago Bears",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -302,7 +453,7 @@
       "name": "Cincinnati Bengals RSS",
       "kind": "official-club-rss",
       "url": "https://www.bengals.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Cincinnati Bengals",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -320,7 +471,7 @@
       "name": "Cleveland Browns RSS",
       "kind": "official-club-rss",
       "url": "https://www.clevelandbrowns.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Cleveland Browns",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -338,7 +489,7 @@
       "name": "Dallas Cowboys RSS",
       "kind": "official-club-rss",
       "url": "https://www.dallascowboys.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Dallas Cowboys",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -356,7 +507,7 @@
       "name": "Denver Broncos RSS",
       "kind": "official-club-rss",
       "url": "https://www.denverbroncos.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Denver Broncos",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -374,7 +525,7 @@
       "name": "Detroit Lions RSS",
       "kind": "official-club-rss",
       "url": "https://www.detroitlions.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Detroit Lions",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -392,7 +543,7 @@
       "name": "Green Bay Packers RSS",
       "kind": "official-club-rss",
       "url": "https://www.packers.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Green Bay Packers",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -410,7 +561,7 @@
       "name": "Houston Texans RSS",
       "kind": "official-club-rss",
       "url": "https://www.houstontexans.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Houston Texans",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -428,7 +579,7 @@
       "name": "Indianapolis Colts RSS",
       "kind": "official-club-rss",
       "url": "https://www.colts.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Indianapolis Colts",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -446,7 +597,7 @@
       "name": "Jacksonville Jaguars RSS",
       "kind": "official-club-rss",
       "url": "https://www.jaguars.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Jacksonville Jaguars",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -464,7 +615,7 @@
       "name": "Kansas City Chiefs RSS",
       "kind": "official-club-rss",
       "url": "https://www.chiefs.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Kansas City Chiefs",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -482,7 +633,7 @@
       "name": "Las Vegas Raiders RSS",
       "kind": "official-club-rss",
       "url": "https://www.raiders.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Las Vegas Raiders",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -500,7 +651,7 @@
       "name": "Los Angeles Chargers RSS",
       "kind": "official-club-rss",
       "url": "https://www.chargers.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Los Angeles Chargers",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -518,7 +669,7 @@
       "name": "Los Angeles Rams RSS",
       "kind": "official-club-rss",
       "url": "https://www.therams.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Los Angeles Rams",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -536,7 +687,7 @@
       "name": "Miami Dolphins RSS",
       "kind": "official-club-rss",
       "url": "https://www.miamidolphins.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Miami Dolphins",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -554,7 +705,7 @@
       "name": "Minnesota Vikings RSS",
       "kind": "official-club-rss",
       "url": "https://www.vikings.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Minnesota Vikings",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -572,7 +723,7 @@
       "name": "New England Patriots RSS",
       "kind": "official-club-rss",
       "url": "https://www.patriots.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "New England Patriots",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -590,7 +741,7 @@
       "name": "New Orleans Saints RSS",
       "kind": "official-club-rss",
       "url": "https://www.neworleanssaints.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "New Orleans Saints",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -608,7 +759,7 @@
       "name": "New York Giants RSS",
       "kind": "official-club-rss",
       "url": "https://www.giants.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "New York Giants",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -626,7 +777,7 @@
       "name": "New York Jets RSS",
       "kind": "official-club-rss",
       "url": "https://www.newyorkjets.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "New York Jets",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -644,7 +795,7 @@
       "name": "Philadelphia Eagles RSS",
       "kind": "official-club-rss",
       "url": "https://www.philadelphiaeagles.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Philadelphia Eagles",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -662,7 +813,7 @@
       "name": "Pittsburgh Steelers RSS",
       "kind": "official-club-rss",
       "url": "https://www.steelers.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Pittsburgh Steelers",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -680,7 +831,7 @@
       "name": "San Francisco 49ers RSS",
       "kind": "official-club-rss",
       "url": "https://www.49ers.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "San Francisco 49ers",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -698,7 +849,7 @@
       "name": "Seattle Seahawks RSS",
       "kind": "official-club-rss",
       "url": "https://www.seahawks.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Seattle Seahawks",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -721,12 +872,14 @@
       "attribution": "Tampa Bay Buccaneers",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
       "freshness": {
-        "state": "fresh",
+        "state": "error",
         "maxAgeHours": 36
       },
       "details": {
-        "finalUrl": "https://www.buccaneers.com/rss/news",
-        "contentType": "application/rss+xml"
+        "lastAttemptAt": "2026-08-28T02:00:00.554Z",
+        "lastSuccessfulAt": "2026-08-26T09:58:52.202Z",
+        "usedLastKnownGood": true,
+        "error": "Feed publication time exceeds the 60-minute source-clock allowance"
       }
     },
     {
@@ -734,7 +887,7 @@
       "name": "Tennessee Titans RSS",
       "kind": "official-club-rss",
       "url": "https://www.tennesseetitans.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Tennessee Titans",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -752,7 +905,7 @@
       "name": "Washington Commanders RSS",
       "kind": "official-club-rss",
       "url": "https://www.commanders.com/rss/news",
-      "retrievedAt": "2026-08-26T09:58:52.202Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 3,
       "attribution": "Washington Commanders",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
@@ -770,19 +923,17 @@
       "name": "ESPN NFL RSS",
       "kind": "publisher-rss",
       "url": "https://www.espn.com/espn/rss/nfl/news",
-      "retrievedAt": "2026-08-25T04:53:22.674Z",
+      "retrievedAt": "2026-08-28T02:00:00.554Z",
       "records": 15,
       "attribution": "ESPN NFL",
       "terms": "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
       "freshness": {
-        "state": "error",
+        "state": "fresh",
         "maxAgeHours": 36
       },
       "details": {
-        "lastAttemptAt": "2026-08-26T09:58:52.202Z",
-        "lastSuccessfulAt": "2026-08-25T04:53:22.674Z",
-        "usedLastKnownGood": true,
-        "error": "Response is not an RSS/Atom document"
+        "finalUrl": "https://www.espn.com/espn/rss/nfl/news",
+        "contentType": "text/xml;charset=UTF-8"
       }
     },
     {
@@ -909,8 +1060,8 @@
       "name": "nflverse weekly player stats, 2023–25",
       "kind": "historical-observation",
       "url": "https://github.com/nflverse/nflverse-data/releases/tag/stats_player",
-      "retrievedAt": "2026-08-16T23:25:26.417Z",
-      "records": 207,
+      "retrievedAt": "2026-08-26T20:25:08.033Z",
+      "records": 213,
       "attribution": "nflverse data",
       "terms": "Creative Commons Attribution 4.0; observational splits are sample-guarded and non-causal",
       "freshness": {
@@ -923,7 +1074,7 @@
           2024,
           2025
         ],
-        "playersWithGuardedComparisons": 172,
+        "playersWithGuardedComparisons": 184,
         "seasonSourceIds": [
           "nflverse-player-stats-2023",
           "nflverse-player-stats-2024",
@@ -936,7 +1087,7 @@
       "name": "nflverse 2023 weekly player stats",
       "kind": "historical-observation-season",
       "url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2023.csv",
-      "retrievedAt": "2026-08-16T23:25:26.417Z",
+      "retrievedAt": "2026-08-26T20:25:08.033Z",
       "records": 17806,
       "attribution": "nflverse data",
       "terms": "Creative Commons Attribution 4.0; regular-season weekly observations",
@@ -953,7 +1104,7 @@
       "name": "nflverse 2024 weekly player stats",
       "kind": "historical-observation-season",
       "url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2024.csv",
-      "retrievedAt": "2026-08-16T23:25:26.417Z",
+      "retrievedAt": "2026-08-26T20:25:08.033Z",
       "records": 18130,
       "attribution": "nflverse data",
       "terms": "Creative Commons Attribution 4.0; regular-season weekly observations",
@@ -970,7 +1121,7 @@
       "name": "nflverse 2025 weekly player stats",
       "kind": "historical-observation-season",
       "url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2025.csv",
-      "retrievedAt": "2026-08-16T23:25:26.417Z",
+      "retrievedAt": "2026-08-26T20:25:08.033Z",
       "records": 18540,
       "attribution": "nflverse data",
       "terms": "Creative Commons Attribution 4.0; regular-season weekly observations",
@@ -984,16 +1135,20 @@
     }
   ],
   "observationTimes": {
-    "markets": "2026-08-26T09:58:52.202Z",
-    "playerStatus": "2026-08-26T09:58:52.202Z",
-    "trends": "2026-08-26T09:58:52.202Z",
-    "headlines": "2026-08-26T09:58:52.202Z",
-    "schedule": "2026-08-26T09:58:52.202Z",
-    "history": "2026-08-16T23:25:26.417Z"
+    "markets": "2026-08-28T02:00:00.554Z",
+    "playerStatus": "2026-08-28T02:00:00.554Z",
+    "trends": "2026-08-28T02:00:00.554Z",
+    "headlines": "2026-08-28T02:00:00.554Z",
+    "schedule": "2026-08-28T02:00:00.554Z",
+    "environment": "2026-08-28T02:00:00.554Z",
+    "climate": "2026-08-26T00:00:00.000Z",
+    "outlooks": "2026-08-28T02:00:00.554Z",
+    "history": "2026-08-26T20:25:08.033Z"
   },
   "warnings": [
-    "1 headline feed failed validation; current core data published and last-known-good links were preserved where available (ESPN NFL).",
+    "1 headline feed failed validation; current core data published and last-known-good links were preserved where available (Tampa Bay Buccaneers).",
     "Stade de France and Maracana NFL gameday surfaces remain unverified; their surface modifier stays neutral.",
-    "Future game-day weather is intentionally not modeled in this preseason snapshot."
+    "NASA POWER temperature, precipitation, and wind values are 2001–2020 monthly climate normals, not game-day forecasts or precipitation probabilities.",
+    "4 NOAA CPC outlook feeds failed; climate normals and other validated inputs remain available."
   ]
 }

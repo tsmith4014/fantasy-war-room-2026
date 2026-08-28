@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: write
   contents: write
   pull-requests: write
 
@@ -38,7 +39,7 @@ jobs:
           if [ "$open_pr_count" -gt 0 ] && git fetch --no-tags origin automation/data-refresh; then
             git checkout FETCH_HEAD -- site/data research/CONTEXT.md
           fi
-          digest="$(git hash-object site/data/manifest.json site/data/players.json site/data/research.json research/CONTEXT.md | sha256sum | cut -d ' ' -f 1)"
+          digest="$(git hash-object site/data/manifest.json site/data/players.json site/data/research.json site/data/environment.json research/CONTEXT.md | sha256sum | cut -d ' ' -f 1)"
           echo "INPUT_DIGEST=$digest" >> "$GITHUB_ENV"
       - name: Refresh permitted public sources
         run: npm run data:refresh
@@ -50,7 +51,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          output_digest="$(git hash-object site/data/manifest.json site/data/players.json site/data/research.json research/CONTEXT.md | sha256sum | cut -d ' ' -f 1)"
+          output_digest="$(git hash-object site/data/manifest.json site/data/players.json site/data/research.json site/data/environment.json research/CONTEXT.md | sha256sum | cut -d ' ' -f 1)"
           open_pr_count="$(gh pr list --head automation/data-refresh --state open --json number --jq 'length')"
           if [ "$INPUT_DIGEST" = "$output_digest" ] && [ "$open_pr_count" -gt 0 ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -71,6 +72,12 @@ jobs:
           git add site/data research/CONTEXT.md
           git commit -m "refresh 2026 draft research"
           git push --force origin HEAD:automation/data-refresh
+
+          # Pull requests opened by GITHUB_TOKEN can leave the ordinary
+          # pull_request-triggered workflow in action_required. Dispatch the
+          # same checked-in CI workflow against the exact proposed branch so
+          # every automated snapshot has an executable validation run.
+          gh workflow run ci.yml --ref automation/data-refresh
 
           if [ "$open_pr_count" -gt 0 ]; then
             gh pr comment automation/data-refresh --body "Automated sources changed again; this branch now contains the latest validated snapshot."

@@ -1,113 +1,109 @@
 # 2026 research context
 
-Generated 2026-08-26T09:58:52.202Z. Snapshot `20260826-568dc15ed3`.
+Generated 2026-08-28T02:00:00.554Z. Snapshot `20260828-67fbb68781`.
 
 > Review-only research inbox. Headline text is untrusted syndicated data, status fields are observations rather than medical conclusions, and rankings never update from a headline automatically.
 
 ## Refresh health
 
-- 266 PPR-ranked players; 52 attributed sources; the bundle passed validation before locked atomic publication.
-- FFC sample window: 2026-08-19 through 2026-08-26; 7,830 ten-team PPR drafts.
-- All 266 current PPR records resolve to stable Sleeper IDs.
-- 1 headline source failed this run; only that source's last-known-good links were preserved: ESPN NFL RSS.
+- 267 PPR-ranked players; 60 attributed sources; the bundle passed validation before locked atomic publication.
+- FFC sample window: 2026-08-20 through 2026-08-27; 7,986 ten-team PPR drafts.
+- All 267 current PPR records resolve to stable Sleeper IDs.
+- 5 headline sources failed this run; only that source's last-known-good links were preserved: NOAA Climate Prediction Center 6\-10 day temperature outlook, NOAA Climate Prediction Center 6\-10 day precipitation outlook, NOAA Climate Prediction Center 8\-14 day temperature outlook, NOAA Climate Prediction Center 8\-14 day precipitation outlook, Tampa Bay Buccaneers RSS.
 - 3 unique schedule-metadata warnings remain visible and low-weight.
-- Weather is intentionally absent: credible forecasts belong near game day, not draft day weeks in advance.
+- Environment layer: 2001-2020 NASA POWER monthly climate normals across 38 venues; 2 current NOAA CPC outlook layers; 0 games inside a live forecast window.
+- Climate precipitation is a historical millimeters-per-day normal, not a kickoff rain probability. NOAA outlooks remain categories, and exact forecasts appear only inside the provider horizon.
 
 ## Status changes since the prior snapshot
 
-- Ja'Marr Chase: Active / clear → Active / Questionable.
-- Chris Olave: Active / clear → Active / Questionable.
-- Kenneth Walker: Active / clear → Active / Questionable.
-- Quinshon Judkins: Active / Questionable → Active / clear.
-- Parker Washington: Active / Questionable → Active / clear.
-- Brian Thomas: Active / clear → Active / Questionable.
-- Josh Downs: Active / clear → Active / Questionable.
-- Keaton Mitchell: Active / clear → Active / Questionable.
-- Terrance Ferguson: Active / clear → Active / Questionable.
+- Chris Olave: Active / Questionable → Active / clear.
+- Zay Flowers: Active / clear → Active / Questionable.
+- Alec Pierce: Active / PUP → Active / Questionable.
+- Wan'Dale Robinson: Active / clear → Active / Questionable.
 
 ## PPR ADP movers since the prior snapshot
 
-- Jordyn Tyson: 126.9 → 151.1 (+24.2; a lower ADP means earlier selection).
-- SF Defense: 152.2 → 133.0 (-19.2; a lower ADP means earlier selection).
-- Oronde Gadsden: 146.7 → 165.7 (+19.0; a lower ADP means earlier selection).
-- David Njoku: 136.0 → 154.0 (+18.0; a lower ADP means earlier selection).
-- Fernando Mendoza: 162.0 → 173.8 (+11.8; a lower ADP means earlier selection).
-- Sam LaPorta: 99.8 → 111.6 (+11.8; a lower ADP means earlier selection).
-- Malik Davis: 152.1 → 161.3 (+9.2; a lower ADP means earlier selection).
-- James Conner: 161.1 → 168.9 (+7.8; a lower ADP means earlier selection).
-- Trey Smack: 153.1 → 160.2 (+7.1; a lower ADP means earlier selection).
-- Caleb Douglas: 176.8 → 170.5 (-6.3; a lower ADP means earlier selection).
-- Nick Folk: 165.3 → 171.5 (+6.2; a lower ADP means earlier selection).
-- Pat Bryant: 151.1 → 156.6 (+5.5; a lower ADP means earlier selection).
-- Darius Slayton: 183.2 → 177.8 (-5.4; a lower ADP means earlier selection).
-- Dallas Goedert: 105.0 → 100.0 (-5.0; a lower ADP means earlier selection).
-- CIN Defense: 179.0 → 183.9 (+4.9; a lower ADP means earlier selection).
-- Malachi Fields: 156.0 → 160.7 (+4.7; a lower ADP means earlier selection).
-- Xavier Hutchinson: 167.8 → 172.5 (+4.7; a lower ADP means earlier selection).
-- Emari Demercado: 144.4 → 149.0 (+4.6; a lower ADP means earlier selection).
-- Ryan Flournoy: 159.0 → 163.6 (+4.6; a lower ADP means earlier selection).
-- Jordan James: 143.8 → 148.3 (+4.5; a lower ADP means earlier selection).
+- SF Defense: 133.0 → 113.5 (-19.5; a lower ADP means earlier selection).
+- Jordan James: 148.3 → 159.8 (+11.5; a lower ADP means earlier selection).
+- Pat Freiermuth: 183.0 → 172.2 (-10.8; a lower ADP means earlier selection).
+- Emari Demercado: 149.0 → 159.0 (+10.0; a lower ADP means earlier selection).
+- Fernando Mendoza: 173.8 → 164.7 (-9.1; a lower ADP means earlier selection).
+- Xavier Hutchinson: 172.5 → 179.2 (+6.7; a lower ADP means earlier selection).
+- Brian Robinson: 166.5 → 160.3 (-6.2; a lower ADP means earlier selection).
+- Dallas Goedert: 100.0 → 105.9 (+5.9; a lower ADP means earlier selection).
+- Jordyn Tyson: 151.1 → 156.1 (+5.0; a lower ADP means earlier selection).
+- Nick Folk: 171.5 → 166.6 (-4.9; a lower ADP means earlier selection).
+- Tyler Bass: 153.5 → 158.2 (+4.7; a lower ADP means earlier selection).
+- CIN Defense: 183.9 → 179.3 (-4.6; a lower ADP means earlier selection).
+- George Kittle: 114.3 → 109.8 (-4.5; a lower ADP means earlier selection).
+- Najee Harris: 163.3 → 158.8 (-4.5; a lower ADP means earlier selection).
+- Alvin Kamara: 146.1 → 150.3 (+4.2; a lower ADP means earlier selection).
+- Troy Franklin: 177.2 → 181.3 (+4.1; a lower ADP means earlier selection).
+- ATL Defense: 179.0 → 174.9 (-4.1; a lower ADP means earlier selection).
+- Geno Smith: 180.2 → 183.7 (+3.5; a lower ADP means earlier selection).
+- Ray Davis: 162.8 → 159.4 (-3.4; a lower ADP means earlier selection).
+- WAS Defense: 192.8 → 195.9 (+3.1; a lower ADP means earlier selection).
 
 ## Player-pool changes
 
-- Added: TB Defense, Kimani Vidal, Bub Means, Geno Smith.
-- Removed: Keon Coleman, Will Levis, Brandon Aiyuk, Antonio Williams, KC Defense.
+- Added: Chimere Dike, Dominic Zvada, Jake Elliott.
+- Removed: TB Defense, Oronde Gadsden.
 
 ## Sleeper 24-hour trends
 
-- Add: Malik Davis (120,312 leagues).
-- Add: Jack Strand (47,140 leagues).
-- Add: Barion Brown (37,224 leagues).
-- Add: Colbie Young (32,472 leagues).
-- Add: Darren Waller (31,347 leagues).
-- Add: Andrei Iosivas (25,947 leagues).
-- Add: Devaughn Vele (23,954 leagues).
-- Add: MarShawn Lloyd (20,772 leagues).
-- Add: Seth McGowan (20,072 leagues).
-- Add: Caleb Douglas (19,408 leagues).
-- Drop: Tank Dell (24,704 leagues).
-- Drop: Trey Benson (19,104 leagues).
-- Drop: Jeff Caldwell (18,756 leagues).
-- Drop: Oronde Gadsden (13,435 leagues).
-- Drop: Calvin Austin (13,401 leagues).
-- Drop: Emanuel Wilson (13,023 leagues).
-- Drop: Tyreek Hill (11,872 leagues).
-- Drop: Chimere Dike (11,583 leagues).
-- Drop: Alvin Kamara (11,480 leagues).
-- Drop: Zach Ertz (11,169 leagues).
+- Add: MarShawn Lloyd (246,357 leagues).
+- Add: Malik Davis (42,597 leagues).
+- Add: Jonnu Smith (40,754 leagues).
+- Add: Barion Brown (21,798 leagues).
+- Add: Darren Waller (21,033 leagues).
+- Add: Jack Strand (20,660 leagues).
+- Add: Dohnte Meyers (19,197 leagues).
+- Add: Caleb Douglas (16,832 leagues).
+- Add: Odell Beckham (16,730 leagues).
+- Add: Seth McGowan (14,624 leagues).
+- Drop: Tank Dell (21,872 leagues).
+- Drop: Calvin Austin (15,705 leagues).
+- Drop: Emanuel Wilson (15,075 leagues).
+- Drop: Oronde Gadsden (12,680 leagues).
+- Drop: Alvin Kamara (12,632 leagues).
+- Drop: Tyreek Hill (11,944 leagues).
+- Drop: Isiah Pacheco (11,632 leagues).
+- Drop: Kenyon Sadiq (11,610 leagues).
+- Drop: Chimere Dike (11,151 leagues).
+- Drop: Brenton Strange (10,341 leagues).
 
 ## Linked headline inbox
 
-- [Seahawks Focused On 'How Fast Can We Improve' Before Opener](https://www.seahawks.com/news/seahawks-focused-on-how-fast-can-we-improve-before-opener) — Seattle Seahawks, 2026-08-26.
-- [Bears training camp report: Tuesday, Aug\. 25](https://www.chicagobears.com/news/bears-training-camp-report-tuesday-aug-25) — Chicago Bears, 2026-08-26.
-- [Practice Points: Dak Prescott, Caleb Downs highlight 1st Ford Center practice](https://www.dallascowboys.com/news/practice-points-dak-prescott-caleb-downs-highlight-1st-ford-center-practice) — Dallas Cowboys, 2026-08-26.
-- [Marcus Jones honored as Ron Burton Community Service Award winner at 2026 Patriots Premiere](https://www.patriots.com/news/marcus-jones-honored-as-ron-burton-community-service-award-winner-at-2026-patriots-premiere) — New England Patriots, 2026-08-26.
-- [Jaishawn Barham 'ready right now' for 2026 season ahead of preseason finale](https://www.dallascowboys.com/news/jaishawn-barham-ready-right-now-for-2026-season-ahead-of-preseason-finale) — Dallas Cowboys, 2026-08-26.
-- [Public Practice Notes: Riq Woolen leads the defense in front of 45,000 fans](https://www.philadelphiaeagles.com/news/eagles-public-practice-notes-riq-woolen-leads-the-defense-in-front-of-45-000-fans) — Philadelphia Eagles, 2026-08-26.
-- [Marcus Jones Receives the New England Patriots 2026 Ron Burton Community Service Award](https://www.patriots.com/news/marcus-jones-receives-the-new-england-patriots-2026-ron-burton-community-service-award) — New England Patriots, 2026-08-26.
-- [Training Camp Report \| Bengals WRs Depth On Display](https://www.bengals.com/news/training-camp-report-jamarr-chase-andrei-iosivas-dohnte-meyers-bengals-wrs-depth-on-display) — Cincinnati Bengals, 2026-08-26.
-- [Broncos Notebook: DC Vance Joseph emphasizes importance of upholding high defensive standard in 2026](https://www.denverbroncos.com/news/broncos-notebook-dc-vance-joseph-emphasizes-importance-of-upholding-high-defensive-standard-in-2026) — Denver Broncos, 2026-08-26.
-- [Athlete's Own: Year 3, Better Me](https://www.seahawks.com/news/athlete-s-own-year-3-better-me) — Seattle Seahawks, 2026-08-25.
-- [Chargers Training Camp Report: Takeaways From Final Practice of 2026](https://www.chargers.com/news/training-camp-report-takeaways-final-practice-2026) — Los Angeles Chargers, 2026-08-25.
-- [Day 17 of 2026 Training Camp: 53\-Man Cut is Near as 49ers Gear Up for Final Preseason Game](https://www.49ers.com/news/day-17-of-2026-training-camp-53-man-cut-is-near-as-49ers-gear-up-for-final-preseason-game) — San Francisco 49ers, 2026-08-25.
-- [Two placed on injured reserve as New Orleans Saints continue to work around injuries](https://www.neworleanssaints.com/news/two-placed-on-injured-reserve-as-new-orleans-saints-continue-to-work-around-injuries) — New Orleans Saints, 2026-08-25.
-- [Daniel Carlson's arrival adds a new twist to New Orleans Saints' kicking battle](https://www.neworleanssaints.com/news/daniel-carlson-arrival-adds-new-twist-to-new-orleans-saints-kicking-battle) — New Orleans Saints, 2026-08-25.
-- [Jets Practice Report \| Green & White Close Training Camp with Longest Practice and Eye on Regular Season](https://www.newyorkjets.com/news/jets-practice-report-08-25-2026) — New York Jets, 2026-08-25.
-- [Browns showcase rushing attack on Day 19 \| Training Camp Observations](https://www.clevelandbrowns.com/news/browns-showcase-rushing-attack-on-day-19-training-camp-observations) — Cleveland Browns, 2026-08-25.
-- [Falcons Camp Report: Back in Atlanta, Tyler Goodson is leaving an impression\.](https://www.atlantafalcons.com/news/falcons-camp-report-tyler-goodson-michael-penix-tua-tagovailoa) — Atlanta Falcons, 2026-08-25.
-- [How Trey Lance & DJ Uiagalelei Are Approaching Chargers Preseason Finale](https://www.chargers.com/news/trey-lance-dj-uiagalelei-mike-mcdaniel-offense) — Los Angeles Chargers, 2026-08-25.
-- [Training Camp Notebook 8/25: Raiders close out camp on a strong note](https://www.raiders.com/news/training-camp-notebook-8-25-raiders-close-out-camp-on-a-strong-note) — Las Vegas Raiders, 2026-08-25.
-- [Live Updates From Chargers 2026 Training Camp](https://www.chargers.com/news/live-updates-from-chargers-2026-training-camp) — Los Angeles Chargers, 2026-08-25.
-- [Practice 16: 2026 Miami Dolphins Training Camp Notebook](https://www.miamidolphins.com/news/practice-16-2026-miami-dolphins-training-camp-notebook) — Miami Dolphins, 2026-08-25.
-- [Los Angeles Rams at Los Angeles Chargers: How to watch, listen to and live stream 2026 Preseason Week 3](https://www.therams.com/news/los-angeles-rams-at-los-angeles-chargers-how-to-watch-listen-to-and-live-stream-2026-preseason-week-3) — Los Angeles Rams, 2026-08-25.
-- [Camp Notes: Stille showing versatility in competitive DL room](https://www.detroitlions.com/news/camp-notes-stille-showing-versatility-in-competitive-dl-room-mccreary-wonnum) — Detroit Lions, 2026-08-25.
-- [Broncos sign DE Ron Stone Jr\.](https://www.denverbroncos.com/news/broncos-sign-de-ron-stone-jr) — Denver Broncos, 2026-08-25.
-- [Chiefs caen ante Buccaneers por 16\-15 en partido de pretemporada](https://www.chiefs.com/news/chiefs-caen-ante-buccaneers-por-16-15-en-partido-de-pretemporada) — Kansas City Chiefs, 2026-08-25.
-- [Chiefs verlieren zweites Preseason\-Spiel gegen Bucs mit 15:16](https://www.chiefs.com/news/chiefs-verlieren-zweites-preseason-spiel-gegen-bucs-mit-15-16) — Kansas City Chiefs, 2026-08-25.
-- [Atlanta Falcons depth chart for final preseason game vs\. Miami Dolphins](https://www.atlantafalcons.com/news/atlanta-falcons-depth-chart-for-final-preseason-game-vs-miami-dolphins) — Atlanta Falcons, 2026-08-25.
-- [Jets QB Geno Smith Wants Teammates to Feel His Passion](https://www.newyorkjets.com/news/geno-smith-jets-leading-with-passion-to-win-08-25-2026) — New York Jets, 2026-08-25.
-- [Jets Training Camp Daily \(8/25\) \| Final Practice Before Giants Preseason Game](https://www.newyorkjets.com/news/jets-training-camp-daily-08-25-2026) — New York Jets, 2026-08-25.
-- [Dolphins make roster moves](https://www.miamidolphins.com/news/dolphins-make-roster-moves-x4967) — Miami Dolphins, 2026-08-25.
+- ['Foundational' Williams latest to re\-up with Seattle](https://www.espn.com/nfl/story/_/id/49742399/sources-seahawks-leonard-williams-lands-3-year-90m-extension) — ESPN NFL, 2026-08-28.
+- [🤔 Projecting every team's 53\-man roster in 2026](https://www.espn.com/nfl/story/_/id/49609341/2026-nfl-53-man-roster-projections-every-team-positions-cuts) — ESPN NFL, 2026-08-28.
+- [Browns cut veteran WR Tillman after 3 seasons](https://www.espn.com/nfl/story/_/id/49742460/sources-browns-releasing-veteran-wr-cedric-tillman) — ESPN NFL, 2026-08-28.
+- [Colts activate No\. 1 receiver Pierce off PUP list](https://www.espn.com/nfl/story/_/id/49742187/source-colts-activating-no-1-wr-alex-pierce-pup-list) — ESPN NFL, 2026-08-28.
+- [Dolphins trade receiver Atwell back to Rams](https://www.espn.com/nfl/story/_/id/49744695/dolphins-trade-tutu-atwell-rams-jarquez-hunter) — ESPN NFL, 2026-08-28.
+- [Packers add needed TE depth by signing Smith](https://www.espn.com/nfl/story/_/id/49743030/sources-packers-adding-te-jonnu-smith-one-year-deal) — ESPN NFL, 2026-08-28.
+- [Packers star RB Jacobs formally charged by DA](https://www.espn.com/nfl/story/_/id/49745245/packers-star-rb-josh-jacobs-charged-two-misdemeanors) — ESPN NFL, 2026-08-28.
+- [Romo issued new citations related to July arrest](https://www.espn.com/mlb/story/_/id/49748391/tony-romo-accepts-full-responsibility-actions-camp-says) — ESPN NFL, 2026-08-28.
+- [Titans' Robinson being evaluated after 'cheap' hit](https://www.espn.com/nfl/story/_/id/49745927/titans-wr-robinson-evaluated-concussion-cheap-hit) — ESPN NFL, 2026-08-28.
+- [Impact: NFL announces big changes to Pro Bowl](https://www.dallascowboys.com/news/impact-offseason-2026) — Dallas Cowboys, 2026-08-28.
+- [Game Highlights: Browns vs\. Patriots](https://www.clevelandbrowns.com/news/game-highlights-browns-vs-patriots-x4940) — Cleveland Browns, 2026-08-28.
+- [5 Chargers Players to Watch in Preseason Finale vs\. Rams](https://www.chargers.com/news/players-to-watch-rams-preseason-game) — Los Angeles Chargers, 2026-08-28.
+- [Live Game Updates: Raiders vs\. 49ers \| Preseason](https://www.raiders.com/news/live-game-updates-las-vegas-raiders-vs-san-francisco-49ers-preseason-finale-nfl-082726) — Las Vegas Raiders, 2026-08-28.
+- [From Chicago to \.\.\. Cleveland: Solak ranks all 32 NFL teams by watchability](https://www.espn.com/nfl/story/_/id/49734084/2026-nfl-season-most-watchable-teams-ranking-excitement-bears-rams-lions-chargers) — ESPN NFL, 2026-08-27.
+- [Browns announce players not expected to play in 3rd preseason game against the Patriots](https://www.clevelandbrowns.com/news/browns-announce-players-not-expected-to-play-in-3rd-preseason-game-against-the-patriots) — Cleveland Browns, 2026-08-27.
+- [Big Apple expectations, Garden State reality for Giants and Jets players](https://www.espn.com/nfl/story/_/id/49723143/what-giants-jets-really-think-living-playing-new-york-new-jersey) — ESPN NFL, 2026-08-27.
+- ['Everybody's embracing everybody': How Cowboys' leadership council is taking pressure off Dak Prescott](https://www.espn.com/nfl/story/_/id/49731659/nfl-dallas-cowboys-dak-prescott-quinnen-williams-kennyu-clark-rashan-gary) — ESPN NFL, 2026-08-27.
+- [Reid's preseason 2027 NFL mock draft: Quarterbacks go 1\-2\-3 \.\.\. and one team trades up for the top pick](https://www.espn.com/nfl/draft2027/story/_/id/49684109/2027-nfl-mock-draft-reid-preseason-first-round-predictions-32-picks-manning-moore-carr) — ESPN NFL, 2026-08-27.
+- [Several Saints prepare to make a final case for roster spots in the preseason finale](https://www.neworleanssaints.com/news/several-saints-prepare-to-make-a-final-case-for-roster-spots-in-the-preseason-finale) — New Orleans Saints, 2026-08-27.
+- [Contract Extension 'Means A Lot' To Seahawks DT Leonard Williams](https://www.seahawks.com/news/contract-extension-means-a-lot-to-seahawks-dt-leonard-williams) — Seattle Seahawks, 2026-08-27.
+- [TWENTYMAN: Training camp Day 19 observations](https://www.detroitlions.com/news/twentyman-training-camp-day-19-observations-goff-stbrown-gibbs) — Detroit Lions, 2026-08-27.
+- [As Cut Day Looms, Eku Leota Hopes To Make Name For Himself](https://www.azcardinals.com/news/as-cut-day-looms-eku-leota-hopes-to-make-name-for-himself-cardinals) — Arizona Cardinals, 2026-08-27.
+- [Ten Observations From Thursday's Titans vs Bears Joint Practice](https://www.tennesseetitans.com/news/ten-observations-from-thursday-s-titans-vs-bears-joint-practice) — Tennessee Titans, 2026-08-27.
+- [Titans Rookie WR Carnell Tate Ends Training Camp With a Bang in Practice With the Bears](https://www.tennesseetitans.com/news/titans-rookie-wr-carnell-tate-ends-training-with-a-bang-during-practice-with-bears) — Tennessee Titans, 2026-08-27.
+- [Seahawks Claim T Kellen Diesch Off Waivers](https://www.seahawks.com/news/seahawks-claim-t-kellen-diesch-off-waivers) — Seattle Seahawks, 2026-08-27.
+- [Bears training camp report: Joint practice with Titans \| Thursday, Aug\. 27](https://www.chicagobears.com/news/bears-training-camp-report-joint-practice-with-titans-thursday-aug-27) — Chicago Bears, 2026-08-27.
+- [Browns claim CB Mekhi Blackmon](https://www.clevelandbrowns.com/news/browns-claim-cb-mekhi-blackmon) — Cleveland Browns, 2026-08-27.
+- [Camp Notes: Campbell reflects on Lions' 2026 training camp](https://www.detroitlions.com/news/camp-notes-campbell-reflects-on-lions-2026-training-camp-hutchinson-pacheco) — Detroit Lions, 2026-08-27.
+- [Packers LB Edgerrin Cooper receives 2026 community service award](https://www.packers.com/news/packers-lb-edgerrin-cooper-receives-2026-community-service-award) — Green Bay Packers, 2026-08-27.
+- [How to Watch and Listen \| Preseason Week 3: Seahawks vs\. Chiefs](https://www.chiefs.com/news/how-to-watch-and-listen-preseason-week-3-seahawks-vs-chiefs) — Kansas City Chiefs, 2026-08-27.
 
 ## Venue review queue
 

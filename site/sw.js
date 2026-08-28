@@ -1,5 +1,5 @@
 const CACHE_PREFIX = "fantasy-war-room-2026-";
-const CACHE_NAME = `${CACHE_PREFIX}v3`;
+const CACHE_NAME = `${CACHE_PREFIX}v4`;
 const DATA_CACHE_PREFIX = `${CACHE_PREFIX}data-`;
 const CORE = [
   "./",
@@ -31,7 +31,7 @@ self.addEventListener("fetch", (event) => {
 });
 
 function isPublishedDataRequest(request) {
-  return /\/data\/(manifest|players|research)\.json$/.test(new URL(request.url).pathname);
+  return /\/data\/(manifest|players|research|environment)\.json$/.test(new URL(request.url).pathname);
 }
 
 async function matchVerifiedData(request) {

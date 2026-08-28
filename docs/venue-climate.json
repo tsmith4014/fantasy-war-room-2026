@@ -1,0 +1,1333 @@
+{
+  "schemaVersion": 1,
+  "baselinePeriod": "2001-2020",
+  "retrievedAt": "2026-08-26T00:00:00.000Z",
+  "parameters": {
+    "T2M": {
+      "label": "Average temperature",
+      "publishedUnit": "degrees Celsius",
+      "storedUnit": "degrees Fahrenheit"
+    },
+    "PRECTOTCORR": {
+      "label": "Average precipitation rate",
+      "publishedUnit": "millimeters per day",
+      "storedUnit": "millimeters per day"
+    },
+    "WS10M": {
+      "label": "Average wind speed at 10 meters",
+      "publishedUnit": "meters per second",
+      "storedUnit": "miles per hour"
+    }
+  },
+  "source": {
+    "publisher": "NASA Langley Research Center POWER Project",
+    "documentationUrl": "https://power.larc.nasa.gov/docs/services/api/temporal/climatology/",
+    "referencingUrl": "https://power.larc.nasa.gov/docs/referencing/",
+    "endpoint": "https://power.larc.nasa.gov/api/temporal/climatology/point",
+    "attribution": "NASA POWER climatology derived from MERRA-2; accessed 2026-08-26",
+    "note": "Monthly 2001-2020 climate normals are historical baselines, not game-day forecasts or precipitation probabilities."
+  },
+  "coordinateSources": {
+    "nflverse-community-stadiums": {
+      "url": "https://github.com/nflverse/nflverse-data/issues/57",
+      "note": "Community stadium coordinate seed matched by nflverse stadium ID and reviewed against the 2026 schedule."
+    },
+    "manual-reviewed": {
+      "note": "International venue coordinates were manually reviewed because they were absent from the community seed."
+    }
+  },
+  "venues": [
+    {
+      "stadiumId": "ATL97",
+      "name": "Mercedes-Benz Stadium",
+      "latitude": 33.75539625,
+      "longitude": -84.4008156749447,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 40.4,
+          "precipitationMmPerDay": 3.44,
+          "windMph": 6.9
+        },
+        "SEP": {
+          "temperatureF": 73.3,
+          "precipitationMmPerDay": 3.18,
+          "windMph": 5.1
+        },
+        "OCT": {
+          "temperatureF": 62.3,
+          "precipitationMmPerDay": 2.85,
+          "windMph": 5.8
+        },
+        "NOV": {
+          "temperatureF": 50.9,
+          "precipitationMmPerDay": 3.31,
+          "windMph": 6.2
+        },
+        "DEC": {
+          "temperatureF": 43.7,
+          "precipitationMmPerDay": 4.29,
+          "windMph": 6.5
+        }
+      }
+    },
+    {
+      "stadiumId": "BAL00",
+      "name": "M&T Bank Stadium",
+      "latitude": 39.2779664,
+      "longitude": -76.6238093083547,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 29.9,
+          "precipitationMmPerDay": 2.26,
+          "windMph": 10.5
+        },
+        "SEP": {
+          "temperatureF": 68.6,
+          "precipitationMmPerDay": 3.77,
+          "windMph": 7.6
+        },
+        "OCT": {
+          "temperatureF": 55.8,
+          "precipitationMmPerDay": 3.5,
+          "windMph": 8.8
+        },
+        "NOV": {
+          "temperatureF": 44.1,
+          "precipitationMmPerDay": 2.7,
+          "windMph": 9.3
+        },
+        "DEC": {
+          "temperatureF": 34.6,
+          "precipitationMmPerDay": 3.09,
+          "windMph": 9.7
+        }
+      }
+    },
+    {
+      "stadiumId": "BOS00",
+      "name": "Gillette Stadium",
+      "latitude": 42.0912526,
+      "longitude": -71.2644646105907,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 27.2,
+          "precipitationMmPerDay": 2.75,
+          "windMph": 6.9
+        },
+        "SEP": {
+          "temperatureF": 65.6,
+          "precipitationMmPerDay": 3.2,
+          "windMph": 4.7
+        },
+        "OCT": {
+          "temperatureF": 53.8,
+          "precipitationMmPerDay": 3.97,
+          "windMph": 5.5
+        },
+        "NOV": {
+          "temperatureF": 42.9,
+          "precipitationMmPerDay": 3.36,
+          "windMph": 5.9
+        },
+        "DEC": {
+          "temperatureF": 33.5,
+          "precipitationMmPerDay": 3.77,
+          "windMph": 6.4
+        }
+      }
+    },
+    {
+      "stadiumId": "BUF00",
+      "name": "Highmark Stadium",
+      "latitude": 42.7737131,
+      "longitude": -78.7869032106025,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 25.1,
+          "precipitationMmPerDay": 2.06,
+          "windMph": 11.4
+        },
+        "SEP": {
+          "temperatureF": 64.6,
+          "precipitationMmPerDay": 2.89,
+          "windMph": 6.6
+        },
+        "OCT": {
+          "temperatureF": 51.9,
+          "precipitationMmPerDay": 3.17,
+          "windMph": 8
+        },
+        "NOV": {
+          "temperatureF": 40.5,
+          "precipitationMmPerDay": 2.51,
+          "windMph": 8.9
+        },
+        "DEC": {
+          "temperatureF": 30.9,
+          "precipitationMmPerDay": 2.57,
+          "windMph": 10.1
+        }
+      }
+    },
+    {
+      "stadiumId": "CAR00",
+      "name": "Bank of America Stadium",
+      "latitude": 35.225737,
+      "longitude": -80.8536869740441,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 40,
+          "precipitationMmPerDay": 2.58,
+          "windMph": 5.5
+        },
+        "SEP": {
+          "temperatureF": 73.1,
+          "precipitationMmPerDay": 3.25,
+          "windMph": 4.5
+        },
+        "OCT": {
+          "temperatureF": 62,
+          "precipitationMmPerDay": 2.57,
+          "windMph": 4.8
+        },
+        "NOV": {
+          "temperatureF": 50.6,
+          "precipitationMmPerDay": 2.86,
+          "windMph": 5.1
+        },
+        "DEC": {
+          "temperatureF": 43.6,
+          "precipitationMmPerDay": 3.45,
+          "windMph": 5.1
+        }
+      }
+    },
+    {
+      "stadiumId": "CHI98",
+      "name": "Soldier Field",
+      "latitude": 41.86245145,
+      "longitude": -87.6167151470407,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 27.5,
+          "precipitationMmPerDay": 1.54,
+          "windMph": 15.8
+        },
+        "SEP": {
+          "temperatureF": 66.5,
+          "precipitationMmPerDay": 2.86,
+          "windMph": 11.4
+        },
+        "OCT": {
+          "temperatureF": 54.2,
+          "precipitationMmPerDay": 3.18,
+          "windMph": 13.8
+        },
+        "NOV": {
+          "temperatureF": 42.8,
+          "precipitationMmPerDay": 2.03,
+          "windMph": 15.1
+        },
+        "DEC": {
+          "temperatureF": 32.8,
+          "precipitationMmPerDay": 1.88,
+          "windMph": 15.3
+        }
+      }
+    },
+    {
+      "stadiumId": "CIN00",
+      "name": "Paycor Stadium",
+      "latitude": 39.0954645,
+      "longitude": -84.5160488350198,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 30.1,
+          "precipitationMmPerDay": 2.36,
+          "windMph": 6.7
+        },
+        "SEP": {
+          "temperatureF": 68.8,
+          "precipitationMmPerDay": 2.73,
+          "windMph": 4.2
+        },
+        "OCT": {
+          "temperatureF": 55.9,
+          "precipitationMmPerDay": 2.97,
+          "windMph": 5
+        },
+        "NOV": {
+          "temperatureF": 43.6,
+          "precipitationMmPerDay": 2.69,
+          "windMph": 5.5
+        },
+        "DEC": {
+          "temperatureF": 34.3,
+          "precipitationMmPerDay": 2.97,
+          "windMph": 5.9
+        }
+      }
+    },
+    {
+      "stadiumId": "CLE00",
+      "name": "Huntington Bank Field",
+      "latitude": 41.5060559,
+      "longitude": -81.6997118452595,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 27.5,
+          "precipitationMmPerDay": 1.86,
+          "windMph": 14.8
+        },
+        "SEP": {
+          "temperatureF": 66.7,
+          "precipitationMmPerDay": 2.93,
+          "windMph": 10.2
+        },
+        "OCT": {
+          "temperatureF": 55.1,
+          "precipitationMmPerDay": 2.75,
+          "windMph": 13
+        },
+        "NOV": {
+          "temperatureF": 43.7,
+          "precipitationMmPerDay": 2.26,
+          "windMph": 14.1
+        },
+        "DEC": {
+          "temperatureF": 33.9,
+          "precipitationMmPerDay": 2.13,
+          "windMph": 14.6
+        }
+      }
+    },
+    {
+      "stadiumId": "DAL00",
+      "name": "AT&T Stadium",
+      "latitude": 32.74785025,
+      "longitude": -97.0928337073774,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 44.7,
+          "precipitationMmPerDay": 2.02,
+          "windMph": 10.3
+        },
+        "SEP": {
+          "temperatureF": 78.8,
+          "precipitationMmPerDay": 2.61,
+          "windMph": 8
+        },
+        "OCT": {
+          "temperatureF": 67.2,
+          "precipitationMmPerDay": 3.48,
+          "windMph": 9.4
+        },
+        "NOV": {
+          "temperatureF": 56,
+          "precipitationMmPerDay": 1.95,
+          "windMph": 10.2
+        },
+        "DEC": {
+          "temperatureF": 46.8,
+          "precipitationMmPerDay": 2.04,
+          "windMph": 10.1
+        }
+      }
+    },
+    {
+      "stadiumId": "DEN00",
+      "name": "Empower Field at Mile High",
+      "latitude": 39.743952,
+      "longitude": -105.019222812368,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 29,
+          "precipitationMmPerDay": 0.55,
+          "windMph": 9.5
+        },
+        "SEP": {
+          "temperatureF": 61.4,
+          "precipitationMmPerDay": 1.19,
+          "windMph": 7.7
+        },
+        "OCT": {
+          "temperatureF": 47.7,
+          "precipitationMmPerDay": 0.97,
+          "windMph": 8.1
+        },
+        "NOV": {
+          "temperatureF": 37.1,
+          "precipitationMmPerDay": 0.6,
+          "windMph": 8.6
+        },
+        "DEC": {
+          "temperatureF": 28.3,
+          "precipitationMmPerDay": 0.6,
+          "windMph": 8.9
+        }
+      }
+    },
+    {
+      "stadiumId": "DET00",
+      "name": "Ford Field",
+      "latitude": 42.33995675,
+      "longitude": -83.045616574037,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 23.5,
+          "precipitationMmPerDay": 1.69,
+          "windMph": 13.1
+        },
+        "SEP": {
+          "temperatureF": 64.4,
+          "precipitationMmPerDay": 2.48,
+          "windMph": 9.2
+        },
+        "OCT": {
+          "temperatureF": 51.5,
+          "precipitationMmPerDay": 2.31,
+          "windMph": 11.3
+        },
+        "NOV": {
+          "temperatureF": 39.5,
+          "precipitationMmPerDay": 2.08,
+          "windMph": 12.1
+        },
+        "DEC": {
+          "temperatureF": 29.3,
+          "precipitationMmPerDay": 1.78,
+          "windMph": 12.4
+        }
+      }
+    },
+    {
+      "stadiumId": "GNB00",
+      "name": "Lambeau Field",
+      "latitude": 44.50095825,
+      "longitude": -88.0610340437601,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 17.5,
+          "precipitationMmPerDay": 1.1,
+          "windMph": 12.8
+        },
+        "SEP": {
+          "temperatureF": 62.3,
+          "precipitationMmPerDay": 2.84,
+          "windMph": 10.6
+        },
+        "OCT": {
+          "temperatureF": 48.5,
+          "precipitationMmPerDay": 2.8,
+          "windMph": 11.9
+        },
+        "NOV": {
+          "temperatureF": 36.2,
+          "precipitationMmPerDay": 1.77,
+          "windMph": 12.1
+        },
+        "DEC": {
+          "temperatureF": 24,
+          "precipitationMmPerDay": 1.64,
+          "windMph": 12.4
+        }
+      }
+    },
+    {
+      "stadiumId": "HOU00",
+      "name": "Reliant Stadium",
+      "latitude": 29.6848581,
+      "longitude": -95.4108014532699,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 52.4,
+          "precipitationMmPerDay": 2.9,
+          "windMph": 9.7
+        },
+        "SEP": {
+          "temperatureF": 79.5,
+          "precipitationMmPerDay": 4.59,
+          "windMph": 7.3
+        },
+        "OCT": {
+          "temperatureF": 71.6,
+          "precipitationMmPerDay": 4.03,
+          "windMph": 8.3
+        },
+        "NOV": {
+          "temperatureF": 62.3,
+          "precipitationMmPerDay": 2.97,
+          "windMph": 8.9
+        },
+        "DEC": {
+          "temperatureF": 55,
+          "precipitationMmPerDay": 3,
+          "windMph": 9.5
+        }
+      }
+    },
+    {
+      "stadiumId": "IND00",
+      "name": "Lucas Oil Stadium",
+      "latitude": 39.760085,
+      "longitude": -86.1637037946731,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 26.3,
+          "precipitationMmPerDay": 2.42,
+          "windMph": 12
+        },
+        "SEP": {
+          "temperatureF": 66.6,
+          "precipitationMmPerDay": 2.71,
+          "windMph": 8
+        },
+        "OCT": {
+          "temperatureF": 53.7,
+          "precipitationMmPerDay": 2.99,
+          "windMph": 10.1
+        },
+        "NOV": {
+          "temperatureF": 41.3,
+          "precipitationMmPerDay": 2.74,
+          "windMph": 10.9
+        },
+        "DEC": {
+          "temperatureF": 31.1,
+          "precipitationMmPerDay": 2.67,
+          "windMph": 11.3
+        }
+      }
+    },
+    {
+      "stadiumId": "JAX00",
+      "name": "EverBank Stadium",
+      "latitude": 30.32398105,
+      "longitude": -81.6373045703404,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 52.2,
+          "precipitationMmPerDay": 2.35,
+          "windMph": 5.3
+        },
+        "SEP": {
+          "temperatureF": 78,
+          "precipitationMmPerDay": 4.91,
+          "windMph": 4.8
+        },
+        "OCT": {
+          "temperatureF": 70.6,
+          "precipitationMmPerDay": 2.63,
+          "windMph": 4.9
+        },
+        "NOV": {
+          "temperatureF": 61.6,
+          "precipitationMmPerDay": 1.77,
+          "windMph": 5.1
+        },
+        "DEC": {
+          "temperatureF": 56.1,
+          "precipitationMmPerDay": 2.59,
+          "windMph": 5.1
+        }
+      }
+    },
+    {
+      "stadiumId": "KAN00",
+      "name": "GEHA Field at Arrowhead Stadium",
+      "latitude": 39.04894045,
+      "longitude": -94.4849938110271,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 28.2,
+          "precipitationMmPerDay": 1.03,
+          "windMph": 11.3
+        },
+        "SEP": {
+          "temperatureF": 68.6,
+          "precipitationMmPerDay": 3.03,
+          "windMph": 8.8
+        },
+        "OCT": {
+          "temperatureF": 55.3,
+          "precipitationMmPerDay": 2.93,
+          "windMph": 10.4
+        },
+        "NOV": {
+          "temperatureF": 43.3,
+          "precipitationMmPerDay": 1.56,
+          "windMph": 11
+        },
+        "DEC": {
+          "temperatureF": 32.4,
+          "precipitationMmPerDay": 1.4,
+          "windMph": 10.8
+        }
+      }
+    },
+    {
+      "stadiumId": "LAX01",
+      "name": "SoFi Stadium",
+      "latitude": 33.95354625,
+      "longitude": -118.338793383194,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 53.7,
+          "precipitationMmPerDay": 2.35,
+          "windMph": 7.6
+        },
+        "SEP": {
+          "temperatureF": 73.5,
+          "precipitationMmPerDay": 0.11,
+          "windMph": 5.3
+        },
+        "OCT": {
+          "temperatureF": 67,
+          "precipitationMmPerDay": 0.54,
+          "windMph": 5.9
+        },
+        "NOV": {
+          "temperatureF": 59.9,
+          "precipitationMmPerDay": 0.84,
+          "windMph": 6.7
+        },
+        "DEC": {
+          "temperatureF": 53.2,
+          "precipitationMmPerDay": 2.1,
+          "windMph": 7.4
+        }
+      }
+    },
+    {
+      "stadiumId": "LON00",
+      "name": "Wembley Stadium",
+      "latitude": 51.55606945,
+      "longitude": -0.279603393794014,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 39.5,
+          "precipitationMmPerDay": 2.1,
+          "windMph": 12.9
+        },
+        "SEP": {
+          "temperatureF": 58.4,
+          "precipitationMmPerDay": 1.48,
+          "windMph": 10.4
+        },
+        "OCT": {
+          "temperatureF": 52.3,
+          "precipitationMmPerDay": 2.37,
+          "windMph": 11.6
+        },
+        "NOV": {
+          "temperatureF": 45.2,
+          "precipitationMmPerDay": 2.45,
+          "windMph": 11.6
+        },
+        "DEC": {
+          "temperatureF": 40.6,
+          "precipitationMmPerDay": 2.3,
+          "windMph": 12.3
+        }
+      }
+    },
+    {
+      "stadiumId": "LON02",
+      "name": "Tottenham Hotspur Stadium",
+      "latitude": 51.6041916,
+      "longitude": -0.066234905259181,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 39.5,
+          "precipitationMmPerDay": 2.1,
+          "windMph": 12.9
+        },
+        "SEP": {
+          "temperatureF": 58.4,
+          "precipitationMmPerDay": 1.48,
+          "windMph": 10.4
+        },
+        "OCT": {
+          "temperatureF": 52.3,
+          "precipitationMmPerDay": 2.37,
+          "windMph": 11.6
+        },
+        "NOV": {
+          "temperatureF": 45.2,
+          "precipitationMmPerDay": 2.45,
+          "windMph": 11.6
+        },
+        "DEC": {
+          "temperatureF": 40.6,
+          "precipitationMmPerDay": 2.3,
+          "windMph": 12.3
+        }
+      }
+    },
+    {
+      "stadiumId": "MAD01",
+      "name": "Bernabeu",
+      "latitude": 40.453054,
+      "longitude": -3.688344,
+      "coordinateSource": "manual-reviewed",
+      "climate": {
+        "JAN": {
+          "temperatureF": 38.8,
+          "precipitationMmPerDay": 1.21,
+          "windMph": 7.9
+        },
+        "SEP": {
+          "temperatureF": 68,
+          "precipitationMmPerDay": 0.81,
+          "windMph": 7
+        },
+        "OCT": {
+          "temperatureF": 57.4,
+          "precipitationMmPerDay": 2.12,
+          "windMph": 7.5
+        },
+        "NOV": {
+          "temperatureF": 45.7,
+          "precipitationMmPerDay": 1.79,
+          "windMph": 8.1
+        },
+        "DEC": {
+          "temperatureF": 39.9,
+          "precipitationMmPerDay": 1.3,
+          "windMph": 7.4
+        }
+      }
+    },
+    {
+      "stadiumId": "MEL00",
+      "name": "Melbourne Cricket Ground",
+      "latitude": -37.819967,
+      "longitude": 144.983449,
+      "coordinateSource": "manual-reviewed",
+      "climate": {
+        "JAN": {
+          "temperatureF": 68,
+          "precipitationMmPerDay": 1.45,
+          "windMph": 10.2
+        },
+        "SEP": {
+          "temperatureF": 53,
+          "precipitationMmPerDay": 2.04,
+          "windMph": 11
+        },
+        "OCT": {
+          "temperatureF": 56.9,
+          "precipitationMmPerDay": 1.98,
+          "windMph": 10.3
+        },
+        "NOV": {
+          "temperatureF": 61.4,
+          "precipitationMmPerDay": 2.45,
+          "windMph": 9.9
+        },
+        "DEC": {
+          "temperatureF": 64.7,
+          "precipitationMmPerDay": 1.94,
+          "windMph": 10.2
+        }
+      }
+    },
+    {
+      "stadiumId": "MEX00",
+      "name": "Estadio Banorte",
+      "latitude": 19.303012567511278,
+      "longitude": -99.15051697449567,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 50.8,
+          "precipitationMmPerDay": 0.29,
+          "windMph": 4.6
+        },
+        "SEP": {
+          "temperatureF": 57.4,
+          "precipitationMmPerDay": 4.94,
+          "windMph": 4.3
+        },
+        "OCT": {
+          "temperatureF": 55.5,
+          "precipitationMmPerDay": 2.07,
+          "windMph": 4.6
+        },
+        "NOV": {
+          "temperatureF": 52.8,
+          "precipitationMmPerDay": 0.64,
+          "windMph": 4.3
+        },
+        "DEC": {
+          "temperatureF": 51.5,
+          "precipitationMmPerDay": 0.18,
+          "windMph": 4.1
+        }
+      }
+    },
+    {
+      "stadiumId": "MIA00",
+      "name": "Hard Rock Stadium",
+      "latitude": 25.95790315,
+      "longitude": -80.2388497396752,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 70.2,
+          "precipitationMmPerDay": 1.41,
+          "windMph": 12.4
+        },
+        "SEP": {
+          "temperatureF": 83,
+          "precipitationMmPerDay": 6.32,
+          "windMph": 9.5
+        },
+        "OCT": {
+          "temperatureF": 80.4,
+          "precipitationMmPerDay": 3.99,
+          "windMph": 11.9
+        },
+        "NOV": {
+          "temperatureF": 75.9,
+          "precipitationMmPerDay": 2.14,
+          "windMph": 12.6
+        },
+        "DEC": {
+          "temperatureF": 73,
+          "precipitationMmPerDay": 1.64,
+          "windMph": 12.3
+        }
+      }
+    },
+    {
+      "stadiumId": "MIN01",
+      "name": "U.S. Bank Stadium",
+      "latitude": 44.9749861,
+      "longitude": -93.2598737,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 13,
+          "precipitationMmPerDay": 0.57,
+          "windMph": 10.6
+        },
+        "SEP": {
+          "temperatureF": 62.1,
+          "precipitationMmPerDay": 2.98,
+          "windMph": 8.5
+        },
+        "OCT": {
+          "temperatureF": 46.5,
+          "precipitationMmPerDay": 2.27,
+          "windMph": 9.1
+        },
+        "NOV": {
+          "temperatureF": 33.2,
+          "precipitationMmPerDay": 1.1,
+          "windMph": 9.5
+        },
+        "DEC": {
+          "temperatureF": 19.3,
+          "precipitationMmPerDay": 1.2,
+          "windMph": 9.7
+        }
+      }
+    },
+    {
+      "stadiumId": "MUN01",
+      "name": "FC Bayern Munich Stadium",
+      "latitude": 48.218775,
+      "longitude": 11.624753,
+      "coordinateSource": "manual-reviewed",
+      "climate": {
+        "JAN": {
+          "temperatureF": 29.2,
+          "precipitationMmPerDay": 2.53,
+          "windMph": 6.7
+        },
+        "SEP": {
+          "temperatureF": 56.1,
+          "precipitationMmPerDay": 3.17,
+          "windMph": 5
+        },
+        "OCT": {
+          "temperatureF": 48.2,
+          "precipitationMmPerDay": 2.57,
+          "windMph": 5.2
+        },
+        "NOV": {
+          "temperatureF": 38.7,
+          "precipitationMmPerDay": 2.08,
+          "windMph": 5.5
+        },
+        "DEC": {
+          "temperatureF": 31.4,
+          "precipitationMmPerDay": 2.2,
+          "windMph": 6.3
+        }
+      }
+    },
+    {
+      "stadiumId": "NAS00",
+      "name": "Nissan Stadium",
+      "latitude": 36.16649655,
+      "longitude": -86.7712644420847,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 36.1,
+          "precipitationMmPerDay": 3.3,
+          "windMph": 8.4
+        },
+        "SEP": {
+          "temperatureF": 72.3,
+          "precipitationMmPerDay": 3.07,
+          "windMph": 5.9
+        },
+        "OCT": {
+          "temperatureF": 60.2,
+          "precipitationMmPerDay": 3.26,
+          "windMph": 6.8
+        },
+        "NOV": {
+          "temperatureF": 48,
+          "precipitationMmPerDay": 3.33,
+          "windMph": 7.5
+        },
+        "DEC": {
+          "temperatureF": 39.8,
+          "precipitationMmPerDay": 4.08,
+          "windMph": 7.9
+        }
+      }
+    },
+    {
+      "stadiumId": "NOR00",
+      "name": "Caesars Superdome",
+      "latitude": 29.9510489,
+      "longitude": -90.082307625389,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 53.5,
+          "precipitationMmPerDay": 3.17,
+          "windMph": 10.7
+        },
+        "SEP": {
+          "temperatureF": 80.2,
+          "precipitationMmPerDay": 4.3,
+          "windMph": 8.6
+        },
+        "OCT": {
+          "temperatureF": 72.1,
+          "precipitationMmPerDay": 3.37,
+          "windMph": 9.5
+        },
+        "NOV": {
+          "temperatureF": 62.7,
+          "precipitationMmPerDay": 2.55,
+          "windMph": 10
+        },
+        "DEC": {
+          "temperatureF": 56.4,
+          "precipitationMmPerDay": 4.14,
+          "windMph": 10.5
+        }
+      }
+    },
+    {
+      "stadiumId": "NYC01",
+      "name": "MetLife Stadium",
+      "latitude": 40.81352375,
+      "longitude": -74.0734007489118,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 26.2,
+          "precipitationMmPerDay": 2.51,
+          "windMph": 6.4
+        },
+        "SEP": {
+          "temperatureF": 66,
+          "precipitationMmPerDay": 3.63,
+          "windMph": 4.2
+        },
+        "OCT": {
+          "temperatureF": 53.4,
+          "precipitationMmPerDay": 3.91,
+          "windMph": 4.9
+        },
+        "NOV": {
+          "temperatureF": 41.8,
+          "precipitationMmPerDay": 2.98,
+          "windMph": 5.3
+        },
+        "DEC": {
+          "temperatureF": 32.1,
+          "precipitationMmPerDay": 3.58,
+          "windMph": 5.8
+        }
+      }
+    },
+    {
+      "stadiumId": "PAR00",
+      "name": "Stade de France",
+      "latitude": 48.924459,
+      "longitude": 2.360164,
+      "coordinateSource": "manual-reviewed",
+      "climate": {
+        "JAN": {
+          "temperatureF": 37.4,
+          "precipitationMmPerDay": 1.74,
+          "windMph": 11.4
+        },
+        "SEP": {
+          "temperatureF": 60.1,
+          "precipitationMmPerDay": 1.4,
+          "windMph": 8.5
+        },
+        "OCT": {
+          "temperatureF": 53,
+          "precipitationMmPerDay": 1.84,
+          "windMph": 9.7
+        },
+        "NOV": {
+          "temperatureF": 44.4,
+          "precipitationMmPerDay": 2.03,
+          "windMph": 10.1
+        },
+        "DEC": {
+          "temperatureF": 38.4,
+          "precipitationMmPerDay": 2.24,
+          "windMph": 11.1
+        }
+      }
+    },
+    {
+      "stadiumId": "PHI00",
+      "name": "Lincoln Financial Field",
+      "latitude": 39.9009099,
+      "longitude": -75.167489156059,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 30.2,
+          "precipitationMmPerDay": 2.5,
+          "windMph": 8.8
+        },
+        "SEP": {
+          "temperatureF": 68.7,
+          "precipitationMmPerDay": 3.4,
+          "windMph": 6.5
+        },
+        "OCT": {
+          "temperatureF": 56.3,
+          "precipitationMmPerDay": 3.54,
+          "windMph": 7.6
+        },
+        "NOV": {
+          "temperatureF": 44.7,
+          "precipitationMmPerDay": 3.01,
+          "windMph": 7.9
+        },
+        "DEC": {
+          "temperatureF": 35.6,
+          "precipitationMmPerDay": 3.58,
+          "windMph": 8.3
+        }
+      }
+    },
+    {
+      "stadiumId": "PHO00",
+      "name": "State Farm Stadium",
+      "latitude": 33.52770765,
+      "longitude": -112.262564902643,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 53.3,
+          "precipitationMmPerDay": 0.79,
+          "windMph": 7.1
+        },
+        "SEP": {
+          "temperatureF": 87,
+          "precipitationMmPerDay": 0.57,
+          "windMph": 6.5
+        },
+        "OCT": {
+          "temperatureF": 74.9,
+          "precipitationMmPerDay": 0.41,
+          "windMph": 6.8
+        },
+        "NOV": {
+          "temperatureF": 63,
+          "precipitationMmPerDay": 0.53,
+          "windMph": 7
+        },
+        "DEC": {
+          "temperatureF": 52.4,
+          "precipitationMmPerDay": 0.67,
+          "windMph": 6.8
+        }
+      }
+    },
+    {
+      "stadiumId": "PIT00",
+      "name": "Acrisure Stadium",
+      "latitude": 40.44671645,
+      "longitude": -80.0157549334943,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 26.9,
+          "precipitationMmPerDay": 2.34,
+          "windMph": 6.4
+        },
+        "SEP": {
+          "temperatureF": 65.8,
+          "precipitationMmPerDay": 2.83,
+          "windMph": 3.7
+        },
+        "OCT": {
+          "temperatureF": 52.8,
+          "precipitationMmPerDay": 2.72,
+          "windMph": 4.5
+        },
+        "NOV": {
+          "temperatureF": 41.1,
+          "precipitationMmPerDay": 2.26,
+          "windMph": 4.9
+        },
+        "DEC": {
+          "temperatureF": 31.8,
+          "precipitationMmPerDay": 2.55,
+          "windMph": 5.5
+        }
+      }
+    },
+    {
+      "stadiumId": "RIO00",
+      "name": "Maracana Stadium",
+      "latitude": -22.912109,
+      "longitude": -43.230156,
+      "coordinateSource": "manual-reviewed",
+      "climate": {
+        "JAN": {
+          "temperatureF": 78.2,
+          "precipitationMmPerDay": 6.7,
+          "windMph": 7.4
+        },
+        "SEP": {
+          "temperatureF": 71.5,
+          "precipitationMmPerDay": 2.29,
+          "windMph": 9.3
+        },
+        "OCT": {
+          "temperatureF": 73.3,
+          "precipitationMmPerDay": 3.48,
+          "windMph": 8.8
+        },
+        "NOV": {
+          "temperatureF": 74.2,
+          "precipitationMmPerDay": 7.33,
+          "windMph": 8.3
+        },
+        "DEC": {
+          "temperatureF": 76.5,
+          "precipitationMmPerDay": 7.49,
+          "windMph": 7.4
+        }
+      }
+    },
+    {
+      "stadiumId": "SEA00",
+      "name": "Lumen Field",
+      "latitude": 47.5953459,
+      "longitude": -122.331644311961,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 39.9,
+          "precipitationMmPerDay": 5.6,
+          "windMph": 5.4
+        },
+        "SEP": {
+          "temperatureF": 59.7,
+          "precipitationMmPerDay": 1.94,
+          "windMph": 4
+        },
+        "OCT": {
+          "temperatureF": 51.4,
+          "precipitationMmPerDay": 4.03,
+          "windMph": 4.7
+        },
+        "NOV": {
+          "temperatureF": 44,
+          "precipitationMmPerDay": 6.27,
+          "windMph": 5.5
+        },
+        "DEC": {
+          "temperatureF": 38.9,
+          "precipitationMmPerDay": 5.65,
+          "windMph": 5.4
+        }
+      }
+    },
+    {
+      "stadiumId": "SFO01",
+      "name": "Levi's Stadium",
+      "latitude": 37.40303995,
+      "longitude": -121.969681705055,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 46.9,
+          "precipitationMmPerDay": 2.84,
+          "windMph": 6.1
+        },
+        "SEP": {
+          "temperatureF": 66.9,
+          "precipitationMmPerDay": 0.1,
+          "windMph": 7.2
+        },
+        "OCT": {
+          "temperatureF": 61.4,
+          "precipitationMmPerDay": 0.82,
+          "windMph": 6.4
+        },
+        "NOV": {
+          "temperatureF": 53.1,
+          "precipitationMmPerDay": 1.77,
+          "windMph": 6.1
+        },
+        "DEC": {
+          "temperatureF": 47,
+          "precipitationMmPerDay": 3.68,
+          "windMph": 6.7
+        }
+      }
+    },
+    {
+      "stadiumId": "TAM00",
+      "name": "Raymond James Stadium",
+      "latitude": 27.97597925,
+      "longitude": -82.5042179967362,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 59.4,
+          "precipitationMmPerDay": 2.1,
+          "windMph": 9.7
+        },
+        "SEP": {
+          "temperatureF": 79.7,
+          "precipitationMmPerDay": 6.15,
+          "windMph": 7.8
+        },
+        "OCT": {
+          "temperatureF": 74.5,
+          "precipitationMmPerDay": 2.24,
+          "windMph": 9.1
+        },
+        "NOV": {
+          "temperatureF": 67.3,
+          "precipitationMmPerDay": 1.63,
+          "windMph": 9.4
+        },
+        "DEC": {
+          "temperatureF": 63.1,
+          "precipitationMmPerDay": 2.1,
+          "windMph": 9.4
+        }
+      }
+    },
+    {
+      "stadiumId": "VEG00",
+      "name": "Allegiant Stadium",
+      "latitude": 36.09083455,
+      "longitude": -115.182477977026,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 45.8,
+          "precipitationMmPerDay": 0.59,
+          "windMph": 8.1
+        },
+        "SEP": {
+          "temperatureF": 82.2,
+          "precipitationMmPerDay": 0.29,
+          "windMph": 7.5
+        },
+        "OCT": {
+          "temperatureF": 68.3,
+          "precipitationMmPerDay": 0.41,
+          "windMph": 7.8
+        },
+        "NOV": {
+          "temperatureF": 55.1,
+          "precipitationMmPerDay": 0.41,
+          "windMph": 7.8
+        },
+        "DEC": {
+          "temperatureF": 44.7,
+          "precipitationMmPerDay": 0.59,
+          "windMph": 7.8
+        }
+      }
+    },
+    {
+      "stadiumId": "WAS00",
+      "name": "Northwest Stadium",
+      "latitude": 38.9077002,
+      "longitude": -76.8633260869022,
+      "coordinateSource": "nflverse-community-stadiums",
+      "climate": {
+        "JAN": {
+          "temperatureF": 32.2,
+          "precipitationMmPerDay": 2.16,
+          "windMph": 10.4
+        },
+        "SEP": {
+          "temperatureF": 70.4,
+          "precipitationMmPerDay": 3.57,
+          "windMph": 7.8
+        },
+        "OCT": {
+          "temperatureF": 57.9,
+          "precipitationMmPerDay": 3.38,
+          "windMph": 8.9
+        },
+        "NOV": {
+          "temperatureF": 46.1,
+          "precipitationMmPerDay": 2.67,
+          "windMph": 9.5
+        },
+        "DEC": {
+          "temperatureF": 37,
+          "precipitationMmPerDay": 3.06,
+          "windMph": 9.6
+        }
+      }
+    }
+  ]
+}
