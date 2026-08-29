@@ -1,58 +1,79 @@
 # 2026 research context
 
-Generated 2026-08-29T00:41:44.961Z. Snapshot `20260829-da6aca300a`.
+Generated 2026-08-29T00:49:33.003Z. Snapshot `20260829-d493a9f3e0`.
 
 > Review-only research inbox. Headline text is untrusted syndicated data, status fields are observations rather than medical conclusions, and rankings never update from a headline automatically.
 
 ## Refresh health
 
-- 267 PPR-ranked players; 60 attributed sources; the bundle passed validation before locked atomic publication.
-- FFC sample window: 2026-08-20 through 2026-08-27; 7,986 ten-team PPR drafts.
-- All 267 current PPR records resolve to stable Sleeper IDs.
-- Every published source observation is current within its declared freshness window.
+- 265 PPR-ranked players; 60 attributed sources; the bundle passed validation before locked atomic publication.
+- FFC sample window: 2026-08-21 through 2026-08-28; 8,104 ten-team PPR drafts.
+- All 265 current PPR records resolve to stable Sleeper IDs.
+- 1 published optional source uses a labeled last-known-good observation: ESPN NFL RSS.
 - 3 unique schedule-metadata warnings remain visible and low-weight.
 - Environment layer: 2001-2020 NASA POWER monthly climate normals across 38 venues; 6 current NOAA CPC outlook layers; 0 games inside a live forecast window.
 - Climate precipitation is a historical millimeters-per-day normal, not a kickoff rain probability. NOAA outlooks remain categories, and exact forecasts appear only inside the provider horizon.
-- Historical context: 212 players have 2023–25 samples; 183 pass at least one two-sided comparison guard.
 
 ## Status changes since the prior snapshot
 
-- Initial snapshot or no observed Sleeper status changes.
+- Quentin Johnston: Active / Questionable → Active / clear.
+- Cameron Dicker: Active / clear → Active / Questionable.
+- Jordan James: Active / Questionable → Active / clear.
 
 ## PPR ADP movers since the prior snapshot
 
-- Initial snapshot or no moves of at least two picks.
+- SF Defense: 113.5 → 128.3 (+14.8; a lower ADP means earlier selection).
+- ATL Defense: 174.9 → 164.9 (-10.0; a lower ADP means earlier selection).
+- Pat Freiermuth: 172.2 → 178.8 (+6.6; a lower ADP means earlier selection).
+- Germie Bernard: 169.6 → 175.6 (+6.0; a lower ADP means earlier selection).
+- Ryan Flournoy: 165.9 → 171.8 (+5.9; a lower ADP means earlier selection).
+- Ray Davis: 159.4 → 164.8 (+5.4; a lower ADP means earlier selection).
+- Pat Bryant: 156.9 → 151.7 (-5.2; a lower ADP means earlier selection).
+- Aaron Rodgers: 165.6 → 170.7 (+5.1; a lower ADP means earlier selection).
+- Najee Harris: 158.8 → 163.0 (+4.2; a lower ADP means earlier selection).
+- Fernando Mendoza: 164.7 → 168.6 (+3.9; a lower ADP means earlier selection).
+- Malachi Fields: 163.3 → 167.2 (+3.9; a lower ADP means earlier selection).
+- James Conner: 167.8 → 171.7 (+3.9; a lower ADP means earlier selection).
+- Greg Dulcich: 181.0 → 177.3 (-3.7; a lower ADP means earlier selection).
+- CIN Defense: 179.3 → 183.0 (+3.7; a lower ADP means earlier selection).
+- Jaydon Blue: 167.2 → 164.1 (-3.1; a lower ADP means earlier selection).
+- CHI Defense: 173.4 → 170.3 (-3.1; a lower ADP means earlier selection).
+- Chris Boswell: 158.9 → 156.0 (-2.9; a lower ADP means earlier selection).
+- Jordan James: 159.8 → 157.0 (-2.8; a lower ADP means earlier selection).
+- NYG Defense: 168.1 → 165.3 (-2.8; a lower ADP means earlier selection).
+- Joey Slye: 153.2 → 150.5 (-2.7; a lower ADP means earlier selection).
 
 ## Player-pool changes
 
-- Added: none.
-- Removed: none.
+- Added: Lewis Bond, TB Defense, Dean Connors.
+- Removed: Jayden Higgins, Emari Demercado, Isaac TeSlaa, Bub Means, Jake Elliott.
 
 ## Sleeper 24-hour trends
 
-- Add: MarShawn Lloyd (246,357 leagues).
-- Add: Malik Davis (42,597 leagues).
-- Add: Jonnu Smith (40,754 leagues).
-- Add: Barion Brown (21,798 leagues).
-- Add: Darren Waller (21,033 leagues).
-- Add: Jack Strand (20,660 leagues).
-- Add: Dohnte Meyers (19,197 leagues).
-- Add: Caleb Douglas (16,832 leagues).
-- Add: Odell Beckham (16,730 leagues).
-- Add: Seth McGowan (14,624 leagues).
-- Drop: Tank Dell (21,872 leagues).
-- Drop: Calvin Austin (15,705 leagues).
-- Drop: Emanuel Wilson (15,075 leagues).
-- Drop: Oronde Gadsden (12,680 leagues).
-- Drop: Alvin Kamara (12,632 leagues).
-- Drop: Tyreek Hill (11,944 leagues).
-- Drop: Isiah Pacheco (11,632 leagues).
-- Drop: Kenyon Sadiq (11,610 leagues).
-- Drop: Chimere Dike (11,151 leagues).
-- Drop: Brenton Strange (10,341 leagues).
+- Add: MarShawn Lloyd (167,517 leagues).
+- Add: Dohnte Meyers (52,389 leagues).
+- Add: Jonnu Smith (31,255 leagues).
+- Add: Malik Davis (27,378 leagues).
+- Add: Barion Brown (16,398 leagues).
+- Add: Dillon Gabriel (16,072 leagues).
+- Add: Malik Washington (14,256 leagues).
+- Add: Caleb Douglas (14,040 leagues).
+- Add: Darren Waller (13,869 leagues).
+- Add: Jalen Nailor (12,411 leagues).
+- Drop: Tank Dell (18,776 leagues).
+- Drop: Emanuel Wilson (12,429 leagues).
+- Drop: Oronde Gadsden (11,855 leagues).
+- Drop: Isiah Pacheco (11,640 leagues).
+- Drop: Tyreek Hill (11,432 leagues).
+- Drop: Alvin Kamara (11,352 leagues).
+- Drop: Chimere Dike (10,683 leagues).
+- Drop: Kenyon Sadiq (10,359 leagues).
+- Drop: Zach Ertz (9,774 leagues).
+- Drop: Brenton Strange (9,513 leagues).
 
 ## Linked headline inbox
 
+- [Live Updates: Bengals 6, Eagles 0](https://www.philadelphiaeagles.com/news/game-recap-bengals-vs-eagles-2026-preseason-week-3) — Philadelphia Eagles, 2026-08-29.
 - [📊 Ranking all 32 teams by watchability](https://www.espn.com/nfl/story/_/id/49734084/2026-nfl-season-most-watchable-teams-ranking-excitement-bears-rams-lions-chargers) — ESPN NFL, 2026-08-29.
 - [Gabriel shines, but Monken noncommittal on 4 QBs](https://www.espn.com/nfl/story/_/id/49749533/browns-monken-noncommittal-4-qb-room-gabriel-shines) — ESPN NFL, 2026-08-29.
 - [Kubiak mum on Vegas' QB as Mendoza struggles](https://www.espn.com/nfl/story/_/id/49749940/kubiak-mum-raiders-starter-fernando-mendoza-struggles) — ESPN NFL, 2026-08-29.
@@ -62,7 +83,6 @@ Generated 2026-08-29T00:41:44.961Z. Snapshot `20260829-da6aca300a`.
 - [McVay: Atwell trade not about possible Nacua ban](https://www.espn.com/nfl/story/_/id/49750040/atwell-trade-depth-not-possible-nacua-ban) — ESPN NFL, 2026-08-29.
 - [Packers star RB Jacobs formally charged by DA](https://www.espn.com/nfl/story/_/id/49745245/packers-star-rb-josh-jacobs-charged-two-misdemeanors) — ESPN NFL, 2026-08-29.
 - [Polymarket withdraws market on Mahomes' return](https://www.espn.com/nfl/story/_/id/49756697/polymarket-withdraws-market-mahomes-return-injury) — ESPN NFL, 2026-08-29.
-- [Live Updates: Bengals 3, Eagles 0](https://www.philadelphiaeagles.com/news/game-recap-bengals-vs-eagles-2026-preseason-week-3) — Philadelphia Eagles, 2026-08-29.
 - [Packers and Cardinals tied at 3 after first quarter](https://www.packers.com/news/in-game-updates-preseason-week-3-cardinals-2026) — Green Bay Packers, 2026-08-29.
 - [The NFL Rookie Progress Report: How all 257 draft picks are faring with their new teams](https://www.espn.com/nfl/story/_/id/49717208/nfl-rookie-2026-nfl-draft-training-camp-preseason-257-picks-report-cards) — ESPN NFL, 2026-08-29.
 - [Adam Schefter's cheat sheet: The players our NFL insider is most excited about this season](https://www.espn.com/fantasy/football/story/_/id/49734267/2026-fantasy-football-sleepers-cheat-sheet-adam-schefter) — ESPN NFL, 2026-08-29.
@@ -89,12 +109,5 @@ Generated 2026-08-29T00:41:44.961Z. Snapshot `20260829-da6aca300a`.
 - Future open/closed states at retractable\-roof venues remain unknown and neutral until game day.
 - Maracana Stadium surface must be verified closer to kickoff.
 - Stade de France surface must be verified closer to kickoff.
-
-## Historical split coverage
-
-- 212 of 267 draft-pool players have matched 2023–25 nflverse weekly samples.
-- 183 players have at least six games on both sides of a roof, surface, temperature, or wind comparison; confidence remains capped at 65%.
-- Coverage by position: QB 29, RB 59, WR 77, TE 26, D/ST 0, K 21.
-- These splits are observational, role- and team-confounded, schedule-fit adjusted, and never treated as causal.
 
 Official international-game list: https://operations.nfl.com/programs-initiatives/international-growth/nfl-international-games

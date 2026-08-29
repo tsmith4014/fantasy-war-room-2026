@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-29T00:41:44.961Z",
-  "observedAt": "2026-08-29T00:41:44.961Z",
+  "generatedAt": "2026-08-29T00:49:33.003Z",
+  "observedAt": "2026-08-29T00:49:33.003Z",
   "notice": "Headline titles, links, and dates are an unmodified-source research inbox. No article bodies are stored and no headline changes rankings automatically.",
   "trends": {
     "windowHours": 24,
@@ -11,350 +11,350 @@
         "name": "MarShawn Lloyd",
         "team": "GB",
         "position": "RB",
-        "count": 246357
-      },
-      {
-        "sleeperId": "8800",
-        "name": "Malik Davis",
-        "team": "DAL",
-        "position": "RB",
-        "count": 42597
-      },
-      {
-        "sleeperId": "4144",
-        "name": "Jonnu Smith",
-        "team": "GB",
-        "position": "TE",
-        "count": 40754
-      },
-      {
-        "sleeperId": "13533",
-        "name": "Barion Brown",
-        "team": "NO",
-        "position": "WR",
-        "count": 21798
-      },
-      {
-        "sleeperId": "2505",
-        "name": "Darren Waller",
-        "team": "CAR",
-        "position": "TE",
-        "count": 21033
-      },
-      {
-        "sleeperId": "13602",
-        "name": "Jack Strand",
-        "team": "ATL",
-        "position": "QB",
-        "count": 20660
+        "count": 167517
       },
       {
         "sleeperId": "13264",
         "name": "Dohnte Meyers",
         "team": "CIN",
         "position": "WR",
-        "count": 19197
+        "count": 52389
       },
       {
-        "sleeperId": "13296",
-        "name": "Caleb Douglas",
-        "team": "MIA",
-        "position": "WR",
-        "count": 16832
+        "sleeperId": "4144",
+        "name": "Jonnu Smith",
+        "team": "GB",
+        "position": "TE",
+        "count": 31255
       },
       {
-        "sleeperId": "2078",
-        "name": "Odell Beckham",
-        "team": "NYG",
-        "position": "WR",
-        "count": 16730
-      },
-      {
-        "sleeperId": "13424",
-        "name": "Seth McGowan",
-        "team": "IND",
+        "sleeperId": "8800",
+        "name": "Malik Davis",
+        "team": "DAL",
         "position": "RB",
-        "count": 14624
+        "count": 27378
+      },
+      {
+        "sleeperId": "13533",
+        "name": "Barion Brown",
+        "team": "NO",
+        "position": "WR",
+        "count": 16398
+      },
+      {
+        "sleeperId": "12486",
+        "name": "Dillon Gabriel",
+        "team": "CLE",
+        "position": "QB",
+        "count": 16072
       },
       {
         "sleeperId": "11610",
         "name": "Malik Washington",
         "team": "MIA",
         "position": "WR",
-        "count": 14312
+        "count": 14256
       },
       {
-        "sleeperId": "11834",
-        "name": "Devaughn Vele",
-        "team": "NO",
+        "sleeperId": "13296",
+        "name": "Caleb Douglas",
+        "team": "MIA",
         "position": "WR",
-        "count": 13986
+        "count": 14040
+      },
+      {
+        "sleeperId": "2505",
+        "name": "Darren Waller",
+        "team": "CAR",
+        "position": "TE",
+        "count": 13869
       },
       {
         "sleeperId": "8180",
         "name": "Jalen Nailor",
         "team": "LV",
         "position": "WR",
-        "count": 11448
+        "count": 12411
       },
       {
-        "sleeperId": "JAX",
-        "name": "JAX Defense",
-        "team": "JAX",
-        "position": "D/ST",
-        "count": 11226
-      },
-      {
-        "sleeperId": "13477",
-        "name": "Colbie Young",
-        "team": "CIN",
-        "position": "WR",
-        "count": 10836
-      },
-      {
-        "sleeperId": "12487",
-        "name": "Terrance Ferguson",
-        "team": "LAR",
-        "position": "TE",
-        "count": 9992
-      },
-      {
-        "sleeperId": "5995",
-        "name": "Justice Hill",
-        "team": "BAL",
-        "position": "RB",
-        "count": 9585
-      },
-      {
-        "sleeperId": "10213",
-        "name": "Tre Tucker",
-        "team": "LV",
-        "position": "WR",
-        "count": 9570
-      },
-      {
-        "sleeperId": "7528",
-        "name": "Najee Harris",
-        "team": "NYG",
-        "position": "RB",
-        "count": 7905
-      },
-      {
-        "sleeperId": "12711",
-        "name": "Tyler Loop",
-        "team": "BAL",
-        "position": "K",
-        "count": 7764
-      },
-      {
-        "sleeperId": "8161",
-        "name": "Malik Willis",
-        "team": "MIA",
-        "position": "QB",
-        "count": 7665
-      },
-      {
-        "sleeperId": "11783",
-        "name": "Ryan Flournoy",
-        "team": "DAL",
-        "position": "WR",
-        "count": 7648
-      },
-      {
-        "sleeperId": "9511",
-        "name": "Keaton Mitchell",
-        "team": "LAC",
-        "position": "RB",
-        "count": 7578
-      },
-      {
-        "sleeperId": "7562",
-        "name": "Tutu Atwell",
-        "team": "LAR",
-        "position": "WR",
-        "count": 7140
-      },
-      {
-        "sleeperId": "DET",
-        "name": "DET Defense",
-        "team": "DET",
-        "position": "D/ST",
-        "count": 6939
-      },
-      {
-        "sleeperId": "13414",
-        "name": "Kaelon Black",
-        "team": "SF",
-        "position": "RB",
-        "count": 6853
-      },
-      {
-        "sleeperId": "10219",
-        "name": "Chris Rodriguez",
-        "team": "JAX",
-        "position": "RB",
-        "count": 6849
-      },
-      {
-        "sleeperId": "13413",
-        "name": "Cyrus Allen",
-        "team": "KC",
-        "position": "WR",
-        "count": 6396
-      },
-      {
-        "sleeperId": "1479",
-        "name": "Keenan Allen",
+        "sleeperId": "13424",
+        "name": "Seth McGowan",
         "team": "IND",
-        "position": "WR",
-        "count": 6216
-      },
-      {
-        "sleeperId": "4017",
-        "name": "Deshaun Watson",
-        "team": "CLE",
-        "position": "QB",
-        "count": 5560
-      },
-      {
-        "sleeperId": "5849",
-        "name": "Kyler Murray",
-        "team": "MIN",
-        "position": "QB",
-        "count": 5504
-      },
-      {
-        "sleeperId": "9480",
-        "name": "Brenton Strange",
-        "team": "JAX",
-        "position": "TE",
-        "count": 5382
-      },
-      {
-        "sleeperId": "10226",
-        "name": "Andrei Iosivas",
-        "team": "CIN",
-        "position": "WR",
-        "count": 5373
-      },
-      {
-        "sleeperId": "13411",
-        "name": "Zavion Thomas",
-        "team": "CHI",
-        "position": "WR",
-        "count": 4968
-      },
-      {
-        "sleeperId": "3321",
-        "name": "Tyreek Hill",
-        "team": null,
-        "position": "WR",
-        "count": 4920
-      },
-      {
-        "sleeperId": "12545",
-        "name": "Tyler Shough",
-        "team": "NO",
-        "position": "QB",
-        "count": 4816
-      },
-      {
-        "sleeperId": "12502",
-        "name": "Gunnar Helm",
-        "team": "TEN",
-        "position": "TE",
-        "count": 4718
-      },
-      {
-        "sleeperId": "6783",
-        "name": "Jerry Jeudy",
-        "team": "CLE",
-        "position": "WR",
-        "count": 4518
-      },
-      {
-        "sleeperId": "6650",
-        "name": "Chase McLaughlin",
-        "team": "TB",
-        "position": "K",
-        "count": 4504
+        "position": "RB",
+        "count": 12192
       },
       {
         "sleeperId": "12547",
         "name": "Kyle Williams",
         "team": "NE",
         "position": "WR",
-        "count": 4455
+        "count": 11940
       },
       {
-        "sleeperId": "10218",
-        "name": "Xavier Hutchinson",
-        "team": "HOU",
+        "sleeperId": "13602",
+        "name": "Jack Strand",
+        "team": "ATL",
+        "position": "QB",
+        "count": 11755
+      },
+      {
+        "sleeperId": "JAX",
+        "name": "JAX Defense",
+        "team": "JAX",
+        "position": "D/ST",
+        "count": 11526
+      },
+      {
+        "sleeperId": "11834",
+        "name": "Devaughn Vele",
+        "team": "NO",
         "position": "WR",
-        "count": 4417
+        "count": 11207
       },
       {
-        "sleeperId": "13329",
-        "name": "Malik Benson",
-        "team": "LV",
+        "sleeperId": "2078",
+        "name": "Odell Beckham",
+        "team": "NYG",
         "position": "WR",
-        "count": 4398
+        "count": 10661
       },
       {
-        "sleeperId": "13311",
-        "name": "Chris Bell",
-        "team": "MIA",
+        "sleeperId": "13402",
+        "name": "Skyler Bell",
+        "team": "BUF",
         "position": "WR",
-        "count": 4368
-      },
-      {
-        "sleeperId": "4098",
-        "name": "Kareem Hunt",
-        "team": null,
-        "position": "RB",
-        "count": 4228
-      },
-      {
-        "sleeperId": "11625",
-        "name": "Adonai Mitchell",
-        "team": "NYJ",
-        "position": "WR",
-        "count": 4144
-      },
-      {
-        "sleeperId": "4147",
-        "name": "Samaje Perine",
-        "team": "CIN",
-        "position": "RB",
-        "count": 4112
-      },
-      {
-        "sleeperId": "5012",
-        "name": "Mark Andrews",
-        "team": "BAL",
-        "position": "TE",
-        "count": 3969
-      },
-      {
-        "sleeperId": "13337",
-        "name": "Emmett Johnson",
-        "team": "KC",
-        "position": "RB",
-        "count": 3897
+        "count": 10515
       },
       {
         "sleeperId": "13285",
         "name": "Malachi Fields",
         "team": "NYG",
         "position": "WR",
-        "count": 3860
+        "count": 9995
+      },
+      {
+        "sleeperId": "10213",
+        "name": "Tre Tucker",
+        "team": "LV",
+        "position": "WR",
+        "count": 9156
+      },
+      {
+        "sleeperId": "13414",
+        "name": "Kaelon Black",
+        "team": "SF",
+        "position": "RB",
+        "count": 8911
+      },
+      {
+        "sleeperId": "12711",
+        "name": "Tyler Loop",
+        "team": "BAL",
+        "position": "K",
+        "count": 8448
+      },
+      {
+        "sleeperId": "5995",
+        "name": "Justice Hill",
+        "team": "BAL",
+        "position": "RB",
+        "count": 8262
+      },
+      {
+        "sleeperId": "13306",
+        "name": "Taylen Green",
+        "team": "CLE",
+        "position": "QB",
+        "count": 8256
+      },
+      {
+        "sleeperId": "7562",
+        "name": "Tutu Atwell",
+        "team": "LAR",
+        "position": "WR",
+        "count": 8176
+      },
+      {
+        "sleeperId": "12487",
+        "name": "Terrance Ferguson",
+        "team": "LAR",
+        "position": "TE",
+        "count": 7208
+      },
+      {
+        "sleeperId": "13603",
+        "name": "Gregory Desrosiers",
+        "team": "LAC",
+        "position": "RB",
+        "count": 7184
+      },
+      {
+        "sleeperId": "DET",
+        "name": "DET Defense",
+        "team": "DET",
+        "position": "D/ST",
+        "count": 7164
+      },
+      {
+        "sleeperId": "8161",
+        "name": "Malik Willis",
+        "team": "MIA",
+        "position": "QB",
+        "count": 7042
+      },
+      {
+        "sleeperId": "9511",
+        "name": "Keaton Mitchell",
+        "team": "LAC",
+        "position": "RB",
+        "count": 7029
+      },
+      {
+        "sleeperId": "11783",
+        "name": "Ryan Flournoy",
+        "team": "DAL",
+        "position": "WR",
+        "count": 6776
+      },
+      {
+        "sleeperId": "7528",
+        "name": "Najee Harris",
+        "team": "NYG",
+        "position": "RB",
+        "count": 6360
+      },
+      {
+        "sleeperId": "13413",
+        "name": "Cyrus Allen",
+        "team": "KC",
+        "position": "WR",
+        "count": 6174
+      },
+      {
+        "sleeperId": "10219",
+        "name": "Chris Rodriguez",
+        "team": "JAX",
+        "position": "RB",
+        "count": 6147
+      },
+      {
+        "sleeperId": "5849",
+        "name": "Kyler Murray",
+        "team": "MIN",
+        "position": "QB",
+        "count": 6000
+      },
+      {
+        "sleeperId": "13315",
+        "name": "Dean Connors",
+        "team": "LAR",
+        "position": "RB",
+        "count": 5448
+      },
+      {
+        "sleeperId": "6650",
+        "name": "Chase McLaughlin",
+        "team": "TB",
+        "position": "K",
+        "count": 5328
+      },
+      {
+        "sleeperId": "9480",
+        "name": "Brenton Strange",
+        "team": "JAX",
+        "position": "TE",
+        "count": 5184
+      },
+      {
+        "sleeperId": "13477",
+        "name": "Colbie Young",
+        "team": "CIN",
+        "position": "WR",
+        "count": 4998
+      },
+      {
+        "sleeperId": "4017",
+        "name": "Deshaun Watson",
+        "team": "CLE",
+        "position": "QB",
+        "count": 4920
+      },
+      {
+        "sleeperId": "1479",
+        "name": "Keenan Allen",
+        "team": "IND",
+        "position": "WR",
+        "count": 4636
+      },
+      {
+        "sleeperId": "13411",
+        "name": "Zavion Thomas",
+        "team": "CHI",
+        "position": "WR",
+        "count": 4482
+      },
+      {
+        "sleeperId": "3321",
+        "name": "Tyreek Hill",
+        "team": null,
+        "position": "WR",
+        "count": 4464
+      },
+      {
+        "sleeperId": "9754",
+        "name": "Quentin Johnston",
+        "team": "LAC",
+        "position": "WR",
+        "count": 4354
+      },
+      {
+        "sleeperId": "12545",
+        "name": "Tyler Shough",
+        "team": "NO",
+        "position": "QB",
+        "count": 4296
+      },
+      {
+        "sleeperId": "5012",
+        "name": "Mark Andrews",
+        "team": "BAL",
+        "position": "TE",
+        "count": 4149
+      },
+      {
+        "sleeperId": "13189",
+        "name": "Luke Floriea",
+        "team": "CLE",
+        "position": "WR",
+        "count": 4112
+      },
+      {
+        "sleeperId": "12502",
+        "name": "Gunnar Helm",
+        "team": "TEN",
+        "position": "TE",
+        "count": 3836
+      },
+      {
+        "sleeperId": "9225",
+        "name": "Tank Bigsby",
+        "team": "PHI",
+        "position": "RB",
+        "count": 3808
+      },
+      {
+        "sleeperId": "4147",
+        "name": "Samaje Perine",
+        "team": "CIN",
+        "position": "RB",
+        "count": 3764
       },
       {
         "sleeperId": "8134",
         "name": "Khalil Shakir",
         "team": "BUF",
         "position": "WR",
-        "count": 3690
+        "count": 3546
       }
     ],
     "drop": [
@@ -363,350 +363,350 @@
         "name": "Tank Dell",
         "team": "HOU",
         "position": "WR",
-        "count": 21872
-      },
-      {
-        "sleeperId": "8125",
-        "name": "Calvin Austin",
-        "team": "NYG",
-        "position": "WR",
-        "count": 15705
+        "count": 18776
       },
       {
         "sleeperId": "11435",
         "name": "Emanuel Wilson",
         "team": "SEA",
         "position": "RB",
-        "count": 15075
+        "count": 12429
       },
       {
         "sleeperId": "12493",
         "name": "Oronde Gadsden",
         "team": "LAC",
         "position": "TE",
-        "count": 12680
-      },
-      {
-        "sleeperId": "4035",
-        "name": "Alvin Kamara",
-        "team": "NO",
-        "position": "RB",
-        "count": 12632
-      },
-      {
-        "sleeperId": "3321",
-        "name": "Tyreek Hill",
-        "team": null,
-        "position": "WR",
-        "count": 11944
+        "count": 11855
       },
       {
         "sleeperId": "8205",
         "name": "Isiah Pacheco",
         "team": "DET",
         "position": "RB",
-        "count": 11632
+        "count": 11640
       },
       {
-        "sleeperId": "13330",
-        "name": "Kenyon Sadiq",
-        "team": "NYJ",
-        "position": "TE",
-        "count": 11610
+        "sleeperId": "3321",
+        "name": "Tyreek Hill",
+        "team": null,
+        "position": "WR",
+        "count": 11432
+      },
+      {
+        "sleeperId": "4035",
+        "name": "Alvin Kamara",
+        "team": "NO",
+        "position": "RB",
+        "count": 11352
       },
       {
         "sleeperId": "12540",
         "name": "Chimere Dike",
         "team": "TEN",
         "position": "WR",
-        "count": 11151
+        "count": 10683
       },
       {
-        "sleeperId": "9480",
-        "name": "Brenton Strange",
-        "team": "JAX",
+        "sleeperId": "13330",
+        "name": "Kenyon Sadiq",
+        "team": "NYJ",
         "position": "TE",
-        "count": 10341
+        "count": 10359
       },
       {
         "sleeperId": "1339",
         "name": "Zach Ertz",
         "team": null,
         "position": "TE",
-        "count": 10134
+        "count": 9774
+      },
+      {
+        "sleeperId": "9480",
+        "name": "Brenton Strange",
+        "team": "JAX",
+        "position": "TE",
+        "count": 9513
+      },
+      {
+        "sleeperId": "13329",
+        "name": "Malik Benson",
+        "team": "LV",
+        "position": "WR",
+        "count": 9096
       },
       {
         "sleeperId": "9506",
         "name": "Sean Tucker",
         "team": "TB",
         "position": "RB",
-        "count": 9819
-      },
-      {
-        "sleeperId": "8800",
-        "name": "Malik Davis",
-        "team": "DAL",
-        "position": "RB",
-        "count": 9729
-      },
-      {
-        "sleeperId": "13281",
-        "name": "Jordyn Tyson",
-        "team": "NO",
-        "position": "WR",
-        "count": 8904
-      },
-      {
-        "sleeperId": "13276",
-        "name": "Omar Cooper",
-        "team": "NYJ",
-        "position": "WR",
-        "count": 8720
+        "count": 8712
       },
       {
         "sleeperId": "7090",
         "name": "Darnell Mooney",
         "team": "NYG",
         "position": "WR",
-        "count": 8604
-      },
-      {
-        "sleeperId": "8180",
-        "name": "Jalen Nailor",
-        "team": "LV",
-        "position": "WR",
-        "count": 8505
-      },
-      {
-        "sleeperId": "6783",
-        "name": "Jerry Jeudy",
-        "team": "CLE",
-        "position": "WR",
-        "count": 8127
+        "count": 7866
       },
       {
         "sleeperId": "6130",
         "name": "Devin Singletary",
         "team": "NYG",
         "position": "RB",
-        "count": 8118
+        "count": 7848
       },
       {
-        "sleeperId": "8154",
-        "name": "Brian Robinson",
-        "team": "ATL",
-        "position": "RB",
-        "count": 8010
-      },
-      {
-        "sleeperId": "9511",
-        "name": "Keaton Mitchell",
-        "team": "LAC",
-        "position": "RB",
-        "count": 7866
-      },
-      {
-        "sleeperId": "11630",
-        "name": "Roman Wilson",
-        "team": "PIT",
+        "sleeperId": "13281",
+        "name": "Jordyn Tyson",
+        "team": "NO",
         "position": "WR",
-        "count": 7839
+        "count": 7832
+      },
+      {
+        "sleeperId": "13276",
+        "name": "Omar Cooper",
+        "team": "NYJ",
+        "position": "WR",
+        "count": 7808
+      },
+      {
+        "sleeperId": "6783",
+        "name": "Jerry Jeudy",
+        "team": "CLE",
+        "position": "WR",
+        "count": 7776
       },
       {
         "sleeperId": "12455",
         "name": "Brashard Smith",
         "team": "KC",
         "position": "RB",
-        "count": 7812
-      },
-      {
-        "sleeperId": "11571",
-        "name": "Isaiah Davis",
-        "team": "NYJ",
-        "position": "RB",
-        "count": 7587
-      },
-      {
-        "sleeperId": "10218",
-        "name": "Xavier Hutchinson",
-        "team": "HOU",
-        "position": "WR",
-        "count": 7581
-      },
-      {
-        "sleeperId": "9225",
-        "name": "Tank Bigsby",
-        "team": "PHI",
-        "position": "RB",
-        "count": 7483
-      },
-      {
-        "sleeperId": "10219",
-        "name": "Chris Rodriguez",
-        "team": "JAX",
-        "position": "RB",
-        "count": 7434
-      },
-      {
-        "sleeperId": "11647",
-        "name": "Kimani Vidal",
-        "team": "LAC",
-        "position": "RB",
-        "count": 7400
-      },
-      {
-        "sleeperId": "11610",
-        "name": "Malik Washington",
-        "team": "MIA",
-        "position": "WR",
-        "count": 7384
-      },
-      {
-        "sleeperId": "13413",
-        "name": "Cyrus Allen",
-        "team": "KC",
-        "position": "WR",
-        "count": 7338
+        "count": 7651
       },
       {
         "sleeperId": "9494",
         "name": "Marvin Mims",
         "team": "DEN",
         "position": "WR",
+        "count": 7614
+      },
+      {
+        "sleeperId": "11647",
+        "name": "Kimani Vidal",
+        "team": "LAC",
+        "position": "RB",
+        "count": 7360
+      },
+      {
+        "sleeperId": "8800",
+        "name": "Malik Davis",
+        "team": "DAL",
+        "position": "RB",
+        "count": 7290
+      },
+      {
+        "sleeperId": "8180",
+        "name": "Jalen Nailor",
+        "team": "LV",
+        "position": "WR",
         "count": 7281
       },
       {
-        "sleeperId": "7049",
-        "name": "Jauan Jennings",
-        "team": "MIN",
+        "sleeperId": "8125",
+        "name": "Calvin Austin",
+        "team": "NYG",
         "position": "WR",
-        "count": 7070
+        "count": 7272
       },
       {
-        "sleeperId": "13320",
-        "name": "Zachariah Branch",
+        "sleeperId": "10218",
+        "name": "Xavier Hutchinson",
+        "team": "HOU",
+        "position": "WR",
+        "count": 7133
+      },
+      {
+        "sleeperId": "8154",
+        "name": "Brian Robinson",
         "team": "ATL",
-        "position": "WR",
-        "count": 6968
-      },
-      {
-        "sleeperId": "12457",
-        "name": "Jaydon Blue",
-        "team": "DAL",
         "position": "RB",
-        "count": 6920
+        "count": 7128
       },
       {
-        "sleeperId": "11589",
-        "name": "Trey Benson",
-        "team": "ARI",
-        "position": "RB",
-        "count": 6918
-      },
-      {
-        "sleeperId": "12535",
-        "name": "Isaac TeSlaa",
-        "team": "DET",
+        "sleeperId": "11630",
+        "name": "Roman Wilson",
+        "team": "PIT",
         "position": "WR",
-        "count": 6904
+        "count": 7101
       },
       {
         "sleeperId": "12530",
         "name": "Travis Hunter",
         "team": "JAX",
         "position": "WR",
-        "count": 6870
+        "count": 6948
       },
       {
-        "sleeperId": "2505",
-        "name": "Darren Waller",
-        "team": "CAR",
-        "position": "TE",
-        "count": 6858
+        "sleeperId": "10219",
+        "name": "Chris Rodriguez",
+        "team": "JAX",
+        "position": "RB",
+        "count": 6948
+      },
+      {
+        "sleeperId": "13269",
+        "name": "Fernando Mendoza",
+        "team": "LV",
+        "position": "QB",
+        "count": 6720
+      },
+      {
+        "sleeperId": "11571",
+        "name": "Isaiah Davis",
+        "team": "NYJ",
+        "position": "RB",
+        "count": 6642
       },
       {
         "sleeperId": "12524",
         "name": "Shedeur Sanders",
         "team": "CLE",
         "position": "QB",
-        "count": 6784
+        "count": 6616
       },
       {
-        "sleeperId": "7528",
-        "name": "Najee Harris",
-        "team": "NYG",
-        "position": "RB",
-        "count": 6630
-      },
-      {
-        "sleeperId": "8117",
-        "name": "Jalen Tolbert",
-        "team": "MIA",
+        "sleeperId": "7049",
+        "name": "Jauan Jennings",
+        "team": "MIN",
         "position": "WR",
-        "count": 6624
+        "count": 6559
       },
       {
-        "sleeperId": "11581",
-        "name": "MarShawn Lloyd",
-        "team": "GB",
+        "sleeperId": "9511",
+        "name": "Keaton Mitchell",
+        "team": "LAC",
         "position": "RB",
-        "count": 6462
+        "count": 6471
       },
       {
-        "sleeperId": "12495",
-        "name": "Ollie Gordon",
-        "team": "MIA",
+        "sleeperId": "13413",
+        "name": "Cyrus Allen",
+        "team": "KC",
+        "position": "WR",
+        "count": 6432
+      },
+      {
+        "sleeperId": "12457",
+        "name": "Jaydon Blue",
+        "team": "DAL",
         "position": "RB",
-        "count": 6307
+        "count": 6320
+      },
+      {
+        "sleeperId": "9225",
+        "name": "Tank Bigsby",
+        "team": "PHI",
+        "position": "RB",
+        "count": 6160
+      },
+      {
+        "sleeperId": "13320",
+        "name": "Zachariah Branch",
+        "team": "ATL",
+        "position": "WR",
+        "count": 6104
       },
       {
         "sleeperId": "NE",
         "name": "NE Defense",
         "team": "NE",
         "position": "D/ST",
-        "count": 6216
+        "count": 5999
+      },
+      {
+        "sleeperId": "12495",
+        "name": "Ollie Gordon",
+        "team": "MIA",
+        "position": "RB",
+        "count": 5978
+      },
+      {
+        "sleeperId": "12535",
+        "name": "Isaac TeSlaa",
+        "team": "DET",
+        "position": "WR",
+        "count": 5904
+      },
+      {
+        "sleeperId": "11581",
+        "name": "MarShawn Lloyd",
+        "team": "GB",
+        "position": "RB",
+        "count": 5895
+      },
+      {
+        "sleeperId": "8117",
+        "name": "Jalen Tolbert",
+        "team": "MIA",
+        "position": "WR",
+        "count": 5880
+      },
+      {
+        "sleeperId": "7528",
+        "name": "Najee Harris",
+        "team": "NYG",
+        "position": "RB",
+        "count": 5835
+      },
+      {
+        "sleeperId": "2505",
+        "name": "Darren Waller",
+        "team": "CAR",
+        "position": "TE",
+        "count": 5787
+      },
+      {
+        "sleeperId": "11610",
+        "name": "Malik Washington",
+        "team": "MIA",
+        "position": "WR",
+        "count": 5712
+      },
+      {
+        "sleeperId": "11624",
+        "name": "Xavier Worthy",
+        "team": "KC",
+        "position": "WR",
+        "count": 5652
+      },
+      {
+        "sleeperId": "11589",
+        "name": "Trey Benson",
+        "team": "ARI",
+        "position": "RB",
+        "count": 5544
       },
       {
         "sleeperId": "12533",
         "name": "Jacory Croskey-Merritt",
         "team": "WAS",
         "position": "RB",
-        "count": 5985
-      },
-      {
-        "sleeperId": "13533",
-        "name": "Barion Brown",
-        "team": "NO",
-        "position": "WR",
-        "count": 5940
+        "count": 5508
       },
       {
         "sleeperId": "12641",
         "name": "Jaylin Lane",
         "team": "WAS",
         "position": "WR",
-        "count": 5872
-      },
-      {
-        "sleeperId": "12487",
-        "name": "Terrance Ferguson",
-        "team": "LAR",
-        "position": "TE",
-        "count": 5720
+        "count": 5416
       },
       {
         "sleeperId": "12500",
         "name": "Quinn Ewers",
         "team": "MIA",
         "position": "QB",
-        "count": 5598
-      },
-      {
-        "sleeperId": "DET",
-        "name": "DET Defense",
-        "team": "DET",
-        "position": "D/ST",
-        "count": 5562
+        "count": 5346
       }
     ],
     "sourceIds": [
@@ -715,6 +715,16 @@
     ]
   },
   "items": [
+    {
+      "id": "headline:0ca2035e31022ab4",
+      "title": "Live Updates: Bengals 6, Eagles 0",
+      "url": "https://www.philadelphiaeagles.com/news/game-recap-bengals-vs-eagles-2026-preseason-week-3",
+      "publishedAt": "2026-08-29T00:47:00.000Z",
+      "source": "Philadelphia Eagles",
+      "sourceId": "rss-team-phi",
+      "category": "headline",
+      "team": "PHI"
+    },
     {
       "id": "headline:8eeb9c3fc9be44f9",
       "title": "📊 Ranking all 32 teams by watchability",
@@ -795,16 +805,6 @@
       "source": "ESPN NFL",
       "sourceId": "rss-espn",
       "category": "headline"
-    },
-    {
-      "id": "headline:0ca2035e31022ab4",
-      "title": "Live Updates: Bengals 3, Eagles 0",
-      "url": "https://www.philadelphiaeagles.com/news/game-recap-bengals-vs-eagles-2026-preseason-week-3",
-      "publishedAt": "2026-08-29T00:37:00.000Z",
-      "source": "Philadelphia Eagles",
-      "sourceId": "rss-team-phi",
-      "category": "headline",
-      "team": "PHI"
     },
     {
       "id": "headline:974a625837594723",
@@ -1631,16 +1631,6 @@
       "team": "KC"
     },
     {
-      "id": "headline:d0e2c14383c6c3a8",
-      "title": "Lunchbreak: The Athletic Spotlights Alan Page; Pivotal Day Led Keith Carter to Coaching",
-      "url": "https://www.vikings.com/news/lunchbreak-the-athletic-spotlights-alan-page-keith-carter",
-      "publishedAt": "2026-08-27T18:08:22.000Z",
-      "source": "Minnesota Vikings",
-      "sourceId": "rss-team-min",
-      "category": "headline",
-      "team": "MIN"
-    },
-    {
       "id": "headline:feab9da069d26a65",
       "title": "Sideline Still Beckoning Beck For Cardinals",
       "url": "https://www.azcardinals.com/news/sideline-still-beckoning-cardinals-qb-carson-beck",
@@ -1771,6 +1761,16 @@
       "team": "CHI"
     },
     {
+      "id": "headline:088ab18a1c5b8c45",
+      "title": "Vikings Unveil New 'Rivalries' Uniform",
+      "url": "https://www.vikings.com/news/unveiling-new-rivalries-uniform-2026",
+      "publishedAt": "2026-08-25T20:00:00.000Z",
+      "source": "Minnesota Vikings",
+      "sourceId": "rss-team-min",
+      "category": "headline",
+      "team": "MIN"
+    },
+    {
       "id": "headline:e58ae4b1bc2077df",
       "title": "Veteran scouts Paul Skansi and Chuck Cook retire",
       "url": "https://www.commanders.com/news/veteran-scouts-paul-skansi-and-chuck-cook-retire",
@@ -1811,5 +1811,5 @@
       "team": "DAL"
     }
   ],
-  "snapshotId": "20260829-da6aca300a"
+  "snapshotId": "20260829-d493a9f3e0"
 }
