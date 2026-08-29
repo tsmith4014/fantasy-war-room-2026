@@ -391,9 +391,19 @@ function renderTable() {
     row.append(
       createElement("td", { className: "market-rank", text: market ? `#${market.rank}` : "—" }),
       createElement("td", { className: "player-cell" }, [
-        queueButton(player, queueSet.has(player.id)),
-        createElement("button", { className: "player-button player-name", text: player.name, dataset: { action: "detail", playerId: player.id }, attributes: { type: "button" } }),
-        createElement("span", { className: "team-label", text: player.team ?? "FA" }),
+        createElement("div", { className: "player-cell-main" }, [
+          queueButton(player, queueSet.has(player.id)),
+          createElement("button", { className: "player-button player-name", text: player.name, dataset: { action: "detail", playerId: player.id }, attributes: { type: "button" } }),
+          createElement("span", { className: "team-label desktop-team", text: player.team ?? "FA" }),
+        ]),
+        createElement("div", { className: "mobile-player-meta" }, [
+          createElement("span", { className: "position-chip", text: player.position, dataset: { position: player.position } }),
+          createElement("span", { text: player.team ?? "FA" }),
+          createElement("span", { text: `Bye ${player.bye ?? "—"}` }),
+          createElement("span", { text: `ADP ${market ? round(market.adp, 1) : "—"}` }),
+          createElement("strong", { text: `War ${scored ? scored.score.toFixed(1) : "—"}` }),
+          hasStatusConcern(player) ? statusBadge(player) : null,
+        ]),
       ]),
       createElement("td", {}, createElement("span", { className: "position-chip", text: player.position, dataset: { position: player.position } })),
       createElement("td", { text: player.bye ?? "—" }),
@@ -402,7 +412,7 @@ function renderTable() {
       createElement("td", {}, statusBadge(player)),
       createElement("td", {}, contextBadges(player)),
       createElement("td", { className: "score-cell" }, scoreCell(scored)),
-      createElement("td", {}, owner
+      createElement("td", { className: "action-cell" }, owner
         ? createElement("span", { className: `tag ${owner === "mine" ? "good" : ""}`, text: owner === "mine" ? "My team" : "Drafted" })
         : createElement("div", { className: "row-actions" }, [
           createElement("button", { className: "row-action mine", text: "Mine", disabled: !managerTurn, dataset: { action: "mine", playerId: player.id }, attributes: { type: "button", title: managerTurn ? "Draft to my roster" : "Available on your scheduled turn", "aria-label": `Draft ${player.name} to my roster` } }),
@@ -553,32 +563,29 @@ function renderFreshness() {
   const liveObservations = [
     manifest.observationTimes?.markets,
     manifest.observationTimes?.playerStatus,
-    manifest.observationTimes?.headlines,
+    manifest.observationTimes?.trends,
   ].filter(Boolean);
   const observedAt = liveObservations.sort((a, b) => new Date(a) - new Date(b))[0] ?? manifest.generatedAt;
   const hours = ageInHours(observedAt);
-  const degradedSources = manifest.sources.filter((source) => source.freshness?.state === "error");
   const ageState = hours <= 36 ? "ok" : hours <= 72 ? "warn" : "error";
-  const stateName = ageState === "ok" && degradedSources.length ? "warn" : ageState;
   const ageLabel = hours < 1
     ? "under 1 hour old"
     : hours < 48
       ? `${Math.round(hours)} hours old`
       : `${Math.floor(hours / 24)} days old`;
-  elements["freshness-status"].dataset.state = stateName;
+  const compactAgeLabel = hours < 1 ? "Fresh <1h" : hours < 48 ? `Fresh ${Math.round(hours)}h` : `Stale ${Math.floor(hours / 24)}d`;
+  elements["freshness-status"].dataset.state = ageState;
+  elements["freshness-status"].dataset.compactLabel = compactAgeLabel;
   elements["freshness-status"].textContent = `Data ${ageLabel}`;
-  elements["freshness-status"].title = `Oldest live input: ${formatDateTime(observedAt)}${degradedSources.length ? `; degraded: ${degradedSources.map((source) => source.name).join(", ")}` : ""}`;
-  freshnessAlert = stateName === "ok" ? null : {
-    state: stateName,
+  elements["freshness-status"].title = `Oldest draft-critical input: ${formatDateTime(observedAt)}`;
+  freshnessAlert = ageState === "ok" ? null : {
+    state: ageState,
     text: ageState === "error"
       ? `Draft warning: core market or player-status inputs are ${ageLabel}. Refresh the research workflow before relying on this board.`
-      : ageState === "warn"
-        ? `Data check: the oldest live input is ${ageLabel}. Verify time-sensitive player news before drafting.`
-        : `${degradedSources.length} optional source${degradedSources.length === 1 ? " is" : "s are"} temporarily degraded. Current ADP and player status still loaded; unavailable context and last-known-good links are labeled in provenance.`,
+      : `Data check: the oldest draft-critical input is ${ageLabel}. Verify time-sensitive player news before drafting.`,
   };
   renderDataAlert();
-  const degradedLabel = degradedSources.length ? ` · ${degradedSources.length} degraded source${degradedSources.length === 1 ? "" : "s"}` : "";
-  elements["data-provenance"].textContent = `${manifest.snapshotId} · ${players.length} players · ${manifest.sources.length} attributed sources${degradedLabel} · core inputs ${ageLabel} · assembled ${formatDateTime(manifest.generatedAt)}`;
+  elements["data-provenance"].textContent = `${manifest.snapshotId} · ${players.length} players · ${manifest.sources.length} attributed sources · core inputs ${ageLabel} · assembled ${formatDateTime(manifest.generatedAt)}`;
 }
 
 function renderModelExplanation() {
@@ -1046,10 +1053,13 @@ function updateOnlineStatus() {
 
 function renderDataAlert() {
   const alerts = [freshnessAlert, networkAlert].filter(Boolean);
-  elements["data-alert"].hidden = alerts.length === 0;
-  if (!alerts.length) return;
-  elements["data-alert"].dataset.state = alerts.some((alert) => alert.state === "error") ? "error" : "warn";
-  elements["data-alert"].textContent = alerts.map((alert) => alert.text).join(" ");
+  const hidden = alerts.length === 0;
+  if (elements["data-alert"].hidden !== hidden) elements["data-alert"].hidden = hidden;
+  if (hidden) return;
+  const stateName = alerts.some((alert) => alert.state === "error") ? "error" : "warn";
+  const message = alerts.map((alert) => alert.text).join(" ");
+  if (elements["data-alert"].dataset.state !== stateName) elements["data-alert"].dataset.state = stateName;
+  if (elements["data-alert"].textContent !== message) elements["data-alert"].textContent = message;
 }
 
 function setNetworkStatus(status, text) {

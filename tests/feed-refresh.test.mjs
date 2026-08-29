@@ -9,6 +9,7 @@ const feeds = [
 ];
 
 const rss = (title, link, publishedAt = "Sun, 23 Aug 2026 12:00:00 GMT") => `<?xml version="1.0"?><rss><channel><item><title>${title}</title><link>${link}</link><pubDate>${publishedAt}</pubDate></item></channel></rss>`;
+const rssItems = (items) => `<?xml version="1.0"?><rss><channel>${items.map(({ title, link, publishedAt }) => `<item><title>${title}</title><link>${link}</link><pubDate>${publishedAt}</pubDate></item>`).join("")}</channel></rss>`;
 
 test("feed source IDs are stable for club and publisher feeds", () => {
   assert.equal(feedSourceId(feeds[0]), "rss-team-sf");
@@ -52,7 +53,7 @@ test("a failed feed with no prior snapshot is reported with an empty isolated re
   assert.equal(failures[0].error.includes("<script>"), false);
 });
 
-test("a future-dated publisher feed is isolated without rewriting its timestamp or blocking other feeds", async () => {
+test("an entirely future-dated publisher feed falls back without rewriting timestamps or blocking other feeds", async () => {
   const priorResearch = {
     items: [{
       id: "headline:prior-sf",
@@ -78,4 +79,25 @@ test("a future-dated publisher feed is isolated without rewriting its timestamp 
   assert.equal(results[0].headlines[0].publishedAt, "2026-08-26T12:00:00.000Z");
   assert.equal(results[1].usedFallback, false);
   assert.equal(results[1].headlines[0].publishedAt, "2026-08-27T11:30:00.000Z");
+});
+
+test("scheduled future items are ignored while valid current items from the same feed remain usable", async () => {
+  const { results, failures } = await fetchFeedSet([feeds[0]], {
+    observedAt: "2026-08-27T12:00:00.000Z",
+    fetchText: async (url) => ({
+      text: rssItems([
+        { title: "Scheduled story", link: "https://www.49ers.com/news/scheduled", publishedAt: "Thu, 27 Aug 2026 18:30:00 GMT" },
+        { title: "Current roster news", link: "https://www.49ers.com/news/current", publishedAt: "Thu, 27 Aug 2026 11:30:00 GMT" },
+        { title: "Earlier practice news", link: "https://www.49ers.com/news/earlier", publishedAt: "Thu, 27 Aug 2026 10:30:00 GMT" },
+      ]),
+      finalUrl: url,
+      contentType: "application/rss+xml",
+    }),
+  });
+
+  assert.equal(failures.length, 0);
+  assert.equal(results[0].usedFallback, false);
+  assert.equal(results[0].ignoredFutureItems, 1);
+  assert.deepEqual(results[0].headlines.map(({ title }) => title), ["Current roster news", "Earlier practice news"]);
+  assert.equal(results[0].headlines[0].publishedAt, "2026-08-27T11:30:00.000Z");
 });

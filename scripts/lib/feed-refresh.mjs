@@ -44,22 +44,24 @@ export async function fetchFeedSet(feeds, {
     let response;
     try {
       response = await fetchText(feed.url);
-      const headlines = parseRssHeadlines(response.text, {
+      const publishLimit = feed.espn ? 15 : 3;
+      const parsedHeadlines = parseRssHeadlines(response.text, {
         expectedHosts: [feed.domain],
-        limit: feed.espn ? 15 : 3,
+        // Some NFL CMS feeds place scheduled, not-yet-published items first.
+        // Parse beyond the publish limit so valid current items can still fill
+        // the source's compact headline allotment after future entries drop.
+        limit: publishLimit * 4,
       });
-      const futureHeadline = headlines.find(({ publishedAt }) => Date.parse(publishedAt) > observedAtMs + maxFutureSkewMs);
-      if (futureHeadline) {
-        // Do not clamp or rewrite a publisher timestamp. Isolate that source
-        // and preserve its last-known-good items so one bad feed clock cannot
-        // block current ADP, player-status, or schedule publication.
-        throw new Error(`Feed publication time exceeds the ${Math.round(maxFutureSkewMs / 60_000)}-minute source-clock allowance`);
-      }
+      const currentHeadlines = parsedHeadlines.filter(({ publishedAt }) => Date.parse(publishedAt) <= observedAtMs + maxFutureSkewMs);
+      const ignoredFutureItems = parsedHeadlines.length - currentHeadlines.length;
+      const headlines = currentHeadlines.slice(0, publishLimit);
+      if (!headlines.length) throw new Error(`Feed has no current items inside the ${Math.round(maxFutureSkewMs / 60_000)}-minute source-clock allowance`);
       return {
         feed,
         headlines,
         finalUrl: response.finalUrl ?? feed.url,
         contentType: cleanUntrustedText(response.contentType, 160),
+        ignoredFutureItems,
         usedFallback: false,
         error: null,
       };
@@ -69,6 +71,7 @@ export async function fetchFeedSet(feeds, {
         headlines: priorHeadlines(feed, priorResearch),
         finalUrl: response?.finalUrl ?? feed.url,
         contentType: cleanUntrustedText(response?.contentType, 160),
+        ignoredFutureItems: 0,
         usedFallback: true,
         error: safeError(error),
       };

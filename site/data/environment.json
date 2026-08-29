@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "season": 2026,
-  "generatedAt": "2026-08-28T02:00:00.554Z",
-  "snapshotId": "20260828-67fbb68781",
+  "generatedAt": "2026-08-29T00:41:44.961Z",
+  "snapshotId": "20260829-da6aca300a",
   "climateBaseline": {
     "period": "2001-2020",
     "retrievedAt": "2026-08-26T00:00:00.000Z",
@@ -11,22 +11,58 @@
   },
   "outlookCoverage": [
     {
+      "sourceId": "noaa-cpc-610-temperature",
+      "horizon": "6-10 day",
+      "dimension": "temperature",
+      "issuedDate": "2026-08-28",
+      "validStart": "2026-09-03",
+      "validEnd": "2026-09-07",
+      "featureCount": 29
+    },
+    {
+      "sourceId": "noaa-cpc-610-precipitation",
+      "horizon": "6-10 day",
+      "dimension": "precipitation",
+      "issuedDate": "2026-08-28",
+      "validStart": "2026-09-03",
+      "validEnd": "2026-09-07",
+      "featureCount": 21
+    },
+    {
+      "sourceId": "noaa-cpc-814-temperature",
+      "horizon": "8-14 day",
+      "dimension": "temperature",
+      "issuedDate": "2026-08-28",
+      "validStart": "2026-09-05",
+      "validEnd": "2026-09-11",
+      "featureCount": 20
+    },
+    {
+      "sourceId": "noaa-cpc-814-precipitation",
+      "horizon": "8-14 day",
+      "dimension": "precipitation",
+      "issuedDate": "2026-08-28",
+      "validStart": "2026-09-05",
+      "validEnd": "2026-09-11",
+      "featureCount": 15
+    },
+    {
       "sourceId": "noaa-cpc-week34-temperature",
       "horizon": "week 3-4",
       "dimension": "temperature",
-      "issuedDate": "2026-08-21",
-      "validStart": "2026-09-05",
-      "validEnd": "2026-09-18",
-      "featureCount": 18
+      "issuedDate": "2026-08-28",
+      "validStart": "2026-09-12",
+      "validEnd": "2026-09-25",
+      "featureCount": 13
     },
     {
       "sourceId": "noaa-cpc-week34-precipitation",
       "horizon": "week 3-4",
       "dimension": "precipitation",
-      "issuedDate": "2026-08-21",
-      "validStart": "2026-09-05",
-      "validEnd": "2026-09-18",
-      "featureCount": 10
+      "issuedDate": "2026-08-28",
+      "validStart": "2026-09-12",
+      "validEnd": "2026-09-25",
+      "featureCount": 8
     }
   ],
   "forecastCoverage": {
@@ -46,7 +82,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 1,
         "windyClimateGames": 2,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 8,
         "averageMarketImpliedPoints": 23.7,
@@ -54,6 +90,8 @@
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
+          "noaa-cpc-814-precipitation",
+          "noaa-cpc-814-temperature",
           "noaa-cpc-week34-precipitation",
           "noaa-cpc-week34-temperature"
         ]
@@ -84,23 +122,23 @@
           },
           "outlook": {
             "temperature": {
-              "category": "equal-chances",
+              "category": "below-normal",
               "probability": 33,
-              "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
+              "horizon": "8-14 day",
+              "issuedDate": "2026-08-28",
               "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
-              "sourceId": "noaa-cpc-week34-temperature",
+              "validEnd": "2026-09-11",
+              "sourceId": "noaa-cpc-814-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
             "precipitation": {
-              "category": "equal-chances",
-              "probability": 33,
-              "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
+              "category": "above-normal",
+              "probability": 40,
+              "horizon": "8-14 day",
+              "issuedDate": "2026-08-28",
               "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
-              "sourceId": "noaa-cpc-week34-precipitation",
+              "validEnd": "2026-09-11",
+              "sourceId": "noaa-cpc-814-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
           },
@@ -110,7 +148,7 @@
             "spread": 3.5,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -138,14 +176,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 43.5,
             "spread": 4.5,
             "favoredTeam": "NE",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -180,7 +239,7 @@
             "spread": 1.5,
             "favoredTeam": "JAX",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -215,7 +274,7 @@
             "spread": 3,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 23.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -250,7 +309,7 @@
             "spread": 8.5,
             "favoredTeam": "NE",
             "teamImpliedPoints": 26.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -285,7 +344,7 @@
             "spread": 9.5,
             "favoredTeam": "NE",
             "teamImpliedPoints": 26,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -320,7 +379,7 @@
             "spread": 1.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -409,7 +468,7 @@
             "spread": 1.5,
             "favoredTeam": "DET",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -617,7 +676,7 @@
         "hotClimateGames": 1,
         "wetClimateGames": 8,
         "windyClimateGames": 0,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 7,
         "averageMarketImpliedPoints": 24.4,
@@ -625,6 +684,8 @@
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
+          "noaa-cpc-814-precipitation",
+          "noaa-cpc-814-temperature",
           "noaa-cpc-week34-precipitation",
           "noaa-cpc-week34-temperature"
         ]
@@ -655,23 +716,23 @@
           },
           "outlook": {
             "temperature": {
-              "category": "equal-chances",
+              "category": "below-normal",
               "probability": 33,
-              "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
+              "horizon": "8-14 day",
+              "issuedDate": "2026-08-28",
               "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
-              "sourceId": "noaa-cpc-week34-temperature",
+              "validEnd": "2026-09-11",
+              "sourceId": "noaa-cpc-814-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
             "precipitation": {
-              "category": "equal-chances",
-              "probability": 33,
-              "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
+              "category": "above-normal",
+              "probability": 40,
+              "horizon": "8-14 day",
+              "issuedDate": "2026-08-28",
               "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
-              "sourceId": "noaa-cpc-week34-precipitation",
+              "validEnd": "2026-09-11",
+              "sourceId": "noaa-cpc-814-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
           },
@@ -681,7 +742,7 @@
             "spread": 3.5,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -709,14 +770,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "above-normal",
+              "probability": 40,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 44.5,
             "spread": -10,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 27.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -751,7 +833,7 @@
             "spread": -3.5,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 25,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -786,7 +868,7 @@
             "spread": 3,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 24.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -821,7 +903,7 @@
             "spread": 3.5,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 26,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -856,7 +938,7 @@
             "spread": -1.5,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1107,7 +1189,7 @@
             "spread": -1.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1180,14 +1262,16 @@
         "hotClimateGames": 0,
         "wetClimateGames": 1,
         "windyClimateGames": 0,
-        "outlookGames": 0,
+        "outlookGames": 1,
         "forecastGames": 0,
         "marketGames": 8,
         "averageMarketImpliedPoints": 25.9,
         "marketPulseScore": 58.1,
         "sourceIds": [
           "nasa-power-climatology",
-          "nflverse-schedules"
+          "nflverse-schedules",
+          "noaa-cpc-week34-precipitation",
+          "noaa-cpc-week34-temperature"
         ]
       },
       "games": [
@@ -1221,7 +1305,7 @@
             "spread": 3.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1249,14 +1333,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 40,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 46.5,
             "spread": 10.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 28.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1291,7 +1396,7 @@
             "spread": 11.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 29,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1326,7 +1431,7 @@
             "spread": 2.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1361,7 +1466,7 @@
             "spread": 3.5,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1396,7 +1501,7 @@
             "spread": 5.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 28,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1431,7 +1536,7 @@
             "spread": -4.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 26,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1520,7 +1625,7 @@
             "spread": 4.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 26,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1728,14 +1833,16 @@
         "hotClimateGames": 0,
         "wetClimateGames": 1,
         "windyClimateGames": 0,
-        "outlookGames": 0,
+        "outlookGames": 1,
         "forecastGames": 0,
         "marketGames": 8,
         "averageMarketImpliedPoints": 26.6,
         "marketPulseScore": 58.7,
         "sourceIds": [
           "nasa-power-climatology",
-          "nflverse-schedules"
+          "nflverse-schedules",
+          "noaa-cpc-week34-precipitation",
+          "noaa-cpc-week34-temperature"
         ]
       },
       "games": [
@@ -1769,7 +1876,7 @@
             "spread": 3.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 26,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1797,14 +1904,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 50,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "above-normal",
+              "probability": 40,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 48.5,
             "spread": 8.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 28.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1839,7 +1967,7 @@
             "spread": -3,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 24.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1874,7 +2002,7 @@
             "spread": -1.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1909,7 +2037,7 @@
             "spread": 3,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 28.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1944,7 +2072,7 @@
             "spread": 13.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 30.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2087,7 +2215,7 @@
             "spread": 5.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2203,7 +2331,7 @@
             "spread": -1.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2276,7 +2404,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 1,
         "windyClimateGames": 8,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 9,
         "averageMarketImpliedPoints": 24.8,
@@ -2315,11 +2443,11 @@
           "outlook": {
             "temperature": {
               "category": "above-normal",
-              "probability": 40,
+              "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -2327,9 +2455,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -2340,7 +2468,7 @@
             "spread": -2.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 25,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2368,14 +2496,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 45.5,
             "spread": 3.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2410,7 +2559,7 @@
             "spread": 1.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2445,7 +2594,7 @@
             "spread": 8.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2480,7 +2629,7 @@
             "spread": 3,
             "favoredTeam": "GB",
             "teamImpliedPoints": 23.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2515,7 +2664,7 @@
             "spread": -3,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 25.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2550,7 +2699,7 @@
             "spread": 1.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2666,7 +2815,7 @@
             "spread": 2.5,
             "favoredTeam": "DET",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2782,7 +2931,7 @@
             "spread": 1.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2855,7 +3004,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 0,
         "windyClimateGames": 0,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 6,
         "averageMarketImpliedPoints": 21.1,
@@ -2894,11 +3043,11 @@
           "outlook": {
             "temperature": {
               "category": "above-normal",
-              "probability": 40,
+              "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -2906,9 +3055,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -2919,7 +3068,7 @@
             "spread": -2.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2947,14 +3096,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 40,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 43.5,
             "spread": 1.5,
             "favoredTeam": "ATL",
             "teamImpliedPoints": 21,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2989,7 +3159,7 @@
             "spread": -1.5,
             "favoredTeam": "CAR",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3024,7 +3194,7 @@
             "spread": -3,
             "favoredTeam": "DET",
             "teamImpliedPoints": 22.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3059,7 +3229,7 @@
             "spread": 6.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 18.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3094,7 +3264,7 @@
             "spread": -1.5,
             "favoredTeam": "TB",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3410,7 +3580,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 3,
         "windyClimateGames": 1,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 7,
         "averageMarketImpliedPoints": 23.6,
@@ -3451,9 +3621,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -3461,9 +3631,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -3474,7 +3644,7 @@
             "spread": 3.5,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3502,14 +3672,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 50,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 42.5,
             "spread": 5.5,
             "favoredTeam": "TB",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3544,7 +3735,7 @@
             "spread": 1.5,
             "favoredTeam": "TB",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3579,7 +3770,7 @@
             "spread": -1.5,
             "favoredTeam": "GB",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3614,7 +3805,7 @@
             "spread": 3.5,
             "favoredTeam": "DAL",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3649,7 +3840,7 @@
             "spread": 1.5,
             "favoredTeam": "TB",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3684,7 +3875,7 @@
             "spread": -1.5,
             "favoredTeam": "TB",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3973,11 +4164,11 @@
         "hotClimateGames": 1,
         "wetClimateGames": 1,
         "windyClimateGames": 1,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
-        "marketGames": 7,
-        "averageMarketImpliedPoints": 25.5,
-        "marketPulseScore": 56.1,
+        "marketGames": 6,
+        "averageMarketImpliedPoints": 25.8,
+        "marketPulseScore": 57.4,
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
@@ -4014,9 +4205,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -4024,9 +4215,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -4037,7 +4228,7 @@
             "spread": 3.5,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4065,14 +4256,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 40,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 46.5,
             "spread": 2.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4107,7 +4319,7 @@
             "spread": -1.5,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4142,7 +4354,7 @@
             "spread": 2.5,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4177,7 +4389,7 @@
             "spread": -6,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 27.8,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4207,15 +4419,7 @@
           },
           "outlook": null,
           "forecast": null,
-          "market": {
-            "totalPoints": 51.5,
-            "spread": 3.5,
-            "favoredTeam": "BAL",
-            "teamImpliedPoints": 24,
-            "observedAt": "2026-08-28T02:00:00.554Z",
-            "sourceId": "nflverse-schedules",
-            "label": "Market line snapshot — not a projection guarantee"
-          }
+          "market": null
         },
         {
           "gameId": "2026_08_TEN_CIN",
@@ -4274,7 +4478,7 @@
             "spread": -4.5,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4536,7 +4740,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 0,
         "windyClimateGames": 1,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 7,
         "averageMarketImpliedPoints": 21.4,
@@ -4577,9 +4781,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -4587,9 +4791,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -4600,7 +4804,7 @@
             "spread": 7,
             "favoredTeam": "DET",
             "teamImpliedPoints": 20.8,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4628,14 +4832,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 46.5,
             "spread": 7.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 19.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4670,7 +4895,7 @@
             "spread": 3.5,
             "favoredTeam": "NO",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4705,7 +4930,7 @@
             "spread": 2.5,
             "favoredTeam": "NO",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4740,7 +4965,7 @@
             "spread": -1.5,
             "favoredTeam": "MIN",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4775,7 +5000,7 @@
             "spread": 2.5,
             "favoredTeam": "NYG",
             "teamImpliedPoints": 21,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4810,7 +5035,7 @@
             "spread": -2.5,
             "favoredTeam": "PIT",
             "teamImpliedPoints": 20,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5103,7 +5328,7 @@
         "forecastGames": 0,
         "marketGames": 7,
         "averageMarketImpliedPoints": 26.8,
-        "marketPulseScore": 59.4,
+        "marketPulseScore": 60,
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
@@ -5140,9 +5365,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -5150,9 +5375,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -5163,7 +5388,7 @@
             "spread": 7,
             "favoredTeam": "DET",
             "teamImpliedPoints": 27.8,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5193,12 +5418,12 @@
           },
           "outlook": {
             "temperature": {
-              "category": "above-normal",
+              "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -5206,9 +5431,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -5219,7 +5444,7 @@
             "spread": 3,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 24.8,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5254,7 +5479,7 @@
             "spread": 9.5,
             "favoredTeam": "DET",
             "teamImpliedPoints": 27.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5289,7 +5514,7 @@
             "spread": -3,
             "favoredTeam": "DET",
             "teamImpliedPoints": 25.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5324,7 +5549,7 @@
             "spread": -8.5,
             "favoredTeam": "DET",
             "teamImpliedPoints": 28.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5440,7 +5665,7 @@
             "spread": 1.5,
             "favoredTeam": "DET",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5502,7 +5727,7 @@
             "spread": 2.5,
             "favoredTeam": "DET",
             "teamImpliedPoints": 28,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5687,7 +5912,7 @@
         "forecastGames": 0,
         "marketGames": 8,
         "averageMarketImpliedPoints": 25.7,
-        "marketPulseScore": 57.4,
+        "marketPulseScore": 56.8,
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
@@ -5722,11 +5947,11 @@
           "outlook": {
             "temperature": {
               "category": "above-normal",
-              "probability": 50,
+              "probability": 40,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -5734,9 +5959,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -5747,7 +5972,7 @@
             "spread": -1.5,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5777,12 +6002,12 @@
           },
           "outlook": {
             "temperature": {
-              "category": "above-normal",
+              "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -5790,9 +6015,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -5803,7 +6028,7 @@
             "spread": 3,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 27.8,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5838,7 +6063,7 @@
             "spread": 3,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 25.8,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5873,7 +6098,7 @@
             "spread": 3,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 26.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5908,7 +6133,7 @@
             "spread": 3,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 25.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5943,7 +6168,7 @@
             "spread": -6.5,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6086,7 +6311,7 @@
             "spread": 2.5,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 26.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6202,7 +6427,7 @@
             "spread": -1.5,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6275,7 +6500,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 4,
         "windyClimateGames": 2,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 8,
         "averageMarketImpliedPoints": 22.6,
@@ -6314,11 +6539,11 @@
           "outlook": {
             "temperature": {
               "category": "above-normal",
-              "probability": 50,
+              "probability": 40,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -6326,9 +6551,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -6339,7 +6564,7 @@
             "spread": -1.5,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6367,14 +6592,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 40,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 46.5,
             "spread": 2.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6409,7 +6655,7 @@
             "spread": -1.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6444,7 +6690,7 @@
             "spread": 2.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 25,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6479,7 +6725,7 @@
             "spread": -3.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6514,7 +6760,7 @@
             "spread": 1.5,
             "favoredTeam": "JAX",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6549,7 +6795,7 @@
             "spread": 5.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6773,7 +7019,7 @@
             "spread": 2.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 18,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6846,11 +7092,11 @@
         "hotClimateGames": 0,
         "wetClimateGames": 0,
         "windyClimateGames": 1,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
-        "marketGames": 7,
-        "averageMarketImpliedPoints": 26.8,
-        "marketPulseScore": 60,
+        "marketGames": 6,
+        "averageMarketImpliedPoints": 26.7,
+        "marketPulseScore": 59.4,
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
@@ -6887,9 +7133,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -6897,9 +7143,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -6910,7 +7156,7 @@
             "spread": -3.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 26,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6938,14 +7184,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 46.5,
             "spread": 7.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6980,7 +7247,7 @@
             "spread": -2.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7015,7 +7282,7 @@
             "spread": 8.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 28,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7050,7 +7317,7 @@
             "spread": -4.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 26.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7085,7 +7352,7 @@
             "spread": -6.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7115,15 +7382,7 @@
           },
           "outlook": null,
           "forecast": null,
-          "market": {
-            "totalPoints": 51.5,
-            "spread": 3.5,
-            "favoredTeam": "BAL",
-            "teamImpliedPoints": 27.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
-            "sourceId": "nflverse-schedules",
-            "label": "Market line snapshot — not a projection guarantee"
-          }
+          "market": null
         },
         {
           "gameId": "2026_08_BAL_BUF",
@@ -7409,7 +7668,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 1,
         "windyClimateGames": 2,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 6,
         "averageMarketImpliedPoints": 22.9,
@@ -7450,9 +7709,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -7460,9 +7719,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -7473,7 +7732,7 @@
             "spread": -3.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7501,14 +7760,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 47.5,
             "spread": 6.5,
             "favoredTeam": "KC",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7543,7 +7823,7 @@
             "spread": -1.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7578,7 +7858,7 @@
             "spread": 1.5,
             "favoredTeam": "WAS",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7613,7 +7893,7 @@
             "spread": 2.5,
             "favoredTeam": "PIT",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7648,7 +7928,7 @@
             "spread": 3.5,
             "favoredTeam": "IND",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7964,10 +8244,10 @@
         "hotClimateGames": 0,
         "wetClimateGames": 2,
         "windyClimateGames": 7,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
-        "marketGames": 6,
-        "averageMarketImpliedPoints": 18.5,
+        "marketGames": 7,
+        "averageMarketImpliedPoints": 18.6,
         "marketPulseScore": 40.6,
         "sourceIds": [
           "nasa-power-climatology",
@@ -8003,11 +8283,11 @@
           "outlook": {
             "temperature": {
               "category": "above-normal",
-              "probability": 50,
+              "probability": 40,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -8015,9 +8295,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -8028,7 +8308,7 @@
             "spread": 7.5,
             "favoredTeam": "JAX",
             "teamImpliedPoints": 16.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8056,14 +8336,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 50,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 42.5,
             "spread": 5.5,
             "favoredTeam": "TB",
             "teamImpliedPoints": 18.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8098,7 +8399,7 @@
             "spread": -1.5,
             "favoredTeam": "CAR",
             "teamImpliedPoints": 19,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8133,7 +8434,7 @@
             "spread": -2.5,
             "favoredTeam": "PIT",
             "teamImpliedPoints": 19,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8168,7 +8469,7 @@
             "spread": 1.5,
             "favoredTeam": "NYJ",
             "teamImpliedPoints": 19,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8203,7 +8504,7 @@
             "spread": -6.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 19,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8233,7 +8534,15 @@
           },
           "outlook": null,
           "forecast": null,
-          "market": null
+          "market": {
+            "totalPoints": 40.5,
+            "spread": 2.5,
+            "favoredTeam": "TEN",
+            "teamImpliedPoints": 19,
+            "observedAt": "2026-08-29T00:41:44.961Z",
+            "sourceId": "nflverse-schedules",
+            "label": "Market line snapshot — not a projection guarantee"
+          }
         },
         {
           "gameId": "2026_08_CLE_PIT",
@@ -8519,7 +8828,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 2,
         "windyClimateGames": 2,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 6,
         "averageMarketImpliedPoints": 22.8,
@@ -8558,11 +8867,11 @@
           "outlook": {
             "temperature": {
               "category": "above-normal",
-              "probability": 50,
+              "probability": 40,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -8570,9 +8879,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -8583,7 +8892,7 @@
             "spread": 7.5,
             "favoredTeam": "JAX",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8611,14 +8920,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 43.5,
             "spread": 2.5,
             "favoredTeam": "DEN",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8653,7 +8983,7 @@
             "spread": 1.5,
             "favoredTeam": "JAX",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8688,7 +9018,7 @@
             "spread": 2.5,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8723,7 +9053,7 @@
             "spread": -1.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8758,7 +9088,7 @@
             "spread": 1.5,
             "favoredTeam": "JAX",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9074,7 +9404,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 2,
         "windyClimateGames": 1,
-        "outlookGames": 1,
+        "outlookGames": 3,
         "forecastGames": 0,
         "marketGames": 8,
         "averageMarketImpliedPoints": 21.4,
@@ -9112,12 +9442,12 @@
           },
           "outlook": {
             "temperature": {
-              "category": "above-normal",
+              "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -9125,9 +9455,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -9138,7 +9468,7 @@
             "spread": 3,
             "favoredTeam": "PIT",
             "teamImpliedPoints": 19.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9166,14 +9496,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 40,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 43.5,
             "spread": 1.5,
             "favoredTeam": "ATL",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9201,14 +9552,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 46.5,
             "spread": 7.5,
             "favoredTeam": "GB",
             "teamImpliedPoints": 19.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9243,7 +9615,7 @@
             "spread": 2.5,
             "favoredTeam": "NO",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9278,7 +9650,7 @@
             "spread": -4.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9313,7 +9685,7 @@
             "spread": -3,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 22.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9348,7 +9720,7 @@
             "spread": -4.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9410,7 +9782,7 @@
             "spread": -4.5,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9645,7 +10017,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 0,
         "windyClimateGames": 1,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 8,
         "averageMarketImpliedPoints": 21.8,
@@ -9683,12 +10055,12 @@
           },
           "outlook": {
             "temperature": {
-              "category": "above-normal",
+              "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -9696,9 +10068,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -9709,7 +10081,7 @@
             "spread": 3,
             "favoredTeam": "PIT",
             "teamImpliedPoints": 22.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9737,14 +10109,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 43.5,
             "spread": 4.5,
             "favoredTeam": "NE",
             "teamImpliedPoints": 19.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9779,7 +10172,7 @@
             "spread": -1.5,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9814,7 +10207,7 @@
             "spread": -2.5,
             "favoredTeam": "PIT",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9849,7 +10242,7 @@
             "spread": 2.5,
             "favoredTeam": "PIT",
             "teamImpliedPoints": 25,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9884,7 +10277,7 @@
             "spread": 1.5,
             "favoredTeam": "TB",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9919,7 +10312,7 @@
             "spread": -2.5,
             "favoredTeam": "PIT",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10035,7 +10428,7 @@
             "spread": -1.5,
             "favoredTeam": "DEN",
             "teamImpliedPoints": 19,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10216,7 +10609,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 0,
         "windyClimateGames": 2,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 7,
         "averageMarketImpliedPoints": 18.8,
@@ -10255,11 +10648,11 @@
           "outlook": {
             "temperature": {
               "category": "above-normal",
-              "probability": 40,
+              "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -10267,9 +10660,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -10280,7 +10673,7 @@
             "spread": 3,
             "favoredTeam": "TEN",
             "teamImpliedPoints": 17.8,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10308,14 +10701,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 42.5,
             "spread": -5.5,
             "favoredTeam": "GB",
             "teamImpliedPoints": 18.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10350,7 +10764,7 @@
             "spread": 9.5,
             "favoredTeam": "DET",
             "teamImpliedPoints": 18,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10385,7 +10799,7 @@
             "spread": 8.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 18.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10420,7 +10834,7 @@
             "spread": 1.5,
             "favoredTeam": "NYJ",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10455,7 +10869,7 @@
             "spread": 9.5,
             "favoredTeam": "NE",
             "teamImpliedPoints": 16.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10490,7 +10904,7 @@
             "spread": 2.5,
             "favoredTeam": "NYJ",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10779,10 +11193,10 @@
         "hotClimateGames": 0,
         "wetClimateGames": 2,
         "windyClimateGames": 0,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
-        "marketGames": 6,
-        "averageMarketImpliedPoints": 20.3,
+        "marketGames": 7,
+        "averageMarketImpliedPoints": 20.5,
         "marketPulseScore": 43.2,
         "sourceIds": [
           "nasa-power-climatology",
@@ -10818,11 +11232,11 @@
           "outlook": {
             "temperature": {
               "category": "above-normal",
-              "probability": 40,
+              "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -10830,9 +11244,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -10843,7 +11257,7 @@
             "spread": 3,
             "favoredTeam": "TEN",
             "teamImpliedPoints": 20.8,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10871,14 +11285,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 42.5,
             "spread": -4.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 19,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10913,7 +11348,7 @@
             "spread": 3,
             "favoredTeam": "NYG",
             "teamImpliedPoints": 20.8,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10948,7 +11383,7 @@
             "spread": 8.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 19.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10983,7 +11418,7 @@
             "spread": -3.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 20,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11018,7 +11453,7 @@
             "spread": 3.5,
             "favoredTeam": "IND",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11048,7 +11483,15 @@
           },
           "outlook": null,
           "forecast": null,
-          "market": null
+          "market": {
+            "totalPoints": 40.5,
+            "spread": 2.5,
+            "favoredTeam": "TEN",
+            "teamImpliedPoints": 21.5,
+            "observedAt": "2026-08-29T00:41:44.961Z",
+            "sourceId": "nflverse-schedules",
+            "label": "Market line snapshot — not a projection guarantee"
+          }
         },
         {
           "gameId": "2026_08_TEN_CIN",
@@ -11334,7 +11777,7 @@
         "hotClimateGames": 1,
         "wetClimateGames": 1,
         "windyClimateGames": 0,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 6,
         "averageMarketImpliedPoints": 18.2,
@@ -11373,11 +11816,11 @@
           "outlook": {
             "temperature": {
               "category": "above-normal",
-              "probability": 40,
+              "probability": 50,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -11385,9 +11828,9 @@
               "category": "above-normal",
               "probability": 40,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -11398,7 +11841,7 @@
             "spread": 10.5,
             "favoredTeam": "LAC",
             "teamImpliedPoints": 18,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11426,14 +11869,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "above-normal",
+              "probability": 40,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 44.5,
             "spread": -10,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 17.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11468,7 +11932,7 @@
             "spread": 11.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 17.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11503,7 +11967,7 @@
             "spread": 7,
             "favoredTeam": "NYG",
             "teamImpliedPoints": 19.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11538,7 +12002,7 @@
             "spread": -8.5,
             "favoredTeam": "DET",
             "teamImpliedPoints": 20,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11573,7 +12037,7 @@
             "spread": 13.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 17,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11889,7 +12353,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 1,
         "windyClimateGames": 1,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 6,
         "averageMarketImpliedPoints": 23.9,
@@ -11928,11 +12392,11 @@
           "outlook": {
             "temperature": {
               "category": "above-normal",
-              "probability": 40,
+              "probability": 50,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -11940,9 +12404,9 @@
               "category": "above-normal",
               "probability": 40,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -11953,7 +12417,7 @@
             "spread": 10.5,
             "favoredTeam": "LAC",
             "teamImpliedPoints": 28.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11981,14 +12445,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 50,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "above-normal",
+              "probability": 40,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 42.5,
             "spread": 8.5,
             "favoredTeam": "LAC",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12023,7 +12508,7 @@
             "spread": 3,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 22.8,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12058,7 +12543,7 @@
             "spread": 3,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 21.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12093,7 +12578,7 @@
             "spread": 2.5,
             "favoredTeam": "LAC",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12128,7 +12613,7 @@
             "spread": 2.5,
             "favoredTeam": "KC",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12444,7 +12929,7 @@
         "hotClimateGames": 2,
         "wetClimateGames": 1,
         "windyClimateGames": 7,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 6,
         "averageMarketImpliedPoints": 19.1,
@@ -12485,9 +12970,9 @@
               "category": "above-normal",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -12495,9 +12980,9 @@
               "category": "above-normal",
               "probability": 40,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -12508,7 +12993,7 @@
             "spread": 3.5,
             "favoredTeam": "LV",
             "teamImpliedPoints": 18.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12536,14 +13021,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 40,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 46.5,
             "spread": 10.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 18,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12578,7 +13084,7 @@
             "spread": -7.5,
             "favoredTeam": "KC",
             "teamImpliedPoints": 18.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12613,7 +13119,7 @@
             "spread": 7.5,
             "favoredTeam": "MIN",
             "teamImpliedPoints": 18,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12648,7 +13154,7 @@
             "spread": -6,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 21.8,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12683,7 +13189,7 @@
             "spread": 2.5,
             "favoredTeam": "NYJ",
             "teamImpliedPoints": 19.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12999,7 +13505,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 0,
         "windyClimateGames": 1,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 6,
         "averageMarketImpliedPoints": 19.3,
@@ -13040,9 +13546,9 @@
               "category": "above-normal",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -13050,9 +13556,9 @@
               "category": "above-normal",
               "probability": 40,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -13063,7 +13569,7 @@
             "spread": 3.5,
             "favoredTeam": "LV",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13091,14 +13597,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 50,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "above-normal",
+              "probability": 40,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 42.5,
             "spread": 8.5,
             "favoredTeam": "LAC",
             "teamImpliedPoints": 17,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13133,7 +13660,7 @@
             "spread": 3.5,
             "favoredTeam": "NO",
             "teamImpliedPoints": 19.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13168,7 +13695,7 @@
             "spread": -5.5,
             "favoredTeam": "KC",
             "teamImpliedPoints": 19,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13203,7 +13730,7 @@
             "spread": 8.5,
             "favoredTeam": "NE",
             "teamImpliedPoints": 18,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13238,7 +13765,7 @@
             "spread": -6.5,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13554,7 +14081,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 0,
         "windyClimateGames": 6,
-        "outlookGames": 1,
+        "outlookGames": 3,
         "forecastGames": 0,
         "marketGames": 8,
         "averageMarketImpliedPoints": 24.5,
@@ -13592,12 +14119,12 @@
           },
           "outlook": {
             "temperature": {
-              "category": "above-normal",
+              "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -13605,9 +14132,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -13618,7 +14145,7 @@
             "spread": 1.5,
             "favoredTeam": "MIN",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13646,14 +14173,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 42.5,
             "spread": -5.5,
             "favoredTeam": "GB",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13681,14 +14229,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 46.5,
             "spread": 7.5,
             "favoredTeam": "GB",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13723,7 +14292,7 @@
             "spread": -1.5,
             "favoredTeam": "GB",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13758,7 +14327,7 @@
             "spread": 3,
             "favoredTeam": "GB",
             "teamImpliedPoints": 26.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13793,7 +14362,7 @@
             "spread": 3,
             "favoredTeam": "GB",
             "teamImpliedPoints": 27.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13936,7 +14505,7 @@
             "spread": 5.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14052,7 +14621,7 @@
             "spread": 1.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14125,7 +14694,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 1,
         "windyClimateGames": 1,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 6,
         "averageMarketImpliedPoints": 22.7,
@@ -14163,12 +14732,12 @@
           },
           "outlook": {
             "temperature": {
-              "category": "above-normal",
+              "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -14176,9 +14745,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -14189,7 +14758,7 @@
             "spread": 1.5,
             "favoredTeam": "MIN",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14217,14 +14786,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 45.5,
             "spread": 3.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 21,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14259,7 +14849,7 @@
             "spread": 1.5,
             "favoredTeam": "TB",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14294,7 +14884,7 @@
             "spread": 7.5,
             "favoredTeam": "MIN",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14329,7 +14919,7 @@
             "spread": -1.5,
             "favoredTeam": "MIN",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14472,7 +15062,7 @@
             "spread": 4.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14680,7 +15270,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 1,
         "windyClimateGames": 0,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 6,
         "averageMarketImpliedPoints": 23.3,
@@ -14718,22 +15308,22 @@
           },
           "outlook": {
             "temperature": {
-              "category": "above-normal",
+              "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
             "precipitation": {
-              "category": "below-normal",
+              "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -14744,7 +15334,7 @@
             "spread": 4.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 21,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14772,14 +15362,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 51.5,
             "spread": 4.5,
             "favoredTeam": "DAL",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14814,7 +15425,7 @@
             "spread": -3.5,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14849,7 +15460,7 @@
             "spread": 1.5,
             "favoredTeam": "WAS",
             "teamImpliedPoints": 26,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14884,7 +15495,7 @@
             "spread": 1.5,
             "favoredTeam": "WAS",
             "teamImpliedPoints": 25,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14919,7 +15530,7 @@
             "spread": 5.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15235,7 +15846,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 0,
         "windyClimateGames": 0,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 8,
         "averageMarketImpliedPoints": 23.4,
@@ -15273,22 +15884,22 @@
           },
           "outlook": {
             "temperature": {
-              "category": "above-normal",
+              "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
             "precipitation": {
-              "category": "below-normal",
+              "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -15299,7 +15910,7 @@
             "spread": 4.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15327,14 +15938,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 42.5,
             "spread": -4.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15369,7 +16001,7 @@
             "spread": 1.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15404,7 +16036,7 @@
             "spread": -1.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15439,7 +16071,7 @@
             "spread": -1.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15474,7 +16106,7 @@
             "spread": 6.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 25,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15617,7 +16249,7 @@
             "spread": 1.5,
             "favoredTeam": "DAL",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15733,7 +16365,7 @@
             "spread": 2.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15806,11 +16438,11 @@
         "hotClimateGames": 0,
         "wetClimateGames": 2,
         "windyClimateGames": 0,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 7,
         "averageMarketImpliedPoints": 25.5,
-        "marketPulseScore": 56.8,
+        "marketPulseScore": 56.1,
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
@@ -15844,22 +16476,22 @@
           },
           "outlook": {
             "temperature": {
-              "category": "above-normal",
+              "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
             "precipitation": {
-              "category": "below-normal",
+              "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -15870,7 +16502,7 @@
             "spread": -2.5,
             "favoredTeam": "DAL",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15898,14 +16530,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 51.5,
             "spread": 4.5,
             "favoredTeam": "DAL",
             "teamImpliedPoints": 28,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15940,7 +16593,7 @@
             "spread": -2.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15975,7 +16628,7 @@
             "spread": 2.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16010,7 +16663,7 @@
             "spread": 3.5,
             "favoredTeam": "DAL",
             "teamImpliedPoints": 28,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16045,7 +16698,7 @@
             "spread": 3,
             "favoredTeam": "GB",
             "teamImpliedPoints": 24.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16215,7 +16868,7 @@
             "spread": 1.5,
             "favoredTeam": "DAL",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16369,7 +17022,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 2,
         "windyClimateGames": 0,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 7,
         "averageMarketImpliedPoints": 22.7,
@@ -16407,22 +17060,22 @@
           },
           "outlook": {
             "temperature": {
-              "category": "above-normal",
+              "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
             "precipitation": {
-              "category": "below-normal",
+              "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -16433,7 +17086,7 @@
             "spread": -2.5,
             "favoredTeam": "DAL",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16461,14 +17114,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "above-normal",
+              "probability": 50,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "above-normal",
+              "probability": 40,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 48.5,
             "spread": 8.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 20,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16503,7 +17177,7 @@
             "spread": 3,
             "favoredTeam": "NYG",
             "teamImpliedPoints": 23.8,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16538,7 +17212,7 @@
             "spread": 7,
             "favoredTeam": "NYG",
             "teamImpliedPoints": 26.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16573,7 +17247,7 @@
             "spread": 1.5,
             "favoredTeam": "WAS",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16608,7 +17282,7 @@
             "spread": 2.5,
             "favoredTeam": "NYG",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16643,7 +17317,7 @@
             "spread": 5.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 19,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16932,7 +17606,7 @@
         "hotClimateGames": 0,
         "wetClimateGames": 0,
         "windyClimateGames": 0,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 8,
         "averageMarketImpliedPoints": 21.4,
@@ -16970,12 +17644,12 @@
           },
           "outlook": {
             "temperature": {
-              "category": "above-normal",
+              "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -16983,9 +17657,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -16996,7 +17670,7 @@
             "spread": 3,
             "favoredTeam": "KC",
             "teamImpliedPoints": 19.8,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17024,14 +17698,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 43.5,
             "spread": 2.5,
             "favoredTeam": "DEN",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17066,7 +17761,7 @@
             "spread": -3,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 21.3,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17101,7 +17796,7 @@
             "spread": 2.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17136,7 +17831,7 @@
             "spread": 2.5,
             "favoredTeam": "LAC",
             "teamImpliedPoints": 21,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17171,7 +17866,7 @@
             "spread": -1.5,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 21,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17314,7 +18009,7 @@
             "spread": -1.5,
             "favoredTeam": "DEN",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17430,7 +18125,7 @@
             "spread": -1.5,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17503,7 +18198,7 @@
         "hotClimateGames": 1,
         "wetClimateGames": 2,
         "windyClimateGames": 0,
-        "outlookGames": 1,
+        "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 6,
         "averageMarketImpliedPoints": 24.8,
@@ -17541,12 +18236,12 @@
           },
           "outlook": {
             "temperature": {
-              "category": "above-normal",
+              "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
@@ -17554,9 +18249,9 @@
               "category": "equal-chances",
               "probability": 33,
               "horizon": "week 3-4",
-              "issuedDate": "2026-08-21",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-18",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
               "sourceId": "noaa-cpc-week34-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -17567,7 +18262,7 @@
             "spread": 3,
             "favoredTeam": "KC",
             "teamImpliedPoints": 22.8,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17595,14 +18290,35 @@
             "sourceId": "nasa-power-climatology",
             "label": "Climate normal — not a game forecast"
           },
-          "outlook": null,
+          "outlook": {
+            "temperature": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-temperature",
+              "label": "Extended outlook category — not an exact forecast"
+            },
+            "precipitation": {
+              "category": "equal-chances",
+              "probability": 33,
+              "horizon": "week 3-4",
+              "issuedDate": "2026-08-28",
+              "validStart": "2026-09-12",
+              "validEnd": "2026-09-25",
+              "sourceId": "noaa-cpc-week34-precipitation",
+              "label": "Extended outlook category — not an exact forecast"
+            }
+          },
           "forecast": null,
           "market": {
             "totalPoints": 47.5,
             "spread": 6.5,
             "favoredTeam": "KC",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17637,7 +18353,7 @@
             "spread": -7.5,
             "favoredTeam": "KC",
             "teamImpliedPoints": 26,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17672,7 +18388,7 @@
             "spread": -5.5,
             "favoredTeam": "KC",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17707,7 +18423,7 @@
             "spread": 2.5,
             "favoredTeam": "KC",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17877,7 +18593,7 @@
             "spread": 2.5,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-28T02:00:00.554Z",
+            "observedAt": "2026-08-29T00:41:44.961Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }

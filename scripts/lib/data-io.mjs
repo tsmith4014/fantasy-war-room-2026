@@ -54,6 +54,22 @@ export async function fetchJsonOnce(url, options) {
   }
 }
 
+export async function retryOptional(operation, { attempts = 2, delayMs = 300 } = {}) {
+  if (typeof operation !== "function") throw new Error("retryOptional requires an operation");
+  if (!Number.isInteger(attempts) || attempts < 1 || attempts > 4) throw new Error("retryOptional attempts must be an integer from 1 to 4");
+  if (!Number.isFinite(delayMs) || delayMs < 0 || delayMs > 5_000) throw new Error("retryOptional delay must be between 0 and 5000 milliseconds");
+  let lastError;
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      return await operation(attempt);
+    } catch (error) {
+      lastError = error;
+      if (attempt < attempts && delayMs > 0) await new Promise((resolve) => setTimeout(resolve, delayMs * attempt));
+    }
+  }
+  throw lastError;
+}
+
 export async function withFileLock(lockPath, callback) {
   await fs.mkdir(path.dirname(lockPath), { recursive: true });
   let lockHandle;

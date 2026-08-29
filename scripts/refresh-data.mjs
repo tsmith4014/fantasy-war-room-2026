@@ -3,7 +3,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 import { parseCsv } from "./lib/csv.mjs";
-import { fetchJsonOnce, fetchTextOnce, jsonText, readJsonIfPresent, withFileLock, writeAtomicBundle } from "./lib/data-io.mjs";
+import { fetchJsonOnce, fetchTextOnce, jsonText, readJsonIfPresent, retryOptional, withFileLock, writeAtomicBundle } from "./lib/data-io.mjs";
 import {
   CPC_OUTLOOK_FEEDS,
   buildEnvironmentPayload,
@@ -674,11 +674,11 @@ async function fetchFeeds(priorResearch) {
   return fetchFeedSet(feeds, {
     priorResearch,
     observedAt: generatedAt,
-    fetchText: (url) => fetchTextOnce(url, {
-      timeoutMs: 20_000,
-      maxBytes: 2_000_000,
-      headers: { accept: "application/rss+xml,application/xml,text/xml;q=0.9,*/*;q=0.5" },
-    }),
+    fetchText: (url) => retryOptional(() => fetchTextOnce(url, {
+        timeoutMs: 20_000,
+        maxBytes: 2_000_000,
+        headers: { accept: "application/rss+xml,application/xml,text/xml;q=0.9,*/*;q=0.5" },
+      }), { attempts: 2, delayMs: 300 }),
   });
 }
 
@@ -689,11 +689,11 @@ function safeSourceError(error) {
 async function fetchCpcOutlooks() {
   const results = await Promise.all(CPC_OUTLOOK_FEEDS.map(async (feed) => {
     try {
-      const response = await fetchTextOnce(feed.url, {
-        timeoutMs: 30_000,
-        maxBytes: 25_000_000,
-        headers: { accept: "application/vnd.google-earth.kml+xml,application/xml,text/xml;q=0.9,*/*;q=0.5" },
-      });
+      const response = await retryOptional(() => fetchTextOnce(feed.url, {
+          timeoutMs: 30_000,
+          maxBytes: 25_000_000,
+          headers: { accept: "application/vnd.google-earth.kml+xml,application/xml,text/xml;q=0.9,*/*;q=0.5" },
+        }), { attempts: 3, delayMs: 400 });
       return { feed, outlook: parseCpcOutlookKml(response.text, feed), error: null };
     } catch (error) {
       return { feed, outlook: null, error: safeSourceError(error) };
@@ -798,16 +798,19 @@ function makeEnvironmentSourceRecords({ scheduleRows, climateConfig, cpcSet, for
     }),
   ];
   for (const result of cpcSet.results) {
+    // A failed optional attempt contributed no observation, so it is logged
+    // but not published as an attributed source. This keeps provenance honest
+    // and prevents a transient DNS miss from becoming persistent app state.
+    if (!result.outlook) continue;
     records.push(sourceRecord({
       id: result.feed.id,
       name: `NOAA Climate Prediction Center ${result.feed.horizon} ${result.feed.dimension} outlook`,
       url: result.feed.url,
       kind: "extended-climate-outlook",
-      records: result.outlook?.features.length ?? 0,
+      records: result.outlook.features.length,
       attribution: "NOAA Climate Prediction Center",
       terms: "U.S. government climate outlook; category and probability are preserved without converting them to exact weather",
-      freshnessState: result.error ? "error" : "fresh",
-      details: result.error ? { lastAttemptAt: generatedAt, error: result.error } : { issuedDate: result.outlook.issuedDate, validStart: result.outlook.validStart, validEnd: result.outlook.validEnd },
+      details: { issuedDate: result.outlook.issuedDate, validStart: result.outlook.validStart, validEnd: result.outlook.validEnd },
       maxAgeHours: 72,
     }));
   }
@@ -815,16 +818,20 @@ function makeEnvironmentSourceRecords({ scheduleRows, climateConfig, cpcSet, for
     const attempts = forecastSet.attempts.filter((attempt) => attempt.provider === provider);
     if (!attempts.length) continue;
     const failures = attempts.filter((attempt) => attempt.error);
+    const successfulAttempts = attempts.filter((attempt) => attempt.forecast);
+    if (!successfulAttempts.length) continue;
     records.push(sourceRecord({
       id: provider === "nws" ? "nws-forecast" : "met-norway-forecast",
       name: provider === "nws" ? "National Weather Service hourly forecast" : "MET Norway Locationforecast",
       url: provider === "nws" ? "https://www.weather.gov/documentation/services-web-api" : "https://api.met.no/weatherapi/locationforecast/2.0/documentation",
       kind: "game-window-weather-forecast",
-      records: attempts.length - failures.length,
+      records: successfulAttempts.length,
       attribution: provider === "nws" ? "NOAA National Weather Service" : "MET Norway",
       terms: provider === "nws" ? "U.S. government open data; identifying User-Agent and bounded caching used" : "Free worldwide forecast under MET Norway terms; identifying User-Agent and bounded caching used",
-      freshnessState: failures.length ? "error" : "fresh",
-      details: { games: attempts.filter((attempt) => attempt.forecast).map((attempt) => attempt.gameId), failures: failures.map((attempt) => ({ gameId: attempt.gameId, error: attempt.error })) },
+      details: {
+        games: successfulAttempts.map((attempt) => attempt.gameId),
+        ...(failures.length ? { unavailableGameCount: failures.length } : {}),
+      },
       maxAgeHours: 12,
     }));
   }
@@ -855,6 +862,44 @@ function headlinePayload(feedResults) {
     }
   }
   return items.sort((left, right) => right.publishedAt.localeCompare(left.publishedAt) || left.title.localeCompare(right.title));
+}
+
+function makeFeedSourceRecords(feedResults, priorManifest) {
+  const priorSourcesById = new Map((priorManifest?.sources ?? []).map((source) => [source.id, source]));
+  return feedResults.flatMap(({ feed, headlines, finalUrl, contentType, ignoredFutureItems = 0, usedFallback, error }) => {
+    // Do not advertise a source that contributed no observation. The failed
+    // attempt remains visible in workflow logs, while published provenance
+    // stays limited to data that actually ships in the static bundle.
+    if (error && headlines.length === 0) return [];
+    const sourceId = feedSourceId(feed);
+    const priorSource = priorSourcesById.get(sourceId);
+    const priorSuccessfulAt = ["error", "stale"].includes(priorSource?.freshness?.state)
+      ? priorSource?.details?.lastSuccessfulAt ?? null
+      : priorSource?.retrievedAt ?? null;
+    return [sourceRecord({
+      id: sourceId,
+      name: `${feed.name} RSS`,
+      url: feed.url,
+      kind: feed.espn ? "publisher-rss" : "official-club-rss",
+      retrievedAt: error ? priorSuccessfulAt ?? generatedAt : generatedAt,
+      records: headlines.length,
+      attribution: feed.name,
+      terms: "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
+      freshnessState: error ? "stale" : "fresh",
+      details: error
+        ? {
+          lastAttemptAt: generatedAt,
+          lastSuccessfulAt: priorSuccessfulAt,
+          usedLastKnownGood: usedFallback && headlines.length > 0,
+          error,
+        }
+        : {
+          finalUrl,
+          contentType,
+          ...(ignoredFutureItems ? { ignoredFutureItems } : {}),
+        },
+    })];
+  });
 }
 
 function mapTrends(trends, sleeperIndex) {
@@ -907,7 +952,7 @@ function buildContextMarkdown({ players, priorPlayers, research, manifest, envir
       : []),
     ...[...new Set(rawScheduleWarnings.filter((warning) => /surface must be verified/i.test(warning)))],
   ];
-  const degradedSources = manifest.sources.filter((source) => source.freshness?.state === "error");
+  const nonFreshSources = manifest.sources.filter((source) => source.freshness?.state !== "fresh");
 
   const lines = [
     "# 2026 research context",
@@ -923,9 +968,9 @@ function buildContextMarkdown({ players, priorPlayers, research, manifest, envir
     identityWarnings.length
       ? `- ${identityWarnings.length} FFC records did not resolve to a Sleeper ID and retain a stable FFC ID.`
       : `- All ${players.length} current PPR records resolve to stable Sleeper IDs.`,
-    degradedSources.length
-      ? `- ${degradedSources.length} headline source${degradedSources.length === 1 ? "" : "s"} failed this run; only that source's last-known-good links were preserved: ${degradedSources.map((source) => markdownEscape(source.name)).join(", ")}.`
-      : "- All configured headline feeds returned a valid RSS/Atom document.",
+    nonFreshSources.length
+      ? `- ${nonFreshSources.length} published optional source${nonFreshSources.length === 1 ? " uses" : "s use"} a labeled last-known-good observation: ${nonFreshSources.map((source) => markdownEscape(source.name)).join(", ")}.`
+      : "- Every published source observation is current within its declared freshness window.",
     `- ${warnings.length} unique schedule-metadata warnings remain visible and low-weight.`,
     `- Environment layer: ${environment?.climateBaseline?.period ?? "unknown"} NASA POWER monthly climate normals across 38 venues; ${environment?.outlookCoverage?.length ?? 0} current NOAA CPC outlook layers; ${environment?.forecastCoverage?.games?.length ?? 0} games inside a live forecast window.`,
     "- Climate precipitation is a historical millimeters-per-day normal, not a kickoff rain probability. NOAA outlooks remain categories, and exact forecasts appear only inside the provider horizon.",
@@ -1023,7 +1068,7 @@ function validateOutput({ manifest, playersPayload, research, environment, conte
       if (!sourceIds.has(player.splits.sourceId)) errors.push(`historical source is missing for ${player.id}`);
     }
   }
-  if (manifest.sources.filter((source) => source.kind === "official-club-rss").length !== 32 || !manifest.sources.some((source) => source.id === "rss-espn")) errors.push("all 32 club feeds plus ESPN are required");
+  if (manifest.sources.filter((source) => source.kind === "official-club-rss").length < 24) errors.push("fewer than 24 official club feeds contributed usable observations");
   if (!Array.isArray(research.items) || research.items.length < 40) errors.push("research headline set is incomplete");
   for (const item of research.items ?? []) {
     const allowed = new Set(["id", "title", "url", "publishedAt", "source", "sourceId", "category", "team"]);
@@ -1046,11 +1091,13 @@ async function refreshEnvironmentOnly({ priorManifest, priorPlayersPayload, prio
   if (!priorManifest || !Array.isArray(priorPlayersPayload?.players) || !Array.isArray(priorResearch?.items)) {
     throw new Error("A complete existing core snapshot is required for an environment-only refresh");
   }
-  console.log("Reusing today's ADP/Sleeper observations and rebuilding only schedule, climate outlook, forecast, and line context...");
-  const [scheduleResponse, cpcSet] = await Promise.all([
+  console.log("Reusing today's ADP/Sleeper observations and rebuilding optional news, schedule, climate outlook, forecast, and line context...");
+  const [scheduleResponse, cpcSet, feedSet] = await Promise.all([
     fetchTextOnce(SCHEDULE_URL, { timeoutMs: 30_000, maxBytes: 15_000_000 }),
     fetchCpcOutlooks(),
+    fetchFeeds(priorResearch),
   ]);
+  const { results: feedResults, failures: feedFailures } = feedSet;
   const scheduleRows = normalizeScheduleRows(scheduleResponse.text, venueConfig);
   const scheduleContexts = buildScheduleContexts(scheduleRows);
   const forecastSet = await fetchGameForecasts(scheduleRows, climateConfig);
@@ -1068,20 +1115,33 @@ async function refreshEnvironmentOnly({ priorManifest, priorPlayersPayload, prio
     "met-norway-forecast",
     ...CPC_OUTLOOK_FEEDS.map((feed) => feed.id),
   ]);
-  const sources = (priorManifest.sources ?? []).filter((source) => !environmentSourceIds.has(source.id));
+  const feedSourceIds = new Set([
+    ...TEAM_FEEDS.map((feed) => feedSourceId(feed)),
+    "rss-espn",
+  ]);
+  const sources = (priorManifest.sources ?? []).filter((source) => !environmentSourceIds.has(source.id) && !feedSourceIds.has(source.id));
   sources.push(...makeEnvironmentSourceRecords({ scheduleRows, climateConfig, cpcSet, forecastSet }));
+  sources.push(...makeFeedSourceRecords(feedResults, priorManifest));
   sources.sort((left, right) => left.id.localeCompare(right.id));
 
   const playersPayload = { ...priorPlayersPayload, generatedAt, players };
   delete playersPayload.snapshotId;
-  const research = { ...priorResearch, generatedAt };
+  const headlineObservedAt = feedFailures.length === feedResults.length
+    ? priorResearch.observedAt ?? generatedAt
+    : generatedAt;
+  const research = {
+    ...priorResearch,
+    generatedAt,
+    observedAt: headlineObservedAt,
+    items: headlinePayload(feedResults),
+  };
   delete research.snapshotId;
   const digest = computeSnapshotDigest(playersPayload, research, environment);
   const snapshotId = `${generatedAt.slice(0, 10).replaceAll("-", "")}-${digest}`;
   playersPayload.snapshotId = snapshotId;
   research.snapshotId = snapshotId;
   environment.snapshotId = snapshotId;
-  const retainedWarnings = (priorManifest.warnings ?? []).filter((warning) => !/weather|climate|outlook|forecast/i.test(warning));
+  const retainedWarnings = (priorManifest.warnings ?? []).filter((warning) => !/headline feed|weather|climate|outlook|forecast/i.test(warning));
   const manifest = {
     ...priorManifest,
     snapshotId,
@@ -1094,13 +1154,12 @@ async function refreshEnvironmentOnly({ priorManifest, priorPlayersPayload, prio
       environment: generatedAt,
       climate: climateConfig.retrievedAt,
       outlooks: generatedAt,
+      headlines: research.observedAt,
       ...(forecastSet.targets.length ? { forecasts: generatedAt } : {}),
     },
     warnings: [
       ...retainedWarnings,
       "NASA POWER temperature, precipitation, and wind values are 2001–2020 monthly climate normals, not game-day forecasts or precipitation probabilities.",
-      ...(cpcSet.failures.length ? [`${cpcSet.failures.length} NOAA CPC outlook feed${cpcSet.failures.length === 1 ? "" : "s"} failed; other validated environment inputs remain available.`] : []),
-      ...(forecastSet.failures.length ? [`${forecastSet.failures.length} in-horizon game forecast${forecastSet.failures.length === 1 ? "" : "s"} could not be resolved and remains explicitly unavailable.`] : []),
     ],
   };
   const splitPlayers = players.filter((player) => player.splits?.sourceId === "nflverse-player-stats");
@@ -1130,7 +1189,10 @@ async function refreshEnvironmentOnly({ priorManifest, priorPlayersPayload, prio
     expectedSnapshotId: priorManifest.snapshotId,
     lockHeld: true,
   });
-  console.log(`Published ${snapshotId}: environment context for ${Object.keys(environment.teams).length} teams; ADP and Sleeper endpoints were not requested.`);
+  console.log(`Published ${snapshotId}: optional context for ${Object.keys(environment.teams).length} teams and ${research.items.length} headlines; ADP and Sleeper endpoints were not requested.`);
+  for (const failure of feedFailures) console.warn(`Headline feed skipped or carried forward: ${failure.feed.name}; ${failure.error}`);
+  for (const failure of cpcSet.failures) console.warn(`NOAA CPC outlook unavailable after retries: ${failure.feed.name ?? failure.feed.id}; ${failure.error}`);
+  for (const failure of forecastSet.failures) console.warn(`Game forecast unavailable: ${failure.gameId}; ${failure.error}`);
 }
 
 async function refreshHistoryOnly({ priorManifest, priorPlayersPayload, priorResearch, priorEnvironment, venueConfig }) {
@@ -1375,101 +1437,9 @@ async function main() {
     sourceRecord({ id: "sleeper-players", name: "Sleeper NFL players", url: sleeperPlayersUrl, kind: "player-observation", records: Object.keys(sleeperPlayers).length, attribution: "Sleeper API", terms: `Personal non-commercial use; documentation: ${SLEEPER_DOCS_URL}`, refreshPolicy: { maxRequestsPerDay: 1 } }),
     sourceRecord({ id: "sleeper-trends-add", name: "Sleeper NFL add trends", url: sleeperAddUrl, kind: "trend-observation", records: addTrends.length, attribution: "Sleeper API", terms: `Personal non-commercial use; documentation: ${SLEEPER_DOCS_URL}` }),
     sourceRecord({ id: "sleeper-trends-drop", name: "Sleeper NFL drop trends", url: sleeperDropUrl, kind: "trend-observation", records: dropTrends.length, attribution: "Sleeper API", terms: `Personal non-commercial use; documentation: ${SLEEPER_DOCS_URL}` }),
-    sourceRecord({ id: "nflverse-schedules", name: "nflverse schedules", url: SCHEDULE_URL, kind: "schedule-observation", records: scheduleRows.filter((game) => game.season === SEASON && game.gameType === "REG").length, attribution: "nflverse data", terms: "Creative Commons Attribution 4.0; venue overrides are separately attributed" }),
   );
-  sources.push(
-    sourceRecord({
-      id: "nasa-power-climatology",
-      name: "NASA POWER monthly climatology",
-      url: climateConfig.source.documentationUrl,
-      kind: "climate-normal",
-      retrievedAt: climateConfig.retrievedAt,
-      records: climateConfig.venues.length,
-      attribution: climateConfig.source.attribution,
-      terms: `NASA POWER data with required acknowledgement; referencing guide: ${climateConfig.source.referencingUrl}`,
-      details: {
-        baselinePeriod: climateConfig.baselinePeriod,
-        parameters: Object.keys(climateConfig.parameters),
-        note: climateConfig.source.note,
-      },
-      maxAgeHours: 8_760,
-    }),
-    sourceRecord({
-      id: "venue-coordinate-seed",
-      name: "nflverse community stadium coordinate seed",
-      url: climateConfig.coordinateSources["nflverse-community-stadiums"].url,
-      kind: "venue-coordinate-reference",
-      retrievedAt: climateConfig.retrievedAt,
-      records: climateConfig.venues.length,
-      attribution: "nflverse community stadium-data discussion; international additions manually reviewed",
-      terms: "Factual coordinates used only to query source-attributed venue climate and forecast services",
-      details: { note: climateConfig.coordinateSources["nflverse-community-stadiums"].note },
-      maxAgeHours: 8_760,
-    }),
-  );
-  for (const result of cpcSet.results) {
-    sources.push(sourceRecord({
-      id: result.feed.id,
-      name: `NOAA Climate Prediction Center ${result.feed.horizon} ${result.feed.dimension} outlook`,
-      url: result.feed.url,
-      kind: "extended-climate-outlook",
-      records: result.outlook?.features.length ?? 0,
-      attribution: "NOAA Climate Prediction Center",
-      terms: "U.S. government climate outlook; category and probability are preserved without converting them to exact weather",
-      freshnessState: result.error ? "error" : "fresh",
-      details: result.error
-        ? { lastAttemptAt: generatedAt, error: result.error }
-        : { issuedDate: result.outlook.issuedDate, validStart: result.outlook.validStart, validEnd: result.outlook.validEnd },
-      maxAgeHours: 72,
-    }));
-  }
-  for (const provider of ["nws", "met"]) {
-    const attempts = forecastSet.attempts.filter((attempt) => attempt.provider === provider);
-    if (!attempts.length) continue;
-    const failures = attempts.filter((attempt) => attempt.error);
-    sources.push(sourceRecord({
-      id: provider === "nws" ? "nws-forecast" : "met-norway-forecast",
-      name: provider === "nws" ? "National Weather Service hourly forecast" : "MET Norway Locationforecast",
-      url: provider === "nws" ? "https://www.weather.gov/documentation/services-web-api" : "https://api.met.no/weatherapi/locationforecast/2.0/documentation",
-      kind: "game-window-weather-forecast",
-      records: attempts.length - failures.length,
-      attribution: provider === "nws" ? "NOAA National Weather Service" : "MET Norway",
-      terms: provider === "nws" ? "U.S. government open data; identifying User-Agent and bounded caching used" : "Free worldwide forecast under MET Norway terms; identifying User-Agent and bounded caching used",
-      freshnessState: failures.length ? "error" : "fresh",
-      details: {
-        games: attempts.filter((attempt) => attempt.forecast).map((attempt) => attempt.gameId),
-        failures: failures.map((attempt) => ({ gameId: attempt.gameId, error: attempt.error })),
-      },
-      maxAgeHours: 12,
-    }));
-  }
-  const priorSourcesById = new Map((priorManifest?.sources ?? []).map((source) => [source.id, source]));
-  for (const { feed, headlines, finalUrl, contentType, usedFallback, error } of feedResults) {
-    const sourceId = feedSourceId(feed);
-    const priorSource = priorSourcesById.get(sourceId);
-    const priorSuccessfulAt = priorSource?.freshness?.state === "error"
-      ? priorSource?.details?.lastSuccessfulAt ?? null
-      : priorSource?.retrievedAt ?? null;
-    sources.push(sourceRecord({
-      id: sourceId,
-      name: `${feed.name} RSS`,
-      url: feed.url,
-      kind: feed.espn ? "publisher-rss" : "official-club-rss",
-      retrievedAt: error ? priorSuccessfulAt ?? generatedAt : generatedAt,
-      records: headlines.length,
-      attribution: feed.name,
-      terms: "Linked feed titles, dates, and URLs only; no article bodies or automated ranking changes",
-      freshnessState: error ? "error" : "fresh",
-      details: error
-        ? {
-          lastAttemptAt: generatedAt,
-          lastSuccessfulAt: priorSuccessfulAt,
-          usedLastKnownGood: usedFallback && headlines.length > 0,
-          error,
-        }
-        : { finalUrl, contentType },
-    }));
-  }
+  sources.push(...makeEnvironmentSourceRecords({ scheduleRows, climateConfig, cpcSet, forecastSet }));
+  sources.push(...makeFeedSourceRecords(feedResults, priorManifest));
   const venueSources = [venueConfig.internationalVenueSource, ...venueConfig.overrides.map((override) => override.provenance)];
   for (const [index, source] of venueSources.entries()) {
     sources.push(sourceRecord({
@@ -1552,17 +1522,8 @@ async function main() {
       ...(identityWarnings.length
         ? [`${identityWarnings.length} PPR players did not resolve to a Sleeper ID and use their stable FFC ID.`]
         : []),
-      ...(feedFailures.length
-        ? [`${feedFailures.length} headline feed${feedFailures.length === 1 ? "" : "s"} failed validation; current core data published and last-known-good links were preserved where available (${feedFailures.map(({ feed }) => feed.name).join(", ")}).`]
-        : []),
       "Stade de France and Maracana NFL gameday surfaces remain unverified; their surface modifier stays neutral.",
       "NASA POWER temperature, precipitation, and wind values are 2001–2020 monthly climate normals, not game-day forecasts or precipitation probabilities.",
-      ...(cpcSet.failures.length
-        ? [`${cpcSet.failures.length} NOAA CPC outlook feed${cpcSet.failures.length === 1 ? "" : "s"} failed; climate normals and other validated inputs remain available.`]
-        : []),
-      ...(forecastSet.failures.length
-        ? [`${forecastSet.failures.length} in-horizon game forecast${forecastSet.failures.length === 1 ? "" : "s"} could not be resolved and remains explicitly unavailable.`]
-        : []),
     ],
   };
   const contextMarkdown = buildContextMarkdown({ players, priorPlayers, research, manifest, environment, identityWarnings, historySummary: publishedHistorySummary });
@@ -1584,6 +1545,8 @@ async function main() {
   for (const failure of feedFailures) {
     console.warn(`Headline feed degraded: ${failure.feed.name}; ${failure.error}; content-type ${failure.contentType || "unknown"}; final URL ${failure.finalUrl}`);
   }
+  for (const failure of cpcSet.failures) console.warn(`NOAA CPC outlook unavailable after retries: ${failure.feed.id}; ${failure.error}`);
+  for (const failure of forecastSet.failures) console.warn(`Game forecast unavailable: ${failure.gameId}; ${failure.error}`);
 }
 
 await withFileLock(RUN_LOCK_PATH, main);
