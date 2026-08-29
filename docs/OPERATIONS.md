@@ -32,12 +32,13 @@ Before merging a refresh pull request:
 ## Failure modes
 
 - A core upstream fetch or schema failure exits non-zero before replacing data.
-- A malformed/blocked RSS feed is isolated, labeled `error` in provenance, and
-  carries forward only that feed's last-known-good linked headlines. It cannot
-  block current ADP, status, trend, or schedule publication.
-- A publisher feed with a headline timestamp more than one hour ahead of the
-  runner clock follows the same isolated fallback. The timestamp is never
-  silently clamped or rewritten.
+- Optional RSS and NOAA requests use bounded retries. A failed attempt that
+  contributes no observation is logged but is not advertised as an active
+  attributed source.
+- A malformed/blocked RSS feed may carry forward only its own labeled
+  last-known-good links. A publisher-scheduled headline more than one hour ahead
+  is skipped individually, while valid current items from that feed remain
+  usable. Source timestamps are never silently clamped or rewritten.
 - A partial refresh is rejected; temporary files are not published.
 - If Actions cannot open a pull request because repository settings deny it, the
   generated branch remains reviewable and the job fails before anything reaches
@@ -46,15 +47,16 @@ Before merging a refresh pull request:
   repository inactivity. `workflow_dispatch` is always available for a manual
   refresh.
 
-For a schedule/weather-only update that must not spend the daily FFC/Sleeper
+For an optional news/schedule/weather update that must not spend the daily FFC/Sleeper
 request budget, run:
 
 ```sh
-npm run data:refresh:environment
+npm run data:refresh:context
 ```
 
 This reuses the last published player/status/ADP observations, then rebuilds the
-schedule, climate, outlook, in-horizon forecast, and market context atomically.
+linked headline inbox, schedule, climate, outlook, in-horizon forecast, and
+market context atomically. `data:refresh:environment` is retained as an alias.
 
 ## Draft-season switch
 

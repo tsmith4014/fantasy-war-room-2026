@@ -26,9 +26,9 @@ redistributed proprietary top-300 dataset.
   nflverse market-line snapshots. A climate normal is never called a forecast.
 - Supports undo, keyboard shortcuts, versioned local persistence, cross-tab
   updates, and JSON import/export.
-- Includes an ongoing research digest, explicit stale/degraded-source warnings,
-  and a review-first scheduled refresh that preserves individual last-known-good
-  feeds instead of blocking current ADP and status data.
+- Includes an ongoing research digest and a review-first scheduled refresh that
+  preserves labeled last-known-good observations without turning optional-source
+  noise into a draft-wide warning.
 - Prioritizes fantasy-impact headlines in the UI while keeping the complete,
   source-linked research inbox available as JSON.
 - Works offline after the first successful visit.
@@ -58,11 +58,13 @@ schedule/market-line snapshot, NOAA Climate Prediction Center outlooks, any
 in-horizon NWS/MET Norway game forecasts, all 32 official club RSS feeds, and
 ESPN's NFL RSS feed. It combines those with the checked-in NASA climate-normal
 baseline and validates all four published JSON files before atomically replacing
-the snapshot. A malformed news feed is isolated and labeled while current core
-observations continue to publish.
+the snapshot. Future-scheduled articles are skipped individually without changing
+their timestamps; a malformed source cannot block current core observations.
 
-`npm run data:refresh:environment` updates schedule, outlook, forecast, and
-market context without making another daily ADP or all-player request.
+`npm run data:refresh:context` updates linked headlines, schedule, outlook,
+forecast, and market context without making another daily ADP or all-player
+request. `npm run data:refresh:environment` remains an equivalent compatibility
+alias.
 `npm run data:refresh:history` additionally rebuilds three-season
 roof/surface/rest/temperature/wind split summaries from nflverse weekly stats.
 `npm run model:lab` reruns the walk-forward weather ablation and seeded mock-draft

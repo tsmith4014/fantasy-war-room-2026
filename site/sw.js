@@ -1,5 +1,5 @@
 const CACHE_PREFIX = "fantasy-war-room-2026-";
-const CACHE_NAME = `${CACHE_PREFIX}v4`;
+const CACHE_NAME = `${CACHE_PREFIX}v5`;
 const DATA_CACHE_PREFIX = `${CACHE_PREFIX}data-`;
 const CORE = [
   "./",

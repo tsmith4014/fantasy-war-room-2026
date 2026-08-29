@@ -43,8 +43,8 @@ silently inherit the designated home team's environment.
   NWS/MET forecast.
 - RSS headlines are an inbox, not an automatically interpreted injury signal.
 - Publisher feed clocks may lead the runner slightly. Source timestamps remain
-  unmodified. A feed more than one hour ahead is isolated as degraded and its
-  own last-known-good links are retained; publisher clock skew cannot block the
-  core refresh.
+  unmodified. Items more than one hour ahead are skipped individually so valid
+  current items from the same feed remain usable; publisher clock skew cannot
+  block the core refresh.
 - FantasyPros is excluded from automation because its free API key is expressly
   non-production and paid access would violate this project's approval gate.

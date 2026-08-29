@@ -8,6 +8,7 @@
     "build": "node scripts/build.mjs",
     "clean": "node scripts/clean.mjs",
     "data:refresh": "node scripts/refresh-data.mjs",
+    "data:refresh:context": "node scripts/refresh-data.mjs --environment-only",
     "data:refresh:environment": "node scripts/refresh-data.mjs --environment-only",
     "data:refresh:history": "node scripts/refresh-data.mjs --include-history",
     "data:validate": "node scripts/validate-data.mjs",
