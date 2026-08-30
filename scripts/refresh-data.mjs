@@ -15,6 +15,7 @@ import {
   validateVenueClimate,
 } from "./lib/environment.mjs";
 import { feedSourceId, fetchFeedSet } from "./lib/feed-refresh.mjs";
+import { canonicalBye, canonicalTeam } from "./lib/nfl-team.mjs";
 import { cleanUntrustedText } from "./lib/rss.mjs";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
@@ -78,9 +79,6 @@ const TEAM_FEEDS = Object.freeze([
 ].map(([team, name, domain]) => ({ team, name, domain, url: `https://www.${domain}/rss/news` })));
 
 const TEAM_CODES = new Set(TEAM_FEEDS.map(({ team }) => team));
-const TEAM_ALIASES = Object.freeze({
-  LA: "LAR", STL: "LAR", OAK: "LV", SD: "LAC", JAC: "JAX", WSH: "WAS",
-});
 const INTERNATIONAL_STADIUMS = new Set([
   "melbournecricketground", "mcg", "maracanastadium", "maracana",
   "tottenhamhotspurstadium", "wembleystadium", "stadedefrance",
@@ -97,11 +95,6 @@ const includeHistory = argumentsSet.has("--include-history");
 const environmentOnly = argumentsSet.has("--environment-only");
 if (includeHistory && environmentOnly) throw new Error("--include-history and --environment-only cannot be combined");
 const generatedAt = new Date().toISOString();
-
-function canonicalTeam(value) {
-  const team = cleanUntrustedText(value, 8).toUpperCase();
-  return (TEAM_ALIASES[team] ?? team) || null;
-}
 
 function canonicalPosition(value) {
   return POSITION_MAP[cleanUntrustedText(value, 12).toUpperCase()] ?? null;
@@ -193,7 +186,7 @@ function parseFfcPayload(payload, format) {
       name,
       position,
       team,
-      bye: numberInRange(raw.bye, 1, 18, `${name} bye`, { integer: true, nullable: true }),
+      bye: canonicalBye(team, raw.bye, `${name} bye`),
       rank: index + 1,
       adp: numberInRange(raw.adp, 0.1, 500, `${name} ADP`),
       formatted: optionalText(raw.adp_formatted, 20),
