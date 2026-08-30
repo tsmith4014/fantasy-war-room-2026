@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "season": 2026,
-  "generatedAt": "2026-08-29T00:49:33.003Z",
-  "snapshotId": "20260829-d493a9f3e0",
+  "generatedAt": "2026-08-30T15:40:46.717Z",
+  "snapshotId": "20260830-cdb69e4f4b",
   "climateBaseline": {
     "period": "2001-2020",
     "retrievedAt": "2026-08-26T00:00:00.000Z",
@@ -14,37 +14,37 @@
       "sourceId": "noaa-cpc-610-temperature",
       "horizon": "6-10 day",
       "dimension": "temperature",
-      "issuedDate": "2026-08-28",
-      "validStart": "2026-09-03",
-      "validEnd": "2026-09-07",
-      "featureCount": 29
+      "issuedDate": "2026-08-29",
+      "validStart": "2026-09-04",
+      "validEnd": "2026-09-08",
+      "featureCount": 31
     },
     {
       "sourceId": "noaa-cpc-610-precipitation",
       "horizon": "6-10 day",
       "dimension": "precipitation",
-      "issuedDate": "2026-08-28",
-      "validStart": "2026-09-03",
-      "validEnd": "2026-09-07",
-      "featureCount": 21
+      "issuedDate": "2026-08-29",
+      "validStart": "2026-09-04",
+      "validEnd": "2026-09-08",
+      "featureCount": 23
     },
     {
       "sourceId": "noaa-cpc-814-temperature",
       "horizon": "8-14 day",
       "dimension": "temperature",
-      "issuedDate": "2026-08-28",
-      "validStart": "2026-09-05",
-      "validEnd": "2026-09-11",
-      "featureCount": 20
+      "issuedDate": "2026-08-29",
+      "validStart": "2026-09-06",
+      "validEnd": "2026-09-12",
+      "featureCount": 22
     },
     {
       "sourceId": "noaa-cpc-814-precipitation",
       "horizon": "8-14 day",
       "dimension": "precipitation",
-      "issuedDate": "2026-08-28",
-      "validStart": "2026-09-05",
-      "validEnd": "2026-09-11",
-      "featureCount": 15
+      "issuedDate": "2026-08-29",
+      "validStart": "2026-09-06",
+      "validEnd": "2026-09-12",
+      "featureCount": 20
     },
     {
       "sourceId": "noaa-cpc-week34-temperature",
@@ -125,19 +125,19 @@
               "category": "below-normal",
               "probability": 33,
               "horizon": "8-14 day",
-              "issuedDate": "2026-08-28",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-11",
+              "issuedDate": "2026-08-29",
+              "validStart": "2026-09-06",
+              "validEnd": "2026-09-12",
               "sourceId": "noaa-cpc-814-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
             "precipitation": {
               "category": "above-normal",
-              "probability": 40,
+              "probability": 50,
               "horizon": "8-14 day",
-              "issuedDate": "2026-08-28",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-11",
+              "issuedDate": "2026-08-29",
+              "validStart": "2026-09-06",
+              "validEnd": "2026-09-12",
               "sourceId": "noaa-cpc-814-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -148,7 +148,7 @@
             "spread": 3.5,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -204,7 +204,7 @@
             "spread": 4.5,
             "favoredTeam": "NE",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -239,7 +239,7 @@
             "spread": 1.5,
             "favoredTeam": "JAX",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -274,7 +274,7 @@
             "spread": 3,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 23.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -309,7 +309,7 @@
             "spread": 8.5,
             "favoredTeam": "NE",
             "teamImpliedPoints": 26.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -344,7 +344,7 @@
             "spread": 9.5,
             "favoredTeam": "NE",
             "teamImpliedPoints": 26,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -379,7 +379,7 @@
             "spread": 1.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -468,7 +468,7 @@
             "spread": 1.5,
             "favoredTeam": "DET",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -719,19 +719,19 @@
               "category": "below-normal",
               "probability": 33,
               "horizon": "8-14 day",
-              "issuedDate": "2026-08-28",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-11",
+              "issuedDate": "2026-08-29",
+              "validStart": "2026-09-06",
+              "validEnd": "2026-09-12",
               "sourceId": "noaa-cpc-814-temperature",
               "label": "Extended outlook category — not an exact forecast"
             },
             "precipitation": {
               "category": "above-normal",
-              "probability": 40,
+              "probability": 50,
               "horizon": "8-14 day",
-              "issuedDate": "2026-08-28",
-              "validStart": "2026-09-05",
-              "validEnd": "2026-09-11",
+              "issuedDate": "2026-08-29",
+              "validStart": "2026-09-06",
+              "validEnd": "2026-09-12",
               "sourceId": "noaa-cpc-814-precipitation",
               "label": "Extended outlook category — not an exact forecast"
             }
@@ -742,7 +742,7 @@
             "spread": 3.5,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -798,7 +798,7 @@
             "spread": -10,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 27.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -833,7 +833,7 @@
             "spread": -3.5,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 25,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -868,7 +868,7 @@
             "spread": 3,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 24.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -903,7 +903,7 @@
             "spread": 3.5,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 26,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -938,7 +938,7 @@
             "spread": -1.5,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1189,7 +1189,7 @@
             "spread": -1.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1264,7 +1264,7 @@
         "windyClimateGames": 0,
         "outlookGames": 1,
         "forecastGames": 0,
-        "marketGames": 8,
+        "marketGames": 7,
         "averageMarketImpliedPoints": 25.9,
         "marketPulseScore": 58.1,
         "sourceIds": [
@@ -1305,7 +1305,7 @@
             "spread": 3.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1361,7 +1361,7 @@
             "spread": 10.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 28.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1396,7 +1396,7 @@
             "spread": 11.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 29,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1431,7 +1431,7 @@
             "spread": 2.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1466,7 +1466,7 @@
             "spread": 3.5,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1501,7 +1501,7 @@
             "spread": 5.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 28,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1531,15 +1531,7 @@
           },
           "outlook": null,
           "forecast": null,
-          "market": {
-            "totalPoints": 47.5,
-            "spread": -4.5,
-            "favoredTeam": "SF",
-            "teamImpliedPoints": 26,
-            "observedAt": "2026-08-29T00:49:33.003Z",
-            "sourceId": "nflverse-schedules",
-            "label": "Market line snapshot — not a projection guarantee"
-          }
+          "market": null
         },
         {
           "gameId": "2026_09_LV_SF",
@@ -1625,7 +1617,7 @@
             "spread": 4.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 26,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1876,7 +1868,7 @@
             "spread": 3.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 26,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1932,7 +1924,7 @@
             "spread": 8.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 28.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -1967,7 +1959,7 @@
             "spread": -3,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 24.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2002,7 +1994,7 @@
             "spread": -1.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2037,7 +2029,7 @@
             "spread": 3,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 28.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2072,7 +2064,7 @@
             "spread": 13.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 30.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2215,7 +2207,7 @@
             "spread": 5.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2331,7 +2323,7 @@
             "spread": -1.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2468,7 +2460,7 @@
             "spread": -2.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 25,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2524,7 +2516,7 @@
             "spread": 3.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2559,7 +2551,7 @@
             "spread": 1.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2594,7 +2586,7 @@
             "spread": 8.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2629,7 +2621,7 @@
             "spread": 3,
             "favoredTeam": "GB",
             "teamImpliedPoints": 23.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2664,7 +2656,7 @@
             "spread": -3,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 25.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2699,7 +2691,7 @@
             "spread": 1.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2815,7 +2807,7 @@
             "spread": 2.5,
             "favoredTeam": "DET",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -2931,7 +2923,7 @@
             "spread": 1.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3068,7 +3060,7 @@
             "spread": -2.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3124,7 +3116,7 @@
             "spread": 1.5,
             "favoredTeam": "ATL",
             "teamImpliedPoints": 21,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3159,7 +3151,7 @@
             "spread": -1.5,
             "favoredTeam": "CAR",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3194,7 +3186,7 @@
             "spread": -3,
             "favoredTeam": "DET",
             "teamImpliedPoints": 22.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3229,7 +3221,7 @@
             "spread": 6.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 18.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3264,7 +3256,7 @@
             "spread": -1.5,
             "favoredTeam": "TB",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3644,7 +3636,7 @@
             "spread": 3.5,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3700,7 +3692,7 @@
             "spread": 5.5,
             "favoredTeam": "TB",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3735,7 +3727,7 @@
             "spread": 1.5,
             "favoredTeam": "TB",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3770,7 +3762,7 @@
             "spread": -1.5,
             "favoredTeam": "GB",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3805,7 +3797,7 @@
             "spread": 3.5,
             "favoredTeam": "DAL",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3840,7 +3832,7 @@
             "spread": 1.5,
             "favoredTeam": "TB",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -3875,7 +3867,7 @@
             "spread": -1.5,
             "favoredTeam": "TB",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4166,9 +4158,9 @@
         "windyClimateGames": 1,
         "outlookGames": 2,
         "forecastGames": 0,
-        "marketGames": 6,
-        "averageMarketImpliedPoints": 25.8,
-        "marketPulseScore": 57.4,
+        "marketGames": 7,
+        "averageMarketImpliedPoints": 25.5,
+        "marketPulseScore": 56.1,
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
@@ -4228,7 +4220,7 @@
             "spread": 3.5,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4284,7 +4276,7 @@
             "spread": 2.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4319,7 +4311,7 @@
             "spread": -1.5,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4354,7 +4346,7 @@
             "spread": 2.5,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4389,7 +4381,7 @@
             "spread": -6,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 27.8,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4419,7 +4411,15 @@
           },
           "outlook": null,
           "forecast": null,
-          "market": null
+          "market": {
+            "totalPoints": 51.5,
+            "spread": 3.5,
+            "favoredTeam": "BAL",
+            "teamImpliedPoints": 24,
+            "observedAt": "2026-08-30T15:40:46.717Z",
+            "sourceId": "nflverse-schedules",
+            "label": "Market line snapshot — not a projection guarantee"
+          }
         },
         {
           "gameId": "2026_08_TEN_CIN",
@@ -4478,7 +4478,7 @@
             "spread": -4.5,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4804,7 +4804,7 @@
             "spread": 7,
             "favoredTeam": "DET",
             "teamImpliedPoints": 20.8,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4860,7 +4860,7 @@
             "spread": 7.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 19.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4895,7 +4895,7 @@
             "spread": 3.5,
             "favoredTeam": "NO",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4930,7 +4930,7 @@
             "spread": 2.5,
             "favoredTeam": "NO",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -4965,7 +4965,7 @@
             "spread": -1.5,
             "favoredTeam": "MIN",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5000,7 +5000,7 @@
             "spread": 2.5,
             "favoredTeam": "NYG",
             "teamImpliedPoints": 21,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5035,7 +5035,7 @@
             "spread": -2.5,
             "favoredTeam": "PIT",
             "teamImpliedPoints": 20,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5328,7 +5328,7 @@
         "forecastGames": 0,
         "marketGames": 7,
         "averageMarketImpliedPoints": 26.8,
-        "marketPulseScore": 60,
+        "marketPulseScore": 59.4,
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
@@ -5388,7 +5388,7 @@
             "spread": 7,
             "favoredTeam": "DET",
             "teamImpliedPoints": 27.8,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5444,7 +5444,7 @@
             "spread": 3,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 24.8,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5479,7 +5479,7 @@
             "spread": 9.5,
             "favoredTeam": "DET",
             "teamImpliedPoints": 27.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5514,7 +5514,7 @@
             "spread": -3,
             "favoredTeam": "DET",
             "teamImpliedPoints": 25.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5549,7 +5549,7 @@
             "spread": -8.5,
             "favoredTeam": "DET",
             "teamImpliedPoints": 28.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5665,7 +5665,7 @@
             "spread": 1.5,
             "favoredTeam": "DET",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5727,7 +5727,7 @@
             "spread": 2.5,
             "favoredTeam": "DET",
             "teamImpliedPoints": 28,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -5912,7 +5912,7 @@
         "forecastGames": 0,
         "marketGames": 8,
         "averageMarketImpliedPoints": 25.7,
-        "marketPulseScore": 56.8,
+        "marketPulseScore": 57.4,
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
@@ -5972,7 +5972,7 @@
             "spread": -1.5,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6028,7 +6028,7 @@
             "spread": 3,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 27.8,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6063,7 +6063,7 @@
             "spread": 3,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 25.8,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6098,7 +6098,7 @@
             "spread": 3,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 26.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6133,7 +6133,7 @@
             "spread": 3,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 25.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6168,7 +6168,7 @@
             "spread": -6.5,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6311,7 +6311,7 @@
             "spread": 2.5,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 26.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6427,7 +6427,7 @@
             "spread": -1.5,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6502,8 +6502,8 @@
         "windyClimateGames": 2,
         "outlookGames": 2,
         "forecastGames": 0,
-        "marketGames": 7,
-        "averageMarketImpliedPoints": 22.4,
+        "marketGames": 8,
+        "averageMarketImpliedPoints": 22.6,
         "marketPulseScore": 47.1,
         "sourceIds": [
           "nasa-power-climatology",
@@ -6564,7 +6564,7 @@
             "spread": -1.5,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6620,7 +6620,7 @@
             "spread": 2.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6655,7 +6655,7 @@
             "spread": -1.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6690,7 +6690,7 @@
             "spread": 2.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 25,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6725,7 +6725,7 @@
             "spread": -3.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6760,7 +6760,7 @@
             "spread": 1.5,
             "favoredTeam": "JAX",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -6790,7 +6790,15 @@
           },
           "outlook": null,
           "forecast": null,
-          "market": null
+          "market": {
+            "totalPoints": 43.5,
+            "spread": 5.5,
+            "favoredTeam": "HOU",
+            "teamImpliedPoints": 24.5,
+            "observedAt": "2026-08-30T15:40:46.717Z",
+            "sourceId": "nflverse-schedules",
+            "label": "Market line snapshot — not a projection guarantee"
+          }
         },
         {
           "gameId": "2026_09_HOU_LAC",
@@ -7011,7 +7019,7 @@
             "spread": 2.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 18,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7086,9 +7094,9 @@
         "windyClimateGames": 1,
         "outlookGames": 2,
         "forecastGames": 0,
-        "marketGames": 6,
-        "averageMarketImpliedPoints": 26.7,
-        "marketPulseScore": 59.4,
+        "marketGames": 7,
+        "averageMarketImpliedPoints": 26.8,
+        "marketPulseScore": 60,
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
@@ -7148,7 +7156,7 @@
             "spread": -3.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 26,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7204,7 +7212,7 @@
             "spread": 7.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7239,7 +7247,7 @@
             "spread": -2.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7274,7 +7282,7 @@
             "spread": 8.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 28,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7309,7 +7317,7 @@
             "spread": -4.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 26.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7344,7 +7352,7 @@
             "spread": -6.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7374,7 +7382,15 @@
           },
           "outlook": null,
           "forecast": null,
-          "market": null
+          "market": {
+            "totalPoints": 51.5,
+            "spread": 3.5,
+            "favoredTeam": "BAL",
+            "teamImpliedPoints": 27.5,
+            "observedAt": "2026-08-30T15:40:46.717Z",
+            "sourceId": "nflverse-schedules",
+            "label": "Market line snapshot — not a projection guarantee"
+          }
         },
         {
           "gameId": "2026_08_BAL_BUF",
@@ -7662,9 +7678,9 @@
         "windyClimateGames": 2,
         "outlookGames": 2,
         "forecastGames": 0,
-        "marketGames": 7,
-        "averageMarketImpliedPoints": 22.8,
-        "marketPulseScore": 47.7,
+        "marketGames": 6,
+        "averageMarketImpliedPoints": 22.9,
+        "marketPulseScore": 49.7,
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
@@ -7724,7 +7740,7 @@
             "spread": -3.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7780,7 +7796,7 @@
             "spread": 6.5,
             "favoredTeam": "KC",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7815,7 +7831,7 @@
             "spread": -1.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7850,7 +7866,7 @@
             "spread": 1.5,
             "favoredTeam": "WAS",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7885,7 +7901,7 @@
             "spread": 2.5,
             "favoredTeam": "PIT",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7920,7 +7936,7 @@
             "spread": 3.5,
             "favoredTeam": "IND",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -7950,15 +7966,7 @@
           },
           "outlook": null,
           "forecast": null,
-          "market": {
-            "totalPoints": 46.5,
-            "spread": 2.5,
-            "favoredTeam": "MIN",
-            "teamImpliedPoints": 22,
-            "observedAt": "2026-08-29T00:49:33.003Z",
-            "sourceId": "nflverse-schedules",
-            "label": "Market line snapshot — not a projection guarantee"
-          }
+          "market": null
         },
         {
           "gameId": "2026_08_IND_JAX",
@@ -8247,7 +8255,7 @@
         "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 7,
-        "averageMarketImpliedPoints": 18.6,
+        "averageMarketImpliedPoints": 18.5,
         "marketPulseScore": 40.6,
         "sourceIds": [
           "nasa-power-climatology",
@@ -8308,7 +8316,7 @@
             "spread": 7.5,
             "favoredTeam": "JAX",
             "teamImpliedPoints": 16.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8364,7 +8372,7 @@
             "spread": 5.5,
             "favoredTeam": "TB",
             "teamImpliedPoints": 18.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8399,7 +8407,7 @@
             "spread": -1.5,
             "favoredTeam": "CAR",
             "teamImpliedPoints": 19,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8434,7 +8442,7 @@
             "spread": -2.5,
             "favoredTeam": "PIT",
             "teamImpliedPoints": 19,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8466,10 +8474,10 @@
           "forecast": null,
           "market": {
             "totalPoints": 39.5,
-            "spread": 1.5,
+            "spread": 2.5,
             "favoredTeam": "NYJ",
-            "teamImpliedPoints": 19,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "teamImpliedPoints": 18.5,
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8504,7 +8512,7 @@
             "spread": -6.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 19,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8539,7 +8547,7 @@
             "spread": 2.5,
             "favoredTeam": "TEN",
             "teamImpliedPoints": 19,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8832,7 +8840,7 @@
         "forecastGames": 0,
         "marketGames": 6,
         "averageMarketImpliedPoints": 22.8,
-        "marketPulseScore": 48.4,
+        "marketPulseScore": 49,
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
@@ -8892,7 +8900,7 @@
             "spread": 7.5,
             "favoredTeam": "JAX",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8948,7 +8956,7 @@
             "spread": 2.5,
             "favoredTeam": "DEN",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -8983,7 +8991,7 @@
             "spread": 1.5,
             "favoredTeam": "JAX",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9018,7 +9026,7 @@
             "spread": 2.5,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9053,7 +9061,7 @@
             "spread": -1.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9088,7 +9096,7 @@
             "spread": 1.5,
             "favoredTeam": "JAX",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9406,7 +9414,7 @@
         "windyClimateGames": 1,
         "outlookGames": 3,
         "forecastGames": 0,
-        "marketGames": 8,
+        "marketGames": 7,
         "averageMarketImpliedPoints": 21.4,
         "marketPulseScore": 45.2,
         "sourceIds": [
@@ -9468,7 +9476,7 @@
             "spread": 3,
             "favoredTeam": "PIT",
             "teamImpliedPoints": 19.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9524,7 +9532,7 @@
             "spread": 1.5,
             "favoredTeam": "ATL",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9580,7 +9588,7 @@
             "spread": 7.5,
             "favoredTeam": "GB",
             "teamImpliedPoints": 19.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9615,7 +9623,7 @@
             "spread": 2.5,
             "favoredTeam": "NO",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9650,7 +9658,7 @@
             "spread": -4.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9685,7 +9693,7 @@
             "spread": -3,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 22.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -9715,15 +9723,7 @@
           },
           "outlook": null,
           "forecast": null,
-          "market": {
-            "totalPoints": 47.5,
-            "spread": -4.5,
-            "favoredTeam": "SF",
-            "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
-            "sourceId": "nflverse-schedules",
-            "label": "Market line snapshot — not a projection guarantee"
-          }
+          "market": null
         },
         {
           "gameId": "2026_08_ATL_TB",
@@ -9782,7 +9782,7 @@
             "spread": -4.5,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10081,7 +10081,7 @@
             "spread": 3,
             "favoredTeam": "PIT",
             "teamImpliedPoints": 22.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10137,7 +10137,7 @@
             "spread": 4.5,
             "favoredTeam": "NE",
             "teamImpliedPoints": 19.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10172,7 +10172,7 @@
             "spread": -1.5,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10207,7 +10207,7 @@
             "spread": -2.5,
             "favoredTeam": "PIT",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10242,7 +10242,7 @@
             "spread": 2.5,
             "favoredTeam": "PIT",
             "teamImpliedPoints": 25,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10277,7 +10277,7 @@
             "spread": 1.5,
             "favoredTeam": "TB",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10312,7 +10312,7 @@
             "spread": -2.5,
             "favoredTeam": "PIT",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10428,7 +10428,7 @@
             "spread": -1.5,
             "favoredTeam": "DEN",
             "teamImpliedPoints": 19,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10612,7 +10612,7 @@
         "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 7,
-        "averageMarketImpliedPoints": 18.8,
+        "averageMarketImpliedPoints": 18.9,
         "marketPulseScore": 41.3,
         "sourceIds": [
           "nasa-power-climatology",
@@ -10673,7 +10673,7 @@
             "spread": 3,
             "favoredTeam": "TEN",
             "teamImpliedPoints": 17.8,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10729,7 +10729,7 @@
             "spread": -5.5,
             "favoredTeam": "GB",
             "teamImpliedPoints": 18.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10764,7 +10764,7 @@
             "spread": 9.5,
             "favoredTeam": "DET",
             "teamImpliedPoints": 18,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10799,7 +10799,7 @@
             "spread": 8.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 18.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10831,10 +10831,10 @@
           "forecast": null,
           "market": {
             "totalPoints": 39.5,
-            "spread": 1.5,
+            "spread": 2.5,
             "favoredTeam": "NYJ",
-            "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "teamImpliedPoints": 21,
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10869,7 +10869,7 @@
             "spread": 9.5,
             "favoredTeam": "NE",
             "teamImpliedPoints": 16.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -10904,7 +10904,7 @@
             "spread": 2.5,
             "favoredTeam": "NYJ",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11257,7 +11257,7 @@
             "spread": 3,
             "favoredTeam": "TEN",
             "teamImpliedPoints": 20.8,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11313,7 +11313,7 @@
             "spread": -4.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 19,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11348,7 +11348,7 @@
             "spread": 3,
             "favoredTeam": "NYG",
             "teamImpliedPoints": 20.8,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11383,7 +11383,7 @@
             "spread": 8.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 19.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11418,7 +11418,7 @@
             "spread": -3.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 20,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11453,7 +11453,7 @@
             "spread": 3.5,
             "favoredTeam": "IND",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11488,7 +11488,7 @@
             "spread": 2.5,
             "favoredTeam": "TEN",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11841,7 +11841,7 @@
             "spread": 10.5,
             "favoredTeam": "LAC",
             "teamImpliedPoints": 18,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11897,7 +11897,7 @@
             "spread": -10,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 17.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11932,7 +11932,7 @@
             "spread": 11.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 17.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -11967,7 +11967,7 @@
             "spread": 7,
             "favoredTeam": "NYG",
             "teamImpliedPoints": 19.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12002,7 +12002,7 @@
             "spread": -8.5,
             "favoredTeam": "DET",
             "teamImpliedPoints": 20,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12037,7 +12037,7 @@
             "spread": 13.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 17,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12417,7 +12417,7 @@
             "spread": 10.5,
             "favoredTeam": "LAC",
             "teamImpliedPoints": 28.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12473,7 +12473,7 @@
             "spread": 8.5,
             "favoredTeam": "LAC",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12508,7 +12508,7 @@
             "spread": 3,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 22.8,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12543,7 +12543,7 @@
             "spread": 3,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 21.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12578,7 +12578,7 @@
             "spread": 2.5,
             "favoredTeam": "LAC",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12613,7 +12613,7 @@
             "spread": 2.5,
             "favoredTeam": "KC",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -12993,7 +12993,7 @@
             "spread": 3.5,
             "favoredTeam": "LV",
             "teamImpliedPoints": 18.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13049,7 +13049,7 @@
             "spread": 10.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 18,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13084,7 +13084,7 @@
             "spread": -7.5,
             "favoredTeam": "KC",
             "teamImpliedPoints": 18.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13119,7 +13119,7 @@
             "spread": 7.5,
             "favoredTeam": "MIN",
             "teamImpliedPoints": 18,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13154,7 +13154,7 @@
             "spread": -6,
             "favoredTeam": "CIN",
             "teamImpliedPoints": 21.8,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13189,7 +13189,7 @@
             "spread": 2.5,
             "favoredTeam": "NYJ",
             "teamImpliedPoints": 19.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13569,7 +13569,7 @@
             "spread": 3.5,
             "favoredTeam": "LV",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13625,7 +13625,7 @@
             "spread": 8.5,
             "favoredTeam": "LAC",
             "teamImpliedPoints": 17,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13660,7 +13660,7 @@
             "spread": 3.5,
             "favoredTeam": "NO",
             "teamImpliedPoints": 19.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13695,7 +13695,7 @@
             "spread": -5.5,
             "favoredTeam": "KC",
             "teamImpliedPoints": 19,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13730,7 +13730,7 @@
             "spread": 8.5,
             "favoredTeam": "NE",
             "teamImpliedPoints": 18,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -13765,7 +13765,7 @@
             "spread": -6.5,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14145,7 +14145,7 @@
             "spread": 1.5,
             "favoredTeam": "MIN",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14201,7 +14201,7 @@
             "spread": -5.5,
             "favoredTeam": "GB",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14257,7 +14257,7 @@
             "spread": 7.5,
             "favoredTeam": "GB",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14292,7 +14292,7 @@
             "spread": -1.5,
             "favoredTeam": "GB",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14327,7 +14327,7 @@
             "spread": 3,
             "favoredTeam": "GB",
             "teamImpliedPoints": 26.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14362,7 +14362,7 @@
             "spread": 3,
             "favoredTeam": "GB",
             "teamImpliedPoints": 27.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14505,7 +14505,7 @@
             "spread": 5.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14621,7 +14621,7 @@
             "spread": 1.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14696,9 +14696,9 @@
         "windyClimateGames": 1,
         "outlookGames": 2,
         "forecastGames": 0,
-        "marketGames": 7,
-        "averageMarketImpliedPoints": 22.9,
-        "marketPulseScore": 49,
+        "marketGames": 6,
+        "averageMarketImpliedPoints": 22.7,
+        "marketPulseScore": 47.7,
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
@@ -14758,7 +14758,7 @@
             "spread": 1.5,
             "favoredTeam": "MIN",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14814,7 +14814,7 @@
             "spread": 3.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 21,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14849,7 +14849,7 @@
             "spread": 1.5,
             "favoredTeam": "TB",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14884,7 +14884,7 @@
             "spread": 7.5,
             "favoredTeam": "MIN",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14919,7 +14919,7 @@
             "spread": -1.5,
             "favoredTeam": "MIN",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -14949,15 +14949,7 @@
           },
           "outlook": null,
           "forecast": null,
-          "market": {
-            "totalPoints": 46.5,
-            "spread": 2.5,
-            "favoredTeam": "MIN",
-            "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
-            "sourceId": "nflverse-schedules",
-            "label": "Market line snapshot — not a projection guarantee"
-          }
+          "market": null
         },
         {
           "gameId": "2026_08_MIN_DET",
@@ -15070,7 +15062,7 @@
             "spread": 4.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15281,8 +15273,8 @@
         "outlookGames": 2,
         "forecastGames": 0,
         "marketGames": 6,
-        "averageMarketImpliedPoints": 23.3,
-        "marketPulseScore": 49.7,
+        "averageMarketImpliedPoints": 23.2,
+        "marketPulseScore": 50.3,
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
@@ -15338,11 +15330,11 @@
           },
           "forecast": null,
           "market": {
-            "totalPoints": 46.5,
+            "totalPoints": 45.5,
             "spread": 4.5,
             "favoredTeam": "PHI",
-            "teamImpliedPoints": 21,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "teamImpliedPoints": 20.5,
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15398,7 +15390,7 @@
             "spread": 4.5,
             "favoredTeam": "DAL",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15433,7 +15425,7 @@
             "spread": -3.5,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 21.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15468,7 +15460,7 @@
             "spread": 1.5,
             "favoredTeam": "WAS",
             "teamImpliedPoints": 26,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15503,7 +15495,7 @@
             "spread": 1.5,
             "favoredTeam": "WAS",
             "teamImpliedPoints": 25,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15538,7 +15530,7 @@
             "spread": 5.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15914,11 +15906,11 @@
           },
           "forecast": null,
           "market": {
-            "totalPoints": 46.5,
+            "totalPoints": 45.5,
             "spread": 4.5,
             "favoredTeam": "PHI",
-            "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "teamImpliedPoints": 25,
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -15974,7 +15966,7 @@
             "spread": -4.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16009,7 +16001,7 @@
             "spread": 1.5,
             "favoredTeam": "CHI",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16044,7 +16036,7 @@
             "spread": -1.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16079,7 +16071,7 @@
             "spread": -1.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16114,7 +16106,7 @@
             "spread": 6.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 25,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16257,7 +16249,7 @@
             "spread": 1.5,
             "favoredTeam": "DAL",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16373,7 +16365,7 @@
             "spread": 2.5,
             "favoredTeam": "PHI",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16450,7 +16442,7 @@
         "forecastGames": 0,
         "marketGames": 7,
         "averageMarketImpliedPoints": 25.5,
-        "marketPulseScore": 56.1,
+        "marketPulseScore": 56.8,
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
@@ -16510,7 +16502,7 @@
             "spread": -2.5,
             "favoredTeam": "DAL",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16566,7 +16558,7 @@
             "spread": 4.5,
             "favoredTeam": "DAL",
             "teamImpliedPoints": 28,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16601,7 +16593,7 @@
             "spread": -2.5,
             "favoredTeam": "BAL",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16636,7 +16628,7 @@
             "spread": 2.5,
             "favoredTeam": "HOU",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16671,7 +16663,7 @@
             "spread": 3.5,
             "favoredTeam": "DAL",
             "teamImpliedPoints": 28,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16706,7 +16698,7 @@
             "spread": 3,
             "favoredTeam": "GB",
             "teamImpliedPoints": 24.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -16876,7 +16868,7 @@
             "spread": 1.5,
             "favoredTeam": "DAL",
             "teamImpliedPoints": 25.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17032,9 +17024,9 @@
         "windyClimateGames": 0,
         "outlookGames": 2,
         "forecastGames": 0,
-        "marketGames": 6,
-        "averageMarketImpliedPoints": 23.3,
-        "marketPulseScore": 50.3,
+        "marketGames": 7,
+        "averageMarketImpliedPoints": 22.7,
+        "marketPulseScore": 48.4,
         "sourceIds": [
           "nasa-power-climatology",
           "nflverse-schedules",
@@ -17094,7 +17086,7 @@
             "spread": -2.5,
             "favoredTeam": "DAL",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17150,7 +17142,7 @@
             "spread": 8.5,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 20,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17185,7 +17177,7 @@
             "spread": 3,
             "favoredTeam": "NYG",
             "teamImpliedPoints": 23.8,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17220,7 +17212,7 @@
             "spread": 7,
             "favoredTeam": "NYG",
             "teamImpliedPoints": 26.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17255,7 +17247,7 @@
             "spread": 1.5,
             "favoredTeam": "WAS",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17290,7 +17282,7 @@
             "spread": 2.5,
             "favoredTeam": "NYG",
             "teamImpliedPoints": 23.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17320,7 +17312,15 @@
           },
           "outlook": null,
           "forecast": null,
-          "market": null
+          "market": {
+            "totalPoints": 43.5,
+            "spread": 5.5,
+            "favoredTeam": "HOU",
+            "teamImpliedPoints": 19,
+            "observedAt": "2026-08-30T15:40:46.717Z",
+            "sourceId": "nflverse-schedules",
+            "label": "Market line snapshot — not a projection guarantee"
+          }
         },
         {
           "gameId": "2026_09_NYG_PHI",
@@ -17670,7 +17670,7 @@
             "spread": 3,
             "favoredTeam": "KC",
             "teamImpliedPoints": 19.8,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17726,7 +17726,7 @@
             "spread": 2.5,
             "favoredTeam": "DEN",
             "teamImpliedPoints": 23,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17761,7 +17761,7 @@
             "spread": -3,
             "favoredTeam": "LAR",
             "teamImpliedPoints": 21.3,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17796,7 +17796,7 @@
             "spread": 2.5,
             "favoredTeam": "SF",
             "teamImpliedPoints": 22,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17831,7 +17831,7 @@
             "spread": 2.5,
             "favoredTeam": "LAC",
             "teamImpliedPoints": 21,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -17866,7 +17866,7 @@
             "spread": -1.5,
             "favoredTeam": "SEA",
             "teamImpliedPoints": 21,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -18009,7 +18009,7 @@
             "spread": -1.5,
             "favoredTeam": "DEN",
             "teamImpliedPoints": 20.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -18125,7 +18125,7 @@
             "spread": -1.5,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 22.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -18262,7 +18262,7 @@
             "spread": 3,
             "favoredTeam": "KC",
             "teamImpliedPoints": 22.8,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -18318,7 +18318,7 @@
             "spread": 6.5,
             "favoredTeam": "KC",
             "teamImpliedPoints": 27,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -18353,7 +18353,7 @@
             "spread": -7.5,
             "favoredTeam": "KC",
             "teamImpliedPoints": 26,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -18388,7 +18388,7 @@
             "spread": -5.5,
             "favoredTeam": "KC",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -18423,7 +18423,7 @@
             "spread": 2.5,
             "favoredTeam": "KC",
             "teamImpliedPoints": 24.5,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
@@ -18593,7 +18593,7 @@
             "spread": 2.5,
             "favoredTeam": "BUF",
             "teamImpliedPoints": 24,
-            "observedAt": "2026-08-29T00:49:33.003Z",
+            "observedAt": "2026-08-30T15:40:46.717Z",
             "sourceId": "nflverse-schedules",
             "label": "Market line snapshot — not a projection guarantee"
           }
